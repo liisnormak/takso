@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "11d84a073794cedd0a85",
+  "position": {
+    "x": 44.444444444444443,
+    "y": 1842.2222222222222,
+    "z": 1005,
+    "height": 591.11111111111109,
+    "width": 453.33333333333331,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order"
+                    }
+                  },
+                  "Property": "order_key"
+                }
+              },
+              "queryRef": "dim_order.order_key",
+              "nativeQueryRef": "order_key"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order"
+                    }
+                  },
+                  "Property": "Had Overpaid Ride Ticket"
+                }
+              },
+              "queryRef": "dim_order.had_overpaid_ride_ticket",
+              "nativeQueryRef": "Had Overpaid Ride Ticket"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Overcharge ride count",
+              "nativeQueryRef": "Overcharge Ride Count"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "855a36ebd63f6b114b49",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Order"
+              }
+            },
+            "Property": "order_key"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ac154a76b625b5e385a1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Order"
+              }
+            },
+            "Property": "Had Overpaid Ride Ticket"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a63fe48dfa6470c4b43e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Overcharge Ride Count"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

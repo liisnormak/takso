@@ -1,0 +1,190 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "268c44200beedb7590c4",
+  "position": {
+    "x": 44.995374653098985,
+    "y": 66.308973172987976,
+    "z": 1001,
+    "height": 633.48751156336732,
+    "width": 545.86493987049028,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ride"
+                    }
+                  },
+                  "Property": "Order ID"
+                }
+              },
+              "queryRef": "Sum(fact_ride.order_id_new)",
+              "nativeQueryRef": "Order ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ride"
+                    }
+                  },
+                  "Property": "Upfront Price"
+                }
+              },
+              "queryRef": "Sum(fact_ride.upfront_price)",
+              "nativeQueryRef": "Upfront Price"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ride"
+                    }
+                  },
+                  "Property": "Metered Price"
+                }
+              },
+              "queryRef": "Sum(fact_ride.metered_price)",
+              "nativeQueryRef": "Metered Price"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ride"
+                    }
+                  },
+                  "Property": "% Price Deviation"
+                }
+              },
+              "queryRef": "Sum(fact_ride.price_difference_pct)",
+              "nativeQueryRef": "% Price Deviation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ride"
+                    }
+                  },
+                  "Property": "EU Indicator"
+                }
+              },
+              "queryRef": "fact_ride.eu_indicator",
+              "nativeQueryRef": "EU Indicator"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Price difference (%)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "600e9ef0d048130f9942",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ride"
+              }
+            },
+            "Property": "EU Indicator"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "32022c0aa11221a079a2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ride"
+              }
+            },
+            "Property": "Upfront Price"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c11a63ca8386d17143a7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ride"
+              }
+            },
+            "Property": "Metered Price"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1e250cd13352d1ac3813",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ride"
+              }
+            },
+            "Property": "% Price Deviation"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a118a4d7de3f3e0d5c8e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ride"
+              }
+            },
+            "Property": "Order ID"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

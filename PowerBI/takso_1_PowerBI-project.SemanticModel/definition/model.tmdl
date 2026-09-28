@@ -1,0 +1,31 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: et-EE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["App Version","Date","Device","Order","Pricing Context","Ride","Ticket"]
+
+annotation PBI_RemovedChildren = [{"remoteItemId":{"foreignKeyRelationship":{"fromTableLocalLineageTag":"53b69c81-10fa-4edd-a48d-c533e01eb6a9","fromColumnLocalLineageTag":"71612432-0913-412c-83d6-e02a72eb4f18","toTableLocalLineageTag":"315c3a57-1b5e-4b33-93a2-b5f5c2dd507a","toColumnLocalLineageTag":"7af8f8b3-4891-445f-850e-b787e489323e"}},"objectType":"Relationship"}]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'App Version'
+ref table Date
+ref table DateTableTemplate_5fd350d5-9bb3-4ad2-824f-e06102be9149
+ref table LocalDateTable_25893288-ff9f-4c7c-bb36-94ec4bfbd7fd
+ref table Device
+ref table Order
+ref table 'Pricing Context'
+ref table Ride
+ref table LocalDateTable_21d3f715-6ff8-494c-9dda-dd3e1c3d3692
+ref table Ticket
+ref table _Measures
+
+ref cultureInfo en-US
+

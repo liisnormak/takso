@@ -1,0 +1,47 @@
+table 'App Version'
+	lineageTag: 692bdf15-3f1e-4916-af64-19f8408e3d5d
+
+	column app_version_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 279f1f9a-beea-404b-8bd7-9451d4a14e65
+		summarizeBy: none
+		sourceColumn: app_version_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Rider App Version'
+		dataType: string
+		lineageTag: a2e145a8-a266-491f-8f90-d1d7abc24fcd
+		summarizeBy: none
+		sourceColumn: Rider App Version
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Drive App Version'
+		dataType: string
+		lineageTag: b8ce2596-9452-4a97-849f-6f495c992061
+		summarizeBy: none
+		sourceColumn: Drive App Version
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'App Version' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    takso_dim_app_version = Source{[Schema="takso",Item="dim_app_version"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(takso_dim_app_version,{{"driver_app_version", "Drive App Version"}, {"rider_app_version", "Rider App Version"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

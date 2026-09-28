@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "344889803eb9e29de81c",
+  "position": {
+    "x": 44.444444444444443,
+    "y": 1268.8888888888889,
+    "z": 1004,
+    "height": 563.33333333333337,
+    "width": 431.11111111111109,
+    "tabOrder": 4
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Device"
+                    }
+                  },
+                  "Property": "Device Name"
+                }
+              },
+              "queryRef": "dim_device.device_name",
+              "nativeQueryRef": "Device Name"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Overcharge ride count",
+              "nativeQueryRef": "Overcharge Ride Count"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8936d82c1d19e1bee9f4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Device"
+              }
+            },
+            "Property": "Device Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f97136fffeddaa1274f3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Overcharge Ride Count"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

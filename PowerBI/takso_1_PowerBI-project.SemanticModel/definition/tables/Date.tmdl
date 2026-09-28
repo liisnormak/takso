@@ -1,0 +1,72 @@
+table Date
+	lineageTag: 9bc5bb4d-04ac-469f-afe4-3eda8689f3ce
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5f474176-dd91-4e4a-bbaa-a060667819f4
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Full Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b8fdfc01-88db-4970-8210-eafa855855f4
+		summarizeBy: none
+		sourceColumn: Full Date
+
+		variation Variation
+			isDefault
+			relationship: 8a408ea0-126a-49ab-a8c2-9ef1bbb7516a
+			defaultHierarchy: LocalDateTable_25893288-ff9f-4c7c-bb36-94ec4bfbd7fd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: a68663e0-a730-48dc-a308-8671002b18a8
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aace8d5-0626-487a-acef-b45adf31ec8a
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = User
+
+	column 'Day of Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: ad136475-2deb-43bb-9f48-8f0f1558f018
+		summarizeBy: none
+		sourceColumn: Day of Week Number
+
+		annotation SummarizationSetBy = User
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    takso_dim_date = Source{[Schema="takso",Item="dim_date"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(takso_dim_date,{{"month", "Month"}, {"year", "Year"}, {"day_of_week_nr", "Day of Week Number"}, {"full_date", "Full Date"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

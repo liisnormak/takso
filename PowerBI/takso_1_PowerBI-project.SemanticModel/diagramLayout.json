@@ -1,0 +1,123 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 28.75,
+        "y": 858.75
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 644.59862470434859,
+            "y": 1241.9713264514312
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "e90bb636-2d04-4044-abec-d03bf21448fb",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 830.59286038600908,
+            "y": 924.604656712319
+          },
+          "nodeIndex": "App Version",
+          "nodeLineageTag": "692bdf15-3f1e-4916-af64-19f8408e3d5d",
+          "size": {
+            "height": 208.25,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1107.8216245388307,
+            "y": 872.38556480171655
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "9bc5bb4d-04ac-469f-afe4-3eda8689f3ce",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1353.0413077740097,
+            "y": 1010.1533830852627
+          },
+          "nodeIndex": "Device",
+          "nodeLineageTag": "315c3a57-1b5e-4b33-93a2-b5f5c2dd507a",
+          "size": {
+            "height": 162.5,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 299.25,
+            "y": 928.22694880128074
+          },
+          "nodeIndex": "Order",
+          "nodeLineageTag": "98bf4c02-8e03-46ab-8cc3-e668986451f6",
+          "size": {
+            "height": 238,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 566.06601913412646,
+            "y": 928.25347294231551
+          },
+          "nodeIndex": "Pricing Context",
+          "size": {
+            "height": 227.25,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 41.008140714078877,
+            "y": 1059.1530465086744
+          },
+          "nodeIndex": "Ride",
+          "size": {
+            "height": 566,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 42.322684431706989,
+            "y": 1641.604656712319
+          },
+          "nodeIndex": "Ticket",
+          "size": {
+            "height": 274.73599330060006,
+            "width": 234
+          },
+          "zIndex": 7
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 80,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

@@ -1,0 +1,46 @@
+relationship 8a408ea0-126a-49ab-a8c2-9ef1bbb7516a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Date.'Full Date'
+	toColumn: LocalDateTable_25893288-ff9f-4c7c-bb36-94ec4bfbd7fd.Date
+
+relationship 99b6246a-318c-4e90-bf2e-a90dcee51f32
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ride.'Order Created At'
+	toColumn: LocalDateTable_21d3f715-6ff8-494c-9dda-dd3e1c3d3692.Date
+
+relationship ba40dd97-8777-4ff9-b45b-317f01db2793
+	fromColumn: Ride.app_version_key
+	toColumn: 'App Version'.app_version_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 321dd066-1f44-48a8-9085-9baece34e5c5
+	fromColumn: Ride.date_key
+	toColumn: Date.date_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship e9081bbf-4bd1-4805-a3b6-c42f2ef7af07
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Ride.order_key
+	toColumn: Order.order_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 25f9cc80-468d-4cbc-bec0-c432f0e7954f
+	fromColumn: Ride.pricing_context_key
+	toColumn: 'Pricing Context'.pricing_context_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship ce111405-aab4-4611-a387-d88090670117
+	fromColumn: Ticket.order_key
+	toColumn: Order.order_key
+
+	annotation PBI_IsFromSource = FS
+
+relationship 66add01f-a2c6-19c3-faf0-854346c1090b
+	fromColumn: Ride.device_key
+	toColumn: Device.device_key
+

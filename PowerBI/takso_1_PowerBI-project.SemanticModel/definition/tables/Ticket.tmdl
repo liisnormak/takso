@@ -1,0 +1,74 @@
+table Ticket
+	lineageTag: 8257911c-96d0-4d5b-9fc2-4420e1623bd9
+
+	column 'Ticket ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 184962a7-032a-4e0a-8c25-187c313f9860
+		summarizeBy: none
+		sourceColumn: Ticket ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 71d1e851-3904-4c60-bffc-72f0133dc708
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = User
+
+	column 'Overpaid Ride Ticket'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 44fbecf4-91db-42b8-8729-682a0771f476
+		summarizeBy: none
+		sourceColumn: Overpaid Ride Ticket
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ticket Count'
+		dataType: int64
+		formatString: 0
+		lineageTag: bbaa9e36-d6d6-4af9-bec2-e2844ae9737b
+		summarizeBy: sum
+		sourceColumn: Ticket Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Overcharge Ticket Count'
+		dataType: int64
+		formatString: 0
+		lineageTag: c41828fd-2bdd-4f57-954c-2dc18df8d462
+		summarizeBy: sum
+		sourceColumn: Overcharge Ticket Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a68958ea-6f69-45a1-9cdc-a4e0b550882f
+		summarizeBy: none
+		sourceColumn: order_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ticket = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    takso_fact_ticket = Source{[Schema="takso",Item="fact_ticket"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(takso_fact_ticket,{{"order_id_new", "Order ID"}, {"overcharge_ticket_count", "Overcharge Ticket Count"}, {"overpaid_ride_ticket", "Overpaid Ride Ticket"}, {"ticket_count", "Ticket Count"}, {"ticket_id_new", "Ticket ID"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

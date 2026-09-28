@@ -1,0 +1,253 @@
+table Ride
+	lineageTag: 53b69c81-10fa-4edd-a48d-c533e01eb6a9
+
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: e53a41e1-08af-4125-9572-af627db98cef
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = User
+
+	column date_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4af1eff3-4acf-4310-94b9-0ce7e07adde5
+		summarizeBy: none
+		sourceColumn: date_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pricing_context_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: be78c09f-6e59-469c-849e-552651a9315e
+		summarizeBy: none
+		sourceColumn: pricing_context_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver Device Unique ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 71612432-0913-412c-83d6-e02a72eb4f18
+		summarizeBy: none
+		sourceColumn: Driver Device Unique ID
+
+		annotation SummarizationSetBy = User
+
+	column app_version_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 40617376-9865-44b7-9db0-035ec7f05de7
+		summarizeBy: none
+		sourceColumn: app_version_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Created At'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 246289b5-1105-4ce2-ab8f-93fdae78ad99
+		summarizeBy: none
+		sourceColumn: Order Created At
+
+		variation Variation
+			isDefault
+			relationship: 99b6246a-318c-4e90-bf2e-a90dcee51f32
+			defaultHierarchy: LocalDateTable_21d3f715-6ff8-494c-9dda-dd3e1c3d3692.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Metered Price'
+		dataType: double
+		lineageTag: 54158fcd-1e7e-4074-b503-bca6cebe2220
+		summarizeBy: none
+		sourceColumn: Metered Price
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Upfront Price'
+		dataType: double
+		lineageTag: 957203d5-42c9-41f7-9487-7053407e64b7
+		summarizeBy: none
+		sourceColumn: Upfront Price
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Distance
+		dataType: double
+		lineageTag: c85587be-4224-43d2-9ef2-fb9b2aad3ac3
+		summarizeBy: none
+		sourceColumn: Distance
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Duration
+		dataType: double
+		lineageTag: b05cdafb-3cbc-41b2-b729-9d5da983f7af
+		summarizeBy: none
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Predicted Distance'
+		dataType: double
+		lineageTag: d4d262e9-f309-447f-8b6b-e468cdaa3ecd
+		summarizeBy: none
+		sourceColumn: Predicted Distance
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Predicted Duration'
+		dataType: double
+		lineageTag: e56bd010-a1aa-4d3b-9d98-6d7f517f7a42
+		summarizeBy: none
+		sourceColumn: Predicted Duration
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'GPS Confidence'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 37025037-96b7-4268-a690-206fe423cf29
+		summarizeBy: none
+		sourceColumn: GPS Confidence
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EU Indicator'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d2cd7160-b06e-4d2c-acb4-a75574a87f73
+		summarizeBy: none
+		sourceColumn: EU Indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination Change Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: d75dc372-0efe-4883-8bae-e1d206a0bd2e
+		summarizeBy: none
+		sourceColumn: Destination Change Number
+
+		annotation SummarizationSetBy = User
+
+	column 'Fraud Score'
+		dataType: double
+		lineageTag: adf3d8d3-4f67-4ed2-975e-9f1b4b67c6cc
+		summarizeBy: none
+		sourceColumn: Fraud Score
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Fraud Score Status'
+		dataType: string
+		lineageTag: c03aea1a-06e4-46a6-a8c3-d706fc067cb8
+		summarizeBy: none
+		sourceColumn: Fraud Score Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Invalid Ride'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7887872-1147-41ae-a0c0-15324fe5245a
+		summarizeBy: none
+		sourceColumn: Is Invalid Ride
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Try State'
+		dataType: string
+		lineageTag: b38cb1b6-77fe-4360-ab4d-f63bcd78df1d
+		summarizeBy: none
+		sourceColumn: Order Try State
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6dd25ecd-69db-4dc9-a981-ccd8e86deb23
+		summarizeBy: none
+		sourceColumn: order_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column '% Price Deviation'
+		dataType: double
+		lineageTag: 263d25d6-d660-40ee-b659-1cd83cda2c75
+		summarizeBy: none
+		sourceColumn: % Price Deviation
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column '% Distance Deviation'
+		dataType: double
+		lineageTag: ae610a62-6675-4eb2-9426-543520416d14
+		summarizeBy: none
+		sourceColumn: % Distance Deviation
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column device_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a645e82a-030e-4ded-be7b-a2956698385b
+		summarizeBy: none
+		sourceColumn: device_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	partition Ride = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    takso_fact_ride = Source{[Schema="takso",Item="fact_ride"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(takso_fact_ride,{{"price_difference_pct", "% Price Deviation"}, {"distance_deviation_pct", "% Distance Deviation"}, {"calc_created", "Order Created At"}, {"dest_change_number", "Destination Change Number"}, {"distance", "Distance"}, {"driver_device_uid_new", "Driver Device Unique ID"}, {"duration", "Duration"}, {"eu_indicator", "EU Indicator"}, {"fraud_score", "Fraud Score"}, {"fraud_score_status", "Fraud Score Status"}, {"gps_confidence", "GPS Confidence"}, {"is_invalid_ride", "Is Invalid Ride"}, {"metered_price", "Metered Price"}, {"order_id_new", "Order ID"}, {"order_try_state", "Order Try State"}, {"predicted_distance", "Predicted Distance"}, {"predicted_duration", "Predicted Duration"}, {"upfront_price", "Upfront Price"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

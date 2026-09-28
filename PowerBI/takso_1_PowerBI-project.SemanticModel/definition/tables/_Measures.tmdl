@@ -1,0 +1,85 @@
+table _Measures
+	lineageTag: e90bb636-2d04-4044-abec-d03bf21448fb
+
+	measure 'Overcharge Ride Count' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT(Ride[order_key]),
+			    'Order'[Had Overpaid Ride Ticket] = TRUE()
+			)
+		formatString: 0
+		lineageTag: a48fc9c6-8783-4e7b-91b0-c3596e5d0380
+
+	measure 'Distinct Ride Count' =
+			
+			DISTINCTCOUNT(Ride[order_key])
+		formatString: 0
+		lineageTag: f8382a26-fc24-4114-beeb-35d776a49cd1
+
+	measure 'Overcharge Ride Rate %' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    [Distinct Ride Count]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9a42746e-64e4-4667-ac20-70c821d3f441
+
+	measure 'Avg Distance Deviation %' =
+			
+			AVERAGE(Ride[% Distance Deviation])
+		lineageTag: a41d4b26-03e4-44f6-b513-5116b0310a41
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Median Absolute Distance Deviation %' =
+			
+			MEDIANX(
+			    Ride,
+			    ABS(Ride[% Distance Deviation])
+			)
+		lineageTag: 443e70a9-8aee-4b25-8ce8-48e740560659
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Price Deviation %' =
+			
+			AVERAGE('Ride'[% Distance Deviation])
+		lineageTag: 3a653d5d-e072-439c-9daf-e1936a791447
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Low GPS Ride Rate' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        Ride[GPS Confidence] = FALSE()
+			    ),
+			    [Distinct Ride Count]
+			)
+		lineageTag: c5aa1072-e259-46ad-a713-15ef75a5989c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Abiveerg
+		isHidden
+		formatString: 0
+		lineageTag: 6d85a471-7f6c-4e0a-85e8-4956e2e9a3e4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Abiveerg]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Abiveerg", INTEGER,
+				    {{1}}
+				)
+
+	annotation PBI_Id = fbcde49b37c445c2a618d1cc54d6bfad
+

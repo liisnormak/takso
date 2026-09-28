@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "takso_1_PowerBI-project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9409da7f-d659-45e4-b979-f9d7b5b00314"
+  }
+}

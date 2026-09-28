@@ -1,0 +1,167 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "9103ab068e06d57ebb29",
+  "position": {
+    "x": 827.67807585568926,
+    "y": 85.254394079555965,
+    "z": 1000,
+    "height": 548.23311748381127,
+    "width": 396.66975023126736
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order"
+                    }
+                  },
+                  "Property": "Had Overpaid Ride Ticket"
+                }
+              },
+              "queryRef": "dim_order.had_overpaid_ride_ticket",
+              "nativeQueryRef": "Had Overpaid Ride Ticket",
+              "active": true
+            }
+          ]
+        },
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Device"
+                    }
+                  },
+                  "Property": "Device Name"
+                }
+              },
+              "queryRef": "takso dim_device.device_name",
+              "nativeQueryRef": "Device Name",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Distinct Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Distinct ride count",
+              "nativeQueryRef": "Distinct Ride Count"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Device"
+                  }
+                },
+                "Property": "Device Name"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "takso dim_device.device_name"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Device"
+                    }
+                  },
+                  "Property": "Device Name"
+                }
+              }
+            ],
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0790f2ea2cc4ec1db85f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Device"
+              }
+            },
+            "Property": "Device Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5c998ba6726ca1224b28",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Order"
+              }
+            },
+            "Property": "Had Overpaid Ride Ticket"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "dd60ead44b62f774fd8f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Distinct Ride Count"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

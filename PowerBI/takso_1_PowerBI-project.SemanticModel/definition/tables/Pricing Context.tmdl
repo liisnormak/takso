@@ -1,0 +1,53 @@
+table 'Pricing Context'
+	lineageTag: abe5b6d7-a01b-499c-8e09-54d8c056cbd7
+
+	column pricing_context_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 94191494-54ba-44e6-88bf-9d80f4e8fe37
+		summarizeBy: none
+		sourceColumn: pricing_context_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prediction Price Type'
+		dataType: string
+		lineageTag: d3a4bf0c-975e-4114-a9a3-78a40758cfad
+		summarizeBy: none
+		sourceColumn: Prediction Price Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Reason for Pricing Change'
+		dataType: string
+		lineageTag: b954d7cb-704b-4b2f-9cdd-90dd1ffcd770
+		summarizeBy: none
+		sourceColumn: Reason for Pricing Change
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Entered by'
+		dataType: string
+		lineageTag: e1871522-a1c3-47fb-a456-9faa854d9153
+		summarizeBy: none
+		sourceColumn: Entered by
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Pricing Context' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    takso_dim_pricing_context = Source{[Schema="takso",Item="dim_pricing_context"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(takso_dim_pricing_context,{{"change_reason_pricing", "Reason for Pricing Change"}, {"prediction_price_type", "Prediction Price Type"}, {"entered_by", "Entered by"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

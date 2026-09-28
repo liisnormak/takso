@@ -1,0 +1,107 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "39378394962e4b9a9220",
+  "position": {
+    "x": 44.444444444444443,
+    "y": 724.44444444444446,
+    "z": 1002,
+    "height": 312.22222222222223,
+    "width": 431.11111111111109,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Ride"
+                    }
+                  },
+                  "Property": "GPS Confidence"
+                }
+              },
+              "queryRef": "fact_ride.gps_confidence",
+              "nativeQueryRef": "GPS Confidence",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Rate %"
+                }
+              },
+              "queryRef": "_Measures.Overcharge Ride Rate %",
+              "nativeQueryRef": "Overcharge Ride Rate %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Overcharge Ride Rate %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "633005a56a32f8b814fe",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Ride"
+              }
+            },
+            "Property": "GPS Confidence"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d8ba8849473b620acc20",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Overcharge Ride Rate %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

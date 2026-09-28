@@ -1,0 +1,46 @@
+table Device
+	lineageTag: 315c3a57-1b5e-4b33-93a2-b5f5c2dd507a
+
+	column 'Driver Device Unique ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7af8f8b3-4891-445f-850e-b787e489323e
+		summarizeBy: none
+		sourceColumn: Driver Device Unique ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Device Name'
+		dataType: string
+		lineageTag: a63ddde2-f2cf-44c1-9830-9b8a245f0f16
+		summarizeBy: none
+		sourceColumn: Device Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column device_key
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d699dbcf-af96-4f17-b8ae-0d7b8d32633e
+		summarizeBy: none
+		sourceColumn: device_key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Device = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    takso_dim_device = Source{[Schema="takso",Item="dim_device"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(takso_dim_device,{{"device_name", "Device Name"}, {"driver_device_uid_new", "Driver Device Unique ID"}})
+				in
+				    #"Renamed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
