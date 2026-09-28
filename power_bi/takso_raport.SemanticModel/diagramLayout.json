@@ -1,0 +1,132 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 90.120429774306288,
+        "y": 104.20174671671367
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1838.2025299493625,
+            "y": 318.26059134488719
+          },
+          "nodeIndex": "_Measures",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 93.264265187720781,
+            "y": 158.0068728522337
+          },
+          "nodeIndex": "Tickets",
+          "nodeLineageTag": "9a93d3af-e604-40a7-938b-76c916a5d61a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 388.85893724360096,
+            "y": 268.44475792191156
+          },
+          "nodeIndex": "Rides",
+          "size": {
+            "height": 859.99999999999989,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 805.91681566364832,
+            "y": 449.8308986412593
+          },
+          "nodeIndex": "Pricing Context",
+          "size": {
+            "height": 213.5,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 52.670806131863287,
+            "y": 748.65441907209629
+          },
+          "nodeIndex": "Date",
+          "size": {
+            "height": 276.85714285714289,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 649.12857467172341,
+            "y": 176.41895066803622
+          },
+          "nodeIndex": "App Version",
+          "size": {
+            "height": 153.42857142857144,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 685.89210430353171,
+            "y": 937.44509449849056
+          },
+          "nodeIndex": "Device",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 90,
+            "y": 390.71981418558443
+          },
+          "nodeIndex": "Order",
+          "nodeLineageTag": "7790662d-1a71-4866-ac90-f8eb5080a490",
+          "size": {
+            "height": 328.47422680412376,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1554.2025299493625,
+            "y": 101.10811344149488
+          },
+          "nodeIndex": "xtakso_andmed_clean",
+          "size": {
+            "height": 874.4158075601373,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 56.812867949212546,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

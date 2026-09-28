@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a4a23404d02810da4617",
+  "position": {
+    "x": 750.89502236280464,
+    "y": 321.812152441202,
+    "z": 6,
+    "height": 391.46846249341019,
+    "width": 508.49106338112
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Overcharge Ride Count",
+              "nativeQueryRef": "Overcharge Ride Count"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Device"
+                    }
+                  },
+                  "Property": "Device Name"
+                }
+              },
+              "queryRef": "public dim_device.device_name",
+              "nativeQueryRef": "Device Name"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4cd27607a37d40c69079",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Overcharge Ride Count"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "37aa3ce6b04b92bd5b56",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Device"
+              }
+            },
+            "Property": "Device Name"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}
