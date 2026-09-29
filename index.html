@@ -175,6 +175,26 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
   #filters:not(.open) fieldset,#filters:not(.open) .chk,#filters:not(.open) .reset{display:none}
 }
 .inline-btn{font:inherit;font-size:var(--s-1);background:none;border:1px solid var(--ink);color:var(--ink);border-radius:4px;padding:.25rem .6rem;cursor:pointer;margin:.2rem .4rem .2rem 0}
+
+/* Teekonna veerud */
+.journey{list-style:none;margin:1rem 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 1.25rem;max-width:var(--wide);counter-reset:none}
+.js{position:relative;border-top:3px solid var(--ink);padding-top:.7rem}
+.js:last-child{border-top-color:var(--alert)}
+.jh{margin:0;display:flex;align-items:center;gap:.5rem;font-size:var(--s-1);color:var(--muted)}
+.jn{display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700;font-size:.85rem}
+.js:last-child .jn{background:var(--alert)}
+.js h4,.jctx h4{font-size:var(--s0);margin:.35rem 0 .15rem}
+.jd{font-size:var(--s-1);color:var(--muted);margin:0 0 .6rem}
+.journey dl,.jctx dl{margin:0}
+.jc{padding:.5rem 0;border-top:1px solid var(--line)}
+.jc dt{margin:0 0 .15rem}
+.jc dt code{font-size:.82rem;background:var(--surface);padding:.1rem .35rem;border-radius:3px;word-break:break-all}
+.jt{font-size:.75rem;color:var(--muted)}
+.jc dd{margin:0;font-size:var(--s-1);line-height:1.5;overflow-wrap:anywhere}
+.jctx{max-width:var(--wide);margin:1.5rem 0 .5rem;border-top:3px solid var(--neutral);padding-top:.5rem}
+.jctx dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.25rem}
+@media (max-width:1000px){.journey{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1.25rem}}
+@media (max-width:560px){.journey,.jctx dl{grid-template-columns:1fr}}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -312,13 +332,38 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
   <section class="part" id="p2-veerud" data-status="mustand">
     <h3>Veergude kirjeldus</h3>
-    <p>Lähteandmete veerud ja nende tähendus. Tõlgitud andmete andja kirjeldusest.</p>
-    <div class="tw"><table class="t">
-      <thead><tr><th scope="col">Veerg</th><th scope="col">Tüüp</th><th scope="col">Tähendus</th></tr></thead>
-      <tbody>
-        <tr><td><code>order_id_new</code></td><td>täisarv</td><td>Tellimuse tunnus.</td></tr><tr><td><code>order_try_id_new</code></td><td>täisarv</td><td>Tellimuskatse tunnus.</td></tr><tr><td><code>calc_created</code></td><td>kuupäev ja aeg</td><td>Tellimuse loomise aeg.</td></tr><tr><td><code>metered_price</code></td><td>arv</td><td>Lõpuhind: tegeliku sõidu hind.</td></tr><tr><td><code>upfront_price</code></td><td>arv</td><td>Lubatud hind: sõitjale enne sõitu lubatud hind, arvutatud ennustatud vahemaa ja kestuse järgi.</td></tr><tr><td><code>distance</code></td><td>täisarv</td><td>Tegelik läbitud vahemaa (m).</td></tr><tr><td><code>duration</code></td><td>täisarv</td><td>Tegelik sõidu kestus (s).</td></tr><tr><td><code>predicted_distance</code></td><td>arv</td><td>Ennustatud vahemaa sõitja sisestatud peale- ja mahaminekukoha järgi.</td></tr><tr><td><code>predicted_duration</code></td><td>arv</td><td>Ennustatud kestus sõitja sisestatud peale- ja mahaminekukoha järgi.</td></tr><tr><td><code>gps_confidence</code></td><td>täisarv</td><td>GPS-ühenduse kvaliteet: 1 = hea, 0 = halb.</td></tr><tr><td><code>entered_by</code></td><td>tekst</td><td>Kes sisestas aadressi: sõitja (client), juht (driver) või edasimüüja (reseller).</td></tr><tr><td><code>b_state</code></td><td>tekst</td><td>Sõidu olek. «finished» tähendab, et sõit toimus.</td></tr><tr><td><code>dest_change_number</code></td><td>täisarv</td><td>Sihtkoha muutmiste arv sõitja ja juhi poolt, sh sõitja esialgne sisestus. Seetõttu on väikseim väärtus 1.</td></tr><tr><td><code>prediction_price_type</code></td><td>tekst</td><td>Ennustuse tüüp. «upfront» ja «prediction»: ennustus tehti enne sõitu. «upfront_destination_changed»: ennustus tehti pärast seda, kui sõitja muutis sõidu ajal sihtkohta.</td></tr><tr><td><code>change_reason_pricing</code></td><td>tekst</td><td>Kelle tegevuse tõttu hind muutus.</td></tr><tr><td><code>ticket_id_new</code></td><td>täisarv</td><td>Klienditoe pöördumise tunnus.</td></tr><tr><td><code>rider_app_version</code></td><td>tekst</td><td>Sõitja telefoni rakenduse versioon.</td></tr><tr><td><code>driver_app_version</code></td><td>tekst</td><td>Juhi telefoni rakenduse versioon.</td></tr><tr><td><code>driver_device_uid_new</code></td><td>täisarv</td><td>Juhi telefoni seadme tunnus.</td></tr><tr><td><code>device_name</code></td><td>tekst</td><td>Telefoni mudel.</td></tr><tr><td><code>eu_indicator</code></td><td>täisarv</td><td>Kas sõit toimus ELis: 1 = jah, 0 = ei.</td></tr><tr><td><code>overpaid_ride_ticket</code></td><td>täisarv</td><td>Kas sõitja kaebas ülemakstud sõidu üle: 1 = jah.</td></tr><tr><td><code>fraud_score</code></td><td>arv</td><td>Sõitja pettuseskoor. Mida suurem, seda tõenäolisemalt sõitja petab.</td></tr><tr><td><code>device_token, device_token_new</code></td><td>–</td><td>Seadme tokeni tunnus. Kõik väärtused tühjad; puhastatud failis ei ole.</td></tr>
-      </tbody>
-    </table></div>
+    <p>Veerud on jaotatud sõitja teekonna etappide järgi: millal väärtus tekib.</p>
+    <ol class="journey" aria-label="Sõitja teekond ja selle veerud">
+      <li class="js">
+        <p class="jh"><span class="jn" aria-hidden="true">1</span><span class="jw">algus</span></p>
+        <h4>Broneering</h4>
+        <p class="jd">Sõitja tellib auto ja näeb hinda.</p>
+        <dl><div class="jc"><dt><code>upfront_price</code> <span class="jt">arv</span></dt><dd>Lubatud hind: sõitjale enne sõitu näidatud hind. Arvutatud ennustatud vahemaa ja kestuse järgi.</dd></div><div class="jc"><dt><code>predicted_distance</code> <span class="jt">arv</span></dt><dd>Ennustatud vahemaa sõitja sisestatud peale- ja mahaminekukoha järgi.</dd></div><div class="jc"><dt><code>predicted_duration</code> <span class="jt">arv</span></dt><dd>Ennustatud kestus sõitja sisestatud peale- ja mahaminekukoha järgi.</dd></div><div class="jc"><dt><code>prediction_price_type</code> <span class="jt">tekst</span></dt><dd>Ennustuse tüüp. «upfront», «prediction»: enne sõitu. «upfront_destination_changed»: pärast sihtkoha muutmist sõidu ajal.</dd></div><div class="jc"><dt><code>entered_by</code> <span class="jt">tekst</span></dt><dd>Kes sisestas aadressi: sõitja, juht või edasimüüja.</dd></div><div class="jc"><dt><code>calc_created</code> <span class="jt">kuupäev ja aeg</span></dt><dd>Tellimuse loomise aeg.</dd></div></dl>
+      </li>
+      <li class="js">
+        <p class="jh"><span class="jn" aria-hidden="true">2</span><span class="jw">teel</span></p>
+        <h4>Sõit</h4>
+        <p class="jd">Auto sõidab; teekond ja sihtkoht võivad muutuda.</p>
+        <dl><div class="jc"><dt><code>distance</code> <span class="jt">täisarv</span></dt><dd>Tegelik läbitud vahemaa (m).</dd></div><div class="jc"><dt><code>duration</code> <span class="jt">täisarv</span></dt><dd>Tegelik sõidu kestus (s).</dd></div><div class="jc"><dt><code>gps_confidence</code> <span class="jt">täisarv</span></dt><dd>GPS-ühendus: 1 = hea, 0 = halb.</dd></div><div class="jc"><dt><code>dest_change_number</code> <span class="jt">täisarv</span></dt><dd>Sihtkoha muutmiste arv sõitja ja juhi poolt, sh esialgne sisestus. Väikseim väärtus on 1.</dd></div></dl>
+      </li>
+      <li class="js">
+        <p class="jh"><span class="jn" aria-hidden="true">3</span><span class="jw">lõpp</span></p>
+        <h4>Lõpp ja arveldus</h4>
+        <p class="jd">Sõit lõpeb ja arvutatakse lõpuhind.</p>
+        <dl><div class="jc"><dt><code>metered_price</code> <span class="jt">arv</span></dt><dd>Lõpuhind: tegeliku sõidu hind.</dd></div><div class="jc"><dt><code>change_reason_pricing</code> <span class="jt">tekst</span></dt><dd>Kelle tegevuse tõttu hind muutus: juht või sõitja muutis sihtkohta või vahepeatust. 94&nbsp;% ridadest tühi.</dd></div><div class="jc"><dt><code>b_state</code> <span class="jt">tekst</span></dt><dd>Sõidu olek. «finished» = sõit toimus. Kõigil ridadel «finished».</dd></div><div class="jc"><dt><code>order_state</code> <span class="jt">tekst</span></dt><dd>Tellimuse olek. Kõigil ridadel «finished», ühel «active».*</dd></div><div class="jc"><dt><code>order_try_state</code> <span class="jt">tekst</span></dt><dd>Tellimuskatse olek. Kõigil ridadel «finished».*</dd></div></dl>
+      </li>
+      <li class="js">
+        <p class="jh"><span class="jn" aria-hidden="true">4</span><span class="jw">järel</span></p>
+        <h4>Pöördumine</h4>
+        <p class="jd">Sõitja pöördub klienditoe poole.</p>
+        <dl><div class="jc"><dt><code>overpaid_ride_ticket</code> <span class="jt">täisarv</span></dt><dd>Kas sõitja kaebas ülemakstud sõidu üle: 1 = jah.</dd></div><div class="jc"><dt><code>ticket_id_new</code> <span class="jt">täisarv</span></dt><dd>Klienditoe pöördumise tunnus. Üks rida = üks pöördumine.</dd></div><div class="jc"><dt><code>fraud_score</code> <span class="jt">arv</span></dt><dd>Sõitja pettuseskoor. Mida suurem, seda tõenäolisemalt sõitja petab. 56&nbsp;% ridadest tühi.</dd></div></dl>
+      </li>
+    </ol>
+    <div class="jctx">
+      <h4>Kogu teekonna ulatuses: tunnused ja kontekst</h4>
+      <dl><div class="jc"><dt><code>order_id_new</code> <span class="jt">täisarv</span></dt><dd>Tellimuse tunnus.</dd></div><div class="jc"><dt><code>order_try_id_new</code> <span class="jt">täisarv</span></dt><dd>Tellimuskatse tunnus.</dd></div><div class="jc"><dt><code>eu_indicator</code> <span class="jt">täisarv</span></dt><dd>Kas sõit toimus ELis: 1 = jah, 0 = ei.</dd></div><div class="jc"><dt><code>device_name</code> <span class="jt">tekst</span></dt><dd>Telefoni mudel.</dd></div><div class="jc"><dt><code>driver_device_uid_new</code> <span class="jt">täisarv</span></dt><dd>Juhi telefoni seadme tunnus.</dd></div><div class="jc"><dt><code>rider_app_version</code> <span class="jt">tekst</span></dt><dd>Sõitja telefoni rakenduse versioon.</dd></div><div class="jc"><dt><code>driver_app_version</code> <span class="jt">tekst</span></dt><dd>Juhi telefoni rakenduse versioon.</dd></div><div class="jc"><dt><code>device_token, device_token_new</code> <span class="jt">–</span></dt><dd>Seadme tokeni tunnus. Kõik väärtused tühjad; puhastatud failis ei ole.</dd></div></dl>
+    </div>
+    <p class="draft-note">* Andmete andja kirjeldus seda veergu ei selgita. Tähendus on tuletatud väärtustest.</p>
     <details class="data"><summary>Puhastamisel lisatud veerud (8)</summary>
     <div class="tw"><table class="t">
       <thead><tr><th scope="col">Veerg</th><th scope="col">Tüüp</th><th scope="col">Tähendus</th></tr></thead>
