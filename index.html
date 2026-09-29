@@ -195,6 +195,35 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 .jctx dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1.25rem}
 @media (max-width:1000px){.journey{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem 1.25rem}}
 @media (max-width:560px){.journey,.jctx dl{grid-template-columns:1fr}}
+
+/* Andmevoog: vasakult paremale */
+.flowwrap{container-type:inline-size;max-width:var(--wide);margin:.9rem 0 .4rem}
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1.2fr .32fr 1fr .6fr 1fr .6fr 1fr .6fr 1fr;grid-template-rows:auto auto auto}
+.fn{grid-column:var(--c);grid-row:2;border:1.5px solid var(--ink);background:var(--surface);border-radius:4px;padding:.55rem .65rem;display:flex;flex-direction:column;justify-content:center;min-height:4.4rem;line-height:1.3;min-width:0}
+.fn b{font-size:.88rem;font-weight:700}
+.fn span{font-size:.78rem;color:var(--muted);margin-top:.15rem}
+.fn.last{border-color:var(--data);border-width:2px;box-shadow:inset 0 4px 0 var(--data)}
+.fe{display:contents}
+.fe>.ft{grid-column:calc(var(--c) - 1)/calc(var(--c) + 2);grid-row:1;align-self:end;justify-self:center;max-width:9rem;font-size:.78rem;font-weight:700;text-align:center;padding-bottom:.35rem;line-height:1.25}
+.fe>.ft:empty{display:none}
+.fe>.arr{grid-column:var(--c);grid-row:2;align-self:center;height:2px;background:var(--ink);margin:0 .45rem 0 .3rem;position:relative}
+.fe>.arr::after{content:"";position:absolute;right:-2px;top:-5px;border:6px solid transparent;border-left:8px solid var(--ink);border-right:0}
+.fs{grid-column:var(--a)/var(--b);grid-row:3;margin-top:.8rem;border-top:2px solid var(--line);padding:.4rem .2rem 0}
+.fz{display:block;font-size:.75rem;color:var(--muted);margin-bottom:.15rem}
+.fs ul{margin:0;padding-left:1rem;font-size:var(--s-1);line-height:1.4}
+.fs li{margin:.1rem 0}
+@container (max-width:880px){.fn{padding:.5rem .5rem}.fn b{font-size:.8rem}}
+@container (max-width:760px){
+  .flow{display:block}
+  .fn{min-height:0;padding:.55rem .8rem}
+  .fn b{font-size:var(--s0)}
+  .fe{display:block;margin-left:1.2rem;padding:.4rem 0 .9rem 1.2rem;border-left:2px solid var(--ink);position:relative}
+  .fe>.arr{display:none}
+  .fe::after{content:"";position:absolute;left:-7px;bottom:0;border:6px solid transparent;border-top:8px solid var(--ink);border-bottom:0}
+  .fe>.ft{display:block;text-align:left;padding:0;max-width:none;justify-self:start}
+  .fs{border-top:0;margin-top:.1rem;padding:0}
+  .fz{display:none}
+}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -301,26 +330,19 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
     <div class="todo">kust fail saadi (kursuse ülesanne, taksoplatvorm, avalik allikas), mis vormingus ja millal.</div>
   </section>
 
-  <section class="part" id="p2-voog" data-status="tegemata">
+  <section class="part" id="p2-voog" data-status="mustand">
     <h3>Andmevoo skeem</h3>
-    <figure class="chart diagram">
-      <svg viewBox="0 0 880 170" role="img" aria-label="Andmevoo mustand: CSV-fail, puhastus, andmebaas, Power BI aruanne ja veebileht. Tööriistad on veel täitmata.">
-        <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="currentColor"/></marker></defs>
-        <g style="color:var(--ink)">
-        <rect class="box" x="4" y="40" width="150" height="58" rx="4"/><text x="79" y="66" text-anchor="middle">Taksoplatvormi CSV</text><text class="small" x="79" y="86" text-anchor="middle">4 943 rida</text>
-        <line x1="154" y1="69" x2="196" y2="69" marker-end="url(#ah)"/>
-        <rect class="box open" x="200" y="40" width="150" height="58" rx="4"/><text x="275" y="66" text-anchor="middle">Puhastus</text><text class="small" x="275" y="86" text-anchor="middle">tööriist?</text>
-        <line x1="350" y1="69" x2="392" y2="69" marker-end="url(#ah)"/>
-        <rect class="box open" x="396" y="40" width="150" height="58" rx="4"/><text x="471" y="66" text-anchor="middle">SQL-baas</text><text class="small" x="471" y="86" text-anchor="middle">PostgreSQL?</text>
-        <line x1="546" y1="69" x2="588" y2="50" marker-end="url(#ah)"/>
-        <line x1="546" y1="69" x2="588" y2="118" marker-end="url(#ah)"/>
-        <rect class="box open" x="592" y="14" width="190" height="52" rx="4"/><text x="687" y="45" text-anchor="middle">Power BI aruanne</text>
-        <rect class="box" x="592" y="92" width="190" height="52" rx="4"/><text x="687" y="116" text-anchor="middle">See veebileht</text><text class="small" x="687" y="134" text-anchor="middle">Python → JSON</text>
-        </g>
-      </svg>
-      <figcaption>Mustand. Katkendjoonega kastid on kinnitamata: lisada iga etapi tööriist ja failinimi. Veebilehe andmed on koondatud Pythoniga failist <code>takso_andmed_clean.csv</code>.</figcaption>
+    <figure class="chart">
+      <p class="ct">Andmete teekond algfailist juhtlauani</p>
+      <p class="cs">Kaks tööriista: PostgreSQL andmebaas ja Power BI aruanne</p>
+      <div class="flowwrap"><ol class="flow" aria-label="Andmevoog vasakult paremale, viis etappi">
+        <li class="fn" style="--c:1"><b>Algandmestik</b><span>CSV-fail, 4&nbsp;943 rida</span></li><li class="fe" style="--c:2"><span class="ft"></span><span class="arr" aria-hidden="true"></span></li><li class="fn" style="--c:3"><b>PostgreSQL</b></li><li class="fe" style="--c:4"><span class="ft">SQL / DBeaver</span><span class="arr" aria-hidden="true"></span><div class="fs" style="--a:3;--b:6"><span class="fz">PostgreSQL</span><ul><li>andmete puhastamine</li><li>kvaliteedikontrollid</li><li>dimensioonmudeli loomine</li></ul></div></li><li class="fn" style="--c:5"><b>Fakti- ja dimensiooni&shy;tabelid</b></li><li class="fe" style="--c:6"><span class="ft">PostgreSQL connector</span><span class="arr" aria-hidden="true"></span></li><li class="fn" style="--c:7"><b>Power BI Desktop</b></li><li class="fe" style="--c:8"><span class="ft">Power Query</span><span class="arr" aria-hidden="true"></span><div class="fs" style="--a:7;--b:10"><span class="fz">Power BI</span><ul><li>väljade nimetuste korrastamine</li><li>DAX-mõõdikud ja analüütilised lisaväljad</li></ul></div></li><li class="fn last" style="--c:9"><b>Power BI analüüs ja juhtlaud</b></li>
+      </ol></div>
+      <figcaption>Andmed liiguvad vasakult paremale. Selle veebilehe graafikud on arvutatud Pythoniga otse failist <code>takso_andmed_clean.csv</code>, mitte Power BI mudelist.</figcaption>
     </figure>
-    <div class="todo">kinnitada tööriistad ja kirjutada 2–3 lauset skeemi alla.</div>
+    <p>Algandmed laaditi PostgreSQL-i. Seal tehti SQL-iga DBeaveris puhastamine, kvaliteedikontrollid ja dimensioonmudel. Power BI loeb fakti- ja dimensioonitabeleid PostgreSQL connectori kaudu. Power Querys korrastati väljade nimed ning DAX-iga lisati mõõdikud ja analüütilised väljad.</p>
+    <p class="draft-note">Tekst on koostatud skeemi põhjal. Grupp kinnitab.</p>
+    <p class="question">kuidas CSV PostgreSQL-i laaditi (DBeaveri import, COPY vms)? Skeemis on see etapp praegu ilma tööriistata.</p>
   </section>
 
   <section class="part" id="p2-mudel" data-status="tegemata">
