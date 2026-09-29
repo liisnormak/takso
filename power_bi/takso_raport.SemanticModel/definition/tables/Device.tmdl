@@ -1,0 +1,47 @@
+table Device
+	lineageTag: 965313d8-4cdc-4fc2-a1be-a6b47094a667
+
+	/// Unique ID for a phone device.
+	column 'Driver Device Unique ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: d30c943a-500e-473d-8638-b50364c7681c
+		summarizeBy: none
+		sourceColumn: Driver Device Unique ID
+
+		annotation SummarizationSetBy = Automatic
+
+	/// The name of the phone.
+	column 'Device Name'
+		dataType: string
+		lineageTag: b067cb7e-c8dd-4028-aa17-8f1d765a222d
+		summarizeBy: none
+		sourceColumn: Device Name
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Key used to link a ride to the Device dimension.
+	column 'Device Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 03480200-1ffb-4a3b-b20c-bac5bf887a9d
+		summarizeBy: none
+		sourceColumn: Device Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Device = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "postgres"),
+				    public_dim_device = Source{[Schema="public",Item="dim_device"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(public_dim_device,{{"device_key", "Device Key"}, {"device_name", "Device Name"}, {"driver_device_uid_new", "Driver Device Unique ID"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Device Key", "Driver Device Unique ID", "Device Name", "public.fact_rides"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
