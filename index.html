@@ -224,6 +224,30 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
   .fs{border-top:0;margin-top:.1rem;padding:0}
   .fz{display:none}
 }
+
+/* Tähtskeem */
+.star-wrap{display:grid;grid-template-columns:1fr;gap:.8rem}
+.star-panel{border-top:3px solid var(--data);padding-top:.6rem;font-size:var(--s-1);min-height:9rem;max-width:var(--measure)}
+.star-panel h4{font-size:var(--s0);margin:.1rem 0 .2rem;font-family:ui-monospace,Consolas,monospace}
+.star-panel .kind{display:inline-block;font-size:.75rem;border:1px solid var(--ink);border-radius:3px;padding:.05rem .4rem;margin-bottom:.4rem}
+.star-panel p{margin:.3rem 0}
+.star-panel ul{margin:.3rem 0 0;padding-left:1rem}
+.snode{cursor:pointer;outline:none}
+.snode rect{fill:var(--bg);stroke:var(--ink);stroke-width:1.5}
+.snode.fact rect{fill:var(--surface);stroke-width:3}
+.snode text{fill:var(--ink);font:600 13px ui-monospace,Consolas,monospace}
+.snode text.long{font-size:12px}
+.snode .kindt{font:11px var(--f);fill:var(--muted)}
+.snode:hover rect{stroke:var(--data)}
+.snode:focus-visible rect{stroke:var(--focus);stroke-width:3.5}
+.snode[aria-pressed="true"] rect{stroke:var(--data);stroke-width:3.5}
+.star.has-sel .snode.dim-out{opacity:.5}
+.sedge line{stroke:var(--neutral);stroke-width:1.6}
+.sedge.on line{stroke:var(--data);stroke-width:2.6}
+.star.has-sel .sedge:not(.on){opacity:.45}
+.sedge rect{fill:var(--bg)}
+.sedge text{font:11.5px ui-monospace,Consolas,monospace;fill:var(--muted)}
+.sedge.on text{fill:var(--ink);font-weight:700}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -345,11 +369,23 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
     <p class="question">kuidas CSV PostgreSQL-i laaditi (DBeaveri import, COPY vms)? Skeemis on see etapp praegu ilma tööriistata.</p>
   </section>
 
-  <section class="part" id="p2-mudel" data-status="tegemata">
-    <h3>Dim-mudel SQL andmebaasis</h3>
-    <div class="todo"><ul>
-      <li>tähtskeem joonisena: dim- ja faktitabelid, seosed võtmetega;</li>
-      <li>grain iga tabeli kohta eraldi lausena («üks rida = …»).</li></ul></div>
+  <section class="part" id="p2-mudel" data-status="mustand">
+    <h3>Dimensioonid SQL-andmebaasis</h3>
+    <p>Mudel on tähtskeem kahe faktitabeliga: sõidud ja pöördumised. Neid seob tellimuse dimensioon.</p>
+    <figure class="chart star">
+      <p class="ct">Tähtskeem: faktid, dimensioonid ja võtmed</p>
+      <p class="cs">Vali tabel, et näha selgitust ja seoseid. Nool näitab seost dimensioonist faktitabelisse.</p>
+      <div class="star-wrap">
+        <div id="chStar"></div>
+        <div class="star-panel" id="starPanel" aria-live="polite"></div>
+      </div>
+      <figcaption>Ristkülik paksu joonega = faktitabel. Noole juures on võti, millega tabelid on seotud.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbStar"></div></details>
+    </figure>
+    <p><code>dim_order</code> on mudelis keskne: see seob sõiduandmed tellimuse tasemel klienditoe pöördumistega. Nii saab analüüsida, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus, ilma et mitme pöördumisega tellimusi loetaks mitu korda.</p>
+    <p class="draft-note">Tekst grupi kirjelduse põhjal; «order» ja «ticket» on asendatud lehe mõistetega «tellimus» ja «pöördumine».</p>
+    <p class="question">mitu rida on <code>fact_rides</code> tabelis: 4&nbsp;166 (üks tellimus) või 4&nbsp;943 (üks pöördumine)? Sellest sõltub, kas sõidu mõõdikud on topelt loetud.</p>
+    <div class="todo">grain iga tabeli kohta eraldi lausena («üks rida = …»).</div>
   </section>
 
   <section class="part" id="p2-veerud" data-status="mustand">
@@ -844,6 +880,50 @@ function sankey(el,{cols,links,aria,W=cw(el)}){
   el.innerHTML=s+'</svg>';
 }
 
+
+/* ---------- Tähtskeem ---------- */
+const ST={
+ fact_rides:{k:'Faktitabel',d:'Sõidu taseme faktid ja mõõdetavad tunnused: tegelik ja prognoositud hind, vahemaa ja kestus, GPS-ühenduse kvaliteet ning pettuseskoor.'},
+ fact_tickets:{k:'Faktitabel',d:'Klienditoe pöördumistega seotud andmed.'},
+ dim_order:{k:'Dimensioon',d:'Tellimuse kirjeldavad tunnused: tellimuse ja tellimuskatse ID, tellimuse ja tellimuskatse olek, loomise aeg ning märge, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus. Seob sõidud ja pöördumised.'},
+ dim_date:{k:'Dimensioon',d:'Sõidu kuupäevaga seotud tunnused.'},
+ dim_device:{k:'Dimensioon',d:'Sõiduga seotud seadme tunnused.'},
+ dim_app_version:{k:'Dimensioon',d:'Sõitja ja juhi rakenduse versioonide tunnused.'},
+ dim_pricing_context:{k:'Dimensioon',d:'Hinnastamise kontekst: ennustuse tüüp, hinnamuutuse põhjus ja hinnamuutuse sisestaja.'},
+};
+const SE=[['dim_date','fact_rides','date_key'],['dim_device','fact_rides','device_key'],['dim_app_version','fact_rides','app_version_key'],
+ ['dim_pricing_context','fact_rides','pricing_context_key'],['dim_order','fact_rides','order_key'],['dim_order','fact_tickets','order_key']];
+function starLayout(W){
+  if(W>=620){const bw=Math.min(200,W*.24),bh=54,H=470,c=[bw/2+4,W/2,W-bw/2-4];
+    return {W,H,bw,bh,p:{dim_date:[c[1],36],dim_device:[c[0],180],fact_rides:[c[1],180],dim_app_version:[c[2],180],dim_pricing_context:[c[0]+20,320],dim_order:[c[1],320],fact_tickets:[c[1],432]}};}
+  const bw=Math.min(150,(W-40)/2),bh=50,c=[bw/2+2,W-bw/2-2];
+  return {W,H:640,bw,bh,narrow:1,p:{dim_date:[c[0],34],dim_device:[c[1],34],fact_rides:[W/2,170],dim_app_version:[c[0],300],dim_pricing_context:[c[1],300],dim_order:[W/2,450],fact_tickets:[W/2,592]}};
+}
+let starSel='dim_order';
+function edgePt(c,o,bw,bh){const dx=o[0]-c[0],dy=o[1]-c[1];const sx=dx?(bw/2)/Math.abs(dx):Infinity,sy=dy?(bh/2)/Math.abs(dy):Infinity;const s=Math.min(sx,sy);return [c[0]+dx*s,c[1]+dy*s];}
+function drawStar(){
+  const el=document.getElementById('chStar'); if(!el) return;
+  const L=starLayout(Math.max(300,Math.min(el.clientWidth||880,920))), {W,H,bw,bh,p}=L;
+  const on=new Set(SE.filter(e=>e[0]===starSel||e[1]===starSel).flatMap(e=>[e[0],e[1]]));
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Tähtskeem, 7 tabelit. Vali tabel selgituse nägemiseks.">
+  <defs><marker id="sa" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="var(--neutral)"/></marker>
+  <marker id="sa2" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="var(--data)"/></marker></defs>`;
+  SE.forEach(([a,b,k])=>{const A=edgePt(p[a],p[b],bw+8,bh+8),B=edgePt(p[b],p[a],bw+10,bh+10);const act=a===starSel||b===starSel;
+    const f=L.narrow&&b!=='fact_tickets'?(a==='dim_app_version'?.55:.22):.5,mx=A[0]+(B[0]-A[0])*f,my=A[1]+(B[1]-A[1])*f-(Math.abs(A[1]-B[1])<2?14:0),tw=k.length*7+10;
+    s+=`<g class="sedge${act?' on':''}" aria-hidden="true"><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" marker-end="url(#${act?'sa2':'sa'})"/><rect x="${mx-tw/2}" y="${my-9}" width="${tw}" height="17" rx="3"/><text x="${mx}" y="${my+4}" text-anchor="middle">${k}</text></g>`;});
+  Object.keys(ST).forEach(n=>{const [x,y]=p[n],f=n.startsWith('fact');
+    s+=`<g class="snode${f?' fact':''}${starSel&&!on.has(n)&&n!==starSel?' dim-out':''}" data-t="${n}" tabindex="0" role="button" aria-pressed="${n===starSel}" aria-label="${n}, ${ST[n].k.toLowerCase()}">
+      <rect x="${x-bw/2}" y="${y-bh/2}" width="${bw}" height="${bh}" rx="4"/><text x="${x}" y="${y+1}" text-anchor="middle"${n.length>15?' class="long"':''}>${n}</text><text class="kindt" x="${x}" y="${y+17}" text-anchor="middle">${f?'fakt':'dimensioon'}</text></g>`;});
+  el.innerHTML=s+'</svg>';
+  el.closest('.star').classList.toggle('has-sel',!!starSel);
+  el.querySelectorAll('.snode').forEach(g=>{const pick=()=>{starSel=g.dataset.t;drawStar();el.querySelector(`.snode[data-t="${starSel}"]`).focus();};
+    g.addEventListener('click',pick);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();pick();}});});
+  const T=ST[starSel],rel=SE.filter(e=>e[0]===starSel||e[1]===starSel);
+  document.getElementById('starPanel').innerHTML=`<span class="kind">${T.k}</span><h4>${starSel}</h4><p>${T.d}</p><p><b>Seosed</b></p><ul>${rel.map(([a,b,k])=>a===starSel?`<li>→ <code>${b}</code> võtmega <code>${k}</code></li>`:`<li>← <code>${a}</code> võtmega <code>${k}</code></li>`).join('')}</ul>`;
+}
+(function(){const tb=document.getElementById('tbStar');if(!tb)return;
+  tb.innerHTML=`<table class="t"><thead><tr><th scope="col">Tabel</th><th scope="col">Liik</th><th scope="col">Sisu</th><th scope="col">Seosed</th></tr></thead><tbody>${Object.keys(ST).map(n=>`<tr><th scope="row" style="font-weight:400"><code>${n}</code></th><td>${ST[n].k}</td><td>${ST[n].d}</td><td>${SE.filter(e=>e[0]===n||e[1]===n).map(([a,b,k])=>(a===n?'→ '+b:'← '+a)+' ('+k+')').join('<br>')}</td></tr>`).join('')}</tbody></table>`;})();
+drawStar();
 /* ---------- Päevade graafik (filtrita) ---------- */
 function daily(){const c=new Array(41).fill(0);D.day.forEach(d=>c[d]++);const start=new Date(2020,1,2);
   const items=c.map((v,i)=>{const dt=new Date(start);dt.setDate(start.getDate()+i);const lab=dt.getDate()+'.'+(dt.getMonth()+1)+'.';return{x:lab,v,tip:`${lab}: ${fmt.format(v)} tellimust`}});
@@ -939,7 +1019,7 @@ ft.onclick=()=>{const o=F.classList.toggle('open');ft.setAttribute('aria-expande
 document.querySelectorAll('input[name="hm"]').forEach(r=>r.addEventListener('change',render));
 document.getElementById('resetBtn').onclick=()=>{F.reset();render();document.getElementById('filterStatus').focus?.()};
 render();
-let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;daily();render();renderK5();}},150)});
+let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;daily();render();renderK5();drawStar();}},150)});
 </script>
 </body>
 </html>
