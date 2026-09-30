@@ -248,6 +248,19 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 .sedge rect{fill:var(--bg)}
 .sedge text{font:11.5px ui-monospace,Consolas,monospace;fill:var(--muted)}
 .sedge.on text{fill:var(--ink);font-weight:700}
+
+/* Grain ja profiil */
+table.grain th[scope="row"]{font-weight:400;white-space:nowrap;width:1%}
+table.t th[scope="row"]{border-bottom:1px solid var(--line)}
+table.grain tr.grp th{background:var(--surface);font-size:.8rem;color:var(--muted);border-bottom:1px solid var(--line);padding:.35rem .6rem;font-weight:700}
+table.grain td b{font-size:var(--s0)}
+.g1{color:var(--muted);font-size:.8rem;white-space:nowrap}
+.gn{color:var(--muted);font-size:.8rem;font-weight:400}
+table.prof th[scope="row"]{font-weight:400}
+table.tkbars th[scope="row"]{width:6rem;font-weight:400;font-variant-numeric:tabular-nums}
+table.tkbars td{display:flex;align-items:center;gap:.5rem}
+.gb{display:inline-block;height:.9rem;background:var(--data);border-radius:2px;flex:none}
+.gv{font-variant-numeric:tabular-nums}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -303,8 +316,15 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
   <section class="part" id="p1-eesmark" data-status="mustand">
     <h3>Eesmärk</h3>
-    <p>Kui sõitja maksab lubatust palju rohkem, kaob usaldus hinna vastu ja klienditugi saab kaebuse. Töö eesmärk on näidata, kui sageli lõpuhind lubatud hinnast oluliselt erineb ja milliste sõidu tunnustega see koos esineb.</p>
-    <p class="draft-note">Mustand andmete põhjal. Grupp kinnitab sõnastuse.</p>
+    <p>Sõitja näeb enne sõitu lubatud hinda. See põhineb ennustatud vahemaal ja kestusel. Tegelik sõit võib ennustusest erineda: lõpuhind arvutatakse läbitud vahemaa, kestuse ja GPS-andmete järgi. Kui sõitja maksab lubatust palju rohkem, kaob usaldus hinna vastu ja klienditugi saab ülemaksu kaebuse.</p>
+    <p>Töö eesmärk on analüüsida ülemaksu kaebusi:</p>
+    <ul>
+      <li>kui sageli lõpuhind lubatud hinnast oluliselt erineb;</li>
+      <li>milliste sõidu tunnuste ja olukordadega see koos esineb;</li>
+      <li>kus on peamised võimalused kaebuste arvu vähendamiseks.</li>
+    </ul>
+    <p>Tehniline eesmärk on valmistada algandmed analüüsiks ette, kontrollida nende kvaliteeti, luua PostgreSQL-is dimensioonmudel ning ehitada Power BI-s analüüsimudel, mõõdikud ja visualiseeringud.</p>
+    <p class="draft-note">Kahe versiooni ühendus. Grupp kinnitab sõnastuse.</p>
   </section>
 
   <section class="part" id="p1-aktuaalsus" data-status="tegemata">
@@ -384,8 +404,24 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
     </figure>
     <p><code>dim_order</code> on mudelis keskne: see seob sõiduandmed tellimuse tasemel klienditoe pöördumistega. Nii saab analüüsida, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus, ilma et mitme pöördumisega tellimusi loetaks mitu korda.</p>
     <p class="draft-note">Tekst grupi kirjelduse põhjal; «order» ja «ticket» on asendatud lehe mõistetega «tellimus» ja «pöördumine».</p>
-    <p class="question">mitu rida on <code>fact_rides</code> tabelis: 4&nbsp;166 (üks tellimus) või 4&nbsp;943 (üks pöördumine)? Sellest sõltub, kas sõidu mõõdikud on topelt loetud.</p>
-    <div class="todo">grain iga tabeli kohta eraldi lausena («üks rida = …»).</div>
+  </section>
+
+  <section class="part" id="p2-grain" data-status="mustand">
+    <h3>Tabelite detailsusaste (grain)</h3>
+    <p>Dimensioonmudeli tabelid on erineva detailsusastmega. Iga tabeli grain määrab, mida üks tabeli rida esindab.</p>
+    <div class="tw"><table class="t grain">
+      <thead><tr><th scope="col">Tabel</th><th scope="col">Grain</th></tr></thead>
+      <tbody><tr class="grp"><th scope="rowgroup" colspan="2">Faktitabelid</th></tr><tr><th scope="row"><code>fact_rides</code></th><td><span class="g1">1 rida =</span> <b>sõit</b> <span class="gn">(üks tellimus = üks sõit)</span></td></tr><tr><th scope="row"><code>fact_tickets</code></th><td><span class="g1">1 rida =</span> <b>klienditoe pöördumine</b></td></tr></tbody>
+      <tbody><tr class="grp"><th scope="rowgroup" colspan="2">Dimensioonid</th></tr><tr><th scope="row"><code>dim_order</code></th><td><span class="g1">1 rida =</span> <b>unikaalne tellimus</b></td></tr><tr><th scope="row"><code>dim_date</code></th><td><span class="g1">1 rida =</span> <b>kuupäev</b></td></tr><tr><th scope="row"><code>dim_device</code></th><td><span class="g1">1 rida =</span> <b>unikaalne seade</b></td></tr><tr><th scope="row"><code>dim_app_version</code></th><td><span class="g1">1 rida =</span> <b>sõitja ja juhi rakenduse versioonide kombinatsioon</b></td></tr><tr><th scope="row"><code>dim_pricing_context</code></th><td><span class="g1">1 rida =</span> <b>unikaalne hinnastamise konteksti kombinatsioon</b></td></tr></tbody>
+    </table></div>
+    <p>Erinev detailsusaste on oluline eelkõige sõitude ja pöördumiste ühendamisel. Ühe tellimusega võib olla seotud mitu pöördumist. Kui sõitude analüüsis loetaks pöördumisi otse, arvestataks sama tellimust mitu korda.</p>
+    <figure class="chart" style="max-width:34rem">
+      <p class="ct">Pöördumisi tellimuse kohta</p>
+      <p class="cs">4&nbsp;166 tellimust; 85&nbsp;% tellimustest on üks pöördumine</p>
+      <div class="tw"><table class="t tkbars"><thead><tr><th scope="col">Pöördumisi</th><th scope="col">Tellimusi</th></tr></thead><tbody><tr><th scope="row">1</th><td><span class="gb" style="width:80.0%"></span><span class="gv">3&nbsp;554</span></td></tr><tr><th scope="row">2</th><td><span class="gb" style="width:11.0%"></span><span class="gv">487</span></td></tr><tr><th scope="row">3</th><td><span class="gb" style="width:2.1%"></span><span class="gv">94</span></td></tr><tr><th scope="row">4</th><td><span class="gb" style="width:0.6%"></span><span class="gv">24</span></td></tr><tr><th scope="row">5</th><td><span class="gb" style="width:0.5%"></span><span class="gv">5</span></td></tr><tr><th scope="row">6</th><td><span class="gb" style="width:0.5%"></span><span class="gv">2</span></td></tr></tbody></table></div>
+    </figure>
+    <p>Selle vältimiseks loodi <code>dim_order</code> tabelisse tellimuse taseme tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus. Nii saab ülemaksu analüüsida tellimuse tasemel, sõltumata sellest, mitu pöördumist tellimusega seotud on.</p>
+    <p class="draft-note">Tekst grupi kirjelduse põhjal; «order», «ticket» ja «overcharge-ticket» on asendatud lehe mõistetega.</p>
   </section>
 
   <section class="part" id="p2-veerud" data-status="mustand">
@@ -434,18 +470,20 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
   <section class="part" id="p2-profiil" data-status="mustand">
     <h3>Maht ja profiil</h3>
-    <p>Fail: 4 943 rida, 33 veergu. Arvud (hind, vahemaa, kestus, ennustused, pettuseskoor), tekst (olekud, rakenduse versioonid, seadme nimi), kuupäev ja kellaaeg.</p>
-    <div class="tw"><table class="t">
-      <thead><tr><th scope="col">Tunnus</th><th scope="col" class="r">Väärtus</th></tr></thead>
+    <p>Algandmestikus on 4&nbsp;943 rida ja 4&nbsp;166 unikaalset tellimust. Vahe tuleb sellest, et ühe tellimusega võib olla seotud mitu pöördumist. Suurim pöördumiste arv ühe tellimuse kohta on kuus.</p>
+    <p>Detailsusastme kontrollis ei leitud ühtegi tellimust, millel oleks mitu erinevat tellimuskatse tunnust (<code>order_try_id</code>).</p>
+    <div class="tw"><table class="t prof">
+      <thead><tr><th scope="col">Näitaja</th><th scope="col" class="r">Tellimusi (4&nbsp;166)</th><th scope="col" class="r">Ridu (4&nbsp;943)</th></tr></thead>
       <tbody>
-        <tr><td>Periood</td><td class="r">2.02.–13.03.2020 (41 päeva)</td></tr>
-        <tr><td>Tellimusi / pöördumisi</td><td class="r">4 166 / 4 943</td></tr>
-        <tr><td>Tellimused ELis / väljaspool</td><td class="r">59&nbsp;% / 41&nbsp;%</td></tr>
-        <tr><td>Lubatud hinnaga tellimusi</td><td class="r">2 946 (71&nbsp;%)</td></tr>
-        <tr><td>Halb GPS-ühendus</td><td class="r">20&nbsp;% pöördumistest</td></tr>
-        <tr><td>Ülemaksu kaebusega tellimusi</td><td class="r">309 (7,4&nbsp;%)</td></tr>
+        <tr><th scope="row">Periood</th><td class="r" colspan="2">2.02.–13.03.2020 (41 päeva)</td></tr>
+        <tr><th scope="row">Sõit ELis</th><td class="r"><b>59,6&nbsp;%</b> <span class="gn">2&nbsp;484</span></td><td class="r">56,0&nbsp;% <span class="gn">2&nbsp;770</span></td></tr>
+        <tr><th scope="row">Sõit väljaspool ELi</th><td class="r"><b>40,4&nbsp;%</b> <span class="gn">1&nbsp;682</span></td><td class="r">44,0&nbsp;% <span class="gn">2&nbsp;173</span></td></tr>
+        <tr><th scope="row">Halb GPS (<code>gps_confidence</code> = 0)</th><td class="r"><b>18,3&nbsp;%</b> <span class="gn">762</span></td><td class="r">19,9&nbsp;% <span class="gn">985</span></td></tr>
+        <tr><th scope="row">Ülemaksu kaebusega</th><td class="r"><b>7,4&nbsp;%</b> <span class="gn">309</span></td><td class="r">6,8&nbsp;% <span class="gn">337</span></td></tr>
+        <tr><th scope="row">Olek «finished»</th><td class="r"><b>4&nbsp;165</b> <span class="gn">1 «active»</span></td><td class="r">4&nbsp;942 <span class="gn">1 «active»</span></td></tr>
       </tbody>
     </table></div>
+    <p class="draft-note">Analüüsis kasutatakse tellimuse taseme arve. Ridade tase näitab, kui palju mitmekordne lugemine arve nihutaks. Sõidu olek (<code>b_state</code>) ja tellimuskatse olek on kõigil ridadel «finished»; tellimuse olekus on üks erand («active»).</p>
     <figure class="chart">
       <p class="ct">Tellimused päevas</p>
       <p class="cs">Kõik 4 166 tellimust, 2.02.–13.03.2020</p>
@@ -477,7 +515,7 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
         <tr><td>Lubatud hind puudub <code>upfront_price</code></td><td class="r">1&nbsp;534 (31,0&nbsp;%)</td><td>Struktuurne: «prediction» hinnastamisel ja muudetud sihtkohaga sõitudel lubatud hinda pole.</td><td>Hälbe arvutusest välja. <b>[kinnitada]</b></td></tr>
         <tr><td>Lõpuhind ja ennustused puuduvad</td><td class="r">20 (0,4&nbsp;%)</td><td>Samad 20 rida puuduvad kõigis neljas veerus. Suhtarvudest välja.</td><td><b>[täita]</b></td></tr>
         <tr><td>Tellimuse tunnus kordub <code>order_id_new</code></td><td class="r">777 (15,7&nbsp;%)</td><td>4&nbsp;943 rida = 4&nbsp;166 tellimust. Rida on pöördumine, mitte unikaalne sõit.</td><td>Veebilehel koondatud tellimuse tasemele. <b>[teie SQL?]</b></td></tr>
-        <tr><td>Tellimuse ja tellimuskatse tunnus erinevad</td><td class="r">58 (1,2&nbsp;%)</td><td>Võimalik korduskatse või JOIN-i probleem. Kontrollida enne sõidu taseme mudelit.</td><td><b>[täita]</b></td></tr>
+        <tr><td>Tellimuse ja tellimuskatse tunnus erinevad</td><td class="r">58 (1,2&nbsp;%)</td><td>Kontrollitud: igal tellimusel on täpselt üks tellimuskatse tunnus, seega korduskatseid ei ole. Erinev on ainult tunnuse number.</td><td>Mõju analüüsile ei ole.</td></tr>
         <tr><td>Läbitud vahemaa 0 (kehtetu sõit)</td><td class="r">64 (1,3&nbsp;%)</td><td>Võimalik jälgimise viga või erijuht.</td><td>Märgitud; analüüsist välja.</td></tr>
         <tr><td>Kestus 0</td><td class="r">25 (0,5&nbsp;%)</td><td>Kõik 25 on ka vahemaa 0 ridade seas.</td><td>Kaetud eelmise reaga.</td></tr>
         <tr><td>Ennustatud vahemaa ebausutav</td><td class="r">9 (0,2&nbsp;%)</td><td>Ennustus 0–1&nbsp;m, tegelik üle 1&nbsp;km (nt 6&nbsp;083&nbsp;m vs 1&nbsp;m). Moonutab suhtarve.</td><td><b>[täita]</b></td></tr>
