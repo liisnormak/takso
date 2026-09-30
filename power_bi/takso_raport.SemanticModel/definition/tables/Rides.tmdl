@@ -305,7 +305,7 @@ table Rides
 
 		annotation SummarizationSetBy = Automatic
 
-	/// Numeric helper field used to sort Distance Deviation Group in logical order.  
+	/// Numeric helper field used to sort Distance Deviation Group in logical order.
 	column 'Distance Deviation Sort' =
 			
 			SWITCH(

@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
-  "name": "3928c58f31d1dc985d11",
-  "displayName": "Liis",
+  "name": "67f0e60225cb94c70e3d",
+  "displayName": "Main",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280
