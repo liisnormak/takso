@@ -65,39 +65,11 @@
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "Is Invalid Ride"
-                }
-              },
-              "queryRef": "Rides.Is Invalid Ride",
-              "nativeQueryRef": "Is Invalid Ride"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
                   "Property": "Destination Change Number"
                 }
               },
               "queryRef": "Rides.Destination Change Number",
               "nativeQueryRef": "Destination Change Number"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "Duration"
-                }
-              },
-              "queryRef": "Rides.Duration",
-              "nativeQueryRef": "Duration"
             },
             {
               "field": {
