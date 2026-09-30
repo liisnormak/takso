@@ -50,9 +50,9 @@ table _Measures
 		lineageTag: 0382b5fd-12cc-485a-9c51-4a0ffbf9c614
 
 	/// Average percentage difference between metered price and upfront price.
-	measure 'Average Price Deviation' =
+	measure 'Average Price Deviation (VEITSA KATKI!)' =
 			
-			AVERAGE('Rides'[Price Deviation %])
+			AVERAGE('Rides'[Price Deviation % (VEITSA KATKI!)])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: a0ee3c11-9ce8-4782-b96c-d9b081e72eb6
 

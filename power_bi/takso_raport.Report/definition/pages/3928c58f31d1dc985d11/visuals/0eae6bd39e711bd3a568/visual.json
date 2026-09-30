@@ -4,7 +4,7 @@
   "position": {
     "x": 916.33109619686809,
     "y": 9.0983229409618112,
-    "z": 4,
+    "z": 4000,
     "height": 283.34777158995354,
     "width": 343.13675091627397
   },
@@ -41,7 +41,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Average Price Deviation"
+                  "Property": "Average Price Deviation (VEITSA KATKI!)"
                 }
               },
               "queryRef": "_Measures.Average Price Deviation",
@@ -60,7 +60,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Average Price Deviation"
+                "Property": "Average Price Deviation (VEITSA KATKI!)"
               }
             },
             "direction": "Descending"

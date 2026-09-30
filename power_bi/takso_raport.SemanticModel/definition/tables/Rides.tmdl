@@ -92,7 +92,7 @@ table Rides
 		dataType: int64
 		formatString: 0
 		lineageTag: 14c76254-2b66-45ab-bef6-11bcd8cbb509
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Destination Change Number
 
 		annotation SummarizationSetBy = User
@@ -281,9 +281,9 @@ table Rides
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 82d36081-9056-4631-8cae-2ac5cbaf1c07
-		summarizeBy: sum
+		summarizeBy: none
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	/// Category grouping rides by the percentage difference between actual and predicted distance.
 	column 'Distance Deviation Group' =
@@ -319,14 +319,14 @@ table Rides
 			)
 		formatString: 0
 		lineageTag: e3513efe-158a-44e7-9082-ae85edb6a0ed
-		summarizeBy: sum
+		summarizeBy: none
 
 		changedProperty = SortByColumn
 
-		annotation SummarizationSetBy = Automatic
+		annotation SummarizationSetBy = User
 
 	/// Percentage difference between metered price and upfront price.
-	column 'Price Deviation %' =
+	column 'Price Deviation % (VEITSA KATKI!)' =
 			
 			DIVIDE(
 			    'Rides'[Metered Price] - 'Rides'[Upfront Price],

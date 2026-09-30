@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "9a3042e80b6a1cdbb487",
+  "position": {
+    "x": 117.5,
+    "y": 192.5,
+    "z": 4001,
+    "height": 93.75,
+    "width": 153.75,
+    "tabOrder": 4001
+  },
+  "visual": {
+    "visualType": "listSlicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "EU Indicator"
+                }
+              },
+              "queryRef": "Rides.EU Indicator",
+              "nativeQueryRef": "EU Indicator",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

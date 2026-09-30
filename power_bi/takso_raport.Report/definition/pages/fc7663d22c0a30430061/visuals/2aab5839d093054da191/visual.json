@@ -1,37 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7f878b331866e9e53b82",
+  "name": "2aab5839d093054da191",
   "position": {
-    "x": 0,
-    "y": 322.34058419407557,
+    "x": 97.949479940564643,
+    "y": 69.420505200594363,
     "z": 2000,
-    "height": 283.34777158995354,
-    "width": 266.45088612816733
+    "height": 112.21396731054978,
+    "width": 217.77117384843984,
+    "tabOrder": 2000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "GPS Confidence"
-                }
-              },
-              "queryRef": "public fact_rides.gps_confidence",
-              "nativeQueryRef": "GPS Confidence",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
+        "Data": {
           "projections": [
             {
               "field": {
@@ -41,11 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Overcharge Ride Count"
+                  "Property": "Distinct Ride Count"
                 }
               },
-              "queryRef": "_Measures.Overcharge Ride Count",
-              "nativeQueryRef": "Overcharge Ride Count"
+              "queryRef": "_Measures.Distinct Ride Count",
+              "nativeQueryRef": "Distinct Ride Count"
             }
           ]
         }
@@ -60,7 +42,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Overcharge Ride Count"
+                "Property": "Distinct Ride Count"
               }
             },
             "direction": "Descending"
@@ -70,16 +52,19 @@
       }
     },
     "objects": {
-      "categoryAxis": [
+      "value": [
         {
           "properties": {
-            "axisType": {
+            "labelDisplayUnits": {
               "expr": {
                 "Literal": {
-                  "Value": "'Categorical'"
+                  "Value": "1D"
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "_Measures.Distinct Ride Count"
           }
         }
       ]
