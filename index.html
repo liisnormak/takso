@@ -371,7 +371,7 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
   <section class="part" id="p2-mudel" data-status="mustand">
     <h3>Dimensioonid SQL-andmebaasis</h3>
-    <p>Mudel on tähtskeem kahe faktitabeliga: sõidud ja pöördumised. Neid seob tellimuse dimensioon.</p>
+    <p>PostgreSQL-is loodi analüüsi jaoks dimensioonmudel, mille keskne faktitabel on <code>fact_rides</code>. Faktitabel on võtmete kaudu seotud kuupäeva, seadme, rakenduse versiooni, hinnastamise konteksti ja tellimuse dimensioonidega. Klienditoe pöördumised paiknevad eraldi <code>fact_tickets</code> tabelis ning on sõitudega seotud <code>dim_order</code> kaudu.</p>
     <figure class="chart star">
       <p class="ct">Tähtskeem: faktid, dimensioonid ja võtmed</p>
       <p class="cs">Vali tabel, et näha selgitust ja seoseid. Nool näitab seost dimensioonist faktitabelisse.</p>
