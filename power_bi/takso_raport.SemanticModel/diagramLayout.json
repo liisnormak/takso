@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 454.82652649656626,
         "y": 0
       },
       "nodes": [
@@ -19,6 +19,31 @@
             "width": 234
           },
           "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 93.264265187720781,
+            "y": 158.0068728522337
+          },
+          "nodeIndex": "Tickets",
+          "nodeLineageTag": "9a93d3af-e604-40a7-938b-76c916a5d61a",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 388.85893724360096,
+            "y": 268.44475792191156
+          },
+          "nodeIndex": "Rides",
+          "size": {
+            "height": 859.99999999999989,
+            "width": 234
+          },
+          "zIndex": 7
         },
         {
           "location": {
@@ -92,34 +117,10 @@
             "width": 234
           },
           "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 388.85893724360096,
-            "y": 268.44475792191156
-          },
-          "nodeIndex": "Ride",
-          "size": {
-            "height": 859.99999999999989,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 93.264265187720781,
-            "y": 158.0068728522337
-          },
-          "nodeIndex": "Ticket",
-          "size": {
-            "height": 200,
-            "width": 234
-          },
-          "zIndex": 0
         }
       ],
       "name": "All tables",
-      "zoomValue": 58.514851485148526,
+      "zoomValue": 56.812867949212546,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

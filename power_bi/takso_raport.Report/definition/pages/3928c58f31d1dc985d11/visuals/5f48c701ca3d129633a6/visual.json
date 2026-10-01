@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "5f48c701ca3d129633a6",
+  "position": {
+    "x": 31.754469399353468,
+    "y": 1218.8770840299082,
+    "z": 9000,
+    "height": 391.46846249341019,
+    "width": 508.49106338112
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "App Version"
+                    }
+                  },
+                  "Property": "Driver App Version Group"
+                }
+              },
+              "queryRef": "App Version.Driver App Version Group",
+              "nativeQueryRef": "Driver App Version Group",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Rate"
+                }
+              },
+              "queryRef": "_Measures.Overcharge Ride Rate",
+              "nativeQueryRef": "Overcharge Ride Rate"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Overcharge Ride Rate"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

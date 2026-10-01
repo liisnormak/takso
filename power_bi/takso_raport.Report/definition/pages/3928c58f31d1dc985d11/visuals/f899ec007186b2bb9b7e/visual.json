@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "f899ec007186b2bb9b7e",
+  "position": {
+    "x": 750.89502236280464,
+    "y": 1443.4086607733843,
+    "z": 9001,
+    "height": 391.46846249341019,
+    "width": 508.49106338112
+  },
+  "visual": {
+    "visualType": "columnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "App Version"
+                    }
+                  },
+                  "Property": "Rider App Version Group"
+                }
+              },
+              "queryRef": "App Version.Rider App Version Group",
+              "nativeQueryRef": "Rider App Version Group",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Overcharge Ride Count",
+              "nativeQueryRef": "Overcharge Ride Count"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Overcharge Ride Count"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -85,9 +85,18 @@ table _Measures
 			        REMOVEFILTERS('Ride'[EU / Non-EU])
 			    )
 			)
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 65404ee1-d1f9-4a7b-9ab8-287d7a504b2a
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+	/// Number of overcharge rides with low GPS confidence.
+	measure 'Overcharge + Low GPS Ride Count' =
+			
+			CALCULATE(
+			    [Overcharge Ride Count],
+			    'Ride'[GPS Confidence] = 0
+			)
+		formatString: 0
+		lineageTag: aaa9ff34-83eb-4113-afa1-5c0f0177076b
 
 	column Column
 		isHidden

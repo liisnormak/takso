@@ -1,47 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "6088043021008a5b60c0",
+  "name": "37b6c2ab293b260531ac",
   "position": {
-    "x": 307.8808904307603,
-    "y": 569.78861622706324,
-    "z": 6000,
-    "height": 150.45762971276974,
-    "width": 427.68974372055845
+    "x": 31.754469399353468,
+    "y": 817.40862153649812,
+    "z": 8000,
+    "height": 391.46846249341019,
+    "width": 508.49106338112
   },
   "visual": {
-    "visualType": "tableEx",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
-        "Values": {
+        "Category": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "App Version"
                     }
                   },
-                  "Property": "Order Key"
+                  "Property": "Driver App Version Group"
                 }
               },
-              "queryRef": "public fact_rides.order_key",
-              "nativeQueryRef": "order_key"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Order"
-                    }
-                  },
-                  "Property": "Had Overpaid Ride Ticket"
-                }
-              },
-              "queryRef": "public dim_order.had_overpaid_ride_ticket",
-              "nativeQueryRef": "Had Overpaid Ride Ticket"
-            },
+              "queryRef": "App Version.Driver App Version Group",
+              "nativeQueryRef": "Driver App Version Group",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
             {
               "field": {
                 "Measure": {
@@ -63,18 +54,19 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Order"
+                    "Entity": "_Measures"
                   }
                 },
-                "Property": "Had Overpaid Ride Ticket"
+                "Property": "Overcharge Ride Count"
               }
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "drillFilterOtherVisuals": true
