@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "4e8112d6dd4790d0a700",
+  "name": "ecdf672b01ecb2710ce2",
   "position": {
-    "x": 98.571428571428584,
-    "y": 1061.4285714285716,
-    "z": 6000,
-    "height": 611.42857142857144,
-    "width": 824.28571428571433,
-    "tabOrder": 6000
+    "x": 0,
+    "y": 3340,
+    "z": 29000,
+    "height": 182.5,
+    "width": 473.75,
+    "tabOrder": 31000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -23,11 +23,11 @@
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "Distance Deviation Group"
+                  "Property": "Price Deviation Group"
                 }
               },
-              "queryRef": "Rides.Distance Deviation Group",
-              "nativeQueryRef": "Distance Deviation Group",
+              "queryRef": "Rides.Price Deviation Group",
+              "nativeQueryRef": "Price Deviation Group",
               "active": true
             }
           ]
@@ -82,29 +82,24 @@
             }
           ]
         }
-      }
-    },
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Overcharge rates peak when actual distance exceeds predictions by more than 50%'"
-                }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Rides"
+                  }
+                },
+                "Property": "Price Deviation Group"
               }
             },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "18D"
-                }
-              }
-            }
+            "direction": "Ascending"
           }
-        }
-      ]
+        ]
+      }
     },
     "drillFilterOtherVisuals": true
   }

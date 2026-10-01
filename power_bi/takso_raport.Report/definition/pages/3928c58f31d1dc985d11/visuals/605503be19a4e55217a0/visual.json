@@ -1,19 +1,19 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "423ca7020c9157e2db26",
+  "name": "605503be19a4e55217a0",
   "position": {
-    "x": 226.66666666666669,
-    "y": 0,
-    "z": 1000,
-    "height": 300,
-    "width": 530,
-    "tabOrder": 14000
+    "x": 0,
+    "y": 2017.5,
+    "z": 19000,
+    "height": 221.25,
+    "width": 1043.75,
+    "tabOrder": 25000
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Series": {
+        "Columns": {
           "projections": [
             {
               "field": {
@@ -23,34 +23,35 @@
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "GPS Confidence"
+                  "Property": "Destination Change Group"
                 }
               },
-              "queryRef": "public fact_rides.gps_confidence",
-              "nativeQueryRef": "GPS Confidence"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "Distance Deviation Group"
-                }
-              },
-              "queryRef": "public fact_rides.Distance Deviation Group",
-              "nativeQueryRef": "Distance Deviation Group",
+              "queryRef": "Rides.Destination Change Group",
+              "nativeQueryRef": "First Destination Change Group",
               "active": true
             }
           ]
         },
-        "Y": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pricing Context"
+                    }
+                  },
+                  "Property": "Prediction Price Type"
+                }
+              },
+              "queryRef": "Pricing Context.Prediction Price Type",
+              "nativeQueryRef": "Prediction Price Type",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
           "projections": [
             {
               "field": {
@@ -65,6 +66,20 @@
               },
               "queryRef": "_Measures.Overcharge Ride Rate",
               "nativeQueryRef": "Overcharge Ride Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Distinct Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Distinct Ride Count",
+              "nativeQueryRef": "Distinct Ride Count"
             }
           ]
         }

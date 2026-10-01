@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "f899ec007186b2bb9b7e",
+  "name": "fbed20a3b38e90720347",
   "position": {
-    "x": 880,
-    "y": 300,
-    "z": 7000,
-    "height": 295,
-    "width": 355,
-    "tabOrder": 21000
+    "x": 420,
+    "y": 956.66666666666674,
+    "z": 13000,
+    "height": 308.33333333333337,
+    "width": 475,
+    "tabOrder": 23000
   },
   "visual": {
-    "visualType": "columnChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "App Version"
+                      "Entity": "Pricing Context"
                     }
                   },
-                  "Property": "Rider App Version Group"
+                  "Property": "Prediction Price Type"
                 }
               },
-              "queryRef": "App Version.Rider App Version Group",
-              "nativeQueryRef": "Rider App Version Group",
+              "queryRef": "Pricing Context.Prediction Price Type",
+              "nativeQueryRef": "Prediction Price Type",
               "active": true
             }
           ]

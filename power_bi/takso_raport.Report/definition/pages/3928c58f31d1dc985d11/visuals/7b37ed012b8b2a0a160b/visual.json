@@ -1,38 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "4e8112d6dd4790d0a700",
+  "name": "7b37ed012b8b2a0a160b",
   "position": {
-    "x": 98.571428571428584,
-    "y": 1061.4285714285716,
-    "z": 6000,
-    "height": 611.42857142857144,
-    "width": 824.28571428571433,
-    "tabOrder": 6000
+    "x": 0,
+    "y": 1340,
+    "z": 15000,
+    "height": 173.33333333333334,
+    "width": 826.66666666666674,
+    "tabOrder": 24000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Category": {
+        "Rows": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "Pricing Context"
                     }
                   },
-                  "Property": "Distance Deviation Group"
+                  "Property": "Prediction Price Type"
                 }
               },
-              "queryRef": "Rides.Distance Deviation Group",
-              "nativeQueryRef": "Distance Deviation Group",
+              "queryRef": "Pricing Context.Prediction Price Type",
+              "nativeQueryRef": "Prediction Price Type",
               "active": true
             }
           ]
         },
-        "Tooltips": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -56,16 +56,26 @@
                       "Entity": "_Measures"
                     }
                   },
+                  "Property": "% of Rides"
+                }
+              },
+              "queryRef": "_Measures.% of Rides",
+              "nativeQueryRef": "% of Rides"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
                   "Property": "Overcharge Ride Count"
                 }
               },
               "queryRef": "_Measures.Overcharge Ride Count",
               "nativeQueryRef": "Overcharge Ride Count"
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+            },
             {
               "field": {
                 "Measure": {
@@ -79,32 +89,24 @@
               },
               "queryRef": "_Measures.Overcharge Ride Rate",
               "nativeQueryRef": "Overcharge Ride Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "% of All Overcharges"
+                }
+              },
+              "queryRef": "_Measures.% of All Overcharges",
+              "nativeQueryRef": "% of All Overcharges"
             }
           ]
         }
       }
-    },
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Overcharge rates peak when actual distance exceeds predictions by more than 50%'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "18D"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

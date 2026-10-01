@@ -48,24 +48,22 @@ table Rides
 	/// Actual price of a ride.
 	column 'Metered Price'
 		dataType: double
+		formatString: 0.0
 		lineageTag: 070071be-0335-4bca-a0ec-d3b6428a7cf0
 		summarizeBy: none
 		sourceColumn: Metered Price
 
 		annotation SummarizationSetBy = User
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	/// Price promised to the rider based on predicted duration and distance.
 	column 'Upfront Price'
 		dataType: double
+		formatString: 0.0
 		lineageTag: 6bde1714-f248-4ced-b5a1-87a48992d65b
 		summarizeBy: none
 		sourceColumn: Upfront Price
 
 		annotation SummarizationSetBy = User
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	/// Distance of a ride.
 	column Distance
@@ -326,18 +324,72 @@ table Rides
 		annotation SummarizationSetBy = User
 
 	/// Percentage difference between metered price and upfront price.
-	column 'Price Deviation % (VEITSA KATKI!)' =
+	column 'Price Deviation %' =
 			
 			DIVIDE(
 			    'Rides'[Metered Price] - 'Rides'[Upfront Price],
 			    'Rides'[Upfront Price]
 			)
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 42ff1a86-06ad-4d5a-8bbf-cd216ea3ef55
 		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+	column 'Destination Change Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Destination Change Number] = 1, "No change",
+			    'Rides'[Destination Change Number] = 2, "1 change",
+			    'Rides'[Destination Change Number] = 3, "2 changes",
+			    'Rides'[Destination Change Number] >= 4, "3+ changes",
+			    "Unknown"
+			)
+		lineageTag: feef1890-9ab8-49b5-b876-205c1cb5f862
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Price Deviation Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Price Deviation %] <= 0, "≤ 0%",
+			    'Rides'[Price Deviation %] <= 0.1, "0–10%",
+			    'Rides'[Price Deviation %] <= 0.2, "10–20%",
+			    'Rides'[Price Deviation %] <= 0.3, "20–30%",
+			    'Rides'[Price Deviation %] <= 0.5, "30–50%",
+			    'Rides'[Price Deviation %] <= 1, "50–100%",
+			    'Rides'[Price Deviation %] > 1, "100%+",
+			    "Unknown"
+			)
+		lineageTag: 2732851d-6548-4605-8a01-96f1e69137a1
+		summarizeBy: none
+		sortByColumn: 'Price Deviation Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Price Deviation Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Price Deviation %] <= 0, 1,
+			    'Rides'[Price Deviation %] <= 0.1, 2,
+			    'Rides'[Price Deviation %] <= 0.2, 3,
+			    'Rides'[Price Deviation %] <= 0.3, 4,
+			    'Rides'[Price Deviation %] <= 0.5, 5,
+			    'Rides'[Price Deviation %] <= 1, 6,
+			    'Rides'[Price Deviation %] > 1, 7,
+			    99
+			)
+		formatString: 0
+		lineageTag: 96f9905c-d8b4-4b08-9967-30521afb8a9b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
 
 	partition Rides = m
 		mode: import

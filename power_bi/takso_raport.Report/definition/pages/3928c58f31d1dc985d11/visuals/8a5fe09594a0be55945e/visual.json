@@ -1,15 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "0eae6bd39e711bd3a568",
+  "name": "8a5fe09594a0be55945e",
   "position": {
-    "x": 916.33109619686809,
-    "y": 9.0983229409618112,
-    "z": 4000,
-    "height": 283.34777158995354,
-    "width": 343.13675091627397
+    "x": 0,
+    "y": 956.66666666666674,
+    "z": 12000,
+    "height": 308.33333333333337,
+    "width": 430,
+    "tabOrder": 1000
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -19,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Order"
+                      "Entity": "Pricing Context"
                     }
                   },
-                  "Property": "Order ID"
+                  "Property": "Prediction Price Type"
                 }
               },
-              "queryRef": "public dim_order.order_id_new",
-              "nativeQueryRef": "Order ID",
+              "queryRef": "Pricing Context.Prediction Price Type",
+              "nativeQueryRef": "Prediction Price Type",
               "active": true
             }
           ]
@@ -41,11 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Average Price Deviation (VEITSA KATKI!)"
+                  "Property": "Overcharge Ride Rate"
                 }
               },
-              "queryRef": "_Measures.Average Price Deviation",
-              "nativeQueryRef": "Average Price Deviation"
+              "queryRef": "_Measures.Overcharge Ride Rate",
+              "nativeQueryRef": "Overcharge Ride Rate"
             }
           ]
         }
@@ -60,7 +61,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Average Price Deviation (VEITSA KATKI!)"
+                "Property": "Overcharge Ride Rate"
               }
             },
             "direction": "Descending"

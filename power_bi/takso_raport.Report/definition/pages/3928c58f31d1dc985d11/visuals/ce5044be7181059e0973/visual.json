@@ -1,13 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "4e8112d6dd4790d0a700",
+  "name": "ce5044be7181059e0973",
   "position": {
-    "x": 98.571428571428584,
-    "y": 1061.4285714285716,
-    "z": 6000,
-    "height": 611.42857142857144,
-    "width": 824.28571428571433,
-    "tabOrder": 6000
+    "x": 1072.5,
+    "y": 1785,
+    "z": 32002,
+    "height": 233.75,
+    "width": 487.5
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -20,15 +19,33 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
+                      "Entity": "Pricing Context"
+                    }
+                  },
+                  "Property": "Entered By"
+                }
+              },
+              "queryRef": "Pricing Context.Entered By",
+              "nativeQueryRef": "Entered By",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "Distance Deviation Group"
+                  "Property": "EU Indicator"
                 }
               },
-              "queryRef": "Rides.Distance Deviation Group",
-              "nativeQueryRef": "Distance Deviation Group",
-              "active": true
+              "queryRef": "Rides.EU Indicator",
+              "nativeQueryRef": "EU Indicator"
             }
           ]
         },
@@ -82,29 +99,25 @@
             }
           ]
         }
-      }
-    },
-    "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Overcharge rates peak when actual distance exceeds predictions by more than 50%'"
-                }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Measures"
+                  }
+                },
+                "Property": "Overcharge Ride Rate"
               }
             },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "18D"
-                }
-              }
-            }
+            "direction": "Descending"
           }
-        }
-      ]
+        ],
+        "isDefaultSort": true
+      }
     },
     "drillFilterOtherVisuals": true
   }
