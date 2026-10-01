@@ -41,7 +41,7 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Average Price Deviation (VEITSA KATKI!)"
+                  "Property": "Average Price Deviation (Upfront Price Available)"
                 }
               },
               "queryRef": "_Measures.Average Price Deviation",
@@ -60,7 +60,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Average Price Deviation (VEITSA KATKI!)"
+                "Property": "Average Price Deviation (Upfront Price Available)"
               }
             },
             "direction": "Descending"

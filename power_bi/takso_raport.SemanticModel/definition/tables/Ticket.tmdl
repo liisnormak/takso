@@ -1,4 +1,4 @@
-table Tickets
+table Ticket
 	lineageTag: 9a93d3af-e604-40a7-938b-76c916a5d61a
 
 	/// ID for customer support ticket.
@@ -41,7 +41,7 @@ table Tickets
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Tickets = m
+	partition Ticket = m
 		mode: import
 		source =
 				let
@@ -51,6 +51,8 @@ table Tickets
 				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Order Key", "Ticket ID", "Order ID", "Overpaid Ride Ticket", "public.dim_order"})
 				in
 				    #"Reordered Columns"
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 

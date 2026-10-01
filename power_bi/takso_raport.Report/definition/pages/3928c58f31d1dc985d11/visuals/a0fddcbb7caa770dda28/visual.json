@@ -19,7 +19,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "Ride"
                     }
                   },
                   "Property": "GPS Confidence"
@@ -38,7 +38,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "Ride"
                     }
                   },
                   "Property": "EU Indicator"
@@ -130,7 +130,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Rides"
+                "Entity": "Ride"
               }
             },
             "Property": "GPS Confidence"
@@ -142,7 +142,7 @@
           "From": [
             {
               "Name": "p",
-              "Entity": "Rides",
+              "Entity": "Ride",
               "Type": 0
             }
           ],
@@ -190,7 +190,7 @@
           "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "Rides"
+                "Entity": "Ride"
               }
             },
             "Property": "EU Indicator"
@@ -202,7 +202,7 @@
           "From": [
             {
               "Name": "p",
-              "Entity": "Rides",
+              "Entity": "Ride",
               "Type": 0
             }
           ],

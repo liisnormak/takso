@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "9a3042e80b6a1cdbb487",
   "position": {
-    "x": 117.5,
-    "y": 192.5,
-    "z": 4001,
-    "height": 93.75,
+    "x": 45,
+    "y": 245,
+    "z": 5000,
+    "height": 115,
     "width": 153.75,
-    "tabOrder": 4001
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "listSlicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "Ride"
                     }
                   },
-                  "Property": "EU Indicator"
+                  "Property": "EU / Non-EU"
                 }
               },
-              "queryRef": "Rides.EU Indicator",
-              "nativeQueryRef": "EU Indicator",
+              "queryRef": "Ride.EU / Non-EU",
+              "nativeQueryRef": "EU / Non-EU",
               "active": true
             }
           ]
@@ -38,6 +38,21 @@
       "general": [
         {
           "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
         }
       ]
     },

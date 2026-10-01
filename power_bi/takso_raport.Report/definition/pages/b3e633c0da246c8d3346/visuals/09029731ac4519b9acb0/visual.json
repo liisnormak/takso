@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "4e8112d6dd4790d0a700",
+  "name": "09029731ac4519b9acb0",
   "position": {
-    "x": 98.571428571428584,
-    "y": 1061.4285714285716,
-    "z": 4002,
+    "x": 8.75,
+    "y": 53.75,
+    "z": 0,
     "height": 611.42857142857144,
     "width": 824.28571428571433,
-    "tabOrder": 4002
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -20,7 +20,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "Ride"
                     }
                   },
                   "Property": "Distance Deviation Group"

@@ -1,4 +1,4 @@
-table Rides
+table Ride
 	lineageTag: 7c6d36af-f7a9-435c-b97d-e469a0b8c4dd
 
 	column 'Order ID'
@@ -275,9 +275,9 @@ table Rides
 	column 'Distance Deviation %' =
 			
 			DIVIDE(
-			    'Rides'[Distance] -
-			    'Rides'[Predicted Distance],
-			    'Rides'[Predicted Distance]
+			    'Ride'[Distance] -
+			    'Ride'[Predicted Distance],
+			    'Ride'[Predicted Distance]
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 82d36081-9056-4631-8cae-2ac5cbaf1c07
@@ -290,11 +290,11 @@ table Rides
 			
 			SWITCH(
 			    TRUE(),
-			    'Rides'[Distance Deviation %] < -0.25, "< -25%",
-			    'Rides'[Distance Deviation %] < -0.10, "-25% to -10%",
-			    'Rides'[Distance Deviation %] <= 0.10, "-10% to +10%",
-			    'Rides'[Distance Deviation %] <= 0.25, "+10% to +25%",
-			    'Rides'[Distance Deviation %] <= 0.50, "+25% to +50%",
+			    'Ride'[Distance Deviation %] < -0.25, "< -25%",
+			    'Ride'[Distance Deviation %] < -0.10, "-25% to -10%",
+			    'Ride'[Distance Deviation %] <= 0.10, "-10% to +10%",
+			    'Ride'[Distance Deviation %] <= 0.25, "+10% to +25%",
+			    'Ride'[Distance Deviation %] <= 0.50, "+25% to +50%",
 			    "> +50%"
 			)
 		lineageTag: 84cbca1c-c116-4300-be00-2335401c52b1
@@ -310,11 +310,11 @@ table Rides
 			
 			SWITCH(
 			    TRUE(),
-			    'Rides'[Distance Deviation %] < -0.25, 1,
-			    'Rides'[Distance Deviation %] < -0.10, 2,
-			    'Rides'[Distance Deviation %] <= 0.10, 3,
-			    'Rides'[Distance Deviation %] <= 0.25, 4,
-			    'Rides'[Distance Deviation %] <= 0.50, 5,
+			    'Ride'[Distance Deviation %] < -0.25, 1,
+			    'Ride'[Distance Deviation %] < -0.10, 2,
+			    'Ride'[Distance Deviation %] <= 0.10, 3,
+			    'Ride'[Distance Deviation %] <= 0.25, 4,
+			    'Ride'[Distance Deviation %] <= 0.50, 5,
 			    6
 			)
 		formatString: 0
@@ -325,12 +325,12 @@ table Rides
 
 		annotation SummarizationSetBy = User
 
-	/// Percentage difference between metered price and upfront price.
-	column 'Price Deviation % (VEITSA KATKI!)' =
+	/// Percentage difference between metered price and upfront price. Calculated only for rides where both prices are available. Positive values mean the metered price exceeded the upfront price; negative values mean it was lower.
+	column 'Price Deviation % (Upfront Price Available)' =
 			
 			DIVIDE(
-			    'Rides'[Metered Price] - 'Rides'[Upfront Price],
-			    'Rides'[Upfront Price]
+			    'Ride'[Metered Price] - 'Ride'[Upfront Price],
+			    'Ride'[Upfront Price]
 			)
 		lineageTag: 42ff1a86-06ad-4d5a-8bbf-cd216ea3ef55
 		summarizeBy: sum
@@ -339,7 +339,50 @@ table Rides
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	partition Rides = m
+	column 'EU / Non-EU' =
+			
+			IF(
+			    'Ride'[EU Indicator] = 1,
+			    "EU",
+			    "Non-EU"
+			)
+		lineageTag: 17943e61-fd13-4270-9464-d92dfb13e349
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GPS Confidence Level' =
+			
+			IF(
+			    'Ride'[GPS Confidence] = 1,
+			    "High",
+			    "Low"
+			)
+		lineageTag: e0b5a1bc-f1f0-4896-a0e7-554a0925a16d
+		summarizeBy: none
+		sortByColumn: 'GPS Confidence Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GPS Confidence Sort' =
+			
+			IF(
+			    'Ride'[GPS Confidence] = 0,
+			    1,
+			    2
+			)
+		isHidden
+		formatString: 0
+		lineageTag: 8f00424a-8383-4b9d-b787-cf9030f18dfe
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Ride = m
 		mode: import
 		source =
 				let
@@ -377,6 +420,8 @@ table Rides
 				)
 				in
 				    #"Renamed Columns"
+
+	changedProperty = Name
 
 	annotation PBI_ResultType = Table
 

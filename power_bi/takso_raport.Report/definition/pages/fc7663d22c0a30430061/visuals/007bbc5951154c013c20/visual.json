@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "007bbc5951154c013c20",
   "position": {
-    "x": 97.5,
+    "x": 0,
     "y": 21.25,
     "z": 1000,
-    "height": 48.75,
-    "width": 303.75,
+    "height": 202.5,
+    "width": 1640,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,12 +19,52 @@
               {
                 "textRuns": [
                   {
-                    "value": "   Overcharge Risk Factors",
+                    "value": "   ",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Arial",
                       "fontSize": "16pt"
                     }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "\t\t\t\t",
+                    "textStyle": {
+                      "fontSize": "24pt"
+                    }
+                  },
+                  {
+                    "value": "Overcharge Risk Factors",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe (Bold)",
+                      "fontSize": "32pt",
+                      "color": "#2f313f"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
                   }
                 ]
               }
@@ -48,6 +88,23 @@
               "expr": {
                 "Literal": {
                   "Value": "'Overcharge Risk Factors'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#32BB78'"
+                    }
+                  }
                 }
               }
             }

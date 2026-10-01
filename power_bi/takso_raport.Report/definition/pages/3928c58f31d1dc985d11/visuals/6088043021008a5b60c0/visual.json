@@ -19,7 +19,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "Ride"
                     }
                   },
                   "Property": "Order Key"
