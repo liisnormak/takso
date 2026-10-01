@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lubatud hind ja tegelik arve — lõputöö mustand</title>
+<title>Kuidas võiks vähendada ülemaksu kaebuste arvu taksoteenuses? — lõputöö mustand</title>
 <meta name="description" content="Andmetarkuse lõputöö: taksoplatvormi sõitude lubatud ja tegeliku hinna erinevus, veebruar–märts 2020.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@ h1,h2,h3,h4{line-height:1.2;margin:0}
 /* Päis */
 header.top{max-width:1180px;margin:0 auto;padding:3.5rem 1.5rem 2rem}
 header.top .context{color:var(--muted);font-size:var(--s-1);margin:0 0 1.25rem}
-header.top h1{font-size:var(--s4);font-weight:700;letter-spacing:-.015em;max-width:18ch}
+header.top h1{font-size:var(--s4);font-weight:700;letter-spacing:-.015em;max-width:22ch;text-wrap:balance}
 header.top .lead{font-size:var(--s1);line-height:1.55;margin:1.25rem 0 1.5rem;max-width:58ch}
 .meta{display:flex;flex-wrap:wrap;gap:.5rem 2rem;margin:0;padding:0;list-style:none;font-size:var(--s-1);color:var(--muted)}
 .meta b{color:var(--ink)}
@@ -224,6 +224,43 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
   .fs{border-top:0;margin-top:.1rem;padding:0}
   .fz{display:none}
 }
+
+/* Tähtskeem */
+.star-wrap{display:grid;grid-template-columns:1fr;gap:.8rem}
+.star-panel{border-top:3px solid var(--data);padding-top:.6rem;font-size:var(--s-1);min-height:9rem;max-width:var(--measure)}
+.star-panel h4{font-size:var(--s0);margin:.1rem 0 .2rem;font-family:ui-monospace,Consolas,monospace}
+.star-panel .kind{display:inline-block;font-size:.75rem;border:1px solid var(--ink);border-radius:3px;padding:.05rem .4rem;margin-bottom:.4rem}
+.star-panel p{margin:.3rem 0}
+.star-panel ul{margin:.3rem 0 0;padding-left:1rem}
+.snode{cursor:pointer;outline:none}
+.snode rect{fill:var(--bg);stroke:var(--ink);stroke-width:1.5}
+.snode.fact rect{fill:var(--surface);stroke-width:3}
+.snode text{fill:var(--ink);font:600 13px ui-monospace,Consolas,monospace}
+.snode text.long{font-size:12px}
+.snode .kindt{font:11px var(--f);fill:var(--muted)}
+.snode:hover rect{stroke:var(--data)}
+.snode:focus-visible rect{stroke:var(--focus);stroke-width:3.5}
+.snode[aria-pressed="true"] rect{stroke:var(--data);stroke-width:3.5}
+.star.has-sel .snode.dim-out{opacity:.5}
+.sedge line{stroke:var(--neutral);stroke-width:1.6}
+.sedge.on line{stroke:var(--data);stroke-width:2.6}
+.star.has-sel .sedge:not(.on){opacity:.45}
+.sedge rect{fill:var(--bg)}
+.sedge text{font:11.5px ui-monospace,Consolas,monospace;fill:var(--muted)}
+.sedge.on text{fill:var(--ink);font-weight:700}
+
+/* Grain ja profiil */
+table.grain th[scope="row"]{font-weight:400;white-space:nowrap;width:1%}
+table.t th[scope="row"]{border-bottom:1px solid var(--line)}
+table.grain tr.grp th{background:var(--surface);font-size:.8rem;color:var(--muted);border-bottom:1px solid var(--line);padding:.35rem .6rem;font-weight:700}
+table.grain td b{font-size:var(--s0)}
+.g1{color:var(--muted);font-size:.8rem;white-space:nowrap}
+.gn{color:var(--muted);font-size:.8rem;font-weight:400}
+table.prof th[scope="row"]{font-weight:400}
+table.tkbars th[scope="row"]{width:6rem;font-weight:400;font-variant-numeric:tabular-nums}
+table.tkbars td{display:flex;align-items:center;gap:.5rem}
+.gb{display:inline-block;height:.9rem;background:var(--data);border-radius:2px;flex:none}
+.gv{font-variant-numeric:tabular-nums}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -243,7 +280,7 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
 <header class="top">
   <p class="context">Andmetarkuse lõputöö, grupiprojekt. Mustand, versioon 0.1</p>
-  <h1>Lubatud hind ja tegelik arve</h1>
+  <h1>Kuidas võiks vähendada ülemaksu kaebuste arvu taksoteenuses?</h1>
   <p class="lead">Taksoplatvorm näitab sõitjale hinda enne sõitu. Uurime 4 166 tellimust, mille kohta on klienditoe pöördumine: kui tihti läheb lõpuhind lubatust üle 20&nbsp;% mööda, mis sellega seostub ja millal tuleb kaebus.</p>
   <ul class="meta">
     <li>Autorid <b>[täita]</b></li>
@@ -279,8 +316,14 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
   <section class="part" id="p1-eesmark" data-status="mustand">
     <h3>Eesmärk</h3>
-    <p>Kui sõitja maksab lubatust palju rohkem, kaob usaldus hinna vastu ja klienditugi saab kaebuse. Töö eesmärk on näidata, kui sageli lõpuhind lubatud hinnast oluliselt erineb ja milliste sõidu tunnustega see koos esineb.</p>
-    <p class="draft-note">Mustand andmete põhjal. Grupp kinnitab sõnastuse.</p>
+    <p>Sõitja näeb enne sõitu lubatud hinda. See põhineb ennustatud vahemaal ja kestusel. Tegelik sõit võib ennustusest erineda: lõpuhind arvutatakse läbitud vahemaa, kestuse ja GPS-andmete järgi. Kui sõitja maksab lubatust palju rohkem, kaob usaldus hinna vastu ja klienditugi saab ülemaksu kaebuse.</p>
+    <p>Töö eesmärk on analüüsida ülemaksu kaebusi:</p>
+    <ul>
+      <li>kui sageli lõpuhind lubatud hinnast oluliselt erineb;</li>
+      <li>milliste sõidu tunnuste ja olukordadega see koos esineb;</li>
+      <li>kus on peamised võimalused kaebuste arvu vähendamiseks.</li>
+    </ul>
+    <p>Tehniline eesmärk on valmistada algandmed analüüsiks ette, kontrollida nende kvaliteeti, luua PostgreSQL-is dimensioonmudel ning ehitada Power BI-s analüüsimudel, mõõdikud ja visualiseeringud.</p>
   </section>
 
   <section class="part" id="p1-aktuaalsus" data-status="tegemata">
@@ -345,11 +388,39 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
     <p class="question">kuidas CSV PostgreSQL-i laaditi (DBeaveri import, COPY vms)? Skeemis on see etapp praegu ilma tööriistata.</p>
   </section>
 
-  <section class="part" id="p2-mudel" data-status="tegemata">
-    <h3>Dim-mudel SQL andmebaasis</h3>
-    <div class="todo"><ul>
-      <li>tähtskeem joonisena: dim- ja faktitabelid, seosed võtmetega;</li>
-      <li>grain iga tabeli kohta eraldi lausena («üks rida = …»).</li></ul></div>
+  <section class="part" id="p2-mudel" data-status="mustand">
+    <h3>Dimensioonid SQL-andmebaasis</h3>
+    <p>PostgreSQL-is loodi analüüsi jaoks dimensioonmudel, mille keskne faktitabel on <code>fact_rides</code>. Faktitabel on võtmete kaudu seotud kuupäeva, seadme, rakenduse versiooni, hinnastamise konteksti ja tellimuse dimensioonidega. Klienditoe pöördumised paiknevad eraldi <code>fact_tickets</code> tabelis ning on sõitudega seotud <code>dim_order</code> kaudu.</p>
+    <figure class="chart star">
+      <p class="ct">Tähtskeem: faktid, dimensioonid ja võtmed</p>
+      <p class="cs">Vali tabel, et näha selgitust ja seoseid. Nool näitab seost dimensioonist faktitabelisse.</p>
+      <div class="star-wrap">
+        <div id="chStar"></div>
+        <div class="star-panel" id="starPanel" aria-live="polite"></div>
+      </div>
+      <figcaption>Ristkülik paksu joonega = faktitabel. Noole juures on võti, millega tabelid on seotud.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbStar"></div></details>
+    </figure>
+    <p><code>dim_order</code> on mudelis keskne: see seob sõiduandmed tellimuse tasemel klienditoe pöördumistega. Nii saab analüüsida, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus, ilma et mitme pöördumisega tellimusi loetaks mitu korda.</p>
+    <p class="draft-note">Tekst grupi kirjelduse põhjal; «order» ja «ticket» on asendatud lehe mõistetega «tellimus» ja «pöördumine».</p>
+  </section>
+
+  <section class="part" id="p2-grain" data-status="mustand">
+    <h3>Tabelite detailsusaste (grain)</h3>
+    <p>Dimensioonmudeli tabelid on erineva detailsusastmega. Iga tabeli grain määrab, mida üks tabeli rida esindab.</p>
+    <div class="tw"><table class="t grain">
+      <thead><tr><th scope="col">Tabel</th><th scope="col">Grain</th></tr></thead>
+      <tbody><tr class="grp"><th scope="rowgroup" colspan="2">Faktitabelid</th></tr><tr><th scope="row"><code>fact_rides</code></th><td><span class="g1">1 rida =</span> <b>sõit</b> <span class="gn">(üks tellimus = üks sõit)</span></td></tr><tr><th scope="row"><code>fact_tickets</code></th><td><span class="g1">1 rida =</span> <b>klienditoe pöördumine</b></td></tr></tbody>
+      <tbody><tr class="grp"><th scope="rowgroup" colspan="2">Dimensioonid</th></tr><tr><th scope="row"><code>dim_order</code></th><td><span class="g1">1 rida =</span> <b>unikaalne tellimus</b></td></tr><tr><th scope="row"><code>dim_date</code></th><td><span class="g1">1 rida =</span> <b>kuupäev</b></td></tr><tr><th scope="row"><code>dim_device</code></th><td><span class="g1">1 rida =</span> <b>unikaalne seade</b></td></tr><tr><th scope="row"><code>dim_app_version</code></th><td><span class="g1">1 rida =</span> <b>sõitja ja juhi rakenduse versioonide kombinatsioon</b></td></tr><tr><th scope="row"><code>dim_pricing_context</code></th><td><span class="g1">1 rida =</span> <b>unikaalne hinnastamise konteksti kombinatsioon</b></td></tr></tbody>
+    </table></div>
+    <p>Erinev detailsusaste on oluline eelkõige sõitude ja pöördumiste ühendamisel. Ühe tellimusega võib olla seotud mitu pöördumist. Kui sõitude analüüsis loetaks pöördumisi otse, arvestataks sama tellimust mitu korda.</p>
+    <figure class="chart" style="max-width:34rem">
+      <p class="ct">Pöördumisi tellimuse kohta</p>
+      <p class="cs">4&nbsp;166 tellimust; 85&nbsp;% tellimustest on üks pöördumine</p>
+      <div class="tw"><table class="t tkbars"><thead><tr><th scope="col">Pöördumisi</th><th scope="col">Tellimusi</th></tr></thead><tbody><tr><th scope="row">1</th><td><span class="gb" style="width:80.0%"></span><span class="gv">3&nbsp;554</span></td></tr><tr><th scope="row">2</th><td><span class="gb" style="width:11.0%"></span><span class="gv">487</span></td></tr><tr><th scope="row">3</th><td><span class="gb" style="width:2.1%"></span><span class="gv">94</span></td></tr><tr><th scope="row">4</th><td><span class="gb" style="width:0.6%"></span><span class="gv">24</span></td></tr><tr><th scope="row">5</th><td><span class="gb" style="width:0.5%"></span><span class="gv">5</span></td></tr><tr><th scope="row">6</th><td><span class="gb" style="width:0.5%"></span><span class="gv">2</span></td></tr></tbody></table></div>
+    </figure>
+    <p>Selle vältimiseks loodi <code>dim_order</code> tabelisse tellimuse taseme tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus. Nii saab ülemaksu analüüsida tellimuse tasemel, sõltumata sellest, mitu pöördumist tellimusega seotud on.</p>
+    <p class="draft-note">Tekst grupi kirjelduse põhjal; «order», «ticket» ja «overcharge-ticket» on asendatud lehe mõistetega.</p>
   </section>
 
   <section class="part" id="p2-veerud" data-status="mustand">
@@ -398,18 +469,20 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
 
   <section class="part" id="p2-profiil" data-status="mustand">
     <h3>Maht ja profiil</h3>
-    <p>Fail: 4 943 rida, 33 veergu. Arvud (hind, vahemaa, kestus, ennustused, pettuseskoor), tekst (olekud, rakenduse versioonid, seadme nimi), kuupäev ja kellaaeg.</p>
-    <div class="tw"><table class="t">
-      <thead><tr><th scope="col">Tunnus</th><th scope="col" class="r">Väärtus</th></tr></thead>
+    <p>Algandmestikus on 4&nbsp;943 rida ja 4&nbsp;166 unikaalset tellimust. Vahe tuleb sellest, et ühe tellimusega võib olla seotud mitu pöördumist. Suurim pöördumiste arv ühe tellimuse kohta on kuus.</p>
+    <p>Detailsusastme kontrollis ei leitud ühtegi tellimust, millel oleks mitu erinevat tellimuskatse tunnust (<code>order_try_id</code>).</p>
+    <div class="tw"><table class="t prof">
+      <thead><tr><th scope="col">Näitaja</th><th scope="col" class="r">Tellimusi (4&nbsp;166)</th><th scope="col" class="r">Ridu (4&nbsp;943)</th></tr></thead>
       <tbody>
-        <tr><td>Periood</td><td class="r">2.02.–13.03.2020 (41 päeva)</td></tr>
-        <tr><td>Tellimusi / pöördumisi</td><td class="r">4 166 / 4 943</td></tr>
-        <tr><td>Tellimused ELis / väljaspool</td><td class="r">59&nbsp;% / 41&nbsp;%</td></tr>
-        <tr><td>Lubatud hinnaga tellimusi</td><td class="r">2 946 (71&nbsp;%)</td></tr>
-        <tr><td>Halb GPS-ühendus</td><td class="r">20&nbsp;% pöördumistest</td></tr>
-        <tr><td>Ülemaksu kaebusega tellimusi</td><td class="r">309 (7,4&nbsp;%)</td></tr>
+        <tr><th scope="row">Periood</th><td class="r" colspan="2">2.02.–13.03.2020 (41 päeva)</td></tr>
+        <tr><th scope="row">Sõit ELis</th><td class="r"><b>59,6&nbsp;%</b> <span class="gn">2&nbsp;484</span></td><td class="r">56,0&nbsp;% <span class="gn">2&nbsp;770</span></td></tr>
+        <tr><th scope="row">Sõit väljaspool ELi</th><td class="r"><b>40,4&nbsp;%</b> <span class="gn">1&nbsp;682</span></td><td class="r">44,0&nbsp;% <span class="gn">2&nbsp;173</span></td></tr>
+        <tr><th scope="row">Halb GPS (<code>gps_confidence</code> = 0)</th><td class="r"><b>18,3&nbsp;%</b> <span class="gn">762</span></td><td class="r">19,9&nbsp;% <span class="gn">985</span></td></tr>
+        <tr><th scope="row">Ülemaksu kaebusega</th><td class="r"><b>7,4&nbsp;%</b> <span class="gn">309</span></td><td class="r">6,8&nbsp;% <span class="gn">337</span></td></tr>
+        <tr><th scope="row">Olek «finished»</th><td class="r"><b>4&nbsp;165</b> <span class="gn">1 «active»</span></td><td class="r">4&nbsp;942 <span class="gn">1 «active»</span></td></tr>
       </tbody>
     </table></div>
+    <p class="draft-note">Analüüsis kasutatakse tellimuse taseme arve. Ridade tase näitab, kui palju mitmekordne lugemine arve nihutaks. Sõidu olek (<code>b_state</code>) ja tellimuskatse olek on kõigil ridadel «finished»; tellimuse olekus on üks erand («active»).</p>
     <figure class="chart">
       <p class="ct">Tellimused päevas</p>
       <p class="cs">Kõik 4 166 tellimust, 2.02.–13.03.2020</p>
@@ -441,7 +514,7 @@ footer.method h2{font-size:var(--s0);color:var(--ink);margin-bottom:.5rem}
         <tr><td>Lubatud hind puudub <code>upfront_price</code></td><td class="r">1&nbsp;534 (31,0&nbsp;%)</td><td>Struktuurne: «prediction» hinnastamisel ja muudetud sihtkohaga sõitudel lubatud hinda pole.</td><td>Hälbe arvutusest välja. <b>[kinnitada]</b></td></tr>
         <tr><td>Lõpuhind ja ennustused puuduvad</td><td class="r">20 (0,4&nbsp;%)</td><td>Samad 20 rida puuduvad kõigis neljas veerus. Suhtarvudest välja.</td><td><b>[täita]</b></td></tr>
         <tr><td>Tellimuse tunnus kordub <code>order_id_new</code></td><td class="r">777 (15,7&nbsp;%)</td><td>4&nbsp;943 rida = 4&nbsp;166 tellimust. Rida on pöördumine, mitte unikaalne sõit.</td><td>Veebilehel koondatud tellimuse tasemele. <b>[teie SQL?]</b></td></tr>
-        <tr><td>Tellimuse ja tellimuskatse tunnus erinevad</td><td class="r">58 (1,2&nbsp;%)</td><td>Võimalik korduskatse või JOIN-i probleem. Kontrollida enne sõidu taseme mudelit.</td><td><b>[täita]</b></td></tr>
+        <tr><td>Tellimuse ja tellimuskatse tunnus erinevad</td><td class="r">58 (1,2&nbsp;%)</td><td>Kontrollitud: igal tellimusel on täpselt üks tellimuskatse tunnus, seega korduskatseid ei ole. Erinev on ainult tunnuse number.</td><td>Mõju analüüsile ei ole.</td></tr>
         <tr><td>Läbitud vahemaa 0 (kehtetu sõit)</td><td class="r">64 (1,3&nbsp;%)</td><td>Võimalik jälgimise viga või erijuht.</td><td>Märgitud; analüüsist välja.</td></tr>
         <tr><td>Kestus 0</td><td class="r">25 (0,5&nbsp;%)</td><td>Kõik 25 on ka vahemaa 0 ridade seas.</td><td>Kaetud eelmise reaga.</td></tr>
         <tr><td>Ennustatud vahemaa ebausutav</td><td class="r">9 (0,2&nbsp;%)</td><td>Ennustus 0–1&nbsp;m, tegelik üle 1&nbsp;km (nt 6&nbsp;083&nbsp;m vs 1&nbsp;m). Moonutab suhtarve.</td><td><b>[täita]</b></td></tr>
@@ -844,6 +917,50 @@ function sankey(el,{cols,links,aria,W=cw(el)}){
   el.innerHTML=s+'</svg>';
 }
 
+
+/* ---------- Tähtskeem ---------- */
+const ST={
+ fact_rides:{k:'Faktitabel',d:'Sõidu taseme faktid ja mõõdetavad tunnused: tegelik ja prognoositud hind, vahemaa ja kestus, GPS-ühenduse kvaliteet ning pettuseskoor.'},
+ fact_tickets:{k:'Faktitabel',d:'Klienditoe pöördumistega seotud andmed.'},
+ dim_order:{k:'Dimensioon',d:'Tellimuse kirjeldavad tunnused: tellimuse ja tellimuskatse ID, tellimuse ja tellimuskatse olek, loomise aeg ning märge, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus. Seob sõidud ja pöördumised.'},
+ dim_date:{k:'Dimensioon',d:'Sõidu kuupäevaga seotud tunnused.'},
+ dim_device:{k:'Dimensioon',d:'Sõiduga seotud seadme tunnused.'},
+ dim_app_version:{k:'Dimensioon',d:'Sõitja ja juhi rakenduse versioonide tunnused.'},
+ dim_pricing_context:{k:'Dimensioon',d:'Hinnastamise kontekst: ennustuse tüüp, hinnamuutuse põhjus ja hinnamuutuse sisestaja.'},
+};
+const SE=[['dim_date','fact_rides','date_key'],['dim_device','fact_rides','device_key'],['dim_app_version','fact_rides','app_version_key'],
+ ['dim_pricing_context','fact_rides','pricing_context_key'],['dim_order','fact_rides','order_key'],['dim_order','fact_tickets','order_key']];
+function starLayout(W){
+  if(W>=620){const bw=Math.min(200,W*.24),bh=54,H=470,c=[bw/2+4,W/2,W-bw/2-4];
+    return {W,H,bw,bh,p:{dim_date:[c[1],36],dim_device:[c[0],180],fact_rides:[c[1],180],dim_app_version:[c[2],180],dim_pricing_context:[c[0]+20,320],dim_order:[c[1],320],fact_tickets:[c[1],432]}};}
+  const bw=Math.min(150,(W-40)/2),bh=50,c=[bw/2+2,W-bw/2-2];
+  return {W,H:640,bw,bh,narrow:1,p:{dim_date:[c[0],34],dim_device:[c[1],34],fact_rides:[W/2,170],dim_app_version:[c[0],300],dim_pricing_context:[c[1],300],dim_order:[W/2,450],fact_tickets:[W/2,592]}};
+}
+let starSel='dim_order';
+function edgePt(c,o,bw,bh){const dx=o[0]-c[0],dy=o[1]-c[1];const sx=dx?(bw/2)/Math.abs(dx):Infinity,sy=dy?(bh/2)/Math.abs(dy):Infinity;const s=Math.min(sx,sy);return [c[0]+dx*s,c[1]+dy*s];}
+function drawStar(){
+  const el=document.getElementById('chStar'); if(!el) return;
+  const L=starLayout(Math.max(300,Math.min(el.clientWidth||880,920))), {W,H,bw,bh,p}=L;
+  const on=new Set(SE.filter(e=>e[0]===starSel||e[1]===starSel).flatMap(e=>[e[0],e[1]]));
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Tähtskeem, 7 tabelit. Vali tabel selgituse nägemiseks.">
+  <defs><marker id="sa" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="var(--neutral)"/></marker>
+  <marker id="sa2" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="var(--data)"/></marker></defs>`;
+  SE.forEach(([a,b,k])=>{const A=edgePt(p[a],p[b],bw+8,bh+8),B=edgePt(p[b],p[a],bw+10,bh+10);const act=a===starSel||b===starSel;
+    const f=L.narrow&&b!=='fact_tickets'?(a==='dim_app_version'?.55:.22):.5,mx=A[0]+(B[0]-A[0])*f,my=A[1]+(B[1]-A[1])*f-(Math.abs(A[1]-B[1])<2?14:0),tw=k.length*7+10;
+    s+=`<g class="sedge${act?' on':''}" aria-hidden="true"><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" marker-end="url(#${act?'sa2':'sa'})"/><rect x="${mx-tw/2}" y="${my-9}" width="${tw}" height="17" rx="3"/><text x="${mx}" y="${my+4}" text-anchor="middle">${k}</text></g>`;});
+  Object.keys(ST).forEach(n=>{const [x,y]=p[n],f=n.startsWith('fact');
+    s+=`<g class="snode${f?' fact':''}${starSel&&!on.has(n)&&n!==starSel?' dim-out':''}" data-t="${n}" tabindex="0" role="button" aria-pressed="${n===starSel}" aria-label="${n}, ${ST[n].k.toLowerCase()}">
+      <rect x="${x-bw/2}" y="${y-bh/2}" width="${bw}" height="${bh}" rx="4"/><text x="${x}" y="${y+1}" text-anchor="middle"${n.length>15?' class="long"':''}>${n}</text><text class="kindt" x="${x}" y="${y+17}" text-anchor="middle">${f?'fakt':'dimensioon'}</text></g>`;});
+  el.innerHTML=s+'</svg>';
+  el.closest('.star').classList.toggle('has-sel',!!starSel);
+  el.querySelectorAll('.snode').forEach(g=>{const pick=()=>{starSel=g.dataset.t;drawStar();el.querySelector(`.snode[data-t="${starSel}"]`).focus();};
+    g.addEventListener('click',pick);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();pick();}});});
+  const T=ST[starSel],rel=SE.filter(e=>e[0]===starSel||e[1]===starSel);
+  document.getElementById('starPanel').innerHTML=`<span class="kind">${T.k}</span><h4>${starSel}</h4><p>${T.d}</p><p><b>Seosed</b></p><ul>${rel.map(([a,b,k])=>a===starSel?`<li>→ <code>${b}</code> võtmega <code>${k}</code></li>`:`<li>← <code>${a}</code> võtmega <code>${k}</code></li>`).join('')}</ul>`;
+}
+(function(){const tb=document.getElementById('tbStar');if(!tb)return;
+  tb.innerHTML=`<table class="t"><thead><tr><th scope="col">Tabel</th><th scope="col">Liik</th><th scope="col">Sisu</th><th scope="col">Seosed</th></tr></thead><tbody>${Object.keys(ST).map(n=>`<tr><th scope="row" style="font-weight:400"><code>${n}</code></th><td>${ST[n].k}</td><td>${ST[n].d}</td><td>${SE.filter(e=>e[0]===n||e[1]===n).map(([a,b,k])=>(a===n?'→ '+b:'← '+a)+' ('+k+')').join('<br>')}</td></tr>`).join('')}</tbody></table>`;})();
+drawStar();
 /* ---------- Päevade graafik (filtrita) ---------- */
 function daily(){const c=new Array(41).fill(0);D.day.forEach(d=>c[d]++);const start=new Date(2020,1,2);
   const items=c.map((v,i)=>{const dt=new Date(start);dt.setDate(start.getDate()+i);const lab=dt.getDate()+'.'+(dt.getMonth()+1)+'.';return{x:lab,v,tip:`${lab}: ${fmt.format(v)} tellimust`}});
@@ -939,7 +1056,7 @@ ft.onclick=()=>{const o=F.classList.toggle('open');ft.setAttribute('aria-expande
 document.querySelectorAll('input[name="hm"]').forEach(r=>r.addEventListener('change',render));
 document.getElementById('resetBtn').onclick=()=>{F.reset();render();document.getElementById('filterStatus').focus?.()};
 render();
-let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;daily();render();renderK5();}},150)});
+let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;daily();render();renderK5();drawStar();}},150)});
 </script>
 </body>
 </html>

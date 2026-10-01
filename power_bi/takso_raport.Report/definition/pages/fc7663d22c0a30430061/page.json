@@ -3,6 +3,21 @@
   "name": "fc7663d22c0a30430061",
   "displayName": "Felena",
   "displayOption": "FitToPage",
-  "height": 720,
-  "width": 1280
+  "height": 2000,
+  "width": 2000,
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "196L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
 }
