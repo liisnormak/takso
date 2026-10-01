@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7f878b331866e9e53b82",
+  "name": "d4bdb7f08ca087069d6d",
   "position": {
-    "x": 0,
-    "y": 322.34058419407557,
-    "z": 2000,
-    "height": 283.34777158995354,
-    "width": 266.45088612816733
+    "x": 750.89502236280464,
+    "y": 1844.8771232667946,
+    "z": 9002,
+    "height": 391.46846249341019,
+    "width": 508.49106338112
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "columnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -19,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Rides"
+                      "Entity": "App Version"
                     }
                   },
-                  "Property": "GPS Confidence"
+                  "Property": "Rider App Version Group"
                 }
               },
-              "queryRef": "public fact_rides.gps_confidence",
-              "nativeQueryRef": "GPS Confidence",
+              "queryRef": "App Version.Rider App Version Group",
+              "nativeQueryRef": "Rider App Version Group",
               "active": true
             }
           ]
@@ -41,11 +41,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Overcharge Ride Count"
+                  "Property": "Overcharge Ride Rate"
                 }
               },
-              "queryRef": "_Measures.Overcharge Ride Count",
-              "nativeQueryRef": "Overcharge Ride Count"
+              "queryRef": "_Measures.Overcharge Ride Rate",
+              "nativeQueryRef": "Overcharge Ride Rate"
             }
           ]
         }
@@ -60,7 +60,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Overcharge Ride Count"
+                "Property": "Overcharge Ride Rate"
               }
             },
             "direction": "Descending"
@@ -68,21 +68,6 @@
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "categoryAxis": [
-        {
-          "properties": {
-            "axisType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Categorical'"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

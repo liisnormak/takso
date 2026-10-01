@@ -1,37 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7f878b331866e9e53b82",
+  "name": "fb1d3f0e5b94807c86b5",
   "position": {
-    "x": 0,
-    "y": 322.34058419407557,
-    "z": 2000,
-    "height": 283.34777158995354,
-    "width": 266.45088612816733
+    "x": 54.285714285714292,
+    "y": 1638.5714285714287,
+    "z": 9003,
+    "height": 391.46846249341024,
+    "width": 508.49106338112
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "cardVisual",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "GPS Confidence"
-                }
-              },
-              "queryRef": "public fact_rides.gps_confidence",
-              "nativeQueryRef": "GPS Confidence",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
+        "Data": {
           "projections": [
             {
               "field": {
@@ -68,21 +49,6 @@
         ],
         "isDefaultSort": true
       }
-    },
-    "objects": {
-      "categoryAxis": [
-        {
-          "properties": {
-            "axisType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Categorical'"
-                }
-              }
-            }
-          }
-        }
-      ]
     },
     "drillFilterOtherVisuals": true
   }

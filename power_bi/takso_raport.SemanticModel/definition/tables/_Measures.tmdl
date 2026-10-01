@@ -75,6 +75,15 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 31170978-1ec3-4f1c-b21f-2d42d4c7fe94
 
+	measure 'Overcharge + Low GPS Ride Count' =
+			
+			CALCULATE(
+			    [Overcharge Ride Count],
+			    'Rides'[GPS Confidence] = 0
+			)
+		formatString: 0
+		lineageTag: aaa9ff34-83eb-4113-afa1-5c0f0177076b
+
 	column Column
 		isHidden
 		formatString: 0

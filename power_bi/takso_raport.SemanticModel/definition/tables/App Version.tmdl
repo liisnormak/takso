@@ -29,6 +29,40 @@ table 'App Version'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Rider App Version Group' =
+			
+			VAR AppVer = 'App Version'[Rider App Version]
+			VAR FirstDot = SEARCH(".", AppVer, 1, 0)
+			VAR SecondDot = SEARCH(".", AppVer, FirstDot + 1, 0)
+			
+			RETURN
+			IF(
+			    FirstDot > 0 && SecondDot > 0,
+			    LEFT(AppVer, SecondDot - 1),
+			    AppVer
+			)
+		lineageTag: cb464966-e900-4d43-bdb5-c24e7263602e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Driver App Version Group' =
+			
+			VAR AppVer = 'App Version'[Driver App Version]
+			VAR FirstDot = SEARCH(".", AppVer, 1, 0)
+			VAR SecondDot = SEARCH(".", AppVer, FirstDot + 1, 0)
+			
+			RETURN
+			IF(
+			    FirstDot > 0 && SecondDot > 0,
+			    LEFT(AppVer, SecondDot - 1),
+			    AppVer
+			)
+		lineageTag: a2ba5d7d-79a8-4871-8a78-674924d17e0a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'App Version' = m
 		mode: import
 		source =

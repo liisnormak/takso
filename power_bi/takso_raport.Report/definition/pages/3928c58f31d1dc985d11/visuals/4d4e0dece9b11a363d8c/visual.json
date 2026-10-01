@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7f878b331866e9e53b82",
+  "name": "4d4e0dece9b11a363d8c",
   "position": {
-    "x": 0,
-    "y": 322.34058419407557,
-    "z": 2000,
-    "height": 283.34777158995354,
-    "width": 266.45088612816733
+    "x": 750.89502236280464,
+    "y": 817.40862153649812,
+    "z": 7000,
+    "height": 391.46846249341019,
+    "width": 508.49106338112
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -22,11 +22,11 @@
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "GPS Confidence"
+                  "Property": "EU Indicator"
                 }
               },
-              "queryRef": "public fact_rides.gps_confidence",
-              "nativeQueryRef": "GPS Confidence",
+              "queryRef": "Rides.EU Indicator",
+              "nativeQueryRef": "EU Indicator",
               "active": true
             }
           ]
@@ -41,11 +41,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Overcharge Ride Count"
+                  "Property": "Overcharge + Low GPS Ride Count"
                 }
               },
-              "queryRef": "_Measures.Overcharge Ride Count",
-              "nativeQueryRef": "Overcharge Ride Count"
+              "queryRef": "_Measures.Overcharge + Low GPS Ride Count",
+              "nativeQueryRef": "Overcharge + Low GPS Ride Count"
             }
           ]
         }
@@ -60,7 +60,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Overcharge Ride Count"
+                "Property": "Overcharge + Low GPS Ride Count"
               }
             },
             "direction": "Descending"
@@ -77,6 +77,19 @@
               "expr": {
                 "Literal": {
                   "Value": "'Categorical'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
                 }
               }
             }

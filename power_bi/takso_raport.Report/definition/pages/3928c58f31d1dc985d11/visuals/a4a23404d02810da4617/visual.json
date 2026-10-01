@@ -4,7 +4,7 @@
   "position": {
     "x": 750.89502236280464,
     "y": 321.812152441202,
-    "z": 6,
+    "z": 5000,
     "height": 391.46846249341019,
     "width": 508.49106338112
   },
@@ -47,37 +47,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4cd27607a37d40c69079",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Overcharge Ride Count"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "37aa3ce6b04b92bd5b56",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Device"
-              }
-            },
-            "Property": "Device Name"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
