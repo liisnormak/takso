@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "ff85312d75eb2da51102",
   "position": {
-    "x": 45,
-    "y": 372.5,
+    "x": 98.75,
+    "y": 391.25,
     "z": 0,
-    "height": 611.25,
-    "width": 1568.75,
+    "height": 713.75,
+    "width": 1415,
     "tabOrder": 0
   },
   "visual": {
@@ -15,34 +15,6 @@
       "queryState": {
         "ExplainBy": {
           "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Ride"
-                    }
-                  },
-                  "Property": "EU Indicator"
-                }
-              },
-              "queryRef": "Rides.EU Indicator",
-              "nativeQueryRef": "EU Indicator"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Ride"
-                    }
-                  },
-                  "Property": "GPS Confidence"
-                }
-              },
-              "queryRef": "Rides.GPS Confidence",
-              "nativeQueryRef": "GPS Confidence"
-            },
             {
               "field": {
                 "Column": {
@@ -62,7 +34,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "Rides"
                     }
                   },
                   "Property": "Destination Change Number"
@@ -76,7 +48,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "Rides"
                     }
                   },
                   "Property": "Distance"
@@ -104,14 +76,28 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "Rides"
                     }
                   },
-                  "Property": "Fraud Score Status"
+                  "Property": "EU / Non-EU"
                 }
               },
-              "queryRef": "Rides.Fraud Score Status",
-              "nativeQueryRef": "Fraud Score Status"
+              "queryRef": "Rides.EU / Non-EU",
+              "nativeQueryRef": "EU / Non-EU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "GPS Confidence Level"
+                }
+              },
+              "queryRef": "Rides.GPS Confidence Level",
+              "nativeQueryRef": "GPS Confidence Level"
             }
           ]
         },
@@ -135,21 +121,6 @@
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Ride"
-                  }
-                },
-                "Property": "EU Indicator"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -206,8 +177,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#2F313F'"
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
                     }
                   }
                 }

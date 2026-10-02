@@ -2,11 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "423ca7020c9157e2db26",
   "position": {
-    "x": 308.04321957256417,
+    "x": 226.66666666666669,
     "y": 0,
     "z": 1000,
-    "height": 328.83938629476256,
-    "width": 530.30225141605979
+    "height": 300,
+    "width": 530,
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "scatterChart",
@@ -19,7 +20,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "Rides"
                     }
                   },
                   "Property": "GPS Confidence"
@@ -37,7 +38,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "Rides"
                     }
                   },
                   "Property": "Distance Deviation Group"

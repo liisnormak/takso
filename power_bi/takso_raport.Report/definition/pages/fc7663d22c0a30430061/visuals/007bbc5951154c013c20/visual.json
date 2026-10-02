@@ -3,10 +3,10 @@
   "name": "007bbc5951154c013c20",
   "position": {
     "x": 0,
-    "y": 21.25,
+    "y": 0,
     "z": 1000,
-    "height": 202.5,
-    "width": 1640,
+    "height": 181.66666666666669,
+    "width": 2000,
     "tabOrder": 1000
   },
   "visual": {
@@ -19,52 +19,12 @@
               {
                 "textRuns": [
                   {
-                    "value": "   ",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontFamily": "Arial",
-                      "fontSize": "16pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "\t\t\t\t",
-                    "textStyle": {
-                      "fontSize": "24pt"
-                    }
-                  },
-                  {
-                    "value": "Overcharge Risk Factors",
+                    "value": "   Overcharge Risk Factors",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe (Bold)",
-                      "fontSize": "32pt",
-                      "color": "#2f313f"
+                      "fontSize": "28pt"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
                   }
                 ]
               }
@@ -101,8 +61,9 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "Literal": {
-                      "Value": "'#32BB78'"
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
                     }
                   }
                 }

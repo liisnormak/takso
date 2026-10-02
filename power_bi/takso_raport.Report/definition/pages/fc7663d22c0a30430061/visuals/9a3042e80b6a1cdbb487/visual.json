@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "9a3042e80b6a1cdbb487",
   "position": {
-    "x": 45,
-    "y": 245,
+    "x": 98.333333333333343,
+    "y": 221.66666666666669,
     "z": 5000,
-    "height": 115,
-    "width": 153.75,
+    "height": 128.33333333333334,
+    "width": 216.66666666666669,
     "tabOrder": 5000
   },
   "visual": {
@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Ride"
+                      "Entity": "Rides"
                     }
                   },
                   "Property": "EU / Non-EU"
                 }
               },
-              "queryRef": "Ride.EU / Non-EU",
+              "queryRef": "Rides.EU / Non-EU",
               "nativeQueryRef": "EU / Non-EU",
               "active": true
             }
@@ -45,10 +45,10 @@
       "title": [
         {
           "properties": {
-            "fontFamily": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "'''Segoe UI Bold'', wf_segoe-ui_bold, helvetica, arial, sans-serif'"
+                  "Value": "20D"
                 }
               }
             }

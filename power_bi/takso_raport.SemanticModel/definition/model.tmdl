@@ -9,13 +9,13 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["xtakso_andmed_clean","Ticket","Ride","Order","Pricing Context","Device","Date","App Version"]
+annotation PBI_QueryOrder = ["xtakso_andmed_clean","Tickets","Rides","Order","Pricing Context","Device","Date","App Version"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table xtakso_andmed_clean
-ref table Ticket
-ref table Ride
+ref table Tickets
+ref table Rides
 ref table Order
 ref table 'Pricing Context'
 ref table Device

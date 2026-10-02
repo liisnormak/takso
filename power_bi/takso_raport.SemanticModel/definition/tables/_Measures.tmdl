@@ -4,7 +4,7 @@ table _Measures
 	/// Number of unique rides.
 	measure 'Distinct Ride Count' =
 			
-			DISTINCTCOUNT('Ride'[Ride Key])
+			DISTINCTCOUNT('Rides'[Ride Key])
 		formatString: 0
 		lineageTag: 111406f4-6adb-4179-8428-aa4fb0065587
 
@@ -12,7 +12,7 @@ table _Measures
 	measure 'Overcharge Ride Count' =
 			
 			CALCULATE(
-			    DISTINCTCOUNT('Ride'[Order Key]),
+			    DISTINCTCOUNT('Rides'[Order Key]),
 			    'Order'[Had Overpaid Ride Ticket] = 1
 			)
 		formatString: 0
@@ -35,7 +35,7 @@ table _Measures
 			DIVIDE(
 			    CALCULATE(
 			        [Distinct Ride Count],
-			        'Ride'[GPS Confidence] = 0
+			        'Rides'[GPS Confidence] = 0
 			    ),
 			    [Distinct Ride Count]
 			)
@@ -45,14 +45,14 @@ table _Measures
 	/// Average percentage difference between actual and predicted ride distance.
 	measure 'Average Distance Deviation' =
 			
-			AVERAGE('Ride'[Distance Deviation %])
+			AVERAGE('Rides'[Distance Deviation %])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 0382b5fd-12cc-485a-9c51-4a0ffbf9c614
 
-	/// Average percentage difference between metered price and upfront price. Includes only rides where both prices are available; rides without an upfront price, including prediction-priced rides, are excluded.
+	/// Average percentage difference between metered price and upfront price.
 	measure 'Average Price Deviation (Upfront Price Available)' =
 			
-			AVERAGE('Ride'[Price Deviation % (Upfront Price Available)])
+			AVERAGE('Rides'[Price Deviation %])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: a0ee3c11-9ce8-4782-b96c-d9b081e72eb6
 
@@ -60,8 +60,8 @@ table _Measures
 	measure 'Median Absolute Distance Deviation %' =
 			
 			MEDIANX(
-			    'Ride',
-			    ABS('Ride'[Distance Deviation %])
+			    'Rides',
+			    ABS('Rides'[Distance Deviation %])
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 9a9f5e95-cc1f-4f6e-8698-30aa1dd4b29e
@@ -70,33 +70,73 @@ table _Measures
 	measure 'Median Distance Deviation %' =
 			
 			MEDIAN(
-			    'Ride'[Distance Deviation %]
+			    'Rides'[Distance Deviation %]
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 31170978-1ec3-4f1c-b21f-2d42d4c7fe94
 
-	/// Percentage of all overcharge rides that belong to the current EU/non-EU segment.
-	measure 'Overcharge Ride Share %' =
+	measure 'Overcharge + Low GPS Ride Count' =
+			
+			CALCULATE(
+			    [Overcharge Ride Count],
+			    'Rides'[GPS Confidence] = 0
+			)
+		formatString: 0
+		lineageTag: aaa9ff34-83eb-4113-afa1-5c0f0177076b
+
+	measure '% of Rides' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Pricing Context'[Prediction Price Type])
+			    ),
+			    0
+			)
+		lineageTag: b1d57feb-714d-4cb3-bdc5-21e6eee0d723
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% of All Overcharges' =
 			
 			DIVIDE(
 			    [Overcharge Ride Count],
 			    CALCULATE(
 			        [Overcharge Ride Count],
-			        REMOVEFILTERS('Ride'[EU / Non-EU])
-			    )
+			        REMOVEFILTERS('Pricing Context'[Prediction Price Type])
+			    ),
+			    0
+			)
+		lineageTag: 13699daa-3c86-4a28-b000-f6d81e96c336
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% of Rides by Destination Change' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Rides'[Destination Change Group])
+			    ),
+			    0
 			)
 		formatString: 0.00%;-0.00%;0.00%
-		lineageTag: 65404ee1-d1f9-4a7b-9ab8-287d7a504b2a
+		lineageTag: 4bd645fc-6dd9-44c5-bda9-abef923b0c97
 
-	/// Number of overcharge rides with low GPS confidence.
-	measure 'Overcharge + Low GPS Ride Count' =
+	measure '% of Overcharges by Destination Change' =
 			
-			CALCULATE(
+			DIVIDE(
 			    [Overcharge Ride Count],
-			    'Ride'[GPS Confidence] = 0
+			    CALCULATE(
+			        [Overcharge Ride Count],
+			        REMOVEFILTERS('Rides'[Destination Change Group])
+			    ),
+			    0
 			)
-		formatString: 0
-		lineageTag: aaa9ff34-83eb-4113-afa1-5c0f0177076b
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 738e966f-277d-4e5e-83ed-6b55ae9376a0
 
 	column Column
 		isHidden
