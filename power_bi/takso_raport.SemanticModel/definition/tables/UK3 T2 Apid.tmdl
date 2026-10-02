@@ -1,0 +1,106 @@
+table 'UK3 T2 Apid'
+	lineageTag: f0e6f9b5-e695-4f35-8d1a-913a4f584096
+
+	column silt
+		dataType: string
+		lineageTag: 262ae50f-854b-42f1-8d35-42da6c2d5e96
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [silt]
+		sortByColumn: jarjekord
+
+		annotation SummarizationSetBy = User
+
+	column jarjekord
+		dataType: int64
+		formatString: 0
+		lineageTag: 19c9e37a-9347-47fe-91ff-502a88cfcdf7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [jarjekord]
+
+		annotation SummarizationSetBy = User
+
+	column scope
+		dataType: string
+		lineageTag: 50ca2746-980a-408d-9331-9a4440b038c6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [scope]
+		sortByColumn: scope_nr
+
+		annotation SummarizationSetBy = User
+
+	column scope_nr
+		dataType: int64
+		formatString: 0
+		lineageTag: 574435b9-b8dd-489d-83e6-7b80b505c4cc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [scope_nr]
+
+		annotation SummarizationSetBy = User
+
+	column n
+		dataType: int64
+		formatString: 0
+		lineageTag: 6cabcda5-37e5-4bdf-afb7-c7f8639f8f27
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [n]
+
+		annotation SummarizationSetBy = User
+
+	column tickets
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f0adbb4-e417-4df1-bcc3-8a5962ccee2e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [tickets]
+
+		annotation SummarizationSetBy = User
+
+	column rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: c1869110-378d-437d-ae47-91f018b580a7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [rate]
+
+		annotation SummarizationSetBy = User
+
+	partition 'UK3 T2 Apid' = calculated
+		mode: import
+		source =
+				DATATABLE(
+					"silt", STRING, "jarjekord", INTEGER, "scope", STRING, "scope_nr", INTEGER, "n", INTEGER, "tickets", INTEGER, "rate", DOUBLE,
+					{
+					{"Kliendi äpp: Android", 1, "kõik", 1, 2327, 203, 0.0872367856},
+					{"Kliendi äpp: iOS", 2, "kõik", 1, 1824, 106, 0.0581140351},
+					{"Juhi äpp: Android", 3, "kõik", 1, 3799, 304, 0.0800210582},
+					{"Juhi äpp: iOS", 4, "kõik", 1, 367, 5, 0.0136239782},
+					{"Juhi äpi vanus: 1-3 versiooni vanem", 6, "kõik", 1, 1623, 102, 0.0628465804},
+					{"Juhi äpi vanus: 4-8 versiooni vanem", 7, "kõik", 1, 1362, 82, 0.0602055800},
+					{"Juhi äpi vanus: 9+ versiooni vanem", 8, "kõik", 1, 427, 75, 0.1756440281},
+					{"Juhi äpi vanus: uusim", 5, "kõik", 1, 754, 50, 0.0663129973},
+					{"Kliendi äpp: Android", 1, "EL", 2, 1157, 3, 0.0025929127},
+					{"Kliendi äpp: iOS", 2, "EL", 2, 1312, 10, 0.0076219512},
+					{"Juhi äpp: Android", 3, "EL", 2, 2167, 13, 0.0059990771},
+					{"Juhi äpp: iOS", 4, "EL", 2, 317, 0, 0.0000000000},
+					{"Juhi äpi vanus: 1-3 versiooni vanem", 6, "EL", 2, 1013, 4, 0.0039486673},
+					{"Juhi äpi vanus: 4-8 versiooni vanem", 7, "EL", 2, 767, 1, 0.0013037810},
+					{"Juhi äpi vanus: 9+ versiooni vanem", 8, "EL", 2, 198, 1, 0.0050505051},
+					{"Juhi äpi vanus: uusim", 5, "EL", 2, 506, 7, 0.0138339921},
+					{"Kliendi äpp: Android", 1, "mitte-EL", 3, 1170, 200, 0.1709401709},
+					{"Kliendi äpp: iOS", 2, "mitte-EL", 3, 512, 96, 0.1875000000},
+					{"Juhi äpp: Android", 3, "mitte-EL", 3, 1632, 291, 0.1783088235},
+					{"Juhi äpp: iOS", 4, "mitte-EL", 3, 50, 5, 0.1000000000},
+					{"Juhi äpi vanus: 1-3 versiooni vanem", 6, "mitte-EL", 3, 610, 98, 0.1606557377},
+					{"Juhi äpi vanus: 4-8 versiooni vanem", 7, "mitte-EL", 3, 595, 81, 0.1361344538},
+					{"Juhi äpi vanus: 9+ versiooni vanem", 8, "mitte-EL", 3, 229, 74, 0.3231441048},
+					{"Juhi äpi vanus: uusim", 5, "mitte-EL", 3, 248, 43, 0.1733870968}
+					}
+				)
+

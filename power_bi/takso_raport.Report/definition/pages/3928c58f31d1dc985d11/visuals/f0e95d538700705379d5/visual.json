@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "f0e95d538700705379d5",
+  "position": {
+    "x": 1072.5,
+    "y": 1671.25,
+    "z": 33000,
+    "height": 113.75,
+    "width": 767.5,
+    "tabOrder": 33000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Overall analüüsis eristuvad overcharge-ticketiga sõitude puhul kõige tugevamalt Non-EU, client-entered pricing change, halb GPS, prediction pricing ning teatud driver app version. Samuti eristuvad üle 50% distantsikõrvalekaldega sõidud.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

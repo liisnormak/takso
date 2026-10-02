@@ -1,0 +1,167 @@
+table 'UK3 T3 Mudelid'
+	lineageTag: 9041ade1-20e5-4287-91d3-eed2bcacecf0
+
+	column model
+		dataType: string
+		lineageTag: 3072cc2d-97c6-48a0-9bcc-f62702f43656
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [model]
+
+		annotation SummarizationSetBy = User
+
+	column brand
+		dataType: string
+		lineageTag: 879d6ffa-dea0-4867-8a39-eea9a0deb115
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [brand]
+
+		annotation SummarizationSetBy = User
+
+	column piirkond
+		dataType: string
+		lineageTag: 5b96e6bd-765d-4c7d-b4c2-fc9ea4af211f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [piirkond]
+
+		annotation SummarizationSetBy = User
+
+	column n
+		dataType: int64
+		formatString: 0
+		lineageTag: 5995cfd4-0b66-4eef-a14e-14108a42bacb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [n]
+
+		annotation SummarizationSetBy = User
+
+	column tickets
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f8ac4de-8839-48fc-96b5-9b44cb9a70cd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [tickets]
+
+		annotation SummarizationSetBy = User
+
+	column rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 822512e9-3a7a-4479-90bf-5d3f037c5cda
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [rate]
+
+		annotation SummarizationSetBy = User
+
+	column gps_low_share
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 719cd50c-8baf-433b-84ef-a68da52e421e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [gps_low_share]
+
+		annotation SummarizationSetBy = User
+
+	column expected
+		dataType: double
+		formatString: 0.00
+		lineageTag: cb802404-5a58-49ff-a69c-a41e531da36a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [expected]
+
+		annotation SummarizationSetBy = User
+
+	column oe_ratio
+		dataType: double
+		formatString: 0.00
+		lineageTag: db02946a-4e17-4ae5-bdef-6fa42483c0a0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [oe_ratio]
+
+		annotation SummarizationSetBy = User
+
+	column hinnang
+		dataType: string
+		lineageTag: 4bea2387-fca9-4fe3-8c75-518b4111e755
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [hinnang]
+
+		annotation SummarizationSetBy = User
+
+	partition 'UK3 T3 Mudelid' = calculated
+		mode: import
+		source =
+				DATATABLE(
+					"model", STRING, "brand", STRING, "piirkond", STRING, "n", INTEGER, "tickets", INTEGER, "rate", DOUBLE, "gps_low_share", DOUBLE, "expected", DOUBLE, "oe_ratio", DOUBLE, "hinnang", STRING,
+					{
+					{"HMD Global Nokia 2.2", "Nokia (HMD)", "mitte-EL", 78, 4, 0.0512820513, 0.2179487179, 9.8137809122, 0.4075901058, "oodatust vähem"},
+					{"HMD Global TA-1032", "Nokia (HMD)", "segamini", 25, 3, 0.1200000000, 0.3200000000, 3.0797156303, 0.9741159120, "ootuspärane"},
+					{"HUAWEI ALE-L21", "Huawei", "EL", 20, 0, 0.0000000000, 0.1000000000, 0.3699774450, 0.0000000000, "ootuspärane"},
+					{"HUAWEI ANE-LX1", "Huawei", "EL", 50, 0, 0.0000000000, 0.0800000000, 0.2575832008, 0.0000000000, "ootuspärane"},
+					{"HUAWEI ATU-L21", "Huawei", "EL", 35, 0, 0.0000000000, 0.1142857143, 0.4248774550, 0.0000000000, "ootuspärane"},
+					{"HUAWEI FIG-LX1", "Huawei", "EL", 21, 0, 0.0000000000, 0.0476190476, 0.1055925875, 0.0000000000, "ootuspärane"},
+					{"HUAWEI KOB-L09", "Huawei", "EL", 51, 0, 0.0000000000, 0.0000000000, 0.2505414381, 0.0000000000, "ootuspärane"},
+					{"HUAWEI MAR-LX1A", "Huawei", "EL", 63, 0, 0.0000000000, 0.0317460317, 0.2870682063, 0.0000000000, "ootuspärane"},
+					{"HUAWEI POT-LX1", "Huawei", "EL", 28, 3, 0.1071428571, 0.1071428571, 0.3922783151, 7.6476315019, "oodatust rohkem"},
+					{"HUAWEI SNE-LX1", "Huawei", "EL", 26, 0, 0.0000000000, 0.0000000000, 0.1105939558, 0.0000000000, "ootuspärane"},
+					{"HUAWEI VNS-L21", "Huawei", "EL", 36, 3, 0.0833333333, 0.1666666667, 0.7883230931, 3.8055462618, "oodatust rohkem"},
+					{"HUAWEI VTR-L29", "Huawei", "EL", 22, 0, 0.0000000000, 0.0454545455, 0.1031247732, 0.0000000000, "ootuspärane"},
+					{"Infinix X572", "Infinix", "mitte-EL", 21, 5, 0.2380952381, 0.4285714286, 3.4991003446, 1.4289387293, "ootuspärane"},
+					{"Infinix X624B", "Infinix", "mitte-EL", 21, 2, 0.0952380952, 0.3809523810, 3.4377411807, 0.5817773634, "ootuspärane"},
+					{"Itel S12", "Itel", "mitte-EL", 42, 1, 0.0238095238, 0.2142857143, 5.3366165185, 0.1873846465, "oodatust vähem"},
+					{"Samsung SM-A105FN", "Samsung", "EL", 42, 2, 0.0476190476, 0.0238095238, 0.5152061090, 3.8819415476, "ootuspärane"},
+					{"Samsung SM-A202F", "Samsung", "EL", 24, 0, 0.0000000000, 0.0416666667, 0.1183534286, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A405FN", "Samsung", "EL", 38, 0, 0.0000000000, 0.0526315789, 0.1874492923, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A505FN", "Samsung", "EL", 63, 0, 0.0000000000, 0.0317460317, 0.3759069429, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A520F", "Samsung", "EL", 59, 0, 0.0000000000, 0.0677966102, 0.5205931934, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A530F", "Samsung", "EL", 37, 0, 0.0000000000, 0.0540540541, 0.1764742506, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A605FN", "Samsung", "EL", 33, 0, 0.0000000000, 0.0000000000, 0.1672549637, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A705FN", "Samsung", "EL", 43, 0, 0.0000000000, 0.0232558140, 0.2395006568, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-A750FN", "Samsung", "EL", 24, 1, 0.0416666667, 0.0000000000, 0.1155295845, 8.6557915388, "ootuspärane"},
+					{"Samsung SM-G900F", "Samsung", "EL", 23, 1, 0.0434782609, 0.0869565217, 0.4570251392, 2.1880634440, "ootuspärane"},
+					{"Samsung SM-G920F", "Samsung", "EL", 26, 3, 0.1153846154, 0.1153846154, 0.8813857569, 3.4037309730, "ootuspärane"},
+					{"Samsung SM-G930F", "Samsung", "EL", 48, 1, 0.0208333333, 0.1041666667, 1.3390681004, 0.7467880085, "ootuspärane"},
+					{"Samsung SM-G935F", "Samsung", "segamini", 39, 1, 0.0256410256, 0.3333333333, 4.2203894411, 0.2369449583, "ootuspärane"},
+					{"Samsung SM-G950F", "Samsung", "EL", 50, 0, 0.0000000000, 0.0200000000, 0.5910237587, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-G955F", "Samsung", "EL", 21, 0, 0.0000000000, 0.1428571429, 0.9269815309, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-G960F", "Samsung", "EL", 56, 0, 0.0000000000, 0.0178571429, 0.2679119226, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-G965F", "Samsung", "EL", 42, 0, 0.0000000000, 0.0476190476, 0.2933024836, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-G970F", "Samsung", "EL", 26, 0, 0.0000000000, 0.0384615385, 0.1201392279, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-G975F", "Samsung", "EL", 22, 1, 0.0454545455, 0.0454545455, 0.1031247732, 9.6969910256, "ootuspärane"},
+					{"Samsung SM-J330F", "Samsung", "EL", 20, 0, 0.0000000000, 0.0000000000, 0.0985151298, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-J415FN", "Samsung", "EL", 27, 1, 0.0370370370, 0.1111111111, 0.4014675575, 2.4908612946, "ootuspärane"},
+					{"Samsung SM-J510FN", "Samsung", "EL", 31, 0, 0.0000000000, 0.0322580645, 0.1548501524, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-J530F", "Samsung", "EL", 20, 0, 0.0000000000, 0.0000000000, 0.1455651261, 0.0000000000, "ootuspärane"},
+					{"Samsung SM-J600FN", "Samsung", "EL", 24, 1, 0.0416666667, 0.0416666667, 0.5707637568, 1.7520383663, "ootuspärane"},
+					{"Samsung SM-J610FN", "Samsung", "EL", 36, 1, 0.0277777778, 0.1944444444, 0.4732589119, 2.1130082811, "ootuspärane"},
+					{"Samsung SM-J710F", "Samsung", "EL", 31, 0, 0.0000000000, 0.0322580645, 0.1682930085, 0.0000000000, "ootuspärane"},
+					{"TECNO B1", "TECNO", "mitte-EL", 34, 15, 0.4411764706, 0.9411764706, 9.0963472097, 1.6490135715, "oodatust rohkem"},
+					{"TECNO B1p", "TECNO", "mitte-EL", 78, 24, 0.3076923077, 0.8846153846, 21.3212158629, 1.1256393704, "ootuspärane"},
+					{"TECNO BA2", "TECNO", "mitte-EL", 25, 6, 0.2400000000, 0.3200000000, 3.7129433225, 1.6159686477, "ootuspärane"},
+					{"TECNO CF7", "TECNO", "mitte-EL", 25, 2, 0.0800000000, 0.4000000000, 3.9125729871, 0.5111725728, "ootuspärane"},
+					{"TECNO CX Air", "TECNO", "mitte-EL", 20, 4, 0.2000000000, 0.2500000000, 3.3387622873, 1.1980487545, "ootuspärane"},
+					{"TECNO F3", "TECNO", "mitte-EL", 97, 14, 0.1443298969, 0.2783505155, 15.0674067681, 0.9291578979, "ootuspärane"},
+					{"TECNO K7", "TECNO", "mitte-EL", 41, 7, 0.1707317073, 0.3170731707, 6.5821689496, 1.0634792351, "ootuspärane"},
+					{"TECNO KA7", "TECNO", "mitte-EL", 48, 8, 0.1666666667, 0.4375000000, 8.5991940451, 0.9303197437, "ootuspärane"},
+					{"TECNO L8 Lite", "TECNO", "mitte-EL", 22, 1, 0.0454545455, 0.5000000000, 4.2615150855, 0.2346583269, "ootuspärane"},
+					{"TECNO LA7", "TECNO", "mitte-EL", 24, 0, 0.0000000000, 0.2916666667, 3.4613245492, 0.0000000000, "oodatust vähem"},
+					{"TECNO-J8", "TECNO", "mitte-EL", 42, 14, 0.3333333333, 0.6428571429, 9.2630443371, 1.5113821645, "ootuspärane"},
+					{"Xiaomi Redmi Note 7", "Xiaomi", "EL", 36, 0, 0.0000000000, 0.0000000000, 0.1531300926, 0.0000000000, "ootuspärane"},
+					{"iPhone10,4", "iPhone", "EL", 28, 0, 0.0000000000, 0.0000000000, 0.1191011832, 0.0000000000, "ootuspärane"},
+					{"iPhone10,6", "iPhone", "EL", 23, 0, 0.0000000000, 0.1304347826, 0.2153076677, 0.0000000000, "ootuspärane"},
+					{"iPhone7,2", "iPhone", "segamini", 32, 2, 0.0625000000, 0.0000000000, 1.0379458597, 1.9268827765, "ootuspärane"},
+					{"iPhone8,1", "iPhone", "EL", 76, 1, 0.0131578947, 0.0921052632, 1.9534556602, 0.5119133341, "ootuspärane"},
+					{"iPhone8,4", "iPhone", "EL", 29, 0, 0.0000000000, 0.0000000000, 0.1367976529, 0.0000000000, "ootuspärane"},
+					{"iPhone9,3", "iPhone", "EL", 55, 0, 0.0000000000, 0.1090909091, 0.6465753317, 0.0000000000, "ootuspärane"}
+					}
+				)
+
