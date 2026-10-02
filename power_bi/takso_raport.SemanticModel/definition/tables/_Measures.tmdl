@@ -138,6 +138,32 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 738e966f-277d-4e5e-83ed-6b55ae9376a0
 
+	measure 'EU Segment Ride Share %' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Rides'[EU / Non-EU])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fdaeea34-7182-4462-80cf-c3b3bf636b8d
+
+	measure 'EU Segment Overcharge Share %' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    CALCULATE(
+			        [Overcharge Ride Count],
+			        REMOVEFILTERS('Rides'[EU / Non-EU])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8cfc4c3f-a27e-435a-89b1-52f27592bf92
+
 	column Column
 		isHidden
 		formatString: 0
