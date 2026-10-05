@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "fb486e6395e0eb0b4b2e",
+  "name": "4c453d7492cca155a6a7",
   "position": {
-    "x": 0,
-    "y": 3237.1428571428573,
-    "z": 27000,
-    "height": 70,
-    "width": 757.14285714285722,
-    "tabOrder": 9000
+    "x": 20,
+    "y": 325,
+    "z": 5000,
+    "height": 80,
+    "width": 1240,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "kui suur iga price type + GPS grupp on;",
+                    "value": "B. Kas GPS-i kvaliteet on seotud kaebustega?",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "16pt",
+                      "fontWeight": "bold"
                     }
                   }
                 ]
@@ -29,9 +30,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "joonega, kui kõrge on nende overcharge rate.",
+                    "value": "Halb GPS suurendab kaebuste määra kõigis kolmes vaates: EL-is 0,4 % pealt 3,6 % peale (9 korda), mitte-EL-is 11,1 % pealt 28,0 % peale. Halva GPS-iga sõidud on 18 % kõigist sõitudest, kuid annavad 60 % kõigist kaebustest.",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "11pt"
                     }
                   }
                 ]

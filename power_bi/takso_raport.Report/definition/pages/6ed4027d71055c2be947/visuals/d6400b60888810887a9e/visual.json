@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "fb486e6395e0eb0b4b2e",
+  "name": "d6400b60888810887a9e",
   "position": {
-    "x": 0,
-    "y": 3237.1428571428573,
-    "z": 27000,
-    "height": 70,
-    "width": 757.14285714285722,
-    "tabOrder": 9000
+    "x": 20,
+    "y": 795,
+    "z": 7000,
+    "height": 95,
+    "width": 1240,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "kui suur iga price type + GPS grupp on;",
+                    "value": "C. Kas äpi platvorm või versioon on seotud kaebustega?",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "16pt",
+                      "fontWeight": "bold"
                     }
                   }
                 ]
@@ -29,9 +30,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "joonega, kui kõrge on nende overcharge rate.",
+                    "value": "Kliendi äpp ei mõjuta: EL ja mitte-EL vaates on Android ja iOS sarnased. Juhi äpp, mis on uusimast 9 või rohkem versiooni vanem, kahekordistab kaebuste määra mitte-EL piirkonnas (32,3 % vs ligikaudu 16 %). EL-is on vana äpiga sõitudel ainult 1 kaebus, seega seal ei saa mõju kinnitada ega ümber lükata.",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "11pt"
                     }
                   }
                 ]

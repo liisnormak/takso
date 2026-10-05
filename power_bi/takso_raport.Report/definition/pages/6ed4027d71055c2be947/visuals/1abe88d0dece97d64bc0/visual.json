@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "fb486e6395e0eb0b4b2e",
+  "name": "1abe88d0dece97d64bc0",
   "position": {
-    "x": 0,
-    "y": 3237.1428571428573,
-    "z": 27000,
-    "height": 70,
-    "width": 757.14285714285722,
-    "tabOrder": 9000
+    "x": 20,
+    "y": 2480,
+    "z": 13000,
+    "height": 95,
+    "width": 1240,
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "kui suur iga price type + GPS grupp on;",
+                    "value": "E. Kas tegurid koos võimendavad üksteist?",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "16pt",
+                      "fontWeight": "bold"
                     }
                   }
                 ]
@@ -29,9 +30,9 @@
               {
                 "textRuns": [
                   {
-                    "value": "joonega, kui kõrge on nende overcharge rate.",
+                    "value": "Mitte-EL piirkonnas kahekordistab vana juhi äpp kaebuste määra nii hea GPS-i (9,8 % → 19,5 %) kui halva GPS-i korral (24,1 % → 50,0 %). Halb GPS ja vana äpp koos: ligikaudu iga teine sõit lõppes kaebusega. EL-is on vana äpi ja halva GPS-iga sõite ainult 3, seega sealset kombinatsiooni ei saa hinnata.",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "11pt"
                     }
                   }
                 ]

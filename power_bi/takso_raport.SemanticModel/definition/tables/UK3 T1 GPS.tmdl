@@ -1,0 +1,76 @@
+table 'UK3 T1 GPS'
+	lineageTag: c3ded4df-0f05-4f55-941d-0b56784e8e1d
+
+	column gps_grp
+		dataType: string
+		lineageTag: 1e161914-5da8-4b34-81c6-c272dea46809
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [gps_grp]
+
+		annotation SummarizationSetBy = User
+
+	column scope
+		dataType: string
+		lineageTag: c62c8460-869f-4c72-b088-28077dcc7dd1
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [scope]
+		sortByColumn: scope_nr
+
+		annotation SummarizationSetBy = User
+
+	column scope_nr
+		dataType: int64
+		formatString: 0
+		lineageTag: a8ffd5a5-5be7-44d5-8389-0d4b1fcc206b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [scope_nr]
+
+		annotation SummarizationSetBy = User
+
+	column n
+		dataType: int64
+		formatString: 0
+		lineageTag: 78f2c5a2-ddf6-48b0-9239-d2d7fdf65c27
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [n]
+
+		annotation SummarizationSetBy = User
+
+	column tickets
+		dataType: int64
+		formatString: 0
+		lineageTag: 5524ce02-6118-468f-8486-e7efb7728602
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [tickets]
+
+		annotation SummarizationSetBy = User
+
+	column rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: a038702a-d34d-4897-b6e0-d0d0db5726b2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [rate]
+
+		annotation SummarizationSetBy = User
+
+	partition 'UK3 T1 GPS' = calculated
+		mode: import
+		source =
+				DATATABLE(
+					"gps_grp", STRING, "scope", STRING, "scope_nr", INTEGER, "n", INTEGER, "tickets", INTEGER, "rate", DOUBLE,
+					{
+					{"GPS halb (0)", "kõik", 1, 762, 186, 0.2440944882},
+					{"GPS hea (1)", "kõik", 1, 3404, 123, 0.0361339600},
+					{"GPS halb (0)", "EL", 2, 111, 4, 0.0360360360},
+					{"GPS hea (1)", "EL", 2, 2373, 9, 0.0037926675},
+					{"GPS halb (0)", "mitte-EL", 3, 651, 182, 0.2795698925},
+					{"GPS hea (1)", "mitte-EL", 3, 1031, 114, 0.1105722599}
+					}
+				)

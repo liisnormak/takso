@@ -24,6 +24,12 @@ ref table DateTableTemplate_3ad2c87f-b221-46ff-9129-1b9d7f14559b
 ref table LocalDateTable_bf8a385d-8e03-44c1-a214-786dbe92c4d6
 ref table 'App Version'
 ref table _Measures
+ref table 'UK3 T1 GPS'
+ref table 'UK3 T2 Apid'
+ref table 'UK3 T3 Mudelid'
+ref table 'UK3 T4 GPS x app'
+ref table 'UK3 T5 Regressioon'
+ref table 'UK3 T6 Segmendid'
 
 ref cultureInfo en-US
 
