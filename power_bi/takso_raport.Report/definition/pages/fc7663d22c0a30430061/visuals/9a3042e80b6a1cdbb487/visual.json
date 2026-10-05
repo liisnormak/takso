@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "9a3042e80b6a1cdbb487",
   "position": {
-    "x": 117.5,
-    "y": 192.5,
+    "x": 38.888888888888886,
+    "y": 190,
     "z": 5000,
-    "height": 93.75,
-    "width": 153.75,
+    "height": 128.33333333333334,
+    "width": 216.66666666666669,
     "tabOrder": 5000
   },
   "visual": {
@@ -23,11 +23,11 @@
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "EU Indicator"
+                  "Property": "EU / Non-EU"
                 }
               },
-              "queryRef": "Rides.EU Indicator",
-              "nativeQueryRef": "EU Indicator",
+              "queryRef": "Rides.EU / Non-EU",
+              "nativeQueryRef": "EU / Non-EU",
               "active": true
             }
           ]
@@ -41,6 +41,39 @@
         }
       ]
     },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "300cef19b2deaf9d6a69",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "EU / Non-EU"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7c2efcc68c90670ae9e1",
+  "name": "2b525d9f8c8d105ba30c",
   "position": {
-    "x": 36.666666666666664,
-    "y": 1966.6666666666665,
-    "z": 5002,
-    "height": 205.55555555555554,
-    "width": 771.11111111111109,
-    "tabOrder": 5002
+    "x": 38.888888888888886,
+    "y": 2786.6666666666665,
+    "z": 5013,
+    "height": 177.77777777777777,
+    "width": 1412.2222222222222,
+    "tabOrder": 5013
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Pricing type guide",
+                    "value": "Pricing structure differs strongly between EU and non-EU rides. ",
                     "textStyle": {
-                      "fontSize": "20pt"
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
                     }
                   }
                 ]
@@ -36,42 +37,18 @@
               {
                 "textRuns": [
                   {
-                    "value": "Upfront:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": " ",
-                    "textStyle": {
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": "quoted price + final price available",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Prediction:",
+                    "value": "Prediction-type pricing",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
                     }
                   },
                   {
-                    "value": " no quoted price; predicted trip metrics + final price available",
+                    "value": " is concentrated almost entirely in non-EU rides. ",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
                     }
                   }
                 ]
@@ -86,23 +63,25 @@
               {
                 "textRuns": [
                   {
-                    "value": "Upfront destination changed:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": " ",
-                    "textStyle": {
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": "no quoted price recorded; predicted trip metrics + final price available",
+                    "value": "However, non-EU rides also have a substantially higher overcharge rate within ",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "upfront pricing",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": ", suggesting that pricing type alone does not explain the EU/non-EU difference.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
                     }
                   }
                 ]

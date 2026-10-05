@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "7c2efcc68c90670ae9e1",
+  "name": "dc33a4dc279f0e161129",
   "position": {
-    "x": 36.666666666666664,
-    "y": 1966.6666666666665,
-    "z": 5002,
-    "height": 205.55555555555554,
-    "width": 771.11111111111109,
-    "tabOrder": 5002
+    "x": 37.777777777777779,
+    "y": 3672.2222222222222,
+    "z": 5014,
+    "height": 133.33333333333334,
+    "width": 1400,
+    "tabOrder": 5014
   },
   "visual": {
     "visualType": "textbox",
@@ -19,9 +19,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Pricing type guide",
+                    "value": "Low GPS confidence is considerably more common in non-EU rides and is associated with a higher overcharge rate. ",
                     "textStyle": {
-                      "fontSize": "20pt"
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
                     }
                   }
                 ]
@@ -36,73 +37,55 @@
               {
                 "textRuns": [
                   {
-                    "value": "Upfront:",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": " ",
-                    "textStyle": {
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": "quoted price + final price available",
+                    "value": "However, the ",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": "Prediction:",
+                    "value": "non-EU overcharge",
                     "textStyle": {
                       "fontWeight": "bold",
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
                     }
                   },
                   {
-                    "value": " no quoted price; predicted trip metrics + final price available",
+                    "value": " rate remains ",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                  },
                   {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Upfront destination changed:",
+                    "value": "higher ",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "14pt"
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
                     }
                   },
                   {
-                    "value": " ",
-                    "textStyle": {
-                      "fontSize": "14pt"
-                    }
-                  },
-                  {
-                    "value": "no quoted price recorded; predicted trip metrics + final price available",
+                    "value": "at ",
                     "textStyle": {
                       "fontFamily": "Segoe UI",
-                      "fontSize": "14pt"
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "both ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "GPS confidence levels, so GPS confidence alone does not explain the regional difference.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "16pt"
                     }
                   }
                 ]

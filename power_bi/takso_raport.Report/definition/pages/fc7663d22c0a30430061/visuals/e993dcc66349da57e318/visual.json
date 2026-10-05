@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "bfbd24838dadad3b6001",
+  "name": "e993dcc66349da57e318",
   "position": {
-    "x": 763.33333333333337,
-    "y": 441.11111111111109,
-    "z": 5006,
-    "height": 446.66666666666663,
-    "width": 687.77777777777771,
-    "tabOrder": 5006
+    "x": 38.888888888888886,
+    "y": 1156.6666666666667,
+    "z": 5008,
+    "height": 560,
+    "width": 685,
+    "tabOrder": 5008
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -42,27 +42,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Ride Share by Region %"
+                  "Property": "Overcharge Ride Rate"
                 }
               },
-              "queryRef": "_Measures.Ride Share by Region %",
-              "nativeQueryRef": "Ride Share",
-              "displayName": "Ride Share"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Overcharge Share by Region %"
-                }
-              },
-              "queryRef": "_Measures.Overcharge Share by Region %",
-              "nativeQueryRef": "Overcharge Share",
-              "displayName": "Overcharge Share"
+              "queryRef": "_Measures.Overcharge Ride Rate",
+              "nativeQueryRef": "Overcharge Ride Rate"
             }
           ]
         }
@@ -77,7 +61,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Ride Share by Region %"
+                "Property": "Overcharge Ride Rate"
               }
             },
             "direction": "Descending"
@@ -100,19 +84,6 @@
           }
         }
       ],
-      "valueAxis": [
-        {
-          "properties": {
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Share of rides / overcharges'"
-                }
-              }
-            }
-          }
-        }
-      ],
       "labels": [
         {
           "properties": {
@@ -120,20 +91,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "optimizeLabelDisplay": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "1L"
                 }
               }
             }
@@ -148,7 +105,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Non-EU rides make up 40% of rides but 96% of overcharges'"
+                  "Value": "'Overcharge rate is 34× higher for non-EU rides'"
                 }
               }
             }
@@ -157,5 +114,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9f762d1a12e9b4bd44fe",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "EU / Non-EU"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b86b3192fdc93f7783e1",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "_Measures"
+              }
+            },
+            "Property": "Overcharge Ride Rate"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }
