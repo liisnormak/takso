@@ -1,13 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "b5a336aa81bc5cee0d9d",
+  "name": "b8fa3d901e663b64c890",
   "position": {
-    "x": 786.66666666666674,
-    "y": 2923.3333333333335,
-    "z": 30000,
-    "height": 98.333333333333343,
-    "width": 283.33333333333337,
-    "tabOrder": 32000
+    "x": 610,
+    "y": 4463.3333333333339,
+    "z": 32016,
+    "height": 90,
+    "width": 248.33333333333334
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +19,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Pricing Context"
+                      "Entity": "Rides"
                     }
                   },
-                  "Property": "Prediction Price Type"
+                  "Property": "Upfront Price"
                 }
               },
-              "queryRef": "Pricing Context.Prediction Price Type",
-              "nativeQueryRef": "Prediction Price Type",
+              "queryRef": "Rides.Upfront Price",
+              "nativeQueryRef": "Upfront Price",
               "active": true
             }
           ]

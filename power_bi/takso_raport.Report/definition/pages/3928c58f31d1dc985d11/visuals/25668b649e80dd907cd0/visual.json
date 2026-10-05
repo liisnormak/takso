@@ -21,7 +21,8 @@
                   {
                     "value": "See tähendab, et kõigil Non-EU sõitudel on Entered By = client (vähemalt selle visuaali järgi). Seetõttu Key Influencers näitas client väärtust 15× mõjutajana — see on sisuliselt Non-EU tunnuse peegeldus, mitte uus eraldiseisev leid.",
                     "textStyle": {
-                      "fontSize": "16pt"
+                      "fontSize": "16pt",
+                      "color": "#d64550"
                     }
                   }
                 ]

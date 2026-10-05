@@ -1,56 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "6f7e9c543d0238dc5b91",
+  "name": "0866a922900ccc85a408",
   "position": {
-    "x": 1111.6666666666667,
-    "y": 2253.3333333333335,
-    "z": 26000,
-    "height": 232.85714285714286,
-    "width": 672.85714285714289,
-    "tabOrder": 29000
+    "x": 0,
+    "y": 3961.666666666667,
+    "z": 32010,
+    "height": 171.66666666666669,
+    "width": 705
   },
   "visual": {
-    "visualType": "lineClusteredColumnComboChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Pricing Context"
-                    }
-                  },
-                  "Property": "Prediction Price Type"
-                }
-              },
-              "queryRef": "Pricing Context.Prediction Price Type",
-              "nativeQueryRef": "Prediction Price Type",
-              "active": true
-            }
-          ]
-        },
-        "Series": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "GPS Confidence"
-                }
-              },
-              "queryRef": "Rides.GPS Confidence",
-              "nativeQueryRef": "GPS Confidence"
-            }
-          ]
-        },
-        "Y": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -65,11 +27,35 @@
               },
               "queryRef": "_Measures.Distinct Ride Count",
               "nativeQueryRef": "Distinct Ride Count"
-            }
-          ]
-        },
-        "Y2": {
-          "projections": [
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pricing Context"
+                    }
+                  },
+                  "Property": "Reason for Pricing Change"
+                }
+              },
+              "queryRef": "Pricing Context.Reason for Pricing Change",
+              "nativeQueryRef": "Reason for Pricing Change"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Overcharge Ride Count",
+              "nativeQueryRef": "Overcharge Ride Count"
+            },
             {
               "field": {
                 "Measure": {
@@ -102,9 +88,31 @@
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "203.66666526203014D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Pricing Context.Reason for Pricing Change"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

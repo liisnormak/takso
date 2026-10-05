@@ -138,6 +138,26 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 738e966f-277d-4e5e-83ed-6b55ae9376a0
 
+	measure 'Non-EU Both Prices Count' =
+			
+			CALCULATE(
+			    [Distinct Ride Count],
+			    'Rides'[EU Indicator] = 0,
+			    NOT(ISBLANK('Rides'[Metered Price])),
+			    NOT(ISBLANK('Rides'[Upfront Price]))
+			)
+		formatString: 0
+		lineageTag: 76c22bf3-1f6b-4a27-81c6-fb93886b61b7
+
+	measure 'Non-EU Ride Count' =
+			
+			CALCULATE(
+			    [Distinct Ride Count],
+			    'Rides'[EU Indicator] = 0
+			)
+		formatString: 0
+		lineageTag: f7558dbe-394c-456c-90dc-6c88eb21db58
+
 	column Column
 		isHidden
 		formatString: 0

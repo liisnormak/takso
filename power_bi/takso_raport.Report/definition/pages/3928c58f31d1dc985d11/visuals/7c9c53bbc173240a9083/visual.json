@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "b5a336aa81bc5cee0d9d",
+  "name": "7c9c53bbc173240a9083",
   "position": {
-    "x": 786.66666666666674,
-    "y": 2923.3333333333335,
-    "z": 30000,
-    "height": 98.333333333333343,
-    "width": 283.33333333333337,
-    "tabOrder": 32000
+    "x": 610,
+    "y": 4331.666666666667,
+    "z": 32015,
+    "height": 90,
+    "width": 248.33333333333334,
+    "tabOrder": 32010
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Pricing Context"
+                      "Entity": "Rides"
                     }
                   },
-                  "Property": "Prediction Price Type"
+                  "Property": "Price Deviation Group"
                 }
               },
-              "queryRef": "Pricing Context.Prediction Price Type",
-              "nativeQueryRef": "Prediction Price Type",
+              "queryRef": "Rides.Price Deviation Group",
+              "nativeQueryRef": "Price Deviation Group",
               "active": true
             }
           ]
@@ -75,6 +75,11 @@
       ]
     },
     "visualContainerObjects": {
+      "visualHeader": [
+        {
+          "properties": {}
+        }
+      ],
       "background": [
         {
           "properties": {

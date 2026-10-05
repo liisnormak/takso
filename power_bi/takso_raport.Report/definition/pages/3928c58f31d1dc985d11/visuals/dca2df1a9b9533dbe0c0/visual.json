@@ -1,19 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "94509a6ea6283c06013e",
+  "name": "dca2df1a9b9533dbe0c0",
   "position": {
-    "x": 1111.6666666666667,
-    "y": 2485,
-    "z": 28000,
-    "height": 303.33333333333337,
-    "width": 673.33333333333337,
-    "tabOrder": 30000
+    "x": 0,
+    "y": 4238.8888888888887,
+    "z": 32014,
+    "height": 183.33333333333334,
+    "width": 626.66666666666663
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "tableEx",
     "query": {
       "queryState": {
-        "Series": {
+        "Values": {
           "projections": [
             {
               "field": {
@@ -28,11 +27,21 @@
               },
               "queryRef": "Pricing Context.Prediction Price Type",
               "nativeQueryRef": "Prediction Price Type"
-            }
-          ]
-        },
-        "Size": {
-          "projections": [
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Distinct Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Distinct Ride Count",
+              "nativeQueryRef": "Distinct Ride Count"
+            },
             {
               "field": {
                 "Measure": {
@@ -46,30 +55,7 @@
               },
               "queryRef": "_Measures.Overcharge Ride Count",
               "nativeQueryRef": "Overcharge Ride Count"
-            }
-          ]
-        },
-        "X": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Distinct Ride Count"
-                }
-              },
-              "queryRef": "_Measures.Distinct Ride Count",
-              "nativeQueryRef": "Distinct Ride Count",
-              "active": true
-            }
-          ]
-        },
-        "Y": {
-          "projections": [
+            },
             {
               "field": {
                 "Measure": {

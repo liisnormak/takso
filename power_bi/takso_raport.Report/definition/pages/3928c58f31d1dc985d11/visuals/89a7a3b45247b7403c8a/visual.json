@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "fb486e6395e0eb0b4b2e",
+  "name": "89a7a3b45247b7403c8a",
   "position": {
-    "x": 1096.6666666666667,
-    "y": 2800,
-    "z": 27000,
-    "height": 85,
-    "width": 711.66666666666674,
-    "tabOrder": 9000
+    "x": 781.66666666666674,
+    "y": 4183.3333333333339,
+    "z": 32013,
+    "height": 133.33333333333334,
+    "width": 780,
+    "tabOrder": 32009
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "kui suur iga price type + GPS grupp on;",
+                    "value": "Prediction-hinnastusega sõitudel on overcharge rate 20,34%, samas kui upfront-sõitudel on see 3,47%. ",
                     "textStyle": {
                       "fontSize": "16pt"
                     }
@@ -29,10 +29,17 @@
               {
                 "textRuns": [
                   {
-                    "value": "joonega, kui kõrge on nende overcharge rate.",
+                    "value": "Prediction-sõite on umbes 1000, seega ei ole tegemist väikese üksikute sõitude grupiga.",
                     "textStyle": {
                       "fontSize": "16pt"
                     }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
                   }
                 ]
               }

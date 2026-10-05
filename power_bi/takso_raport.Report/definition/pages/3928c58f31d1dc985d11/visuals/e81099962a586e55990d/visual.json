@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "fb486e6395e0eb0b4b2e",
+  "name": "e81099962a586e55990d",
   "position": {
-    "x": 1096.6666666666667,
-    "y": 2800,
-    "z": 27000,
-    "height": 85,
-    "width": 711.66666666666674,
-    "tabOrder": 9000
+    "x": 895,
+    "y": 3650,
+    "z": 32009,
+    "height": 106.66666666666667,
+    "width": 478.33333333333337,
+    "tabOrder": 32007
   },
   "visual": {
     "visualType": "textbox",
@@ -19,7 +19,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "kui suur iga price type + GPS grupp on;",
+                    "value": "veidi parem visuaal:",
                     "textStyle": {
                       "fontSize": "16pt"
                     }
@@ -29,7 +29,17 @@
               {
                 "textRuns": [
                   {
-                    "value": "joonega, kui kõrge on nende overcharge rate.",
+                    "value": "tulbad = kui palju sõite selles grupis üldse on",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "joon = kui suur osa neist sai overcharge-ticket'i",
                     "textStyle": {
                       "fontSize": "16pt"
                     }

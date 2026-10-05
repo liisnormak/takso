@@ -1,55 +1,38 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "94509a6ea6283c06013e",
+  "name": "b7a5e31e3b80001a33b7",
   "position": {
-    "x": 1111.6666666666667,
-    "y": 2485,
-    "z": 28000,
-    "height": 303.33333333333337,
-    "width": 673.33333333333337,
-    "tabOrder": 30000
+    "x": 1.6666666666666667,
+    "y": 4463.3333333333339,
+    "z": 32017,
+    "height": 195,
+    "width": 588.33333333333337,
+    "tabOrder": 32011
   },
   "visual": {
-    "visualType": "scatterChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
-        "Series": {
+        "Category": {
           "projections": [
             {
               "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Pricing Context"
+                      "Entity": "Rides"
                     }
                   },
-                  "Property": "Prediction Price Type"
+                  "Property": "Price Deviation Group"
                 }
               },
-              "queryRef": "Pricing Context.Prediction Price Type",
-              "nativeQueryRef": "Prediction Price Type"
+              "queryRef": "Rides.Price Deviation Group",
+              "nativeQueryRef": "Price Deviation Group",
+              "active": true
             }
           ]
         },
-        "Size": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Overcharge Ride Count"
-                }
-              },
-              "queryRef": "_Measures.Overcharge Ride Count",
-              "nativeQueryRef": "Overcharge Ride Count"
-            }
-          ]
-        },
-        "X": {
+        "Tooltips": {
           "projections": [
             {
               "field": {
@@ -63,8 +46,21 @@
                 }
               },
               "queryRef": "_Measures.Distinct Ride Count",
-              "nativeQueryRef": "Distinct Ride Count",
-              "active": true
+              "nativeQueryRef": "Distinct Ride Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Overcharge Ride Count"
+                }
+              },
+              "queryRef": "_Measures.Overcharge Ride Count",
+              "nativeQueryRef": "Overcharge Ride Count"
             }
           ]
         },
@@ -86,6 +82,23 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Rides"
+                  }
+                },
+                "Property": "Price Deviation Group"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "drillFilterOtherVisuals": true
