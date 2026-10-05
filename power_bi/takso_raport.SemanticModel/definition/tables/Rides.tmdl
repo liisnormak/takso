@@ -434,6 +434,111 @@ table Rides
 
 		annotation SummarizationSetBy = Automatic
 
+	column Duration_min = Rides[Duration]/60
+		formatString: 0.00
+		lineageTag: dfd71750-64b8-443c-95b4-c050b33f29f3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column predicted_duration_min = Rides[Predicted Duration] / 60
+		formatString: 0.00
+		lineageTag: 0dd22bf8-ebb9-41a1-a514-ff2de3447b6d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_dif = Rides[Duration_min] - Rides[predicted_duration_min]
+		formatString: 0.00
+		lineageTag: 14079f15-aed3-4ced-8d90-b5473d4e47b2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_km = Rides[Distance] / 1000
+		formatString: 0.00
+		lineageTag: 7f2e4a91-6c38-4b15-a8d7-91e5f03c624b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_group =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[distance_km] <= 2, "0–2 km",
+			    Rides[distance_km] <= 5, "2–5 km",
+			    Rides[distance_km] <= 10, "5–10 km",
+			    Rides[distance_km] <= 15, "10–15 km",
+			    Rides[distance_km] <= 20, "15–20 km",
+			    "≥ 20 km"
+			)
+		lineageTag: fade8c95-fc24-4283-a529-ee3cb8b83c3b
+		summarizeBy: none
+		sortByColumn: distance_group_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_group_order =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[distance_km] <= 2, 1,
+			    Rides[distance_km] <= 5, 2,
+			    Rides[distance_km] <= 10, 3,
+			    Rides[distance_km] <= 15, 4,
+			    Rides[distance_km] <= 20, 5,
+			    6
+			)
+		formatString: 0
+		lineageTag: 349e7af8-c625-4f51-9ec2-5156083dbbff
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_dif_group =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[duration_dif] <= -10, BLANK(),
+			    Rides[duration_dif] <= -5, "−10 kuni −5 min",
+			    Rides[duration_dif] <= 0, "−5 kuni 0 min",
+			    Rides[duration_dif] <= 5, "0 kuni 5 min",
+			    Rides[duration_dif] <= 10, "5 kuni 10 min",
+			    Rides[duration_dif] <= 20, "10 kuni 20 min",
+			    Rides[duration_dif] <= 30, "20 kuni 30 min",
+			    Rides[duration_dif] <= 60, "30 kuni 60 min",
+			    "≥ 60 min"
+			)
+		lineageTag: c526bbd4-9868-48ac-8044-313d52076a62
+		summarizeBy: none
+		sortByColumn: duration_dif_group_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_dif_group_order =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[duration_dif] <= -5, 1,
+			    Rides[duration_dif] <= 0, 2,
+			    Rides[duration_dif] <= 5, 3,
+			    Rides[duration_dif] <= 10, 4,
+			    Rides[duration_dif] <= 20, 5,
+			    Rides[duration_dif] <= 30, 6,
+			    Rides[duration_dif] <= 60, 7,
+			    8
+			)
+		formatString: 0
+		lineageTag: c33fefc4-2aae-4307-b978-725b3f1d521b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Rides = m
 		mode: import
 		source =
