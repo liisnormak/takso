@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "48fc498fbc67e886ad0b",
+  "name": "757f8116a0f38ce2cc54",
   "position": {
-    "x": 0,
-    "y": 1.6666666666666667,
-    "z": 1,
-    "height": 138.33333333333334,
-    "width": 148.33333333333334,
-    "tabOrder": 1
+    "x": 161.66666666666669,
+    "y": 0,
+    "z": 5,
+    "height": 140,
+    "width": 201.66666666666669,
+    "tabOrder": 5
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,12 +23,11 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Distinct Ride Count"
+                  "Property": "Overcharge Ride Rate"
                 }
               },
-              "queryRef": "_Measures.Distinct Ride Count",
-              "nativeQueryRef": "Distinct Ride Count",
-              "format": "0.00"
+              "queryRef": "_Measures.Overcharge Ride Rate",
+              "nativeQueryRef": "Overcharge Ride Rate"
             }
           ]
         }
@@ -43,7 +42,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Distinct Ride Count"
+                "Property": "Overcharge Ride Rate"
               }
             },
             "direction": "Descending"
@@ -53,42 +52,6 @@
       }
     },
     "objects": {
-      "layout": [
-        {
-          "properties": {
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'middle'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "value": [
-        {
-          "properties": {
-            "horizontalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "22D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
       "label": [
         {
           "properties": {
@@ -105,23 +68,45 @@
           }
         }
       ],
-      "cardCalloutArea": [
+      "value": [
         {
           "properties": {
-            "show": {
+            "horizontalAlignment": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "'center'"
                 }
               }
             },
-            "backgroundFillColor": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "fillCustom": [
+        {
+          "properties": {
+            "fillColor": {
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.6
+                    "Literal": {
+                      "Value": "'#EC0D1F'"
                     }
                   }
                 }
@@ -130,6 +115,19 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            }
           }
         }
       ]
@@ -148,7 +146,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Kõik sõidud'"
+                  "Value": "'Kaebuste osakaal (%)'"
                 }
               }
             },
@@ -176,11 +174,23 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.6
+                    "Literal": {
+                      "Value": "'#EC0D1F'"
                     }
                   }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -193,7 +203,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "2f7ef8d14e165e3bafcb",
+        "name": "e30b2193651bb22f7e17",
         "field": {
           "Measure": {
             "Expression": {
@@ -201,7 +211,7 @@
                 "Entity": "_Measures"
               }
             },
-            "Property": "Distinct Ride Count"
+            "Property": "Overcharge Ride Rate"
           }
         },
         "type": "Advanced"

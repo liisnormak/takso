@@ -539,6 +539,15 @@ table Rides
 
 		annotation SummarizationSetBy = Automatic
 
+	column predicted_distance_km =
+			
+			DIVIDE(Rides[Predicted Distance], 1000)
+		formatString: 0.00
+		lineageTag: 06e19a8e-0336-4e38-9e98-00551224bbc5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Rides = m
 		mode: import
 		source =

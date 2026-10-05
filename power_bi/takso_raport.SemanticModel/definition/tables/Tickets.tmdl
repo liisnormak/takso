@@ -41,6 +41,18 @@ table Tickets
 
 		annotation SummarizationSetBy = Automatic
 
+	column overcharge_status =
+			
+			SWITCH(
+			    Tickets[Overpaid Ride Ticket],
+			    1, "Jah",
+			    0, "Ei"
+			)
+		lineageTag: 43c4a155-c7b7-4154-b989-fc1233768639
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Tickets = m
 		mode: import
 		source =

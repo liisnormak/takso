@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
-  "name": "285dc288a19f1644da05",
+  "name": "0a310414334644dff553",
   "position": {
-    "x": 0,
+    "x": 665,
     "y": 431.66666666666669,
-    "z": 3,
+    "z": 4,
     "height": 288.33333333333337,
-    "width": 613.33333333333337,
-    "tabOrder": 3
+    "width": 615,
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "scatterChart",
@@ -41,11 +41,11 @@
                       "Entity": "Rides"
                     }
                   },
-                  "Property": "predicted_distance_km"
+                  "Property": "predicted_duration_min"
                 }
               },
-              "queryRef": "Sum(Rides.predicted_distance_km)",
-              "nativeQueryRef": "predicted_distance_km",
+              "queryRef": "Sum(Rides.predicted_duration_min)",
+              "nativeQueryRef": "predicted_duration_min",
               "active": true
             }
           ]
@@ -54,17 +54,22 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "Aggregation": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Rides"
+                        }
+                      },
+                      "Property": "Duration_min"
                     }
                   },
-                  "Property": "distance_km"
+                  "Function": 0
                 }
               },
-              "queryRef": "Sum(Rides.distance_km)",
-              "nativeQueryRef": "distance_km"
+              "queryRef": "Sum(Rides.Duration_min)",
+              "nativeQueryRef": "Sum of Duration_min"
             }
           ]
         }
@@ -94,17 +99,23 @@
       "categoryAxis": [
         {
           "properties": {
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "'Prognoositud teepikkus (km)'"
+                  "Value": "'Prognoositud sõiduaeg (min)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tegelik sõiduaeg (min)'"
                 }
               }
             }
@@ -123,19 +134,6 @@
             }
           }
         }
-      ],
-      "valueAxis": [
-        {
-          "properties": {
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Tegelik teepikkus (km)'"
-                }
-              }
-            }
-          }
-        }
       ]
     },
     "visualContainerObjects": {
@@ -145,14 +143,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Tegelik ja prognoositud teepikkus (regressioonijoon)'"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
+                  "Value": "'Tegelik ja prognoositud sõiduaeg (regressioonijoon)'"
                 }
               }
             }
@@ -165,35 +156,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "7f1d0d02e594c5bc8b56",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Rides"
-              }
-            },
-            "Property": "predicted_distance_km"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "3039e1ff65e56574701f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Rides"
-              }
-            },
-            "Property": "distance_km"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1e343ba3eadb61855b29",
+        "name": "d331fe23efa0180e4490",
         "field": {
           "Column": {
             "Expression": {
@@ -205,6 +168,39 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "3515b74fea5ea657fd0e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "predicted_duration_min"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c7836d18d9bd57bc07e2",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Rides"
+                  }
+                },
+                "Property": "Duration_min"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }
