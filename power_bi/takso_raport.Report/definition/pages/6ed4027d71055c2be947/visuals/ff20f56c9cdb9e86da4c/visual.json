@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "ff20f56c9cdb9e86da4c",
+  "position": {
+    "x": 20,
+    "y": 20,
+    "z": 2000,
+    "height": 85,
+    "width": 1240,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Uurimisküsimus 3: millised tehnilised tegurid on seotud overcharge-ticketi tõenäosusega?",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Tegurid: GPS confidence, kliendi ja juhi äpp, juhi telefonimudel ning nende kombinatsioonid. Iga võrdlus on tehtud kolmes vaates: kõik sõidud, EL ja mitte-EL. Kaebuste keskmine määr: kõik 7,4 %, EL 0,5 %, mitte-EL 17,6 %. Tulpa tuleb alati võrrelda oma vaate keskmisega.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

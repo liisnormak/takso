@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "44413bc642be571d4e29",
+  "position": {
+    "x": 20,
+    "y": 3565,
+    "z": 18000,
+    "height": 85,
+    "width": 1240,
+    "tabOrder": 18000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "G. Kuhu ettevõte peaks sekkuma?",
+                    "textStyle": {
+                      "fontSize": "16pt",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Paremal = palju sõite, üleval = kõrge kaebuste määr, suur mull = palju kaebusi. Halb GPS annab 60 % kaebustest, see on suurim mõju. Vana juhi äpp on 10 % sõitudest, kuid annab 24 % kaebustest, ja selle uuendamine on lihtsaim samm. Kõrgeima halva GPS-i osakaaluga telefonimudelid on konkreetne sihtmärk.",
+                    "textStyle": {
+                      "fontSize": "11pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
