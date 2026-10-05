@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "25668b649e80dd907cd0",
+  "name": "442edb0dd3fe863635c8",
   "position": {
-    "x": 1057.7777777777778,
-    "y": 2018.8888888888889,
-    "z": 32003,
-    "height": 110,
-    "width": 782.22222222222217,
-    "tabOrder": 32002
+    "x": 423.33333333333331,
+    "y": 190,
+    "z": 5007,
+    "height": 150,
+    "width": 1003,
+    "tabOrder": 5007
   },
   "visual": {
     "visualType": "textbox",
@@ -19,10 +19,16 @@
               {
                 "textRuns": [
                   {
-                    "value": "See tähendab, et kõigil Non-EU sõitudel on Entered By = client (vähemalt selle visuaali järgi). Seetõttu Key Influencers näitas client väärtust 15× mõjutajana — see on sisuliselt Non-EU tunnuse peegeldus, mitte uus eraldiseisev leid.",
+                    "value": "Data scope:",
                     "textStyle": {
-                      "fontSize": "16pt",
-                      "color": "#d64550"
+                      "fontWeight": "bold",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " This analysis covers only rides associated with support tickets, not all Bolt rides.",
+                    "textStyle": {
+                      "fontSize": "16pt"
                     }
                   }
                 ]

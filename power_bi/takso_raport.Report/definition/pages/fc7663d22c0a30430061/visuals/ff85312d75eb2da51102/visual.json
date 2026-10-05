@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "ff85312d75eb2da51102",
   "position": {
-    "x": 38,
-    "y": 391,
+    "x": 38.888888888888886,
+    "y": 340,
     "z": 0,
-    "height": 714,
-    "width": 708,
+    "height": 547.77777777777771,
+    "width": 707.77777777777771,
     "tabOrder": 0
   },
   "visual": {
@@ -190,5 +190,107 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9fe23a028c613837d508",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Pricing Context"
+              }
+            },
+            "Property": "Prediction Price Type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "269ced5a57307e5ab7cc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "Destination Change Number"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1d45e8fa0ff53a40d492",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "Distance"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "00aed2fc77e7e4be282d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Pricing Context"
+              }
+            },
+            "Property": "Reason for Pricing Change"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "990a5acd55acf3e2f175",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "EU / Non-EU"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8e2b011da1c8b7c7878c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "GPS Confidence Level"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "88dd67d6fe6c74b8b5b7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Order"
+              }
+            },
+            "Property": "Had Overpaid Ride Ticket"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

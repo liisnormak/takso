@@ -158,6 +158,32 @@ table _Measures
 		formatString: 0
 		lineageTag: f7558dbe-394c-456c-90dc-6c88eb21db58
 
+	measure 'Ride Share by Region %' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Rides'[EU / Non-EU])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 94accf43-2419-42a2-b485-73e7e5604c9b
+
+	measure 'Overcharge Share by Region %' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    CALCULATE(
+			        [Overcharge Ride Count],
+			        REMOVEFILTERS('Rides'[EU / Non-EU])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d33f5cb0-d76b-48ca-91ac-7ad8720e2385
+
 	column Column
 		isHidden
 		formatString: 0

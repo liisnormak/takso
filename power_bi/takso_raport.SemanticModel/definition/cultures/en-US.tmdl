@@ -7138,6 +7138,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.736
 			          }
+			        },
+			        {
+			          "GPS Confidence:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -10589,6 +10599,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.727
 			          }
+			        },
+			        {
+			          "Share of Rides": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -10630,6 +10650,26 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Overcharge Rides (non-EU)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Overcharge Rides (EU)": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -11024,17 +11064,17 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.average_price_deviation_upfront_price_available": {
+			    "entity__measure.average_price_deviation_VEITSA_KATKI": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "Average Price Deviation (Upfront Price Available)"
+			          "ConceptualProperty": "Average Price Deviation (VEITSA KATKI!)"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "average price deviation (upfront price available)": {
+			          "average price deviation (VEITSA KATKI!)": {
 			            "State": "Generated"
 			          }
 			        },
@@ -11238,32 +11278,60 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.EU_segment_ride_share_": {
+			    "entity__measure.nonEU_both_prices_count": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "EU Segment Ride Share %"
+			          "ConceptualProperty": "Non-EU Both Prices Count"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "EU segment ride share %": {
+			          "non-EU both prices count": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "eu segment ride share percentage": {
+			          "non EU both prices count": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "non eu both price amount": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.78
+			            "Weight": 0.757
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.nonEU_ride_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Non-EU Ride Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "non-EU ride count": {
+			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "eu segment ride share pct": {
+			          "non EU ride count": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "non-eu ride amount": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11273,7 +11341,43 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu division ride share %": {
+			          "non eu ride amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.ride_share_by_region_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Ride Share by Region %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ride share by region %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ride share by location %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.693
+			          }
+			        },
+			        {
+			          "ride share by province %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11283,7 +11387,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu subdivision ride share %": {
+			          "ride share by region percentage": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11293,7 +11397,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu section ride share %": {
+			          "ride share by area %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11303,7 +11407,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu sector ride share %": {
+			          "ride share by district %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11313,7 +11417,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu bit ride share %": {
+			          "ride share by section %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11323,7 +11427,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu fragment ride share %": {
+			          "ride share by zone %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11333,7 +11437,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu part ride share %": {
+			          "ride share by continent %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11343,13 +11447,23 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu piece ride share %": {
+			          "ride share by region pct": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "ride part by region %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
 			          }
 			        },
 			        {
@@ -11364,42 +11478,32 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "entity__measure.EU_segment_overcharge_share_": {
+			    "entity__measure.overcharge_share_by_region_": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
-			          "ConceptualProperty": "EU Segment Overcharge Share %"
+			          "ConceptualProperty": "Overcharge Share by Region %"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "EU segment overcharge share %": {
+			          "overcharge share by region %": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "eu segment overcharge share percentage": {
+			          "overcharge share by location %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.78
+			            "Weight": 0.693
 			          }
 			        },
 			        {
-			          "eu segment overcharge share pct": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.757
-			          }
-			        },
-			        {
-			          "eu division overcharge share %": {
+			          "overcharge share by province %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11409,7 +11513,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu subdivision overcharge share %": {
+			          "overcharge share by region percentage": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11419,7 +11523,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu section overcharge share %": {
+			          "overcharge share by area %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11429,7 +11533,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu sector overcharge share %": {
+			          "overcharge share by district %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11439,7 +11543,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu bit overcharge share %": {
+			          "overcharge share by section %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11449,7 +11553,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu fragment overcharge share %": {
+			          "overcharge share by zone %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11459,7 +11563,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu part overcharge share %": {
+			          "overcharge share by continent %": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
@@ -11469,13 +11573,23 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "eu piece overcharge share %": {
+			          "overcharge share by region pct": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "overcharge part by region %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
 			          }
 			        },
 			        {
@@ -11584,7 +11698,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ride_has_entity__measure_EU_segment_overcharge_share_": {
+			    "ride_has_entity__measure_overcharge_share_by_region_": {
 			      "Binding": {
 			        "ConceptualEntity": "Rides"
 			      },
@@ -11595,9 +11709,9 @@ cultureInfo en-US
 			            "Entity": "ride"
 			          }
 			        },
-			        "entity__measure.EU_segment_overcharge_share_": {
+			        "entity__measure.overcharge_share_by_region_": {
 			          "Target": {
-			            "Entity": "entity__measure.EU_segment_overcharge_share_"
+			            "Entity": "entity__measure.overcharge_share_by_region_"
 			          }
 			        }
 			      },
@@ -11608,16 +11722,16 @@ cultureInfo en-US
 			              "Role": "ride"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.EU_segment_overcharge_share_"
+			              "Role": "entity__measure.overcharge_share_by_region_"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "rides_have_EU_segment_overcharge_share_"
+			          "ID": "rides_have_overcharge_share_by_region_"
 			        }
 			      ]
 			    },
-			    "ride_has_entity__measure_EU_segment_ride_share_": {
+			    "ride_has_entity__measure_ride_share_by_region_": {
 			      "Binding": {
 			        "ConceptualEntity": "Rides"
 			      },
@@ -11628,9 +11742,9 @@ cultureInfo en-US
 			            "Entity": "ride"
 			          }
 			        },
-			        "entity__measure.EU_segment_ride_share_": {
+			        "entity__measure.ride_share_by_region_": {
 			          "Target": {
-			            "Entity": "entity__measure.EU_segment_ride_share_"
+			            "Entity": "entity__measure.ride_share_by_region_"
 			          }
 			        }
 			      },
@@ -11641,12 +11755,78 @@ cultureInfo en-US
 			              "Role": "ride"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.EU_segment_ride_share_"
+			              "Role": "entity__measure.ride_share_by_region_"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "rides_have_EU_segment_ride_share_"
+			          "ID": "rides_have_ride_share_by_region_"
+			        }
+			      ]
+			    },
+			    "ride_has_entity__measure_nonEU_ride_count": {
+			      "Binding": {
+			        "ConceptualEntity": "Rides"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "ride": {
+			          "Target": {
+			            "Entity": "ride"
+			          }
+			        },
+			        "entity__measure.nonEU_ride_count": {
+			          "Target": {
+			            "Entity": "entity__measure.nonEU_ride_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "ride"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.nonEU_ride_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rides_have_nonEU_ride_count"
+			        }
+			      ]
+			    },
+			    "ride_has_entity__measure_nonEU_both_prices_count": {
+			      "Binding": {
+			        "ConceptualEntity": "Rides"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "ride": {
+			          "Target": {
+			            "Entity": "ride"
+			          }
+			        },
+			        "entity__measure.nonEU_both_prices_count": {
+			          "Target": {
+			            "Entity": "entity__measure.nonEU_both_prices_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "ride"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.nonEU_both_prices_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "rides_have_nonEU_both_prices_count"
 			        }
 			      ]
 			    },
@@ -11881,7 +12061,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "ride_has_entity__measure_average_price_deviation_upfront_price_available": {
+			    "ride_has_entity__measure_average_price_deviation_VEITSA_KATKI": {
 			      "Binding": {
 			        "ConceptualEntity": "Rides"
 			      },
@@ -11892,9 +12072,9 @@ cultureInfo en-US
 			            "Entity": "ride"
 			          }
 			        },
-			        "entity__measure.average_price_deviation_upfront_price_available": {
+			        "entity__measure.average_price_deviation_VEITSA_KATKI": {
 			          "Target": {
-			            "Entity": "entity__measure.average_price_deviation_upfront_price_available"
+			            "Entity": "entity__measure.average_price_deviation_VEITSA_KATKI"
 			          }
 			        }
 			      },
@@ -11905,12 +12085,12 @@ cultureInfo en-US
 			              "Role": "ride"
 			            },
 			            "Object": {
-			              "Role": "entity__measure.average_price_deviation_upfront_price_available"
+			              "Role": "entity__measure.average_price_deviation_VEITSA_KATKI"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "rides_have_average_price_deviation_upfront_price_available"
+			          "ID": "rides_have_average_price_deviation_VEITSA_KATKI"
 			        }
 			      ]
 			    },

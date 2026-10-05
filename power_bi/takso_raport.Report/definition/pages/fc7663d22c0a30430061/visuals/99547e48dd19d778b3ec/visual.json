@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "99547e48dd19d778b3ec",
   "position": {
-    "x": 38,
-    "y": 2373,
+    "x": 37.777777777777779,
+    "y": 4317.7777777777774,
     "z": 5004,
-    "height": 342,
-    "width": 687,
+    "height": 126.66666666666666,
+    "width": 686.66666666666663,
     "tabOrder": 5004
   },
   "visual": {
@@ -72,72 +72,6 @@
                       "fontFamily": "Segoe UI",
                       "fontSize": "12pt",
                       "color": "#a1343c"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Seega:",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "12pt",
-                      "color": "#a1343c"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Overcharge rides are heavily concentrated in the non-EU segment. ",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "16pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Non-EU rides also differ structurally from EU rides in pricing method and GPS confidence. ",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "16pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Low GPS confidence is associated with higher overcharge rates, but the EU/non-EU gap remains at both GPS confidence levels.",
-                    "textStyle": {
-                      "fontFamily": "Segoe UI",
-                      "fontSize": "16pt"
                     }
                   }
                 ]
