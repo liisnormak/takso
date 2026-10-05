@@ -51,6 +51,24 @@
             }
           ]
         },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T3 Halva GPS osakaal"
+                }
+              },
+              "queryRef": "_Measures.UK3 T3 Halva GPS osakaal",
+              "nativeQueryRef": "UK3 T3 Halva GPS osakaal"
+            }
+          ]
+        },
         "Tooltips": {
           "projections": [
             {
@@ -82,24 +100,6 @@
               "nativeQueryRef": "UK3 T3 Sõitude arv"
             }
           ]
-        },
-        "Y": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "UK3 T3 Halva GPS osakaal"
-                }
-              },
-              "queryRef": "_Measures.UK3 T3 Halva GPS osakaal",
-              "nativeQueryRef": "UK3 T3 Halva GPS osakaal"
-            }
-          ]
         }
       },
       "sortDefinition": {
@@ -117,7 +117,8 @@
             },
             "direction": "Descending"
           }
-        ]
+        ],
+        "isDefaultSort": false
       }
     },
     "objects": {

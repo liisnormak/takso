@@ -32,24 +32,6 @@
             }
           ]
         },
-        "Size": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "UK3 T6 Kaebusi"
-                }
-              },
-              "queryRef": "_Measures.UK3 T6 Kaebusi",
-              "nativeQueryRef": "UK3 T6 Kaebusi"
-            }
-          ]
-        },
         "X": {
           "projections": [
             {
@@ -64,8 +46,7 @@
                 }
               },
               "queryRef": "_Measures.UK3 T6 Sõitude arv",
-              "nativeQueryRef": "UK3 T6 Sõitude arv",
-              "active": true
+              "nativeQueryRef": "UK3 T6 Sõitude arv"
             }
           ]
         },
@@ -86,10 +67,41 @@
               "nativeQueryRef": "UK3 T6 Kaebuste määr"
             }
           ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T6 Kaebusi"
+                }
+              },
+              "queryRef": "_Measures.UK3 T6 Kaebusi",
+              "nativeQueryRef": "UK3 T6 Kaebusi"
+            }
+          ]
         }
       }
     },
     "objects": {
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
       "categoryLabels": [
         {
           "properties": {

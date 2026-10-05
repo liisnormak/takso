@@ -13,22 +13,39 @@
     "visualType": "scatterChart",
     "query": {
       "queryState": {
-        "Series": {
+        "X": {
           "projections": [
             {
               "field": {
-                "Column": {
+                "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "UK3 T3 Mudelid"
+                      "Entity": "_Measures"
                     }
                   },
-                  "Property": "model"
+                  "Property": "UK3 T3 Halva GPS osakaal"
                 }
               },
-              "queryRef": "UK3 T3 Mudelid.model",
-              "nativeQueryRef": "model",
-              "active": true
+              "queryRef": "_Measures.UK3 T3 Halva GPS osakaal",
+              "nativeQueryRef": "UK3 T3 Halva GPS osakaal"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T3 Kaebuste määr"
+                }
+              },
+              "queryRef": "_Measures.UK3 T3 Kaebuste määr",
+              "nativeQueryRef": "UK3 T3 Kaebuste määr"
             }
           ]
         },
@@ -50,45 +67,47 @@
             }
           ]
         },
-        "X": {
+        "Category": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "_Measures"
+                      "Entity": "UK3 T3 Mudelid"
                     }
                   },
-                  "Property": "UK3 T3 Halva GPS osakaal"
+                  "Property": "model"
                 }
               },
-              "queryRef": "_Measures.UK3 T3 Halva GPS osakaal",
-              "nativeQueryRef": "UK3 T3 Halva GPS osakaal",
+              "queryRef": "UK3 T3 Mudelid.model",
+              "nativeQueryRef": "model",
               "active": true
             }
           ]
         },
-        "Y": {
+        "Series": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "_Measures"
+                      "Entity": "UK3 T3 Mudelid"
                     }
                   },
-                  "Property": "UK3 T3 Kaebuste määr"
+                  "Property": "brand"
                 }
               },
-              "queryRef": "_Measures.UK3 T3 Kaebuste määr",
-              "nativeQueryRef": "UK3 T3 Kaebuste määr"
+              "queryRef": "UK3 T3 Mudelid.brand",
+              "nativeQueryRef": "brand",
+              "active": true
             }
           ]
         }
       }
     },
+    "objects": {},
     "visualContainerObjects": {
       "title": [
         {
@@ -103,7 +122,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Mudelid: halb GPS (X) ja kaebuste määr (Y)'"
+                  "Value": "'Mudelid: halb GPS (X) ja kaebuste määr (Y), värv = bränd'"
                 }
               }
             },

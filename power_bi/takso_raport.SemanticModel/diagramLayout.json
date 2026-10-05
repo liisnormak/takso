@@ -11,7 +11,7 @@
         {
           "location": {
             "x": 1838.2025299493625,
-            "y": 368.81464806563463
+            "y": 318.26059134488719
           },
           "nodeIndex": "_Measures",
           "size": {
@@ -23,7 +23,7 @@
         {
           "location": {
             "x": 93.264265187720781,
-            "y": 208.56092957298114
+            "y": 158.0068728522337
           },
           "nodeIndex": "Tickets",
           "nodeLineageTag": "9a93d3af-e604-40a7-938b-76c916a5d61a",
@@ -36,7 +36,7 @@
         {
           "location": {
             "x": 388.85893724360096,
-            "y": 318.998814642659
+            "y": 268.44475792191156
           },
           "nodeIndex": "Rides",
           "size": {
@@ -48,7 +48,7 @@
         {
           "location": {
             "x": 805.91681566364832,
-            "y": 500.38495536200674
+            "y": 449.8308986412593
           },
           "nodeIndex": "Pricing Context",
           "size": {
@@ -60,7 +60,7 @@
         {
           "location": {
             "x": 52.670806131863287,
-            "y": 799.20847579284373
+            "y": 748.65441907209629
           },
           "nodeIndex": "Date",
           "size": {
@@ -72,7 +72,7 @@
         {
           "location": {
             "x": 649.12857467172341,
-            "y": 226.97300738878366
+            "y": 176.41895066803622
           },
           "nodeIndex": "App Version",
           "size": {
@@ -84,7 +84,7 @@
         {
           "location": {
             "x": 685.89210430353171,
-            "y": 987.999151219238
+            "y": 937.44509449849056
           },
           "nodeIndex": "Device",
           "size": {
@@ -96,7 +96,7 @@
         {
           "location": {
             "x": 90,
-            "y": 441.27387090633187
+            "y": 390.71981418558443
           },
           "nodeIndex": "Order",
           "nodeLineageTag": "7790662d-1a71-4866-ac90-f8eb5080a490",
@@ -109,89 +109,11 @@
         {
           "location": {
             "x": 1554.2025299493625,
-            "y": 151.66217016224232
+            "y": 101.10811344149488
           },
           "nodeIndex": "xtakso_andmed_clean",
           "size": {
             "height": 874.4158075601373,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 2069.5317238174994,
-            "y": 452.22237896095567
-          },
-          "nodeIndex": "UK3 T1 GPS",
-          "nodeLineageTag": "c3ded4df-0f05-4f55-941d-0b56784e8e1d",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 2353.5317238174994,
-            "y": 440.22237896095567
-          },
-          "nodeIndex": "UK3 T2 Apid",
-          "nodeLineageTag": "f0e6f9b5-e695-4f35-8d1a-913a4f584096",
-          "size": {
-            "height": 248,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 2637.5317238174994,
-            "y": 414.22237896095567
-          },
-          "nodeIndex": "UK3 T3 Mudelid",
-          "nodeLineageTag": "9041ade1-20e5-4287-91d3-eed2bcacecf0",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 2921.5317238174994,
-            "y": 440.22237896095567
-          },
-          "nodeIndex": "UK3 T4 GPS x app",
-          "nodeLineageTag": "26762034-3344-4d82-9c36-d9d94e26157c",
-          "size": {
-            "height": 248,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 3205.5317238174994,
-            "y": 452.22237896095567
-          },
-          "nodeIndex": "UK3 T5 Regressioon",
-          "nodeLineageTag": "1c141903-cedf-47f9-91dc-75300770305d",
-          "size": {
-            "height": 224,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 3489.5317238174994,
-            "y": 440.22237896095567
-          },
-          "nodeIndex": "UK3 T6 Segmendid",
-          "nodeLineageTag": "100e8718-f645-42cb-8857-23e74a66a272",
-          "size": {
-            "height": 248,
             "width": 234
           },
           "zIndex": 0
