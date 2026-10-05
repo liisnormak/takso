@@ -1,0 +1,97 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "452820e35aa089165115",
+  "position": {
+    "x": 0,
+    "y": 2746.666666666667,
+    "z": 25000,
+    "height": 233.33333333333334,
+    "width": 786.66666666666674,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Non-EU sõitudel on halb GPS seotud kõrgema overcharge rate'iga, eriti prediction-hinnastusega sõitudel (32,46%).",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Seega praegu on teada: ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Non-EU → overcharge rate on palju kõrgem kui EU-s",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Non-EU + prediction → 20,36%",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Non-EU + prediction + halb GPS → 32,46%",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Samas Non-EU + prediction + hea GPS puhul on rate ainult 11,59%.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

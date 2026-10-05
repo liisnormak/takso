@@ -1,0 +1,58 @@
+table Tickets
+	lineageTag: 9a93d3af-e604-40a7-938b-76c916a5d61a
+
+	/// ID for customer support ticket.
+	column 'Ticket ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ad05983-90f8-4310-86a2-67b49c71056f
+		summarizeBy: none
+		sourceColumn: Ticket ID
+
+		annotation SummarizationSetBy = User
+
+	/// ID of an order.
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: ff6a506c-8af3-4afb-9472-3dcee7aadba7
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = User
+
+	/// Indicator for a rider complaining about the overpaid ride (1 - yes, 0 - no).
+	column 'Overpaid Ride Ticket'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6ffb7900-4ae8-49b2-b228-f0361a12b08c
+		summarizeBy: none
+		sourceColumn: Overpaid Ride Ticket
+
+		annotation SummarizationSetBy = User
+
+	/// Unique key created to link order-level information across the Rides, Order and Tickets tables.
+	column 'Order Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 562c3bf4-acd3-4dc5-980f-e2156beec0cb
+		summarizeBy: none
+		sourceColumn: Order Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Tickets = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "postgres"),
+				    public_fact_tickets = Source{[Schema="public",Item="fact_tickets"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(public_fact_tickets,{{"ticket_id_new", "Ticket ID"}, {"order_id_new", "Order ID"}, {"order_key", "Order Key"}, {"overpaid_ride_ticket", "Overpaid Ride Ticket"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Order Key", "Ticket ID", "Order ID", "Overpaid Ride Ticket", "public.dim_order"})
+				in
+				    #"Reordered Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

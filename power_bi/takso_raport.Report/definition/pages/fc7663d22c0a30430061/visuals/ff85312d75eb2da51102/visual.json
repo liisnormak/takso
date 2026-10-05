@@ -1,0 +1,194 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "ff85312d75eb2da51102",
+  "position": {
+    "x": 38,
+    "y": 391,
+    "z": 0,
+    "height": 714,
+    "width": 708,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "keyDriversVisual",
+    "query": {
+      "queryState": {
+        "ExplainBy": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pricing Context"
+                    }
+                  },
+                  "Property": "Prediction Price Type"
+                }
+              },
+              "queryRef": "Pricing Context.Prediction Price Type",
+              "nativeQueryRef": "Prediction Price Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "Destination Change Number"
+                }
+              },
+              "queryRef": "Rides.Destination Change Number",
+              "nativeQueryRef": "Destination Change Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "Distance"
+                }
+              },
+              "queryRef": "Rides.Distance",
+              "nativeQueryRef": "Distance"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pricing Context"
+                    }
+                  },
+                  "Property": "Reason for Pricing Change"
+                }
+              },
+              "queryRef": "Pricing Context.Reason for Pricing Change",
+              "nativeQueryRef": "Reason for Pricing Change"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "EU / Non-EU"
+                }
+              },
+              "queryRef": "Rides.EU / Non-EU",
+              "nativeQueryRef": "EU / Non-EU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "GPS Confidence Level"
+                }
+              },
+              "queryRef": "Rides.GPS Confidence Level",
+              "nativeQueryRef": "GPS Confidence Level"
+            }
+          ]
+        },
+        "Target": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order"
+                    }
+                  },
+                  "Property": "Had Overpaid Ride Ticket"
+                }
+              },
+              "queryRef": "Order.Had Overpaid Ride Ticket",
+              "nativeQueryRef": "Had Overpaid Ride Ticket"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "keyDrivers": [
+        {
+          "properties": {
+            "selectedAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'keyInfluencers'"
+                }
+              }
+            },
+            "selectedNumericAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "targetValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1L'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyDriversDrillVisual": [
+        {
+          "properties": {
+            "defaultColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyInfluencersVisual": [
+        {
+          "properties": {
+            "primaryColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

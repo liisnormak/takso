@@ -1,0 +1,58 @@
+table 'Pricing Context'
+	lineageTag: c54f77d9-2f7b-4382-94bc-9470ad6e66a8
+
+	/// Internal variable for the type of prediction:
+	/// - upfront, prediction: prediction happened before the ride;
+	/// - upfront_destination_changed: prediction happened after rider changed destination during the ride.
+	column 'Prediction Price Type'
+		dataType: string
+		lineageTag: df0d3797-b893-4a38-be4b-7f73a788cc79
+		summarizeBy: none
+		sourceColumn: Prediction Price Type
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Records due to whose action the price changed.
+	column 'Reason for Pricing Change'
+		dataType: string
+		lineageTag: 357ff8ec-7c15-447f-89f2-7f1c011f595c
+		summarizeBy: none
+		sourceColumn: Reason for Pricing Change
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Who entered the address.
+	column 'Entered By'
+		dataType: string
+		lineageTag: b2061865-57d4-458f-954f-8fd49eb6b64b
+		summarizeBy: none
+		sourceColumn: Entered By
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Key used to link a ride to the Pricing Context dimension.
+	column 'Pricing Context Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fd567b1-a50f-4f14-bde6-34b67031eb93
+		summarizeBy: none
+		sourceColumn: Pricing Context Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Pricing Context' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "postgres"),
+				    public_dim_pricing_context = Source{[Schema="public",Item="dim_pricing_context"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(public_dim_pricing_context,{{"change_reason_pricing", "Reason for Pricing Change"}, {"entered_by", "Pricing Change Entered By"}, {"pricing_context_key", "Pricing Context Key"}, {"prediction_price_type", "Prediction Price Type"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Pricing Context Key", "Prediction Price Type", "Reason for Pricing Change", "Pricing Change Entered By", "public.fact_rides"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Reordered Columns",{{"Pricing Change Entered By", "Entered By"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

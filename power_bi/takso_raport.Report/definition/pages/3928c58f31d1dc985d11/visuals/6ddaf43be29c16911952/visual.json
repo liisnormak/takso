@@ -1,0 +1,84 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "6ddaf43be29c16911952",
+  "position": {
+    "x": 324.44444444444446,
+    "y": 5762.2222222222217,
+    "z": 32024,
+    "height": 160,
+    "width": 718.33333333333348
+  },
+  "visual": {
+    "visualType": "donutChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order"
+                    }
+                  },
+                  "Property": "Had Overpaid Ride Ticket"
+                }
+              },
+              "queryRef": "Order.Had Overpaid Ride Ticket",
+              "nativeQueryRef": "Had Overpaid Ride Ticket",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Tickets"
+                        }
+                      },
+                      "Property": "Ticket ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(Tickets.Ticket ID)",
+              "nativeQueryRef": "Ticket ID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Tickets"
+                      }
+                    },
+                    "Property": "Ticket ID"
+                  }
+                },
+                "Function": 5
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

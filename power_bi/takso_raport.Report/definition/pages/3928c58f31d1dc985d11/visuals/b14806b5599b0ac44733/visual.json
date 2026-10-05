@@ -1,0 +1,76 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "b14806b5599b0ac44733",
+  "position": {
+    "x": 0,
+    "y": 1513.3333333333335,
+    "z": 16000,
+    "height": 195,
+    "width": 938.33333333333337,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "prediction hinnastusega sõitudel esineb overcharge-ticket'e rohkem kui upfront hinnastusega sõitudel.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Prediction-sõidud moodustavad 24% kõigist sõitudest, aga nende seast tuleb 66% overcharge-ticketiga sõitudest. ",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Prediction-sõitudest on overcharge-ticketiga 20,34%, samas kui upfront-sõitudest ainult 3,47%.",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "->",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": " seega prediction hinnastusega sõite tasub edasi uurida?",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

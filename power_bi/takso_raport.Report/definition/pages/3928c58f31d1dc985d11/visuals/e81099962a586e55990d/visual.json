@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "e81099962a586e55990d",
+  "position": {
+    "x": 895,
+    "y": 3650,
+    "z": 32009,
+    "height": 106.66666666666667,
+    "width": 478.33333333333337,
+    "tabOrder": 32007
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "veidi parem visuaal:",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "tulbad = kui palju sõite selles grupis üldse on",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "joon = kui suur osa neist sai overcharge-ticket'i",
+                    "textStyle": {
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

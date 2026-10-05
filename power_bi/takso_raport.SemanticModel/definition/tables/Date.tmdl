@@ -1,0 +1,83 @@
+table Date
+	lineageTag: c2654ee2-eb5c-4c40-8020-cdd8a6c1edb9
+
+	/// Key used to link a ride to the Date dimension.
+	column 'Date Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: a57b2f18-edcc-4107-b0bd-6bed2ae32983
+		summarizeBy: none
+		sourceColumn: Date Key
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Date when ride happened.
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2d195ee9-f681-4d0e-a138-0a897834440d
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 8b8cf0e4-5471-4532-a55c-68aceb29e32d
+			defaultHierarchy: LocalDateTable_bf8a385d-8e03-44c1-a214-786dbe92c4d6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Day of the week the when ride happened.
+	column 'Day of Week'
+		dataType: string
+		lineageTag: a980dcf0-e1c6-4e05-9156-efd26ae2549a
+		summarizeBy: none
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Number of a day of the week the when ride happened.
+	column 'Day of Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 20c9700f-eb9e-4b2c-aaf3-1fbbca061522
+		summarizeBy: none
+		sourceColumn: Day of Week Number
+
+		annotation SummarizationSetBy = User
+
+	/// Month when ride happened.
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d12e830-ff04-43b8-bbea-884cf172b2d6
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = User
+
+	/// Year when ride happened.
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: bf052621-c6b5-4824-a90f-1c88ae6eea3c
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	partition Date = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "postgres"),
+				    public_dim_date = Source{[Schema="public",Item="dim_date"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(public_dim_date,{{"date_key", "Date Key"}, {"date", "Date"}, {"day_of_week", "Day of Week"}, {"day_of_week_nr", "Day of Week Number"}, {"month", "Month"}, {"year", "Year"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
