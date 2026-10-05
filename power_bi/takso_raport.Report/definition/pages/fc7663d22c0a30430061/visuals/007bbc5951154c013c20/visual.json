@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "007bbc5951154c013c20",
   "position": {
-    "x": 0,
-    "y": 0,
+    "x": 97.5,
+    "y": 21.25,
     "z": 1000,
-    "height": 181.66666666666669,
-    "width": 2000,
+    "height": 48.75,
+    "width": 303.75,
     "tabOrder": 1000
   },
   "visual": {
@@ -22,8 +22,8 @@
                     "value": "   Overcharge Risk Factors",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontFamily": "Segoe (Bold)",
-                      "fontSize": "28pt"
+                      "fontFamily": "Arial",
+                      "fontSize": "16pt"
                     }
                   }
                 ]
@@ -48,24 +48,6 @@
               "expr": {
                 "Literal": {
                   "Value": "'Overcharge Risk Factors'"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0
-                    }
-                  }
                 }
               }
             }

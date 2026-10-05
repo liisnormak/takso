@@ -315,14 +315,11 @@ table Rides
 			    'Rides'[Distance Deviation %] <= 0.50, 5,
 			    6
 			)
-		isHidden
 		formatString: 0
 		lineageTag: e3513efe-158a-44e7-9082-ae85edb6a0ed
 		summarizeBy: none
 
 		changedProperty = SortByColumn
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = User
 
@@ -390,46 +387,6 @@ table Rides
 			)
 		formatString: 0
 		lineageTag: 96f9905c-d8b4-4b08-9967-30521afb8a9b
-		summarizeBy: sum
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'EU / Non-EU' =
-			
-			IF(
-			    'Rides'[EU Indicator] = 1,
-			    "EU",
-			    "Non-EU"
-			)
-		lineageTag: 9d8db0bc-8c05-49ef-b8ac-7fcd7b9025e4
-		summarizeBy: none
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'GPS Confidence Level' =
-			
-			IF(
-			    'Rides'[GPS Confidence] = 1,
-			    "High",
-			    "Low"
-			)
-		lineageTag: 8ba4b9ea-e537-45b2-b0e2-af505145e2bb
-		summarizeBy: none
-		sortByColumn: 'GPS Confidence Sort'
-
-		changedProperty = SortByColumn
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'GPS Confidence Sort' =
-			
-			IF(
-			    'Rides'[GPS Confidence] = 0,
-			    1,
-			    2
-			)
-		formatString: 0
-		lineageTag: 37a7ff70-be82-4dfe-872a-b23b57718787
 		summarizeBy: sum
 
 		annotation SummarizationSetBy = Automatic

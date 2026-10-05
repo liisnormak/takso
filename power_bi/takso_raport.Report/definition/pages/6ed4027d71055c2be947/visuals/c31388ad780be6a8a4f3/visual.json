@@ -1,0 +1,142 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "c31388ad780be6a8a4f3",
+  "position": {
+    "x": 650,
+    "y": 1560,
+    "z": 11000,
+    "height": 440,
+    "width": 610,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "query": {
+      "queryState": {
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T3 Halva GPS osakaal"
+                }
+              },
+              "queryRef": "_Measures.UK3 T3 Halva GPS osakaal",
+              "nativeQueryRef": "UK3 T3 Halva GPS osakaal"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T3 Kaebuste määr"
+                }
+              },
+              "queryRef": "_Measures.UK3 T3 Kaebuste määr",
+              "nativeQueryRef": "UK3 T3 Kaebuste määr"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T3 Sõitude arv"
+                }
+              },
+              "queryRef": "_Measures.UK3 T3 Sõitude arv",
+              "nativeQueryRef": "UK3 T3 Sõitude arv"
+            }
+          ]
+        },
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "UK3 T3 Mudelid"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "UK3 T3 Mudelid.model",
+              "nativeQueryRef": "model",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "UK3 T3 Mudelid"
+                    }
+                  },
+                  "Property": "brand"
+                }
+              },
+              "queryRef": "UK3 T3 Mudelid.brand",
+              "nativeQueryRef": "brand",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {},
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mudelid: halb GPS (X) ja kaebuste määr (Y), värv = bränd'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

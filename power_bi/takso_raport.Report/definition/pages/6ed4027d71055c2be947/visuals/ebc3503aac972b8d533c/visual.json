@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "ebc3503aac972b8d533c",
+  "position": {
+    "x": 740,
+    "y": 3145,
+    "z": 17000,
+    "height": 400,
+    "width": 520,
+    "tabOrder": 17000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "UK3 T5 Regressioon"
+                    }
+                  },
+                  "Property": "term"
+                }
+              },
+              "queryRef": "UK3 T5 Regressioon.term",
+              "nativeQueryRef": "term",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T5 Odds ratio"
+                }
+              },
+              "queryRef": "_Measures.UK3 T5 Odds ratio",
+              "nativeQueryRef": "UK3 T5 Odds ratio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T5 CI alumine"
+                }
+              },
+              "queryRef": "_Measures.UK3 T5 CI alumine",
+              "nativeQueryRef": "UK3 T5 CI alumine"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "UK3 T5 CI ülemine"
+                }
+              },
+              "queryRef": "_Measures.UK3 T5 CI ülemine",
+              "nativeQueryRef": "UK3 T5 CI ülemine"
+            }
+          ]
+        },
+        "Columns": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "UK3 T5 Regressioon"
+                    }
+                  },
+                  "Property": "model"
+                }
+              },
+              "queryRef": "UK3 T5 Regressioon.model",
+              "nativeQueryRef": "model",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Usaldusvahemikud (95 %)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
