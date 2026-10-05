@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "ff85312d75eb2da51102",
   "position": {
-    "x": 97.5,
-    "y": 286.25,
+    "x": 38,
+    "y": 391,
     "z": 0,
-    "height": 713.75,
-    "width": 1568.75,
+    "height": 714,
+    "width": 708,
     "tabOrder": 0
   },
   "visual": {
@@ -15,34 +15,6 @@
       "queryState": {
         "ExplainBy": {
           "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "EU Indicator"
-                }
-              },
-              "queryRef": "Rides.EU Indicator",
-              "nativeQueryRef": "EU Indicator"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Rides"
-                    }
-                  },
-                  "Property": "GPS Confidence"
-                }
-              },
-              "queryRef": "Rides.GPS Confidence",
-              "nativeQueryRef": "GPS Confidence"
-            },
             {
               "field": {
                 "Column": {
@@ -98,6 +70,34 @@
               },
               "queryRef": "Pricing Context.Reason for Pricing Change",
               "nativeQueryRef": "Reason for Pricing Change"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "EU / Non-EU"
+                }
+              },
+              "queryRef": "Rides.EU / Non-EU",
+              "nativeQueryRef": "EU / Non-EU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "GPS Confidence Level"
+                }
+              },
+              "queryRef": "Rides.GPS Confidence Level",
+              "nativeQueryRef": "GPS Confidence Level"
             }
           ]
         },
@@ -121,21 +121,6 @@
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Rides"
-                  }
-                },
-                "Property": "EU Indicator"
-              }
-            },
-            "direction": "Ascending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -161,6 +146,42 @@
               "expr": {
                 "Literal": {
                   "Value": "'1L'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyDriversDrillVisual": [
+        {
+          "properties": {
+            "defaultColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyInfluencersVisual": [
+        {
+          "properties": {
+            "primaryColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }

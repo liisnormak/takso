@@ -138,80 +138,25 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 738e966f-277d-4e5e-83ed-6b55ae9376a0
 
-	measure 'Ticket rate' = DIVIDE(CALCULATE(DISTINCTCOUNT('Order'[Order ID]), 'Order'[Had Overpaid Ride Ticket] = 1), DISTINCTCOUNT('Order'[Order ID]))
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: b02aca44-b765-4ce6-af26-9a749355fae9
-
-	measure 'UK3 T1 Kaebuste määr' = AVERAGE('UK3 T1 GPS'[rate])
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: 1a247e25-8448-4dd4-b275-beab7ea28afa
-
-	measure 'UK3 T2 Kaebuste määr' = AVERAGE('UK3 T2 Apid'[rate])
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: ce9cd3f5-5d6b-4eae-8c13-14181b0eaa7f
-
-	measure 'UK3 T3 Kaebuste määr' = AVERAGE('UK3 T3 Mudelid'[rate])
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: 127b4e60-442e-49f5-beb8-cfc8517b5561
-
-	measure 'UK3 T3 Halva GPS osakaal' = AVERAGE('UK3 T3 Mudelid'[gps_low_share])
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: 0e7a9b4f-b5fb-46ed-b5df-bfe0764f262c
-
-	measure 'UK3 T3 Sõitude arv' = SUM('UK3 T3 Mudelid'[n])
+	measure 'Non-EU Both Prices Count' =
+			
+			CALCULATE(
+			    [Distinct Ride Count],
+			    'Rides'[EU Indicator] = 0,
+			    NOT(ISBLANK('Rides'[Metered Price])),
+			    NOT(ISBLANK('Rides'[Upfront Price]))
+			)
 		formatString: 0
-		displayFolder: UK3
-		lineageTag: 7dd61d91-2cb4-431b-b8e5-b4f26f881b84
+		lineageTag: 76c22bf3-1f6b-4a27-81c6-fb93886b61b7
 
-	measure 'UK3 T3 Kaebusi tegelikult' = SUM('UK3 T3 Mudelid'[tickets])
+	measure 'Non-EU Ride Count' =
+			
+			CALCULATE(
+			    [Distinct Ride Count],
+			    'Rides'[EU Indicator] = 0
+			)
 		formatString: 0
-		displayFolder: UK3
-		lineageTag: 7f081545-9e29-4649-91c6-c4a95ac02bd4
-
-	measure 'UK3 T3 Kaebusi oodatud' = SUM('UK3 T3 Mudelid'[expected])
-		formatString: 0.0
-		displayFolder: UK3
-		lineageTag: 76461a29-45ad-4b3a-bf6f-aeaed40e7995
-
-	measure 'UK3 T4 Kaebuste määr' = AVERAGE('UK3 T4 GPS x app'[rate])
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: e0f8bf61-814a-449b-97c7-ead3dc67d82f
-
-	measure 'UK3 T5 Odds ratio' = AVERAGE('UK3 T5 Regressioon'[odds_ratio])
-		formatString: 0.00
-		displayFolder: UK3
-		lineageTag: ad697f75-bf82-44d1-beeb-545adc50b224
-
-	measure 'UK3 T5 CI alumine' = AVERAGE('UK3 T5 Regressioon'[ci_low])
-		formatString: 0.00
-		displayFolder: UK3
-		lineageTag: 77329a1a-f1a3-4377-b865-74d2e447024c
-
-	measure 'UK3 T5 CI ülemine' = AVERAGE('UK3 T5 Regressioon'[ci_high])
-		formatString: 0.00
-		displayFolder: UK3
-		lineageTag: f626f3c6-1903-4b7e-87aa-e2f3abf090c9
-
-	measure 'UK3 T6 Sõitude arv' = SUM('UK3 T6 Segmendid'[n])
-		formatString: 0
-		displayFolder: UK3
-		lineageTag: 4608f487-03c7-4f1a-b281-024cae8f11c5
-
-	measure 'UK3 T6 Kaebusi' = SUM('UK3 T6 Segmendid'[tickets])
-		formatString: 0
-		displayFolder: UK3
-		lineageTag: 09e61d07-6e6b-425a-9016-a415fa28264b
-
-	measure 'UK3 T6 Kaebuste määr' = AVERAGE('UK3 T6 Segmendid'[rate])
-		formatString: 0.0%
-		displayFolder: UK3
-		lineageTag: 272d6875-7bfb-434f-bc98-04f0586b13dd
+		lineageTag: f7558dbe-394c-456c-90dc-6c88eb21db58
 
 	column Column
 		isHidden

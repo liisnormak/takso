@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "fc7663d22c0a30430061",
   "displayName": "Felena",
-  "displayOption": "FitToPage",
-  "height": 2000,
+  "displayOption": "ActualSize",
+  "height": 5000,
   "width": 2000,
   "objects": {
     "outspacePane": [
