@@ -6,6 +6,115 @@ rf_andmed = pd.read_csv("rf_andmed.csv")
 
 filtreeritud = rf_andmed.copy()
 
+prediction_price_type_nimed = {
+    "Kõik": None,
+    "Ette lubatud hinnaga sõit": "upfront",
+    "Sihtkohta muudeti": "upfront_destination_changed",
+    "Vahepunktiga sõit": "upfront_waypoint_changed",
+    "Prognoositud sõit": "prediction"
+}
+
+prediction_price_type_valik = st.sidebar.selectbox(
+    "Hinnastamise tüüp",
+    options=list(prediction_price_type_nimed.keys())
+)
+
+valitud_prediction_type = prediction_price_type_nimed[
+    prediction_price_type_valik
+]
+
+if valitud_prediction_type is not None:
+    filtreeritud = filtreeritud[
+        filtreeritud["prediction_price_type"] == valitud_prediction_type
+    ]
+
+filtreeritud["distance_difference"] = (
+    filtreeritud["distance_km"]
+    - filtreeritud["predicted_distance"] / 1000
+)
+
+filtreeritud["duration_difference"] = (
+    filtreeritud["duration"] - filtreeritud["predicted_duration"]
+
+)
+
+filtreeritud["duration_difference_min"] = (
+    filtreeritud["duration_difference"] / 60
+)
+
+
+st.set_page_config(
+    page_title="VALI-IT",
+    page_icon="🚕",
+    layout="wide"
+)
+
+st.markdown("""
+<style>
+
+.stApp {
+    background-color: #81C784;
+}
+
+    .main-title {
+        font-size: 42px;
+        font-weight: 700;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 20px;
+        color: white;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    .chart-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1B4332;
+    margin: 25px 0 15px 0;
+}
+
+    .metric-card {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 35px;
+    border-radius: 16px;
+    text-align: center;
+    margin: 10px 0 35px 0;
+}
+
+.metric-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2E5D3B;
+}
+
+.metric-value {
+    font-size: 34px;
+    font-weight: 800;
+    color: #1B4332;
+    margin-top: 10px;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown(
+    '<div class="main-title">VALI-IT 🚕</div>',
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    '<div class="subtitle">Taksosõitude hinnastamise ja kaebuste analüüs</div>',
+    unsafe_allow_html=True
+)
+
+st.divider()
+
 rf_andmed["prediction_price_type"] = pd.Categorical(
     rf_andmed["prediction_price_type"],
     categories=[
@@ -153,9 +262,18 @@ elif sõidukestvuse_valik == "40+ min":
         filtreeritud["duration_min"] > 40
     ]
 
-st.metric(
-    "Sõitude arv",
-    f"{len(filtreeritud):,}".replace(",", " ")
+st.markdown("""
+<div class="metric-card">
+    <div class="metric-title">Sõitude arv</div>
+    <div class="metric-value">
+        {:,}
+    </div>
+</div>
+""".format(len(filtreeritud)).replace(",", " "), unsafe_allow_html=True)
+
+st.markdown(
+    '<div class="chart-title">Kaebuste osakaal päeva perioodi ja hinnastamise kategooria järgi</div>',
+    unsafe_allow_html=True
 )
 
 graafik = (
@@ -168,6 +286,20 @@ graafik = (
     .reset_index()
 )
 
+graafik["päeva_periood"] = graafik["päeva_periood"].replace({
+    "hommik": "Hommik",
+    "lõuna": "Lõuna",
+    "õhtu": "Õhtu",
+    "öö": "Öö"
+})
+
+graafik["prediction_price_type"] = graafik["prediction_price_type"].replace({
+    "upfront": "Ette lubatud sõidu hind",
+    "prediction": "Prognoositud sõit",
+    "upfront_destination_changed": "Sihtkohta muudeti",
+    "upfront_waypoint_changed": "Eelnevalt määratud vahepunkt"
+})
+
 graafik["overcharge_pct"] = graafik["overpaid_ride_ticket"] * 100
 
 fig = px.bar(
@@ -178,17 +310,20 @@ fig = px.bar(
     barmode="group",
     labels={
         "päeva_periood": "Sõidud päeva perioodi võrdluses",
-        "overcharge_pct": "Overcharge-ticketite osakaal (%)",
+        "overcharge_pct": "Kaebuste osakaal (%)",
         "prediction_price_type": "Hinnastamise kategooria"
     }
 )
 
 st.plotly_chart(
     fig,
-    use_container_width=True
+    width="stretch"
 )
 
-st.subheader("Kaebuste osakaal sõidu vahemaa järgi")
+st.markdown(
+    '<div class="chart-title">Kaebuste osakaal tegeliku sõiduvahemaa järgi</div>',
+    unsafe_allow_html=True
+)
 
 distance_graafik = (
     filtreeritud
@@ -222,17 +357,78 @@ fig_distance = px.bar(
     y="overcharge_pct",
     labels={
         "distance_grupp": "Sõidu vahemaa",
-        "overcharge_pct": "Kaebusega piletite osakaal (%)"
+        "overcharge_pct": "Kaebuste osakaal (%)"
     }
 )
 
 st.plotly_chart(
     fig_distance,
-    use_container_width=True
+    width="stretch"
 )
 
+distance_diff_graafik = (
+    filtreeritud
+    .assign(
+        distance_difference_grupp=pd.cut(
+            filtreeritud["distance_difference"],
+            bins=[
+                -float("inf"),
+                -5,
+                -2,
+                0,
+                2,
+                5,
+                10,
+                float("inf")
+            ],
+            labels=[
+                "Alla −5 km",
+                "−5 kuni −2 km",
+                "−2 kuni 0 km",
+                "0 kuni 2 km",
+                "2 kuni 5 km",
+                "5 kuni 10 km",
+                "Üle 10 km"
+            ],
+            include_lowest=True
+        )
+    )
+    .groupby(
+        "distance_difference_grupp",
+        observed=True
+    )["overpaid_ride_ticket"]
+    .mean()
+    .reset_index()
+)
 
-st.subheader("Kaebuste osakaal sõidu kestuse järgi")
+distance_diff_graafik["overcharge_pct"] = (
+    distance_diff_graafik["overpaid_ride_ticket"] * 100
+)
+
+st.markdown(
+    '<div class="chart-title">Kaebuste osakaal tegeliku ja prognoositud teepikkuse erinevuse järgi</div>',
+    unsafe_allow_html=True
+)
+
+fig_distance_diff = px.bar(
+    distance_diff_graafik,
+    x="distance_difference_grupp",
+    y="overcharge_pct",
+    labels={
+        "distance_difference_grupp": "Tegeliku ja prognoositud teepikkuse erinevus",
+        "overcharge_pct": "Kaebuste osakaal (%)"
+    }
+)
+
+st.plotly_chart(
+    fig_distance_diff,
+    width="stretch"
+)
+
+st.markdown(
+    '<div class="chart-title">Kaebuste osakaal tegeliku sõiduaja järgi</div>',
+    unsafe_allow_html=True
+)
 
 duration_graafik = (
     filtreeritud
@@ -266,16 +462,77 @@ fig_duration = px.bar(
     y="overcharge_pct",
     labels={
         "duration_grupp": "Sõidu kestus",
-        "overcharge_pct": "Kaebusega piletite osakaal (%)"
+        "overcharge_pct": "Kaebuste osakaal (%)"
     }
 )
 
 st.plotly_chart(
     fig_duration,
-    use_container_width=True
+    width="stretch"
+)
+st.markdown(
+    '<div class="chart-title">Kaebuste osakaal tegeliku ja prognoositud sõiduaja erinevuse järgi</div>',
+    unsafe_allow_html=True
 )
 
-st.subheader("Sõitja tarkvara versiooni ja päeva perioodi seos kaebustega")
+duration_diff_graafik = (
+    filtreeritud
+    .assign(
+        duration_difference_grupp=pd.cut(
+            filtreeritud["duration_difference_min"],
+            bins=[
+                -float("inf"),
+                -10,
+                -5,
+                0,
+                5,
+                10,
+                20,
+                float("inf")
+            ],
+            labels=[
+                "Alla −10 min",
+                "−10 kuni −5 min",
+                "−5 kuni 0 min",
+                "0 kuni 5 min",
+                "5 kuni 10 min",
+                "10 kuni 20 min",
+                "Üle 20 min"
+            ],
+            include_lowest=True
+        )
+    )
+    .groupby(
+        "duration_difference_grupp",
+        observed=True
+    )["overpaid_ride_ticket"]
+    .mean()
+    .reset_index()
+)
+
+duration_diff_graafik["overcharge_pct"] = (
+    duration_diff_graafik["overpaid_ride_ticket"] * 100
+)
+
+fig_duration_diff = px.bar(
+    duration_diff_graafik,
+    x="duration_difference_grupp",
+    y="overcharge_pct",
+    labels={
+        "duration_difference_grupp": "Tegeliku ja prognoositud sõiduaja erinevus",
+        "overcharge_pct": "Kaebuste osakaal (%)"
+    }
+)
+
+st.plotly_chart(
+    fig_duration_diff,
+    width="stretch"
+)
+
+st.markdown(
+    '<div class="chart-title">Sõitja tarkvara versiooni ja päeva perioodi seos kaebustega</div>',
+    unsafe_allow_html=True
+)
 
 rider_paevaperiood = (
     filtreeritud
@@ -298,16 +555,19 @@ fig_rider_paevaperiood = px.bar(
     barmode="group",
     labels={
         "rider_app_group": "Sõitja tarkvara",
-        "overcharge_pct": "Kaebusega piletite osakaal (%)",
+        "overcharge_pct": "Kaebuste osakaal (%)",
         "päeva_periood": "Päeva periood"
     }
 )
 
 st.plotly_chart(
     fig_rider_paevaperiood,
-    use_container_width=True
+    width="stretch"
 )
-st.subheader("Juhi tarkvara versiooni ja päeva perioodi seos kaebustega")
+st.markdown(
+    '<div class="chart-title">Juhi tarkvara versiooni ja päeva perioodi seos kaebustega</div>',
+    unsafe_allow_html=True
+)
 
 driver_paevaperiood = (
     filtreeritud
@@ -330,17 +590,20 @@ fig_driver_paevaperiood = px.bar(
     barmode="group",
     labels={
         "driver_app_group": "Juhi tarkvara",
-        "overcharge_pct": "Kaebusega piletite osakaal (%)",
+        "overcharge_pct": "Kaebuste osakaal (%)",
         "päeva_periood": "Päeva periood"
     }
 )
 
 st.plotly_chart(
     fig_driver_paevaperiood,
-    use_container_width=True
+    width="stretch"
 )
 
-st.subheader("Kaebuste osakaal seadme tootja järgi")
+st.markdown(
+    '<div class="chart-title">Kaebuste osakaal seadme tootja järgi</div>',
+    unsafe_allow_html=True
+)
 
 seade_overcharge = (
     filtreeritud
@@ -359,11 +622,11 @@ fig_seade = px.bar(
     y="overcharge_pct",
     labels={
         "Koond seadmed": "Seadme tootja",
-        "overcharge_pct": "Kaebusega piletite osakaal (%)"
+        "overcharge_pct": "Kaebuste osakaal (%)"
     }
 )
 
 st.plotly_chart(
     fig_seade,
-    use_container_width=True
+    width="stretch"
 )
