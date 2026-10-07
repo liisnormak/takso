@@ -410,7 +410,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.39</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.40</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid tegelik sõit võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -967,14 +967,59 @@ MEDIANX(
 <!-- ============ 7 ============ -->
 <section class="chapter" id="p7" aria-labelledby="p7-h">
   <h2 id="p7-h"><span class="n">7</span>Kokkuvõte ja arutelu</h2>
-  <section class="part" id="p7-vastused" data-status="tegemata"><h3>Vastused uurimisküsimustele</h3>
-    <div class="todo add">vastused uurimisküsimustele 1–5 ja viide, kus lahenduses (Power BI leht, joonis) vastus asub.</div></section>
-  <section class="part" id="p7-soovitused" data-status="tegemata"><h3>Soovitused lahenduse kasutamiseks</h3>
-    <div class="todo">kuidas vastust otsida ja mida mitte valesti lugeda. Näide: andmetes on ainult pöördumisega tellimused, seega osakaalud ei kehti kõigi sõiduteenusepakkuja sõitude kohta.</div></section>
-  <section class="part" id="p7-piirangud" data-status="tegemata"><h3>Piirangud ja edasiarendused</h3>
-    <div class="todo">mis jäi andmete või aja tõttu tegemata.</div></section>
-  <section class="part" id="p7-ai" data-status="tegemata"><h3>Tehisaru kasutamine</h3>
-    <div class="todo">mil määral kasutati. See veebilehe mustand on tehtud Claude'iga.</div></section>
+  <section class="part" id="p7-vastused" data-status="mustand">
+    <h3>Vastused uurimisküsimustele</h3>
+    <h4 class="subh">Millised sõidu tunnused on kõige tugevamalt seotud hinnakaebuse tekkimisega?</h4>
+    <p>Analüüsis võrreldakse hinnakaebusega ja hinnakaebuseta sõite, et hinnata, millised sõidu omadused eristavad neid kahte gruppi. Analüüsitavate tunnuste hulka kuuluvad GPS-i kvaliteet, tegeliku ja prognoositud distantsi erinevus, tegeliku ja prognoositud kestuse erinevus, hinna kõrvalekalle, sihtkoha muutmiste arv ning muud andmestikus olemasolevad sõidu ja hinnastamise tunnused.</p>
+    <p>Esialgse analüüsi põhjal on olulisemateks edasisteks uurimissuundadeks kujunenud GPS-i kvaliteet ning tegeliku ja prognoositud distantsi erinevus.</p>
+    <div class="todo add">tulemused.</div>
+    <h4 class="subh">Kuidas on GPS-i kvaliteet seotud hinnakaebuse esinemisega?</h4>
+    <p>GPS-i kvaliteedi mõju hindamiseks võrreldakse hea (<code>GPS Confidence = 1</code>) ja halva (<code>GPS Confidence = 0</code>) GPS-iga sõitude <code>Overcharge Ride Rate</code> mõõdikut. GPS-i kvaliteeti analüüsitakse ka koos teiste tunnustega, eelkõige tegeliku ja prognoositud distantsi erinevusega.</p>
+    <div class="todo add">tulemused.</div>
+    <h4 class="subh">Kuidas on tegeliku ja prognoositud distantsi erinevus seotud hinnakaebustega?</h4>
+    <p>Tegeliku ja prognoositud distantsi erinevuse hindamiseks kasutatakse nii <code>Distance Deviation %</code> tunnust kui ka <code>Median Absolute Distance Deviation %</code> mõõdikut. <code>Distance Deviation %</code> võimaldab hinnata kõrvalekalde suunda, samas kui absoluutse kõrvalekalde mediaan kirjeldab kõrvalekalde tüüpilist suurust sõltumata sellest, kas tegelik distants oli prognoositust suurem või väiksem.</p>
+    <div class="todo add">tulemused.</div>
+    <h4 class="subh">Mille poolest erinevad ELi ja väljaspool ELi sõidud ning kas erinevused aitavad selgitada hinnakaebuste esinemist?</h4>
+    <p>ELi ja väljaspool ELi sõitude võrdlemisel kasutatakse hinnakaebusega sõitude määra, halva GPS-i osakaalu ning distantsi-, kestuse- ja hinna kõrvalekaldeid.</p>
+    <p>Absoluutseid hindu ELi ja väljaspool ELi sõitude vahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside abil ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel sama sõidu lõpuhinna ja eeldatava hinna protsentuaalset erinevust.</p>
+    <div class="todo add">tulemused.</div>
+  </section>
+  <section class="part" id="p7-soovitused" data-status="mustand">
+    <h3>Praktilised soovitused lahenduse kasutamiseks</h3>
+    <p>Power BI aruande kasutamisel alustatakse üldistest mõõdikutest ning liigutakse seejärel detailsemate segmentide ja võimalike probleemitegurite juurde.</p>
+    <p>Hinnakaebuste analüüsimisel ei kasutata ainult klienditoe pöördumiste arvu, sest ühe tellimusega võib olla seotud mitu pöördumist. Sõitude võrdlemiseks kasutatakse <code>Overcharge Ride Count</code> ja <code>Overcharge Ride Rate</code> mõõdikuid, mis arvestavad ühe tellimuse ainult ühe korra.</p>
+    <p>Kõrvalekallete analüüsimisel tuleb eristada kõrvalekalde suunda ja suurust. Näiteks võivad positiivsed ja negatiivsed distantsi kõrvalekalded keskmise arvutamisel üksteist tasandada. Kõrvalekalde tüüpilise suuruse hindamiseks kasutatakse seetõttu ka absoluutse kõrvalekalde mediaani.</p>
+    <p>ELi ja väljaspool ELi segmentide hindade võrdlemisel ei kasutata lõpuhinna ega eeldatava hinna absoluutseid väärtusi, kuna andmestikus esineb erinevaid valuutasid. Segmentide võrdlemiseks kasutatakse sama sõidu sees arvutatud protsentuaalset hinnakõrvalekallet.</p>
+    <p>Visualiseeringute filtreerimisel tuleb jälgida, millisele populatsioonile mõõdik parasjagu rakendub. Filtrite muutmisel muutub ka mõõdikute filtrikontekst (<span lang="en">filter context</span>) ning seetõttu tuleb tulemusi tõlgendada valitud segmendi kontekstis.</p>
+  </section>
+  <section class="part" id="p7-piirangud" data-status="mustand">
+    <h3>Piirangud</h3>
+    <h4 class="subh">Erinevad valuutad</h4>
+    <p>Andmestikus sisalduvad hinnad erinevates valuutades. Kuna valuutakursside infot ei ole analüüsi lisatud, ei saa eri valuutades esitatud absoluutseid hindu usaldusväärselt omavahel võrrelda. Seetõttu kasutatakse segmentide hinnastamise võrdlemisel eelkõige protsentuaalset erinevust eeldatava hinna ja lõpuhinna vahel.</p>
+    <h4 class="subh">Hinnakaebuse definitsioon</h4>
+    <p>Hinnakaebust käsitletakse kliendi esitatud ülehinnastamise pöördumise (<code>overpaid_ride_ticket</code>) põhjal. Mõõdik näitab seega kliendi kaebuse olemasolu, mitte sõltumatu kontrolliga kinnitatud hinnastamisviga. Hinnakaebus ei tähenda automaatselt, et hind oli objektiivselt vale, ning hinnakaebuse puudumine ei tõesta, et hinnastamisega probleemi ei esinenud.</p>
+    <h4 class="subh">Kirjeldav analüüs</h4>
+    <p>Analüüs võimaldab tuvastada tunnuseid ja olukordi, mis esinevad hinnakaebustega sagedamini, kuid selle põhjal ei saa automaatselt järeldada põhjuslikku seost. Näiteks halva GPS-i ja hinnakaebuste vaheline seos ei tõesta iseenesest, et halb GPS põhjustas hinnaprobleemi.</p>
+    <h4 class="subh">Andmete dokumentatsioon</h4>
+    <p>Kõigi algandmestikus sisalduvate väljade täpne äriline definitsioon ei olnud lähteandmete dokumentatsioonis kirjeldatud. Selliste tunnuste puhul välditi oletusliku tähenduse lisamist ning analüüsis kasutati eelkõige tunnuseid, mille tähendus oli teada.</p>
+    <h4 class="subh">Projekti ulatus</h4>
+    <p>Projekt viiakse läbi piiratud õppetöö aja jooksul ning seetõttu keskendutakse uurimisküsimuste seisukohalt olulisematele tunnustele. Kõigi andmestikus sisalduvate muutujate ammendav analüüs ega põhjusliku mudeli loomine ei kuulu projekti praegusesse ulatusse.</p>
+    <div class="todo add">muud piirangud, kui neid lisandub.</div>
+  </section>
+  <section class="part" id="p7-edasi" data-status="mustand">
+    <h3>Edasiarendused</h3>
+    <p>Lahenduse üheks võimalikuks edasiarenduseks on valuutakursside lisamine, mis võimaldaks eri turgude hindu ühtsesse valuutasse teisendada ning absoluutseid hindu usaldusväärsemalt võrrelda.</p>
+    <p>Analüüsi võiks edasi arendada mitme tunnuse koosmõju hindamise suunas. Näiteks võiks kvantifitseerida, kuidas muutub hinnakaebuse esinemise tõenäosus juhul, kui samaaegselt esinevad halb GPS, suur distantsi kõrvalekalle ja muud analüüsis oluliseks osutunud tunnused.</p>
+    <p>Täiendavate geograafiliste andmete olemasolul võiks ELi ja väljaspool ELi jaotuse asemel analüüsida konkreetseid riike või turge. See võimaldaks hinnata, kas väljaspool ELi sõitude võimalikud erinevused tulenevad konkreetsest turust või on nähtavad laiemalt.</p>
+    <p>Pikema ajaperioodi andmete olemasolul võiks analüüsida ka hinnakaebuste ja nendega seotud tunnuste muutumist ajas ning hinnata võimalike toote- või hinnastamismuudatuste mõju.</p>
+    <div class="todo add">muud edasiarendused, kui neid lisandub.</div>
+  </section>
+  <section class="part" id="p7-ai" data-status="mustand">
+    <h3>Tehisaru kasutamine</h3>
+    <p>Tehisaru kasutati projekti käigus abivahendina SQL- ja DAX-päringute koostamisel ja selgitamisel, andmemudeli ülesehituse arutamisel, andmekvaliteedi kontrollide kavandamisel, analüüsivõimaluste leidmisel ning dokumentatsiooni struktureerimisel ja sõnastamisel.</p>
+    <p>Tehisaru väljundeid ei käsitletud automaatselt õigete tulemustena. SQL- ja DAX-lahendusi kontrolliti tegelike andmete ja Power BI tulemuste põhjal ning vajadusel parandati. Eriti oluline oli kontroll olukordades, kus tulemus sõltus andmemudeli seostest, tabelite grain'ist või konkreetse välja ärilisest tähendusest.</p>
+    <p>Lõplikud analüütilised tulemused ja järeldused põhinevad projekti andmetel ja grupi tehtud analüüsil, mitte tehisaru genereeritud tulemustel.</p>
+  </section>
 </section>
 
 <!-- ============ 8 ============ -->
