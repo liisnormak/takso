@@ -239,7 +239,7 @@ details.data summary{cursor:pointer;color:var(--muted)}
 .fs ul{margin:0;padding-left:1rem;font-size:var(--s-1);line-height:1.4}
 .fs li{margin:.1rem 0}
 @container (max-width:880px){.fn{padding:.5rem .5rem}.fn b{font-size:.8rem}}
-@container (max-width:760px){
+@container (max-width:820px){
   .flow{display:block}
   .fn{min-height:0;padding:.55rem .8rem}
   .fn b{font-size:var(--s0)}
@@ -411,6 +411,53 @@ ol.flowline li+li{margin-left:1.1rem}
 .team dd .todo{margin:0}
 .team>div{grid-template-columns:14rem minmax(0,1fr);align-items:center}
 @media (max-width:560px){.team>div{grid-template-columns:1fr}}
+.flow.flow7{grid-template-columns:1.15fr .16fr 1fr .16fr 1fr .16fr 1fr .5fr 1.1fr .5fr 1fr .5fr 1fr}
+.flow7 .fn{padding:.45rem .5rem}
+.flow7 .fn b{font-size:.8rem}
+.flow7 .fe>.arr{margin:0 .25rem 0 .15rem}
+@container (max-width:880px){.flow7 .fn b{font-size:.74rem}.flow7 .fn{padding:.4rem .4rem}}
+.s-flow .flow7 .fn b{font-size:clamp(.85rem,1.05vw,1.1rem)}
+.s-flow .flow7 .fn{padding:.6rem .6rem}
+/* Andmevoog kolmes etapis */
+.stagewrap{container-type:inline-size;max-width:var(--wide);margin:.9rem 0 .4rem}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.4rem}
+.stage{position:relative;border:1.5px solid var(--ink);border-top:4px solid var(--ink);border-radius:4px;background:var(--bg);padding:.8rem .9rem .9rem;display:flex;flex-direction:column}
+.stage.last{border-color:var(--data);border-top-color:var(--data)}
+.stage+.stage::before{content:"";position:absolute;left:-2.1rem;top:50%;width:1.6rem;height:2px;background:var(--ink)}
+.stage+.stage::after{content:"";position:absolute;left:-.65rem;top:calc(50% - 6px);border:7px solid transparent;border-left:9px solid var(--ink);border-right:0}
+.sg-h{display:flex;gap:.6rem;align-items:center;margin:0 0 .7rem}
+.sg-n{display:inline-grid;place-items:center;width:1.8rem;height:1.8rem;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700;flex:none}
+.stage.last .sg-n{background:var(--data)}
+.sg-h b{display:block;font-size:var(--s0);line-height:1.2}
+.sg-sub{display:block;font-size:.78rem;color:var(--muted)}
+.sg-dl{margin:0;display:flex;flex-direction:column;gap:.55rem;flex:1;font-size:var(--s-1)}
+.sg-dl dt{font-size:.72rem;font-weight:700;color:var(--muted);letter-spacing:.02em;margin-bottom:.15rem}
+.sg-dl dd{margin:0}
+.sg-dl ul{margin:0;padding-left:1.05rem}
+.sg-dl li{margin:.1rem 0}
+.sg-io dd{background:var(--surface);border-radius:3px;padding:.35rem .5rem}
+.sg-io dd span{display:block;font-size:.78rem;color:var(--muted)}
+.sg-io.out{margin-top:auto}
+.sg-io.out dd{border-left:3px solid var(--ink)}
+.stage.last .sg-io.out dd{border-left-color:var(--data)}
+@container (max-width:700px){
+  .stages{grid-template-columns:1fr;gap:2rem}
+  .stage+.stage::before{left:1.5rem;top:-1.8rem;width:2px;height:1.3rem}
+  .stage+.stage::after{left:calc(1.5rem - 6px);top:-.6rem;border:7px solid transparent;border-top:9px solid var(--ink);border-bottom:0}
+}
+.s-flow .stagewrap{max-width:none;font-size:clamp(1rem,1.3vw,1.25rem)}
+.s-flow .sg-dl{font-size:clamp(.95rem,1.15vw,1.15rem)}
+.s-flow .sg-h b{font-size:clamp(1.05rem,1.35vw,1.35rem)}
+.sg-steps{margin:0;padding-left:1.4rem}
+.sg-steps li{margin:.2rem 0}
+.sg-todo{margin:0;font-size:.8rem}
+.sg-pre{list-style:none;margin:.6rem 0 .8rem;padding:.5rem .8rem;border:1.5px solid var(--ink);border-radius:4px;font-size:var(--s-1);max-width:var(--wide)}
+.sg-pre li::before{content:"1.";font-weight:700;margin-right:.4rem}
+.sg-loop{max-width:var(--wide);margin-top:1.4rem}
+.sg-loop ol{margin:0;padding-left:1.4rem}
+.stage.done{border-style:dashed;border-top-style:solid;background:var(--surface)}
+.stage.done .sg-io dd{background:var(--bg)}
+.sg-note{margin:0 0 .4rem;font-size:var(--s-1)}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -429,9 +476,9 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.43</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.48</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
-  <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid tegelik sõit võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
+  <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
     <li>Andmed ajavahemikust <b>2.02.–13.03.2020</b></li>
     <li>Tellimusi <b class="num">4&nbsp;166</b></li>
@@ -568,14 +615,32 @@ ol.flowline li+li{margin-left:1.1rem}
     <h3>Andmevoo skeem</h3>
     <figure class="chart">
       <p class="ct">Andmete teekond algfailist juhtlauani</p>
-      <p class="cs">Kaks tööriista: PostgreSQL andmebaas ja Power BI aruanne</p>
-      <div class="flowwrap"><ol class="flow" aria-label="Andmevoog vasakult paremale, viis etappi">
-        <li class="fn" style="--c:1"><b>Algandmestik</b><span>CSV-fail, 4&nbsp;943 rida</span></li><li class="fe" style="--c:2"><span class="ft"></span><span class="arr" aria-hidden="true"></span></li><li class="fn" style="--c:3"><b>PostgreSQL</b></li><li class="fe" style="--c:4"><span class="ft">SQL / DBeaver</span><span class="arr" aria-hidden="true"></span><div class="fs" style="--a:3;--b:6"><span class="fz">PostgreSQL</span><ul><li>andmete puhastamine</li><li>kvaliteedikontrollid</li><li>dimensioonmudeli loomine</li></ul></div></li><li class="fn" style="--c:5"><b>Fakti- ja dimensiooni&shy;tabelid</b></li><li class="fe" style="--c:6"><span class="ft">PostgreSQL connector</span><span class="arr" aria-hidden="true"></span></li><li class="fn" style="--c:7"><b>Power BI Desktop</b></li><li class="fe" style="--c:8"><span class="ft">Power Query</span><span class="arr" aria-hidden="true"></span><div class="fs" style="--a:7;--b:10"><span class="fz">Power BI</span><ul><li>väljade nimetuste korrastamine</li><li>DAX-mõõdikud ja analüütilised lisaväljad</li></ul></div></li><li class="fn last" style="--c:9"><b>Power BI analüüs ja juhtlaud</b></li>
-      </ol></div>
+      <p class="cs">Andmetöötluse põhietapid: Python, PostgreSQL ja Power BI</p>
+      <div class="stagewrap"><ol class="stages" aria-label="Andmevoog kolmes etapis"><li class="stage">
+          <p class="sg-h"><span class="sg-n" aria-hidden="true">1</span><span><b>Python / Jupyter Notebook</b></span></p>
+          <dl class="sg-dl">
+            <div class="sg-io"><dt>Sisend</dt><dd><b>Algandmestik</b><span>CSV-fail, 4&nbsp;943 rida</span></dd></div>
+            <div><dt>Tehti</dt><dd><ul><li>andmete puhastamine</li><li>esmased kvaliteedikontrollid</li><li>puhastatud CSV salvestamine</li></ul></dd></div>
+            <div class="sg-io out"><dt>Väljund</dt><dd><b>Puhastatud CSV</b></dd></div>
+          </dl>
+        </li><li class="stage">
+          <p class="sg-h"><span class="sg-n" aria-hidden="true">2</span><span><b>PostgreSQL</b><span class="sg-sub">SQL / DBeaver</span></span></p>
+          <dl class="sg-dl">
+            <div class="sg-io"><dt>Sisend</dt><dd><b>Puhastatud CSV</b></dd></div>
+            <div><dt>Tehti</dt><dd><ul><li>andmete laadimine andmebaasi</li><li>dimensioonmudeli loomine</li><li>võtmete ja seoste kontroll</li></ul></dd></div>
+            <div class="sg-io out"><dt>Väljund</dt><dd><b>Fakti- ja dimensioonitabelid</b></dd></div>
+          </dl>
+        </li><li class="stage last">
+          <p class="sg-h"><span class="sg-n" aria-hidden="true">3</span><span><b>Power BI</b><span class="sg-sub">Power Query, DAX</span></span></p>
+          <dl class="sg-dl">
+            <div class="sg-io"><dt>Sisend</dt><dd><b>Fakti- ja dimensioonitabelid</b><span>PostgreSQL connectori kaudu</span></dd></div>
+            <div><dt>Tehti</dt><dd><ul><li>väljade nimetuste korrastamine</li><li>DAX-mõõdikud ja analüütilised lisaväljad</li></ul></dd></div>
+            <div class="sg-io out"><dt>Väljund</dt><dd><b>Power BI analüüs ja juhtlaud</b></dd></div>
+          </dl>
+        </li></ol></div>
       <figcaption>Selle veebilehe graafikud on arvutatud Pythoniga otse failist <code>takso_andmed_clean.csv</code>, mitte Power BI mudelist.</figcaption>
     </figure>
-    <p>Algandmed laaditi PostgreSQL-i. Seal tehti SQL-iga DBeaveris puhastamine, kvaliteedikontrollid ja dimensioonmudel. Power BI loeb fakti- ja dimensioonitabeleid PostgreSQL connectori kaudu. Power Querys korrastati väljade nimed ning DAX-iga lisati mõõdikud ja analüütilised väljad.</p>
-    <p class="question">kuidas CSV PostgreSQL-i laaditi (DBeaveri import, COPY vms)? Skeemis on see etapp praegu ilma tööriistata.</p>
+    <p>Algandmed puhastati ja kontrolliti esmalt Pythonis Jupyter Notebookis ning salvestati puhastatud CSV-failina. Seejärel laaditi andmed PostgreSQL-i, kus DBeaveris SQL-i abil loodi fakti- ja dimensioonitabelid ning kontrolliti mudeli võtmeid ja seoseid. Power BI loeb neid tabeleid PostgreSQL connectori kaudu. Power Querys korrastati väljade nimetusi ning DAX-iga lisati mõõdikud ja analüütilised väljad.</p>
   </section>
 
   <section class="part" id="p2-mudel" data-status="mustand">
@@ -757,8 +822,35 @@ DIVIDE(
   <section class="part" id="p3-yleandmine" data-status="mustand">
     <h3>Üleandmine</h3>
     <p>Projekti tehniline lahendus on üles ehitatud nii, et iga grupiliige saaks sama andmebaasi struktuuri ja Power BI aruande oma lokaalses keskkonnas taastada. Projekti failide, SQL-skriptide ja muudatuste versioonihalduseks kasutatakse Git-repositooriumi.</p>
-    <p>Lahenduse käivitamiseks ja taastamiseks tuleb:</p>
-    <ol class="steps"><li>Kloonida projekti Git-repositoorium oma arvutisse.</li><li>Paigaldada ja käivitada PostgreSQL ning luua projektis kasutatav lokaalne andmebaas.</li><li>Laadida projekti algandmed lokaalsesse PostgreSQL-i andmebaasi.</li><li>Käivitada Git-repositooriumis olevad SQL-skriptid, mis loovad analüüsiks vajalikud fakti- ja dimensioonitabelid ning nendevahelised seosed.</li><li>Käivitada andmekvaliteedi kontrollid, et kontrollida võtmete, tabelite detailsusastme ja seoste korrektsust.</li><li>Avada Git-repositooriumis olev Power BI Project (<code>.pbip</code>) Power BI Desktopis.</li><li>Ühendada Power BI lokaalse PostgreSQL-i andmebaasiga ning värskendada andmed.</li><li>Andmemudeli muutmisel salvestada vastavad SQL-muudatused skriptidesse ning lisada muudatused Git-repositooriumisse, et need oleksid taastatavad ka teiste grupiliikmete lokaalsetes keskkondades.</li></ol>
+    <figure class="chart">
+      <p class="ct">Lahenduse käivitamine ja taastamine</p>
+      <p class="cs">8 sammu kolmes etapis, samas järjekorras nagu andmevoog</p>
+      <ol class="sg-pre" start="1"><li><b>Enne alustamist:</b> kloonida projekti Git-repositoorium oma arvutisse.</li></ol>
+      <div class="stagewrap"><ol class="stages" aria-label="Taastamise etapid"><li class="stage done">
+          <p class="sg-h"><span><b>Python / Jupyter Notebook</b><span class="sg-sub">juba tehtud, uuesti käivitada ei ole vaja</span></span></p>
+          <dl class="sg-dl">
+            <div class="sg-io"><dt>Sisend</dt><dd><b>Algandmestik</b></dd></div>
+            <div><dt>Tehti</dt><dd><p class="sg-note">Puhastatud CSV on Git-repositooriumis olemas. Kasutaja võtab selle sealt.</p><p class="sg-note">Puhastamise protsess on dokumenteeritud: vt <a href="#p2-voog">Andmevoo skeem</a> ja <a href="#p3-kvaliteet">Andmekvaliteet</a>.</p></dd></div>
+            <div class="sg-io out"><dt>Väljund</dt><dd><b>Puhastatud CSV</b><span>Git-repositooriumis</span></dd></div>
+          </dl>
+        </li><li class="stage">
+          <p class="sg-h"><span><b>PostgreSQL</b><span class="sg-sub">SQL / DBeaver</span></span></p>
+          <dl class="sg-dl">
+            <div class="sg-io"><dt>Sisend</dt><dd><b>Puhastatud CSV</b><span>Git-repositooriumist</span></dd></div>
+            <div><dt>Tehti</dt><dd><ol class="sg-steps" start="2"><li>Paigaldada ja käivitada PostgreSQL ning luua projektis kasutatav lokaalne andmebaas.</li><li>Laadida Git-repositooriumis olev puhastatud CSV lokaalsesse PostgreSQL-i andmebaasi.</li><li>Käivitada Git-repositooriumis olevad SQL-skriptid, mis loovad analüüsiks vajalikud fakti- ja dimensioonitabelid ning nendevahelised seosed.</li><li>Käivitada andmekvaliteedi kontrollid, et kontrollida võtmete, tabelite detailsusastme ja seoste korrektsust.</li></ol></dd></div>
+            <div class="sg-io out"><dt>Väljund</dt><dd><b>Fakti- ja dimensioonitabelid</b></dd></div>
+          </dl>
+        </li><li class="stage last">
+          <p class="sg-h"><span><b>Power BI</b><span class="sg-sub">Power BI Desktop</span></span></p>
+          <dl class="sg-dl">
+            <div class="sg-io"><dt>Sisend</dt><dd><b>Fakti- ja dimensioonitabelid</b></dd></div>
+            <div><dt>Tehti</dt><dd><ol class="sg-steps" start="6"><li>Avada Git-repositooriumis olev Power BI Project (<code>.pbip</code>) Power BI Desktopis.</li><li>Ühendada Power BI lokaalse PostgreSQL-i andmebaasiga ning värskendada andmed.</li></ol></dd></div>
+            <div class="sg-io out"><dt>Väljund</dt><dd><b>Töötav Power BI aruanne</b></dd></div>
+          </dl>
+        </li></ol></div>
+      <div class="callout sg-loop"><p class="callout-h">Muudatuste korral</p><ol start="8"><li>Andmemudeli muutmisel salvestada vastavad SQL-muudatused skriptidesse ning lisada muudatused Git-repositooriumisse, et need oleksid taastatavad ka teiste grupiliikmete lokaalsetes keskkondades.</li></ol></div>
+      <figcaption>Sammude numbrid 1–8 näitavad täitmise järjekorda. Pythoni etapp on juba tehtud: selle tulemus, puhastatud CSV, on repositooriumis.</figcaption>
+    </figure>
     <p>Git-repositooriumis hoitakse SQL-skripte, Power BI projekti faile ja projekti dokumentatsiooni. Lokaalseid andmebaasifaile, paroole ega konfidentsiaalseid algandmeid Git-repositooriumisse ei lisata.</p>
     <div class="todo add"><ul>
       <li>algandmete asukoht ja nende PostgreSQL-i laadimise täpne juhis;</li>
@@ -1103,7 +1195,7 @@ MEDIANX(
     <p class="s-kicker"><span class="num">02</span> Andmevoog, puhastus ja töötlus <span class="s-min">· 3 min</span></p>
     <h2 class="s-title">Andmete teekond algfailist juhtlauani</h2>
     <div class="s-body">
-    <div class="s-flow" data-clone=".flowwrap"></div>
+    <div class="s-flow" data-clone=".stagewrap"></div>
     </div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kust andmed tulid ja kuidas liikusid. Üks selge plokkskeem; ära näita koodiridu, selgita loogikat.</aside>
   </section>
