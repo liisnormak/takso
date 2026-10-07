@@ -494,6 +494,45 @@ ol.flowline li+li{margin-left:1.1rem}
 .who-list{list-style:none;padding:0}
 .who-list li{display:flex;align-items:center;gap:.5rem}
 @media (max-width:700px){.s-rq li{grid-template-columns:2.2rem 1fr}.s-rq .rq-q,.s-rq .who{grid-column:2}.dash-grid{grid-template-columns:1fr}.dash-tile.main{grid-column:auto}}
+.s-rqc{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.6rem;max-width:none}
+.s-rqc li{max-width:none;border:1.5px solid var(--line);border-top:4px solid var(--ink);border-radius:4px;padding:.7em .9em .8em;display:flex;flex-direction:column;gap:.35em;background:var(--bg)}
+.s-rqc li.synth{border-top-color:var(--data);background:var(--surface);grid-column:1/-1}
+.src-team{display:flex;gap:.3rem;align-items:center;margin-top:auto}
+.src-team .av{width:1.6rem;height:1.6rem}
+.src-team span.lbl{font-size:.6em;font-weight:700;margin-left:.3rem}
+.src-head{display:flex;align-items:center;gap:.7em;margin:0}
+.src-n{font-size:1.9em;font-weight:700;line-height:1;min-width:1.2ch}
+.s-rqc .synth .src-n{color:var(--data)}
+.src-tag{font-size:.62em;color:var(--muted)}
+.src-tag b{color:var(--ink);letter-spacing:.02em}
+.s-rqc .src-q{margin:0;font-weight:700;font-size:.82em;line-height:1.3;max-width:none}
+.s-rqc .who{font-size:.6em;margin-top:auto}
+@media (max-width:900px){.s-rqc{grid-template-columns:1fr}}
+.rqres-head{border-left:4px solid var(--ink);background:var(--surface);padding:.7rem 1rem;margin:.4rem 0 .8rem;max-width:var(--wide);display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+#p4-rq5 .rqres-head{border-left-color:var(--data)}
+.rqres-q{margin:0;font-weight:700;max-width:52ch}
+.rqres-who{margin:0;display:flex;flex-wrap:wrap}
+/* Uurimisküsimuste tulemused */
+.kpis{list-style:none;margin:.8rem 0 1.2rem;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem;max-width:var(--wide)}
+.kpis li{border:1.5px solid var(--line);border-radius:4px;padding:.6rem .8rem;max-width:none}
+.kpis b{display:block;font-size:1.5rem;line-height:1.1}
+.kpis span{font-size:.78rem;color:var(--muted)}
+.kpis.sm{grid-template-columns:repeat(3,minmax(0,1fr));margin:.3rem 0}
+.ki{list-style:none;margin:.4rem 0;padding:0;max-width:var(--wide);display:grid;gap:.5rem}
+.ki li{display:grid;grid-template-columns:minmax(0,16rem) minmax(0,1fr) 4rem;gap:.8rem;align-items:center;font-size:var(--s-1);max-width:none}
+.ki-bar{height:1.1rem;background:var(--surface);border-radius:2px;overflow:hidden}
+.ki-bar span{display:block;height:100%;background:var(--alert)}
+.ki b{text-align:right}
+@media (max-width:640px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.ki li{grid-template-columns:1fr 3.5rem}.ki-bar{grid-column:1/-1;grid-row:2}}
+.dash.dash-live{gap:.5rem}
+.dfil{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;font-size:.6em}
+.dfil fieldset{border:0;margin:0;padding:0}
+.dfil legend{font-size:.85em;color:var(--muted);padding:0}
+.dgrid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.2rem;flex:1;min-height:0}
+.dkey{font-size:.55em;margin:0}
+.dgrid2 .dt{font-size:.6em;font-weight:700;margin:0 0 .2rem}
+.slide .kpis b{font-size:1.3em}.slide .kpis span{font-size:.55em}
+@media (max-width:700px){.dgrid2{grid-template-columns:1fr}}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -512,7 +551,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.1</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.4</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -980,6 +1019,81 @@ MEDIANX(
     <p>Aruandes kasutatakse läbivalt samu mõisteid, mõõdikuid ja nimetusi, et erinevate visualiseeringute tulemused oleksid omavahel võrreldavad. Väljade ja mõõdikute tähendused dokumenteeritakse Power BI <code>Description</code> omaduse kaudu.</p>
   </section>
 
+  <section class="part rqres" id="p4-rq1" data-status="mustand">
+    <h3>Uurimisküsimus 1: kus probleem on?</h3>
+    <div class="rqres-head"><p class="rqres-q">Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><p class="rqres-who"><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></p></div>
+    <h4 class="subh">Andmed ja meetod</h4>
+    <p>Analüüs on tehtud sõidu ehk tellimuse tasemel: 4&nbsp;943 klienditoe pöördumist on seotud 4&nbsp;166 unikaalse sõiduga, neist 309 on hinnakaebusega. Võrreldakse ELi ja väljaspool ELi sõite mõõdikutega <code>Distinct Ride Count</code>, <code>Overcharge Ride Count</code>, <code>Overcharge Ride Rate</code>, <code>Ride Share by Region %</code> ja <code>Overcharge Share by Region %</code>. Mõjutegurid on leitud Power BI visuaaliga <span lang="en">Key influencers</span>.</p>
+    <ul class="kpis"><li><b class="num">4&nbsp;943</b><span>klienditoe pöördumist</span></li><li><b class="num">4&nbsp;166</b><span>sõitu</span></li><li><b class="num">309</b><span>hinnakaebusega sõitu</span></li><li><b class="num">7,42&nbsp;%</b><span>hinnakaebuste osakaal</span></li></ul>
+    <h4 class="subh">Tulemused</h4>
+    <figure class="chart">
+      <p class="ct">Väljaspool ELi sõidud moodustavad 40&nbsp;% sõitudest, kuid 96&nbsp;% hinnakaebustest</p>
+      <p class="cs">Osakaal kõigist sõitudest ja kõigist hinnakaebusega sõitudest, piirkonna järgi</p>
+      <ul class="key"><li><i style="background:var(--neutral)"></i>Sõitude osakaal</li><li><i style="background:var(--alert)"></i>Hinnakaebusega sõitude osakaal</li></ul>
+      <div id="chQ1share"></div>
+      <figcaption>Allikas: Felena Power BI leht, mõõdikud <code>Ride Share by Region %</code> ja <code>Overcharge Share by Region %</code>. Arvud on üle kontrollitud failist <code>takso_andmed_clean.csv</code>.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbQ1share"></div></details>
+    </figure>
+    <figure class="chart">
+      <p class="ct">Hinnakaebusega sõitude määr on väljaspool ELi ligi 34 korda kõrgem</p>
+      <p class="cs"><code>Overcharge Ride Rate</code> piirkonna järgi</p>
+      <div id="chQ1rate"></div>
+      <figcaption>Väljaspool ELi 296 hinnakaebusega sõitu 1&nbsp;682-st, ELis 13 sõitu 2&nbsp;484-st.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbQ1rate"></div></details>
+    </figure>
+    <figure class="chart">
+      <p class="ct">Peamised mõjutegurid: halb GPS ja ennustusega hinnatüüp</p>
+      <p class="cs">Mitu korda on hinnakaebuse tõenäosus suurem, kui tunnus esineb</p>
+      <ul class="ki"><li><span class="ki-l">GPS-ühendus on ebatäpne</span><span class="ki-bar"><span style="width:100%"></span></span><b class="num">6,76×</b></li><li><span class="ki-l">Hinnatüüp on <code>prediction</code></span><span class="ki-bar"><span style="width:90%"></span></span><b class="num">6,08×</b></li><li><span class="ki-l">Distantsi hälve on üle +50&nbsp;%</span><span class="ki-bar"><span style="width:46%"></span></span><b class="num">3,09×</b></li><li><span class="ki-l">Kestuse hälve on üle 36,88&nbsp;%</span><span class="ki-bar"><span style="width:30%"></span></span><b class="num">2,04×</b></li></ul>
+      <figcaption>Power BI <span lang="en">Key influencers</span>. Kordaja = hinnakaebuste määr tunnusega ÷ määr ilma tunnuseta. Näiteks halva GPS-iga 24,4&nbsp;%, muudel 3,6&nbsp;%. Seos ei tõenda põhjust.</figcaption>
+    </figure>
+    <h4 class="subh">Vastus küsimusele</h4>
+    <div class="callout"><p>Hinnakaebused koonduvad <b>väljaspool ELi sõitudele</b>: need on 40,4&nbsp;% sõitudest, kuid 95,8&nbsp;% hinnakaebustest. Hinnakaebusega sõitude määr on väljaspool ELi 17,60&nbsp;%, ELis 0,52&nbsp;%. Seetõttu keskendub edasine analüüs väljaspool ELi segmendile; ELi sõidud jäävad võrdlusgrupiks, kus valim seda võimaldab.</p></div>
+    <p>Mõjutegurite analüüsi põhjal uuritakse edasi <a href="#p4-rq2">hinnastamist</a>, <a href="#p4-rq3">sõidu kulgemist (distants ja kestus)</a> ning <a href="#p4-rq4">kasutatavat riist- ja tarkvara</a>.</p>
+    <h4 class="subh">Piirangud</h4>
+    <p>Analüüs põhineb ainult sõitudel, mille kohta on tehtud klienditoe pöördumine. ELis on hinnakaebusi vaid 13, seega on ELi määr ebakindel. Mõjutegurid näitavad seost, mitte põhjust.</p>
+  </section>
+
+  <section class="part rqres" id="p4-rq2" data-status="tegemata">
+    <h3>Uurimisküsimus 2: milline hinnastamine probleemiga kaasneb?</h3>
+    <div class="rqres-head"><p class="rqres-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></p></div>
+    <div class="todo add"><ul>
+      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
+      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
+      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
+      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
+  </section>
+
+  <section class="part rqres" id="p4-rq3" data-status="tegemata">
+    <h3>Uurimisküsimus 3: mis sõidus endas eristab probleemseid sõite?</h3>
+    <div class="rqres-head"><p class="rqres-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></p></div>
+    <div class="todo add"><ul>
+      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
+      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
+      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
+      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
+  </section>
+
+  <section class="part rqres" id="p4-rq4" data-status="tegemata">
+    <h3>Uurimisküsimus 4: millised tehnilised tingimused probleemiga kaasnevad?</h3>
+    <div class="rqres-head"><p class="rqres-q">Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></p></div>
+    <div class="todo add"><ul>
+      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
+      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
+      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
+      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
+  </section>
+
+  <section class="part rqres" id="p4-rq5" data-status="tegemata">
+    <h3>Uurimisküsimus 5: mida tulemuste põhjal prioriseerida?</h3>
+    <div class="rqres-head"><p class="rqres-q">Milliste tegurite ja nende kombinatsioonide korral esineb hinnakaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</p><p class="rqres-who"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></p></div>
+    <div class="todo add"><ul>
+      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
+      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
+      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
+      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
+  </section>
+
   <section class="part" id="p4-visuaalid" data-status="tegemata">
     <h3>Visuaalid, filtrid ja kasutajamugavus aruandes</h3>
     <div class="todo">Power BI aruande visuaalid, nendevaheline suhtlus, filtrid; esimene vaade, pealkirjad, värvid. Ekraanipilt.</div>
@@ -1229,7 +1343,7 @@ MEDIANX(
   <section class="slide" id="s3" data-i="3" aria-roledescription="slaid" aria-label="Slaid 3 / 13: Viis uurimisküsimust" hidden>
     <p class="s-kicker"><span class="num">01</span> Tutvustus ja eesmärk <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Viis uurimisküsimust</h2>
-    <div class="s-body"><ol class="s-rq"><li><span class="rq-n">1</span><span class="rq-k">KUS</span><span class="rq-q">Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</span><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></li><li><span class="rq-n">2</span><span class="rq-k">MILLINE HINNASTAMINE</span><span class="rq-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></li><li><span class="rq-n">3</span><span class="rq-k">MIS</span><span class="rq-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</span><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></li><li><span class="rq-n">4</span><span class="rq-k">MILLISED TEHNILISED TINGIMUSED</span><span class="rq-q">Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></li><li class="rq5"><span class="rq-n">5</span><span class="rq-k">MIDA</span><span class="rq-q">Milliseid sekkumisi prioriseerida?</span><span class="who">kõik neli</span></li></ol></div>
+    <div class="s-body"><ol class="s-rqc"><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">1</span><span class="src-tag">Vastab küsimusele: <b>KUS</b> probleem on?</span></p><p class="src-q"><span class="vh">Küsimus 1. </span>Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">2</span><span class="src-tag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</span></p><p class="src-q"><span class="vh">Küsimus 2. </span>Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">3</span><span class="src-tag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</span></p><p class="src-q"><span class="vh">Küsimus 3. </span>Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">4</span><span class="src-tag">Vastab küsimusele: <b>MILLISED TEHNILISED TINGIMUSED</b> probleemiga kaasnevad?</span></p><p class="src-q"><span class="vh">Küsimus 4. </span>Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></li><li class="src synth"><p class="src-head"><span class="src-n" aria-hidden="true">5</span><span class="src-tag">Vastab küsimusele: <b>MIDA</b> tulemuste põhjal prioriseerida?</span></p><p class="src-q"><span class="vh">Küsimus 5. </span>Milliste tegurite kombinatsioonide korral esineb hinnakaebusi kõige rohkem ja milliseid sekkumisi prioriseerida?</p><span class="src-team"><span class="av av-raiko" aria-hidden="true"></span><span class="av av-liis" aria-hidden="true"></span><span class="av av-hannes" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><span class="lbl">kõik neli</span></span></li></ol></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kiire ülevaade, umbes 30 sekundit. Iga küsimuse vastus tuleb oma dashboardil.</aside>
   </section>
   <section class="slide" id="s4" data-i="4" aria-roledescription="slaid" aria-label="Slaid 4 / 13: Andmete teekond algfailist juhtlauani" hidden>
@@ -1254,15 +1368,24 @@ MEDIANX(
   <section class="slide dashslide" id="s6" data-i="6" aria-roledescription="slaid" aria-label="Slaid 6 / 13: Küsimus 1: kus probleem on?" hidden>
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
     <h2 class="s-title">Küsimus 1: kus probleem on?</h2>
-    <div class="s-body"><div class="dash">
+    <div class="s-body"><div class="dash dash-live" id="dashQ1">
       <div class="dash-head"><p class="dash-q">Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></div>
-      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
-      <div class="dash-grid">
-        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
-        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
-        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+      <form class="dfil" onsubmit="return false" aria-label="Dashboardi filtrid">
+        <fieldset><legend>Hinnatüüp</legend><div class="seg">
+          <label><input type="radio" name="q1pt" value="all" checked><span>Kõik</span></label>
+          <label><input type="radio" name="q1pt" value="0"><span>Eeldatav hind</span></label>
+          <label><input type="radio" name="q1pt" value="1"><span>Ennustus</span></label>
+          <label><input type="radio" name="q1pt" value="2"><span>Siht muudetud</span></label></div></fieldset>
+        <fieldset><legend>GPS-ühendus</legend><div class="seg">
+          <label><input type="radio" name="q1gps" value="all" checked><span>Kõik</span></label>
+          <label><input type="radio" name="q1gps" value="1"><span>Hea</span></label>
+          <label><input type="radio" name="q1gps" value="0"><span>Halb</span></label></div></fieldset>
+      </form>
+      <ul class="kpis sm" id="q1kpi" aria-live="polite"></ul>
+      <div class="dgrid2">
+        <div><p class="dt">Osakaal sõitudest vs hinnakaebustest</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>sõidud</li><li><i style="background:var(--alert)"></i>hinnakaebused</li></ul><div id="dQ1share"></div></div>
+        <div><p class="dt">Hinnakaebuste määr piirkonniti</p><div id="dQ1rate"></div></div>
       </div>
-      <div class="s-todo">Interaktiivne dashboard Felena Sooaluste Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 1. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
@@ -1627,8 +1750,8 @@ function setHash(s,ti,url){try{history.replaceState(s,ti,url);}catch(e){}}
 const TABS={esitlus:[document.getElementById('tab-esitlus'),document.getElementById('panel-esitlus')],doc:[document.getElementById('tab-doc'),document.getElementById('panel-doc')]};
 function showView(v,push){
   Object.entries(TABS).forEach(([k,[tb,pn]])=>{const on=k===v;tb.setAttribute('aria-selected',on);tb.tabIndex=on?0:-1;pn.hidden=!on;});
-  if(v==='doc'){daily();render();renderK5();drawStar();markToc();}
-  else{goSlide(curSlide,true);}
+  if(v==='doc'){daily();render();renderK5();drawStar();renderQ1();markToc();}
+  else{goSlide(curSlide,true);renderQ1();}
   if(push){setHash(null,'',v==='esitlus'?'#esitlus':'#dokumentatsioon');}
 }
 Object.entries(TABS).forEach(([k,[tb]])=>{tb.addEventListener('click',()=>{showView(k,true);if(k==='esitlus')document.getElementById('deck').focus();});
@@ -1638,7 +1761,7 @@ Object.entries(TABS).forEach(([k,[tb]])=>{tb.addEventListener('click',()=>{showV
 const SLIDES=[...document.querySelectorAll('.slide')];let curSlide=1;
 document.querySelectorAll('[data-clone]').forEach(h=>{const src=document.querySelector('#panel-doc '+h.dataset.clone);if(src){const c=src.cloneNode(true);c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));h.appendChild(c);}});
 (function(){const p=document.getElementById('deckProg');p.innerHTML=SLIDES.map(()=>'<span></span>').join('');})();
-function goSlide(i,silent){
+function goSlide(i,silent){setTimeout(()=>{try{renderQ1()}catch(e){}},0);
   curSlide=Math.max(1,Math.min(SLIDES.length,i));
   SLIDES.forEach(s=>s.hidden=+s.dataset.i!==curSlide);
   const s=SLIDES[curSlide-1];
@@ -1676,7 +1799,32 @@ document.addEventListener('keydown',ev=>{
   const target=h&&h.length>1?document.getElementById(decodeURIComponent(h.slice(1))):null;
   if(h==='#dokumentatsioon'||(target&&target.closest('#panel-doc'))){showView('doc');if(target)requestAnimationFrame(()=>target.scrollIntoView());return;}
   showView('esitlus');})();
-let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;if(!document.getElementById('panel-doc').hidden){daily();render();renderK5();drawStar();}}},150)});
+
+/* ---------- Uurimisküsimus 1 (Felena) ---------- */
+function q1calc(f){const r={1:{n:0,k:0},0:{n:0,k:0}};for(let i=0;i<N;i++){if(f.pt!=='all'&&D.pt[i]!=+f.pt)continue;if(f.gps!=='all'&&D.gps[i]!=+f.gps)continue;r[D.eu[i]].n++;r[D.eu[i]].k+=D.ot[i];}
+  const n=r[1].n+r[0].n,k=r[1].k+r[0].k;return{r,n,k};}
+function grouped(el,{cats,series,aria,max=1,fmtV=v=>pct(v,1),axV=v=>pct(v,0),W=cw(el),H=260}){
+  const m={l:44,r:10,t:26,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b,gw=iw/cats.length,bw=Math.min(70,gw*.8/series.length);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria)}">`;
+  for(let i=0;i<=4;i++){const y=m.t+ih-ih*i/4;s+=`<line class="axl" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}"/><text class="ax" x="${m.l-6}" y="${y+4}" text-anchor="end">${axV(max*i/4)}</text>`;}
+  cats.forEach((c,ci)=>{const x0=m.l+ci*gw+(gw-bw*series.length)/2;series.forEach((se,si)=>{const v=se.v[ci]||0,h=ih*v/max,x=x0+si*bw;
+    s+=`<rect class="${se.c}" x="${x+2}" y="${m.t+ih-h}" width="${bw-4}" height="${h}" data-tip="${esc(c+': '+se.name+' '+fmtV(v))}"/><text class="lblb" x="${x+bw/2}" y="${m.t+ih-h-6}" text-anchor="middle">${fmtV(v)}</text>`;});
+    s+=`<text class="lbl" x="${m.l+ci*gw+gw/2}" y="${H-8}" text-anchor="middle">${esc(c)}</text>`;});
+  el.innerHTML=s+'</svg>';}
+function q1draw(prefix,f,tb){const {r,n,k}=q1calc(f);const cats=['EL','Väljaspool ELi'],E=[1,0];
+  const shareR=E.map(e=>n?r[e].n/n:0),shareK=E.map(e=>k?r[e].k/k:0),rate=E.map(e=>r[e].n?r[e].k/r[e].n:0);
+  grouped(document.getElementById(prefix+'share'),{cats,series:[{name:'sõitude osakaal',v:shareR,c:'c-neutral'},{name:'hinnakaebuste osakaal',v:shareK,c:'c-alert'}],aria:`Sõitude osakaal: EL ${pct(shareR[0],1)}, väljaspool ELi ${pct(shareR[1],1)}. Hinnakaebuste osakaal: EL ${pct(shareK[0],1)}, väljaspool ELi ${pct(shareK[1],1)}.`});
+  const mx=Math.max(.05,Math.ceil(Math.max(...rate)*20)/20);
+  grouped(document.getElementById(prefix+'rate'),{cats,series:[{name:'määr',v:rate,c:'c-alert'}],max:mx,fmtV:v=>pct(v,2),axV:v=>pct(v,0),aria:`Hinnakaebuste määr: EL ${pct(rate[0],2)}, väljaspool ELi ${pct(rate[1],2)}.`});
+  if(tb){document.getElementById('tbQ1share').innerHTML=table(['Piirkond','Sõitude osakaal','Hinnakaebuste osakaal'],cats.map((c,i)=>[c,pct(shareR[i],1),pct(shareK[i],1)]));
+    document.getElementById('tbQ1rate').innerHTML=table(['Piirkond','Sõite','Hinnakaebusega','Määr'],cats.map((c,i)=>[c,fmt.format(r[E[i]].n),fmt.format(r[E[i]].k),pct(rate[i],2)]));}
+  return {n,k};}
+function renderQ1(){q1draw('chQ1',{pt:'all',gps:'all'},true);
+  const F1=document.getElementById('dashQ1');if(!F1)return;const g=nm=>F1.querySelector(`input[name="${nm}"]:checked`).value;
+  const {n,k}=q1draw('dQ1',{pt:g('q1pt'),gps:g('q1gps')},false);
+  document.getElementById('q1kpi').innerHTML=`<li><b class="num">${fmt.format(n)}</b><span>sõitu</span></li><li><b class="num">${fmt.format(k)}</b><span>hinnakaebusega</span></li><li><b class="num">${n?pct(k/n,2):'–'}</b><span>hinnakaebuste osakaal</span></li>`;}
+document.getElementById('dashQ1').addEventListener('change',renderQ1);
+let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;if(!document.getElementById('panel-doc').hidden){daily();render();renderK5();drawStar();}renderQ1();}},150)});
 </script>
 </body>
 </html>
