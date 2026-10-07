@@ -587,6 +587,25 @@ ol.flowline li+li{margin-left:1.1rem}
 figure.chart.wide{max-width:var(--wide)}
 .extlink{font-size:var(--s-1)}
 @media (max-width:760px){.rq3g,.slide .rq3g{grid-template-columns:1fr}}
+.toc-home{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 1rem;padding:.35rem .8rem;border:1.5px solid var(--ink);border-radius:4px;font-size:var(--s-1);font-weight:700;text-decoration:none;color:var(--ink);background:var(--bg)}
+.toc-home:hover{background:var(--surface);text-decoration:underline}
+/* Uurimisküsimus 4 */
+:root{--b0:#1f6fb2;--b1:#1b2a6b;--b2:#d55e00;--b3:#6a1b6a;--b4:#c2408a;--b5:#7b61c4;--b6:#b08600;--b7:#b22222}
+.rq4f{margin:.4rem 0 .6rem}
+#rq4d>.rq4f{position:sticky;top:0;z-index:5;background:var(--bg);padding:.4rem 0;border-bottom:1px solid var(--line)}
+.r4tall{max-height:none}
+.key i.ring{background:var(--bg);border:2.5px solid var(--ink);border-radius:50%}
+table.piv tr.pg th,table.piv tr.pg td{background:var(--surface);font-weight:700}
+table.piv tfoot th,table.piv tfoot td{border-top:2px solid var(--ink)}
+.rq4g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem 1rem;flex:1;min-height:0}
+.rq4g .dt{font-size:.6em;font-weight:700;margin:0 0 .15rem}
+.rq4g .key{font-size:.5em;margin:0 0 .1rem;gap:.1rem .6rem}
+.r4kpi{font-size:.6em;margin-left:1rem}.r4kpi b{font-size:1.4em}
+.dash-head .rq4f{margin:0 0 0 auto;font-size:.55em}
+.r4next{font-size:.62em;grid-template-columns:1fr}
+.r4next .q1fact{font-size:1.1em}.r4next ul{font-size:1em;display:block}.r4next li{margin:.2em 0}
+@media (max-width:900px){.rq4g{grid-template-columns:1fr}}
+figure.chart .dkey{font-size:.85rem}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -604,8 +623,8 @@ figure.chart.wide{max-width:var(--wide)}
 <a class="skip" href="#sisu">Liigu sisu juurde</a>
 <div class="tip" id="tip" role="presentation"></div>
 
-<header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.9</p>
+<header class="top" id="top">
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.12</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -637,6 +656,7 @@ figure.chart.wide{max-width:var(--wide)}
 
 <div class="layout">
 <nav class="toc" aria-labelledby="toc-h">
+  <a class="toc-home" href="#top" id="tocHome"><span aria-hidden="true">↑</span> Esileht</a>
   <h2 id="toc-h">Sisukord</h2>
   <ol id="tocList"></ol>
 </nav>
@@ -937,7 +957,30 @@ DIVIDE(
     'Rides'[Predicted Distance]
 )</code></pre>
     <p>Positiivne väärtus tähendab, et tegelik distants oli prognoositust pikem, ning negatiivne väärtus, et tegelik distants oli prognoositust lühem.</p>
-    <p>Distantsi kõrvalekallete analüüsimiseks loodi lisaks <code>Distance Deviation Group</code>, mille abil jaotatakse sõidud kõrvalekalde suuruse alusel rühmadesse. Rühmade loogilises järjekorras kuvamiseks loodi tehniline sortimisväli <code>Distance Deviation Sort</code>.</p>
+    <h4 class="subh"><code>Distance Deviation Sort</code></h4>
+    <p>Tehniline sortimisväli, mis paneb eelmise tunnuse rühmad loogilisse järjestusse.</p>
+<pre><code>Distance Deviation Sort =
+SWITCH(
+    TRUE(),
+    'Rides'[Distance Deviation %] &lt; -0.25, 1,
+    'Rides'[Distance Deviation %] &lt; -0.10, 2,
+    'Rides'[Distance Deviation %] &lt;= 0.10, 3,
+    'Rides'[Distance Deviation %] &lt;= 0.25, 4,
+    'Rides'[Distance Deviation %] &lt;= 0.50, 5,
+    6
+)</code></pre>
+    <p>Distantsi kõrvalekallete analüüsimiseks loodi lisaks <code>Distance Deviation Group</code>, mille abil jaotatakse sõidud kõrvalekalde suuruse alusel rühmadesse.</p>
+<pre><code>Distance Deviation Group =
+SWITCH(
+    TRUE(),
+    'Rides'[Distance Deviation %] &lt; -0.25, "&lt; -25%",
+    'Rides'[Distance Deviation %] &lt; -0.10, "-25% to -10%",
+    'Rides'[Distance Deviation %] &lt;= 0.10, "-10% to +10%",
+    'Rides'[Distance Deviation %] &lt;= 0.25, "+10% to +25%",
+    'Rides'[Distance Deviation %] &lt;= 0.50, "+25% to +50%",
+    "&gt; +50%"
+)</code></pre>
+    <p>Rühmade loogilises järjekorras kuvamiseks loodi tehniline sortimisväli <code>Distance Deviation Sort</code>.</p>
     <p>Hinna kõrvalekalde analüüsimiseks loodi <code>Price Deviation %</code>, mis näitab lõpuhinna ja eeldatava hinna suhtelist erinevust:</p>
 <pre><code>Price Deviation % =
 DIVIDE(
@@ -945,6 +988,7 @@ DIVIDE(
     'Rides'[Upfront Price]
 )</code></pre>
     <p>Protsentuaalse hinnakõrvalekalde kasutamine võimaldab võrrelda sõidusisest hinnamuutust ka ELi ja väljaspool ELi segmentide analüüsimisel, kus absoluutsete hindade otsene võrdlemine ei ole erinevate valuutade tõttu sobiv.</p>
+    <p>Seda saab kasutada ainult sõitudel, millel on eeldatav hind (<code>Upfront Price</code>) olemas.</p>
     <p>Analüüsis kasutatakse lisaks absoluutset kõrvalekallet olukordades, kus oluline on kõrvalekalde suurus, mitte selle suund. Näiteks distantsi puhul kasutatakse mediaanset absoluutset kõrvalekallet, et positiivsed ja negatiivsed erinevused üksteist ei tasandaks.</p>
   </section>
 
@@ -1172,14 +1216,54 @@ MEDIANX(
     <p>Analüüs põhineb ainult pöördumisega sõitudel. Seos ei tõenda, et pikem sõit või prognoosist pikem kestus põhjustab kaebuse. 19 sõidul puudub prognoos, need ei ole hajuvusdiagrammidel.</p>
   </section>
 
-  <section class="part rqres" id="p4-rq4" data-status="tegemata">
+  <section class="part rqres" id="p4-rq4" data-status="mustand">
     <h3>Uurimisküsimus 4: millised tehnilised tingimused probleemiga kaasnevad?</h3>
     <div class="rqres-head"><p class="rqres-q">Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></p></div>
-    <div class="todo add"><ul>
-      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
-      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
-      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
-      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
+    <h4 class="subh">Andmed ja meetod</h4>
+    <p>Tegurid: GPS-ühenduse kvaliteet, sõitja ja juhi rakendus, juhi telefonimudel ning nende kombinatsioonid. Iga võrdlus on tehtud kolmes vaates: kõik sõidud, EL ja väljaspool ELi. Hinnakaebuste keskmine määr: kõik 7,4&nbsp;%, EL 0,5&nbsp;%, väljaspool ELi 17,6&nbsp;%. <b>Tulpa tuleb alati võrrelda oma vaate keskmisega.</b></p>
+    <p>Tabelid UK3 T1–T6 on arvutatud tellimuse tasemel failist <code>takso_andmed_clean.csv</code> ja lisatud Power BI mudelisse arvutatud tabelitena. Regressioon (F) on logistiline regressioon; tulemus on šansside suhe (<span lang="en">odds ratio</span>).</p>
+    <div class="rq4" id="rq4d" data-sfx="d">
+    <form class="dfil rq4f" onsubmit="return false" aria-label="Vaate filter"><fieldset><legend>Vaade</legend><div class="seg">
+            <label><input type="radio" name="r4sd" value="all3" checked><span>Kõik kolm</span></label>
+            <label><input type="radio" name="r4sd" value="kõik"><span>Kõik sõidud</span></label>
+            <label><input type="radio" name="r4sd" value="EL"><span>EL</span></label>
+            <label><input type="radio" name="r4sd" value="mitte-EL"><span>Väljaspool ELi</span></label></div></fieldset></form>
+    <h4 class="subh">A. Kui suur on probleem?</h4>
+    <p>Kui suur osa kõigist sõitudest lõppes hinnakaebusega. Oodatav tulemus: 7,4&nbsp;%, ehk ligikaudu 7 sõitu 100-st.</p>
+    <ul class="kpis"><li><b class="num">7,4&nbsp;%</b><span>hinnakaebusega sõitude osakaal</span></li></ul>
+    <h4 class="subh">B. Kas GPS-i kvaliteet on seotud hinnakaebustega?</h4>
+    <p>Halb GPS suurendab hinnakaebuste määra kõigis kolmes vaates: ELis 0,4&nbsp;% pealt 3,6&nbsp;% peale (9 korda), väljaspool ELi 11,1&nbsp;% pealt 28,0&nbsp;% peale. Halva GPS-iga sõidud on 18&nbsp;% kõigist sõitudest, kuid annavad 60&nbsp;% kõigist hinnakaebustest.</p>
+    <figure class="chart wide"><p class="ct">Hinnakaebuste määr GPS-i kvaliteedi kaupa</p><p class="cs">Vaated: kõik sõidud, EL, väljaspool ELi</p><ul class="key dkey r4key"><li><i style="background:var(--ink)"></i>kõik sõidud</li><li><i style="background:var(--data)"></i>EL</li><li><i style="background:var(--alert)"></i>väljaspool ELi</li></ul><div class="r4c" data-c="B"></div><figcaption>Hannese Power BI leht, tabel UK3 T1.</figcaption></figure>
+    <h4 class="subh">C. Kas rakenduse platvorm või versioon on seotud hinnakaebustega?</h4>
+    <p>Sõitja rakendus ei mõjuta: ELi ja väljaspool ELi vaates on Android ja iOS sarnased. Juhi rakendus, mis on uusimast 9 või rohkem versiooni vanem, kahekordistab hinnakaebuste määra väljaspool ELi (32,3&nbsp;% vs ligikaudu 16&nbsp;%). ELis on vana rakendusega sõitudel ainult 1 hinnakaebus, seega seal ei saa mõju kinnitada ega ümber lükata.</p>
+    <figure class="chart wide"><p class="ct">Hinnakaebuste määr rakenduse platvormi ja juhi rakenduse vanuse kaupa</p><p class="cs">Vaated: kõik sõidud, EL, väljaspool ELi</p><ul class="key dkey r4key"><li><i style="background:var(--ink)"></i>kõik sõidud</li><li><i style="background:var(--data)"></i>EL</li><li><i style="background:var(--alert)"></i>väljaspool ELi</li></ul><div class="r4c" data-c="C"></div><figcaption>Hannese Power BI leht, tabel UK3 T2.</figcaption></figure>
+    <h4 class="subh">D. Kas juhi telefonimudel on seotud hinnakaebustega?</h4>
+    <p>Tabelis on 59 telefonimudelit, millel on vähemalt 20 sõitu. Mudelite vahel erineb väga palju halva GPS-i osakaal: TECNO B1 puhul oli GPS halb 94&nbsp;% sõitudest, enamikul ELi mudelitel alla 10&nbsp;%. Sama brändi sees on erinevus suur (TECNO LA7 29&nbsp;%, TECNO B1 94&nbsp;%), seega brändi järgi vaatamine peidaks probleemi.</p>
+    <p>Väljaspool ELi on mudeli halva GPS-i osakaal ja hinnakaebuste määr tugevalt seotud (korrelatsioon 0,76). Kolm mudelit (TECNO B1, TECNO B1p, TECNO-J8) on 4&nbsp;% sõitudest, kuid annavad 17&nbsp;% kõigist hinnakaebustest. Tabel näitab, kas mudelil on hinnakaebusi rohkem, kui GPS, rakenduse vanus ja piirkond ennustavad. 59 mudeli testimisel võib 2–3 «leidu» tekkida juhuslikult.</p>
+    <figure class="chart wide"><p class="ct">Halva GPS-i osakaal telefonimudeli kaupa</p><p class="cs">59 mudelit, vähemalt 20 sõitu; värv = piirkond</p><ul class="key dkey"><li><i style="background:var(--data)"></i>EL</li><li><i style="background:var(--alert)"></i>väljaspool ELi</li><li><i style="background:var(--neutral)"></i>segamini</li></ul><div class="r4c r4tall" data-c="Dbar"></div><figcaption>Hannese Power BI leht, tabel UK3 T3. Hiirega tulba kohal: sõite ja hinnakaebuste määr.</figcaption><details class="data"><summary>Näita tabelina</summary><div class="tw" data-t="Dtab"></div></details></figure>
+    <figure class="chart wide"><p class="ct">Mudelid: halb GPS (X) ja hinnakaebuste määr (Y), värv = bränd</p><p class="cs">Mulli suurus = sõitude arv</p><ul class="key dkey"><li><i style="background:var(--b0)"></i>Huawei</li><li><i style="background:var(--b1)"></i>Infinix</li><li><i style="background:var(--b2)"></i>iPhone</li><li><i style="background:var(--b3)"></i>Itel</li><li><i style="background:var(--b4)"></i>Nokia (HMD)</li><li><i style="background:var(--b5)"></i>Samsung</li><li><i style="background:var(--b6)"></i>TECNO</li><li><i style="background:var(--b7)"></i>Xiaomi</li></ul><div class="r4c" data-c="Dsc"></div><figcaption>Hannese Power BI leht, tabel UK3 T3.</figcaption></figure>
+    <figure class="chart wide"><p class="ct">Hinnakaebusi tegelikult vs oodatud</p><p class="cs">GPS, rakenduse vanus ja piirkond on arvesse võetud</p><div class="tw" data-t="Dpiv"></div><figcaption>Hannese Power BI leht, tabel UK3 T3. «Oodatud» = mudeli prognoos GPS-i, rakenduse vanuse ja piirkonna põhjal.</figcaption></figure>
+    <h4 class="subh">E. Kas tegurid koos võimendavad üksteist?</h4>
+    <p>Väljaspool ELi kahekordistab vana juhi rakendus hinnakaebuste määra nii hea GPS-i (9,8&nbsp;% → 19,5&nbsp;%) kui ka halva GPS-i korral (24,1&nbsp;% → 50,0&nbsp;%). Halb GPS ja vana rakendus koos: ligikaudu iga teine sõit lõppes hinnakaebusega. ELis on vana rakenduse ja halva GPS-iga sõite ainult 3, seega sealset kombinatsiooni ei saa hinnata.</p>
+    <figure class="chart wide"><p class="ct">GPS ja juhi rakenduse vanus koos, vaadete kaupa</p><p class="cs">Hinnakaebuste määr</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>uuem juhi rakendus (kuni 8 versiooni vanem)</li><li><i style="background:var(--alert)"></i>vana juhi rakendus (9+ versiooni vanem)</li></ul><div class="r4c" data-c="E"></div><figcaption>Hannese Power BI leht, tabel UK3 T4.</figcaption></figure>
+    <h4 class="subh">F. Mis jääb alles, kui teised tegurid on arvesse võetud? (põhivastus)</h4>
+    <p>Šansside suhe (<span lang="en">odds ratio</span>): 1 = mõju puudub, üle 1 = rohkem hinnakaebusi. Halb GPS on oluline kõigis kolmes mudelis (kõik 3,2; EL 9,8; väljaspool ELi 3,1). Vana juhi rakendus on oluline väljaspool ELi (2,7). ELis on sellega seotud ainult 1 hinnakaebus, seega seal ei saa tulemust kinnitada. Juhi ja sõitja rakenduse platvorm ei ole üheski mudelis statistiliselt olulised. ELi mudel põhineb ainult 13 hinnakaebusel, seepärast on selle usaldusvahemik väga lai.</p>
+    <figure class="chart wide"><p class="ct">Šansside suhe tegurite ja mudelite kaupa</p><p class="cs">Katkendjoon: 1 = mõju puudub</p><ul class="key dkey"><li><i style="background:var(--ink)"></i>kõik, piirkond kontrollitud</li><li><i style="background:var(--data)"></i>ainult EL</li><li><i style="background:var(--alert)"></i>ainult väljaspool ELi</li></ul><div class="r4c" data-c="F"></div><figcaption>Hannese Power BI leht, tabel UK3 T5.</figcaption></figure>
+    <figure class="chart wide"><p class="ct">Usaldusvahemikud (95&nbsp;%)</p><p class="cs">Vali mudel</p><form class="dfil r4mf" onsubmit="return false"><fieldset><legend>Mudel</legend><div class="seg"><label><input type="radio" name="r4m" value="kõik, piirkond kontrollitud" checked><span>kõik, piirkond kontrollitud</span></label><label><input type="radio" name="r4m" value="ainult EL"><span>ainult EL</span></label><label><input type="radio" name="r4m" value="ainult mitte-EL"><span>ainult väljaspool ELi</span></label></div></fieldset></form><div class="tw" data-t="Fci"></div><figcaption>Hannese Power BI leht, tabel UK3 T5. p &lt; 0,05 tähendab statistiliselt olulist seost.</figcaption></figure>
+    <h4 class="subh">G. Kuhu ettevõte peaks sekkuma?</h4>
+    <p>Paremal = palju sõite, üleval = kõrge hinnakaebuste määr, suur mull = palju hinnakaebusi. Halb GPS annab 60&nbsp;% hinnakaebustest, see on suurim mõju. Vana juhi rakendus on 10&nbsp;% sõitudest, kuid annab 24&nbsp;% hinnakaebustest, ja selle uuendamine on lihtsaim samm. Kõrgeima halva GPS-i osakaaluga telefonimudelid on konkreetne sihtmärk.</p>
+    <figure class="chart wide"><p class="ct">Segmendid: sõitude arv, hinnakaebuste määr ja hinnakaebuste hulk</p><p class="cs">Kõik sõidud</p><ul class="key dkey"><li><i class="ring"></i>tühi ring = hea GPS</li><li><i style="background:var(--ink)"></i>täidetud = halb GPS</li><li><i style="background:var(--neutral)"></i>uuem rakendus (kuni 8 versiooni vanem)</li><li><i style="background:var(--alert)"></i>vana rakendus (9+ versiooni vanem)</li></ul><figcaption><div class="r4c" data-c="G"></div></figcaption>Hannese Power BI leht, tabel UK3 T6.</figure>
+    </div>
+    <h4 class="subh">Vastus küsimusele</h4>
+    <div class="callout"><p>Tugevaim tehniline tegur on <b>halb GPS-ühendus</b>: see jääb oluliseks ka siis, kui teised tegurid on arvesse võetud (šansside suhe 3,2), ja annab 60&nbsp;% hinnakaebustest 18&nbsp;% sõitudest. Väljaspool ELi on teine tegur <b>vana juhi rakendus</b> (9+ versiooni vanem, šansside suhe 2,7). Sõitja ja juhi rakenduse platvorm (Android või iOS) ei ole olulised.</p></div>
+    <h4 class="subh">Järeldused</h4>
+    <ul>
+      <li>Halb GPS ja vana juhi rakendus võimendavad üksteist: väljaspool ELi lõppes iga teine sellise kombinatsiooniga sõit hinnakaebusega.</li>
+      <li>Kõige lihtsam sekkumine on juhi rakenduse uuendamine: 10&nbsp;% sõitudest, 24&nbsp;% hinnakaebustest.</li>
+      <li>GPS-i probleem on mudelipõhine: üksikud telefonimudelid (eriti TECNO B1, B1p, J8) annavad ebaproportsionaalselt palju hinnakaebusi.</li>
+    </ul>
+    <h4 class="subh">Piirangud</h4>
+    <p>ELi tulemused põhinevad ainult 13 hinnakaebusel. 59 telefonimudeli võrdluses võib 2–3 «leidu» tekkida juhuslikult. Analüüs näitab seost, mitte põhjust.</p>
   </section>
 
   <section class="part rqres" id="p4-rq5" data-status="tegemata">
@@ -1533,15 +1617,20 @@ MEDIANX(
   <section class="slide dashslide" id="s9" data-i="9" aria-roledescription="slaid" aria-label="Slaid 9 / 13: Küsimus 4: Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?" hidden>
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
     <h2 class="s-title">Küsimus 4: Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</h2>
-    <div class="s-body"><div class="dash">
-      <div class="dash-head"><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></div>
-      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
-      <div class="dash-grid">
-        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
-        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
-        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+    <div class="s-body"><div class="dash dash-live rq4" id="rq4s" data-sfx="s">
+      <div class="dash-head"><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span><span class="r4kpi"><b>7,4&nbsp;%</b> hinnakaebusega sõitude osakaal</span><form class="dfil rq4f" onsubmit="return false" aria-label="Vaate filter"><fieldset><legend>Vaade</legend><div class="seg">
+            <label><input type="radio" name="r4ss" value="all3" checked><span>Kõik kolm</span></label>
+            <label><input type="radio" name="r4ss" value="kõik"><span>Kõik sõidud</span></label>
+            <label><input type="radio" name="r4ss" value="EL"><span>EL</span></label>
+            <label><input type="radio" name="r4ss" value="mitte-EL"><span>Väljaspool ELi</span></label></div></fieldset></form></div>
+      <div class="rq4g">
+        <div><p class="dt">B. Hinnakaebuste määr GPS-i kvaliteedi kaupa</p><ul class="key dkey r4key"><li><i style="background:var(--ink)"></i>kõik sõidud</li><li><i style="background:var(--data)"></i>EL</li><li><i style="background:var(--alert)"></i>väljaspool ELi</li></ul><div class="r4c" data-c="B"></div></div>
+        <div><p class="dt">C. Rakenduse platvorm ja juhi rakenduse vanus</p><div class="r4c" data-c="C"></div></div>
+        <div><p class="dt">D. Mudelid: halb GPS (X) ja hinnakaebuste määr (Y)</p><ul class="key dkey"><li><i style="background:var(--b0)"></i>Huawei</li><li><i style="background:var(--b1)"></i>Infinix</li><li><i style="background:var(--b2)"></i>iPhone</li><li><i style="background:var(--b3)"></i>Itel</li><li><i style="background:var(--b4)"></i>Nokia (HMD)</li><li><i style="background:var(--b5)"></i>Samsung</li><li><i style="background:var(--b6)"></i>TECNO</li><li><i style="background:var(--b7)"></i>Xiaomi</li></ul><div class="r4c" data-c="Dsc"></div></div>
+        <div><p class="dt">E. GPS ja juhi rakenduse vanus koos</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>uuem juhi rakendus</li><li><i style="background:var(--alert)"></i>vana juhi rakendus (9+)</li></ul><div class="r4c" data-c="E"></div></div>
+        <div><p class="dt">G. Kuhu sekkuda? Segmendid (kõik sõidud)</p><div class="r4c" data-c="G"></div></div>
+        <div class="q1next r4next"><p class="dt">Järeldused</p><div><p class="q1fact">Halb GPS on tugevaim tegur (šansside suhe 3,2).</p><ul><li>väljaspool ELi ka vana juhi rakendus (2,7)</li><li>halb GPS + vana rakendus: iga teine sõit hinnakaebusega</li><li>uuendada juhi rakendus: 10 % sõitudest, 24 % hinnakaebustest</li></ul></div></div>
       </div>
-      <div class="s-todo">Interaktiivne dashboard Hannes Seeberg Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 4. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
@@ -1922,7 +2011,7 @@ function grouped(el,{cats,series,aria,max=1,fmtV=v=>pct(v,1),axV=v=>pct(v,0),W=c
     s+=`<text class="lbl" x="${m.l+ci*gw+gw/2}" y="${H-8}" text-anchor="middle">${esc(c)}</text>`;});
   el.innerHTML=s+'</svg>';}
 var G='var(--neutral)',DK='var(--alert)';
-function renderQ1(){if(typeof KIDEF==='undefined')return;if(typeof renderAllRQ3==='function')renderAllRQ3();
+function renderQ1(){if(typeof KIDEF==='undefined')return;if(typeof renderAllRQ3==='function')renderAllRQ3();if(typeof renderAllRQ4==='function')renderAllRQ4();
   const regF=document.querySelector('.q1region input:checked');const reg=regF?regF.value:'all';
   const all={cats:['EL','Väljaspool ELi'],r:[.596,.404],k:[.042,.958]};
   const idx=reg==='all'?[0,1]:reg==='1'?[0]:[1];
@@ -2002,6 +2091,63 @@ function renderRQ3(box){if(!box)return;const idx=r3filter(box);const n=idx.lengt
 document.querySelectorAll('.rq3').forEach(b=>b.querySelector('.rq3f').addEventListener('change',()=>renderRQ3(b)));
 function renderAllRQ3(){document.querySelectorAll('.rq3').forEach(renderRQ3);}
 renderAllRQ3();
+document.getElementById('tocHome').addEventListener('click',ev=>{ev.preventDefault();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});document.getElementById('tab-doc').focus({preventScroll:true});});
+
+/* ---------- Uurimisküsimus 4 (Hannes): Power BI tabelid UK3 T1–T6 ---------- */
+var H4={"T1 GPS": [["GPS halb (0)", "kõik", 1.0, 762.0, 186.0, 0.2440944882], ["GPS hea (1)", "kõik", 1.0, 3404.0, 123.0, 0.03613396], ["GPS halb (0)", "EL", 2.0, 111.0, 4.0, 0.036036036], ["GPS hea (1)", "EL", 2.0, 2373.0, 9.0, 0.0037926675], ["GPS halb (0)", "mitte-EL", 3.0, 651.0, 182.0, 0.2795698925], ["GPS hea (1)", "mitte-EL", 3.0, 1031.0, 114.0, 0.1105722599]], "T2 Apid": [["Kliendi äpp: Android", 1.0, "kõik", 1.0, 2327.0, 203.0, 0.0872367856], ["Kliendi äpp: iOS", 2.0, "kõik", 1.0, 1824.0, 106.0, 0.0581140351], ["Juhi äpp: Android", 3.0, "kõik", 1.0, 3799.0, 304.0, 0.0800210582], ["Juhi äpp: iOS", 4.0, "kõik", 1.0, 367.0, 5.0, 0.0136239782], ["Juhi äpi vanus: 1-3 versiooni vanem", 6.0, "kõik", 1.0, 1623.0, 102.0, 0.0628465804], ["Juhi äpi vanus: 4-8 versiooni vanem", 7.0, "kõik", 1.0, 1362.0, 82.0, 0.06020558], ["Juhi äpi vanus: 9+ versiooni vanem", 8.0, "kõik", 1.0, 427.0, 75.0, 0.1756440281], ["Juhi äpi vanus: uusim", 5.0, "kõik", 1.0, 754.0, 50.0, 0.0663129973], ["Kliendi äpp: Android", 1.0, "EL", 2.0, 1157.0, 3.0, 0.0025929127], ["Kliendi äpp: iOS", 2.0, "EL", 2.0, 1312.0, 10.0, 0.0076219512], ["Juhi äpp: Android", 3.0, "EL", 2.0, 2167.0, 13.0, 0.0059990771], ["Juhi äpp: iOS", 4.0, "EL", 2.0, 317.0, 0.0, 0.0], ["Juhi äpi vanus: 1-3 versiooni vanem", 6.0, "EL", 2.0, 1013.0, 4.0, 0.0039486673], ["Juhi äpi vanus: 4-8 versiooni vanem", 7.0, "EL", 2.0, 767.0, 1.0, 0.001303781], ["Juhi äpi vanus: 9+ versiooni vanem", 8.0, "EL", 2.0, 198.0, 1.0, 0.0050505051], ["Juhi äpi vanus: uusim", 5.0, "EL", 2.0, 506.0, 7.0, 0.0138339921], ["Kliendi äpp: Android", 1.0, "mitte-EL", 3.0, 1170.0, 200.0, 0.1709401709], ["Kliendi äpp: iOS", 2.0, "mitte-EL", 3.0, 512.0, 96.0, 0.1875], ["Juhi äpp: Android", 3.0, "mitte-EL", 3.0, 1632.0, 291.0, 0.1783088235], ["Juhi äpp: iOS", 4.0, "mitte-EL", 3.0, 50.0, 5.0, 0.1], ["Juhi äpi vanus: 1-3 versiooni vanem", 6.0, "mitte-EL", 3.0, 610.0, 98.0, 0.1606557377], ["Juhi äpi vanus: 4-8 versiooni vanem", 7.0, "mitte-EL", 3.0, 595.0, 81.0, 0.1361344538], ["Juhi äpi vanus: 9+ versiooni vanem", 8.0, "mitte-EL", 3.0, 229.0, 74.0, 0.3231441048], ["Juhi äpi vanus: uusim", 5.0, "mitte-EL", 3.0, 248.0, 43.0, 0.1733870968]], "T3 Mudelid": [["HMD Global Nokia 2.2", "Nokia (HMD)", "mitte-EL", 78.0, 4.0, 0.0512820513, 0.2179487179, 9.8137809122, 0.4075901058, "oodatust vähem"], ["HMD Global TA-1032", "Nokia (HMD)", "segamini", 25.0, 3.0, 0.12, 0.32, 3.0797156303, 0.974115912, "ootuspärane"], ["HUAWEI ALE-L21", "Huawei", "EL", 20.0, 0.0, 0.0, 0.1, 0.369977445, 0.0, "ootuspärane"], ["HUAWEI ANE-LX1", "Huawei", "EL", 50.0, 0.0, 0.0, 0.08, 0.2575832008, 0.0, "ootuspärane"], ["HUAWEI ATU-L21", "Huawei", "EL", 35.0, 0.0, 0.0, 0.1142857143, 0.424877455, 0.0, "ootuspärane"], ["HUAWEI FIG-LX1", "Huawei", "EL", 21.0, 0.0, 0.0, 0.0476190476, 0.1055925875, 0.0, "ootuspärane"], ["HUAWEI KOB-L09", "Huawei", "EL", 51.0, 0.0, 0.0, 0.0, 0.2505414381, 0.0, "ootuspärane"], ["HUAWEI MAR-LX1A", "Huawei", "EL", 63.0, 0.0, 0.0, 0.0317460317, 0.2870682063, 0.0, "ootuspärane"], ["HUAWEI POT-LX1", "Huawei", "EL", 28.0, 3.0, 0.1071428571, 0.1071428571, 0.3922783151, 7.6476315019, "oodatust rohkem"], ["HUAWEI SNE-LX1", "Huawei", "EL", 26.0, 0.0, 0.0, 0.0, 0.1105939558, 0.0, "ootuspärane"], ["HUAWEI VNS-L21", "Huawei", "EL", 36.0, 3.0, 0.0833333333, 0.1666666667, 0.7883230931, 3.8055462618, "oodatust rohkem"], ["HUAWEI VTR-L29", "Huawei", "EL", 22.0, 0.0, 0.0, 0.0454545455, 0.1031247732, 0.0, "ootuspärane"], ["Infinix X572", "Infinix", "mitte-EL", 21.0, 5.0, 0.2380952381, 0.4285714286, 3.4991003446, 1.4289387293, "ootuspärane"], ["Infinix X624B", "Infinix", "mitte-EL", 21.0, 2.0, 0.0952380952, 0.380952381, 3.4377411807, 0.5817773634, "ootuspärane"], ["Itel S12", "Itel", "mitte-EL", 42.0, 1.0, 0.0238095238, 0.2142857143, 5.3366165185, 0.1873846465, "oodatust vähem"], ["Samsung SM-A105FN", "Samsung", "EL", 42.0, 2.0, 0.0476190476, 0.0238095238, 0.515206109, 3.8819415476, "ootuspärane"], ["Samsung SM-A202F", "Samsung", "EL", 24.0, 0.0, 0.0, 0.0416666667, 0.1183534286, 0.0, "ootuspärane"], ["Samsung SM-A405FN", "Samsung", "EL", 38.0, 0.0, 0.0, 0.0526315789, 0.1874492923, 0.0, "ootuspärane"], ["Samsung SM-A505FN", "Samsung", "EL", 63.0, 0.0, 0.0, 0.0317460317, 0.3759069429, 0.0, "ootuspärane"], ["Samsung SM-A520F", "Samsung", "EL", 59.0, 0.0, 0.0, 0.0677966102, 0.5205931934, 0.0, "ootuspärane"], ["Samsung SM-A530F", "Samsung", "EL", 37.0, 0.0, 0.0, 0.0540540541, 0.1764742506, 0.0, "ootuspärane"], ["Samsung SM-A605FN", "Samsung", "EL", 33.0, 0.0, 0.0, 0.0, 0.1672549637, 0.0, "ootuspärane"], ["Samsung SM-A705FN", "Samsung", "EL", 43.0, 0.0, 0.0, 0.023255814, 0.2395006568, 0.0, "ootuspärane"], ["Samsung SM-A750FN", "Samsung", "EL", 24.0, 1.0, 0.0416666667, 0.0, 0.1155295845, 8.6557915388, "ootuspärane"], ["Samsung SM-G900F", "Samsung", "EL", 23.0, 1.0, 0.0434782609, 0.0869565217, 0.4570251392, 2.188063444, "ootuspärane"], ["Samsung SM-G920F", "Samsung", "EL", 26.0, 3.0, 0.1153846154, 0.1153846154, 0.8813857569, 3.403730973, "ootuspärane"], ["Samsung SM-G930F", "Samsung", "EL", 48.0, 1.0, 0.0208333333, 0.1041666667, 1.3390681004, 0.7467880085, "ootuspärane"], ["Samsung SM-G935F", "Samsung", "segamini", 39.0, 1.0, 0.0256410256, 0.3333333333, 4.2203894411, 0.2369449583, "ootuspärane"], ["Samsung SM-G950F", "Samsung", "EL", 50.0, 0.0, 0.0, 0.02, 0.5910237587, 0.0, "ootuspärane"], ["Samsung SM-G955F", "Samsung", "EL", 21.0, 0.0, 0.0, 0.1428571429, 0.9269815309, 0.0, "ootuspärane"], ["Samsung SM-G960F", "Samsung", "EL", 56.0, 0.0, 0.0, 0.0178571429, 0.2679119226, 0.0, "ootuspärane"], ["Samsung SM-G965F", "Samsung", "EL", 42.0, 0.0, 0.0, 0.0476190476, 0.2933024836, 0.0, "ootuspärane"], ["Samsung SM-G970F", "Samsung", "EL", 26.0, 0.0, 0.0, 0.0384615385, 0.1201392279, 0.0, "ootuspärane"], ["Samsung SM-G975F", "Samsung", "EL", 22.0, 1.0, 0.0454545455, 0.0454545455, 0.1031247732, 9.6969910256, "ootuspärane"], ["Samsung SM-J330F", "Samsung", "EL", 20.0, 0.0, 0.0, 0.0, 0.0985151298, 0.0, "ootuspärane"], ["Samsung SM-J415FN", "Samsung", "EL", 27.0, 1.0, 0.037037037, 0.1111111111, 0.4014675575, 2.4908612946, "ootuspärane"], ["Samsung SM-J510FN", "Samsung", "EL", 31.0, 0.0, 0.0, 0.0322580645, 0.1548501524, 0.0, "ootuspärane"], ["Samsung SM-J530F", "Samsung", "EL", 20.0, 0.0, 0.0, 0.0, 0.1455651261, 0.0, "ootuspärane"], ["Samsung SM-J600FN", "Samsung", "EL", 24.0, 1.0, 0.0416666667, 0.0416666667, 0.5707637568, 1.7520383663, "ootuspärane"], ["Samsung SM-J610FN", "Samsung", "EL", 36.0, 1.0, 0.0277777778, 0.1944444444, 0.4732589119, 2.1130082811, "ootuspärane"], ["Samsung SM-J710F", "Samsung", "EL", 31.0, 0.0, 0.0, 0.0322580645, 0.1682930085, 0.0, "ootuspärane"], ["TECNO B1", "TECNO", "mitte-EL", 34.0, 15.0, 0.4411764706, 0.9411764706, 9.0963472097, 1.6490135715, "oodatust rohkem"], ["TECNO B1p", "TECNO", "mitte-EL", 78.0, 24.0, 0.3076923077, 0.8846153846, 21.3212158629, 1.1256393704, "ootuspärane"], ["TECNO BA2", "TECNO", "mitte-EL", 25.0, 6.0, 0.24, 0.32, 3.7129433225, 1.6159686477, "ootuspärane"], ["TECNO CF7", "TECNO", "mitte-EL", 25.0, 2.0, 0.08, 0.4, 3.9125729871, 0.5111725728, "ootuspärane"], ["TECNO CX Air", "TECNO", "mitte-EL", 20.0, 4.0, 0.2, 0.25, 3.3387622873, 1.1980487545, "ootuspärane"], ["TECNO F3", "TECNO", "mitte-EL", 97.0, 14.0, 0.1443298969, 0.2783505155, 15.0674067681, 0.9291578979, "ootuspärane"], ["TECNO K7", "TECNO", "mitte-EL", 41.0, 7.0, 0.1707317073, 0.3170731707, 6.5821689496, 1.0634792351, "ootuspärane"], ["TECNO KA7", "TECNO", "mitte-EL", 48.0, 8.0, 0.1666666667, 0.4375, 8.5991940451, 0.9303197437, "ootuspärane"], ["TECNO L8 Lite", "TECNO", "mitte-EL", 22.0, 1.0, 0.0454545455, 0.5, 4.2615150855, 0.2346583269, "ootuspärane"], ["TECNO LA7", "TECNO", "mitte-EL", 24.0, 0.0, 0.0, 0.2916666667, 3.4613245492, 0.0, "oodatust vähem"], ["TECNO-J8", "TECNO", "mitte-EL", 42.0, 14.0, 0.3333333333, 0.6428571429, 9.2630443371, 1.5113821645, "ootuspärane"], ["Xiaomi Redmi Note 7", "Xiaomi", "EL", 36.0, 0.0, 0.0, 0.0, 0.1531300926, 0.0, "ootuspärane"], ["iPhone10,4", "iPhone", "EL", 28.0, 0.0, 0.0, 0.0, 0.1191011832, 0.0, "ootuspärane"], ["iPhone10,6", "iPhone", "EL", 23.0, 0.0, 0.0, 0.1304347826, 0.2153076677, 0.0, "ootuspärane"], ["iPhone7,2", "iPhone", "segamini", 32.0, 2.0, 0.0625, 0.0, 1.0379458597, 1.9268827765, "ootuspärane"], ["iPhone8,1", "iPhone", "EL", 76.0, 1.0, 0.0131578947, 0.0921052632, 1.9534556602, 0.5119133341, "ootuspärane"], ["iPhone8,4", "iPhone", "EL", 29.0, 0.0, 0.0, 0.0, 0.1367976529, 0.0, "ootuspärane"], ["iPhone9,3", "iPhone", "EL", 55.0, 0.0, 0.0, 0.1090909091, 0.6465753317, 0.0, "ootuspärane"]], "T4 GPS x app": [["kõik | GPS halb (0)", 12.0, "uuem äpp (kuni 8 versiooni vanem)", "kõik", 663.0, 138.0, 0.2081447964], ["kõik | GPS halb (0)", 12.0, "vana äpp (9+ versiooni vanem)", "kõik", 99.0, 48.0, 0.4848484848], ["kõik | GPS hea (1)", 11.0, "uuem äpp (kuni 8 versiooni vanem)", "kõik", 3076.0, 96.0, 0.0312093628], ["kõik | GPS hea (1)", 11.0, "vana äpp (9+ versiooni vanem)", "kõik", 328.0, 27.0, 0.0823170732], ["EL | GPS halb (0)", 22.0, "uuem äpp (kuni 8 versiooni vanem)", "EL", 108.0, 4.0, 0.037037037], ["EL | GPS halb (0)", 22.0, "vana äpp (9+ versiooni vanem)", "EL", 3.0, 0.0, 0.0], ["EL | GPS hea (1)", 21.0, "uuem äpp (kuni 8 versiooni vanem)", "EL", 2178.0, 8.0, 0.0036730946], ["EL | GPS hea (1)", 21.0, "vana äpp (9+ versiooni vanem)", "EL", 195.0, 1.0, 0.0051282051], ["mitte-EL | GPS halb (0)", 32.0, "uuem äpp (kuni 8 versiooni vanem)", "mitte-EL", 555.0, 134.0, 0.2414414414], ["mitte-EL | GPS halb (0)", 32.0, "vana äpp (9+ versiooni vanem)", "mitte-EL", 96.0, 48.0, 0.5], ["mitte-EL | GPS hea (1)", 31.0, "uuem äpp (kuni 8 versiooni vanem)", "mitte-EL", 898.0, 88.0, 0.0979955457], ["mitte-EL | GPS hea (1)", 31.0, "vana äpp (9+ versiooni vanem)", "mitte-EL", 133.0, 26.0, 0.1954887218]], "T5 Regressioon": [["kõik, piirkond kontrollitud", "GPS confidence = 0", 3.2434686277, 2.4991429076, 4.2094786605, 0.0], ["kõik, piirkond kontrollitud", "Vana juhi äpp (9+ versiooni vanem)", 2.6310263728, 1.9166581156, 3.6116507779, 2.2e-09], ["kõik, piirkond kontrollitud", "Juhi äpp = iOS", 0.5161766401, 0.2010193744, 1.325436041, 0.1693137154], ["kõik, piirkond kontrollitud", "Kliendi äpp = iOS", 1.2203160431, 0.9314901118, 1.5986978566, 0.1484753662], ["ainult EL", "GPS confidence = 0", 9.8070476506, 2.9341524672, 32.7788636396, 0.0002086178], ["ainult EL", "Vana juhi äpp (9+ versiooni vanem)", 1.2095047114, 0.153077635, 9.5565994763, 0.8568704506], ["ainult EL", "Kliendi äpp = iOS", 2.9480348369, 0.8062217019, 10.7798008648, 0.1021852796], ["ainult mitte-EL", "GPS confidence = 0", 3.1157300076, 2.3948222845, 4.0536508881, 0.0], ["ainult mitte-EL", "Vana juhi äpp (9+ versiooni vanem)", 2.7111316021, 1.9626620846, 3.7450331475, 1.4e-09], ["ainult mitte-EL", "Juhi äpp = iOS", 0.6391899957, 0.2434833603, 1.6779949563, 0.3634241778], ["ainult mitte-EL", "Kliendi äpp = iOS", 1.1629770083, 0.8794656431, 1.537883296, 0.2895809499]], "T6 Segmendid": [["GPS halb (0) + uuem äpp (kuni 8 versiooni vanem)", "GPS halb (0)", "uuem äpp (kuni 8 versiooni vanem)", 663.0, 138.0, 0.2081447964, 0.4466019417], ["GPS halb (0) + vana äpp (9+ versiooni vanem)", "GPS halb (0)", "vana äpp (9+ versiooni vanem)", 99.0, 48.0, 0.4848484848, 0.1553398058], ["GPS hea (1) + uuem äpp (kuni 8 versiooni vanem)", "GPS hea (1)", "uuem äpp (kuni 8 versiooni vanem)", 3076.0, 96.0, 0.0312093628, 0.3106796117], ["GPS hea (1) + vana äpp (9+ versiooni vanem)", "GPS hea (1)", "vana äpp (9+ versiooni vanem)", 328.0, 27.0, 0.0823170732, 0.0873786408]]};
+const R4L=s=>String(s).replace(/mitte-EL/g,'väljaspool ELi').replace(/Kliendi äpp/g,'Sõitja rakendus').replace(/Juhi äpi vanus/g,'Juhi rakenduse vanus').replace(/Juhi äpp/g,'Juhi rakendus').replace(/Vana juhi äpp/g,'Vana juhi rakendus').replace(/uuem äpp/g,'uuem rakendus').replace(/vana äpp/g,'vana rakendus').replace(/GPS confidence = 0/g,'Halb GPS');
+const SCOL={'kõik':'var(--ink)','EL':'var(--data)','mitte-EL':'var(--alert)'};
+const BR4=['Huawei','Infinix','iPhone','Itel','Nokia (HMD)','Samsung','TECNO','Xiaomi'];
+function vgrp(el,cats,series,W,H,fmtV=v=>pct(v,1),aria=''){const m={l:40,r:8,t:20,b:cats.some(c=>c.includes('|'))?40:30},iw=W-m.l-m.r,ih=H-m.t-m.b;const max=niceMax(Math.max(...series.flatMap(s=>s.v),0.01));
+  const gw=iw/cats.length,bw=Math.min(60,gw*.8/series.length);let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria)}">`;
+  for(let i=0;i<=4;i++){const y=m.t+ih-ih*i/4;s+=`<line class="axl" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" stroke-dasharray="2 3"/><text class="ax" x="${m.l-4}" y="${y+4}" text-anchor="end">${pct(max*i/4,0)}</text>`;}
+  cats.forEach((c,ci)=>{const x0=m.l+ci*gw+(gw-bw*series.length)/2;series.forEach((se,si)=>{const v=se.v[ci];if(v==null)return;const h=ih*v/max,x=x0+si*bw;
+    s+=`<rect fill="${se.f}" x="${x+1}" y="${m.t+ih-h}" width="${bw-2}" height="${h}" data-tip="${esc(R4L(c)+' · '+R4L(se.name)+': '+fmtV(v))}"/>`;if(bw>22)s+=`<text class="ax" x="${x+bw/2}" y="${m.t+ih-h-4}" text-anchor="middle" style="fill:var(--ink);font-size:10px">${fmtV(v)}</text>`;});
+    const lab=R4L(c),parts=lab.split(' | ');s+=`<text class="ax" x="${m.l+ci*gw+gw/2}" y="${H-m.b+13}" text-anchor="middle" style="font-size:${W<420?9:11}px">${parts.map((p,pi)=>`<tspan x="${m.l+ci*gw+gw/2}" dy="${pi?11:0}">${esc(W<420?p.replace('väljaspool ELi','välj. ELi'):p)}</tspan>`).join('')}</text>`;});
+  el.innerHTML=s+'</svg>';}
+function hgrp(el,cats,series,W,rowH,fmtV=v=>pct(v,1),opts={}){const lw=opts.lw||(W<420?120:230),m={l:lw,r:44,t:6,b:22},gh=rowH*series.length+8,H=m.t+m.b+gh*cats.length,iw=W-m.l-m.r;
+  const max=opts.max||niceMax(Math.max(...series.flatMap(s=>s.v.filter(x=>x!=null)),0.01));let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'')}">`;
+  for(let i=0;i<=4;i++){const x=m.l+iw*i/4;s+=`<line class="axl" x1="${x}" x2="${x}" y1="${m.t}" y2="${H-m.b}" stroke-dasharray="2 3"/><text class="ax" x="${x}" y="${H-6}" text-anchor="middle">${opts.axf?opts.axf(max*i/4):pct(max*i/4,0)}</text>`;}
+  if(opts.ref!=null){const x=m.l+iw*opts.ref/max;s+=`<line x1="${x}" x2="${x}" y1="${m.t}" y2="${H-m.b}" stroke="var(--ink)" stroke-dasharray="5 4"/>`;}
+  cats.forEach((c,ci)=>{const y0=m.t+ci*gh;let lab=R4L(c);if(W<420)lab=lab.replace('Sõitja rakendus','Sõitja').replace('Juhi rakenduse vanus: ','Juhi rak. ').replace('Juhi rakendus','Juhi').replace(' versiooni vanem',' vanem').replace('Vana juhi rakendus (9+ vanem)','Vana juhi rak. (9+)');s+=`<text class="lbl" x="${m.l-6}" y="${y0+gh/2+4}" text-anchor="end" style="font-size:${W<420?10:12}px">${esc(W<420&&lab.length>20?lab.slice(0,19)+'…':lab)}</text>`;
+    series.forEach((se,si)=>{const v=se.v[ci];if(v==null)return;const w=iw*Math.min(v,max)/max,y=y0+si*rowH+4;s+=`<rect fill="${se.f}" x="${m.l}" y="${y}" width="${w}" height="${rowH-2}" data-tip="${esc(lab+' · '+R4L(se.name)+': '+fmtV(v))}"/><text class="ax" x="${m.l+w+4}" y="${y+rowH-4}" style="font-size:10px;fill:var(--ink)">${fmtV(v)}</text>`;});});
+  el.innerHTML=s+'</svg>';}
+function bubbles(el,pts,W,H,o){const m={l:44,r:12,t:12,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.aria)}">`;
+  const ty=o.ty||4,tx=o.tx||4;for(let i=0;i<=ty;i++){const y=m.t+ih-ih*i/ty;s+=`<line class="axl" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" stroke-dasharray="2 3"/><text class="ax" x="${m.l-4}" y="${y+4}" text-anchor="end">${o.yf(o.ymax*i/ty)}</text>`;}for(let i=0;i<=tx;i++){const x=m.l+iw*i/tx;s+=`<text class="ax" x="${x}" y="${H-m.b+14}" text-anchor="middle">${o.xf(o.xmax*i/tx)}</text>`;}
+  s+=`<text class="ax" x="${m.l+iw/2}" y="${H-2}" text-anchor="middle">${o.xl}</text>`;
+  const sx=v=>m.l+iw*v/o.xmax,sy=v=>m.t+ih-ih*v/o.ymax;
+  pts.slice().sort((a,b)=>b.r-a.r).forEach(p=>{s+=`<circle cx="${sx(p.x).toFixed(1)}" cy="${sy(p.y).toFixed(1)}" r="${p.r.toFixed(1)}" fill="${p.ring?'var(--bg)':p.c}" stroke="${p.c}" stroke-width="${p.ring?2.5:1}" fill-opacity="${p.ring?1:.75}" data-tip="${esc(p.tip)}"/>`;if(p.label){const right=sx(p.x)>W*.6;s+=`<text class="ax" x="${(right?sx(p.x)-p.r-4:sx(p.x)+p.r+4).toFixed(1)}" y="${(sy(p.y)+4).toFixed(1)}" text-anchor="${right?'end':'start'}" style="fill:var(--ink);font-size:${W<420?9:11}px">${esc(p.label)}</text>`;}});
+  el.innerHTML=s+'</svg>';}
+function renderRQ4(box){if(!box||typeof H4==='undefined')return;const sel=box.querySelector('.rq4f input:checked').value;const scopes=sel==='all3'?['kõik','EL','mitte-EL']:[sel];const small=box.classList.contains('dash');
+  const SN={'kõik':'kõik sõidud','EL':'EL','mitte-EL':'väljaspool ELi'};
+  box.querySelectorAll('.r4c').forEach(el=>{const W=Math.max(260,el.clientWidth||600),c=el.dataset.c;
+    if(c==='B'){const cats=['GPS halb (0)','GPS hea (1)'];vgrp(el,cats,scopes.map(sc=>({name:SN[sc],f:SCOL[sc],v:cats.map(g=>{const r=H4['T1 GPS'].find(x=>x[0]===g&&x[1]===sc);return r?r[5]:null})})),W,small?200:300,v=>pct(v,1),'Hinnakaebuste määr GPS-i kvaliteedi kaupa');}
+    if(c==='C'){const labs=[...new Set(H4['T2 Apid'].sort((a,b)=>a[1]-b[1]).map(r=>r[0]))];hgrp(el,labs,scopes.map(sc=>({name:SN[sc],f:SCOL[sc],v:labs.map(l=>{const r=H4['T2 Apid'].find(x=>x[0]===l&&x[2]===sc);return r?r[6]:null})})),W,small?(scopes.length>1?6:14):(scopes.length>1?11:20),v=>pct(v,1),{aria:'Hinnakaebuste määr rakenduse platvormi ja juhi rakenduse vanuse kaupa'});}
+    if(c==='E'){const cats=['GPS hea (1)','GPS halb (0)'];const rows=H4['T4 GPS x app'];const cc=[];scopes.forEach(sc=>cats.forEach(g=>cc.push(sc+' | '+g)));
+      vgrp(el,cc,['uuem äpp (kuni 8 versiooni vanem)','vana äpp (9+ versiooni vanem)'].map((a,i)=>({name:a,f:i?'var(--alert)':'var(--neutral)',v:cc.map(k=>{const r=rows.find(x=>x[0]===k&&x[2]===a);return r?r[6]:null})})),W,small?200:300,v=>pct(v,1),'GPS ja juhi rakenduse vanus koos');}
+    if(c==='Dsc'){const reg=sel==='all3'||sel==='kõik'?null:sel;const pts=H4['T3 Mudelid'].filter(r=>!reg||r[2]===reg).map(r=>({x:r[6],y:r[5],r:Math.max(3,Math.sqrt(r[3])*(small?.9:1.3)),c:`var(--b${BR4.indexOf(r[1])})`,tip:`${r[0]} (${r[1]}): halb GPS ${pct(r[6],1)}, hinnakaebuste määr ${pct(r[5],1)}, ${fmt.format(r[3])} sõitu`}));
+      bubbles(el,pts,W,small?210:340,{xmax:1,ymax:.5,ty:5,xf:v=>pct(v,0),yf:v=>pct(v,0),xl:'halva GPS-i osakaal',aria:'Telefonimudelid: halva GPS-i osakaal ja hinnakaebuste määr, värv brändi järgi'});}
+    if(c==='Dbar'){const reg=sel==='all3'||sel==='kõik'?null:sel;const rows=H4['T3 Mudelid'].filter(r=>!reg||r[2]===reg).slice().sort((a,b)=>b[6]-a[6]);const CC={'EL':'var(--data)','mitte-EL':'var(--alert)','segamini':'var(--neutral)'};
+      const lw=W<420?110:170,m={l:lw,r:44,t:4,b:20},rh=14,Hh=m.t+m.b+rh*rows.length,iw=W-m.l-m.r;let s=`<svg viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Halva GPS-i osakaal ${rows.length} telefonimudeli kaupa">`;
+      for(let i=0;i<=4;i++){const x=m.l+iw*i/4;s+=`<line class="axl" x1="${x}" x2="${x}" y1="${m.t}" y2="${Hh-m.b}" stroke-dasharray="2 3"/><text class="ax" x="${x}" y="${Hh-5}" text-anchor="middle">${pct(i/4,0)}</text>`;}
+      rows.forEach((r,i)=>{const y=m.t+i*rh,w=iw*r[6];s+=`<text class="ax" x="${m.l-5}" y="${y+rh-3}" text-anchor="end" style="font-size:10px;fill:var(--ink)">${esc(r[0])}</text><rect fill="${CC[r[2]]}" x="${m.l}" y="${y+2}" width="${w}" height="${rh-3}" data-tip="${esc(r[0]+': halb GPS '+pct(r[6],1)+', hinnakaebuste määr '+pct(r[5],1)+', '+fmt.format(r[3])+' sõitu ('+R4L(r[2])+')')}"/><text class="ax" x="${m.l+w+3}" y="${y+rh-3}" style="font-size:10px">${pct(r[6],1)}</text>`;});
+      el.innerHTML=s+'</svg>';}
+    if(c==='F'){const terms=['GPS confidence = 0','Vana juhi äpp (9+ versiooni vanem)','Kliendi äpp = iOS','Juhi äpp = iOS'];const ms=['kõik, piirkond kontrollitud','ainult EL','ainult mitte-EL'];const MC={'kõik, piirkond kontrollitud':'var(--ink)','ainult EL':'var(--data)','ainult mitte-EL':'var(--alert)'};
+      hgrp(el,terms,ms.map(mm=>({name:mm,f:MC[mm],v:terms.map(tt=>{const r=H4['T5 Regressioon'].find(x=>x[0]===mm&&x[1]===tt);return r?r[2]:null})})),W,small?8:13,v=>new Intl.NumberFormat('et-EE',{maximumFractionDigits:2}).format(v),{max:10,ref:1,axf:v=>fmt.format(v),aria:'Šansside suhe tegurite ja mudelite kaupa'});}
+    if(c==='G'){const SC=['var(--neutral)','var(--alert)'];const pts=H4['T6 Segmendid'].map(r=>({x:r[3],y:r[5],r:Math.sqrt(r[4])*(small?1.4:2),c:r[2].startsWith('vana')?'var(--alert)':'var(--ink)',ring:r[1].startsWith('GPS hea'),label:R4L(r[0]).replace(' (kuni 8 versiooni vanem)','').replace(' (9+ versiooni vanem)',' (9+)'),tip:`${R4L(r[0])}: ${fmt.format(r[3])} sõitu, ${fmt.format(r[4])} hinnakaebust, määr ${pct(r[5],1)}, ${pct(r[6],0)} kõigist hinnakaebustest`}));
+      bubbles(el,pts,W,small?210:320,{xmax:4000,ymax:.6,ty:6,xf:v=>fmt.format(Math.round(v)),yf:v=>pct(v,0),xl:'sõitude arv',aria:'Segmendid: sõitude arv, hinnakaebuste määr ja hinnakaebuste hulk'});}
+  });
+  const dt=box.querySelector('[data-t="Dtab"]');if(dt)dt.innerHTML=table(['Mudel','Bränd','Piirkond','Sõite','Halb GPS','Hinnakaebuste määr'],H4['T3 Mudelid'].slice().sort((a,b)=>b[6]-a[6]).map(r=>[r[0],r[1],R4L(r[2]),fmt.format(r[3]),pct(r[6],1),pct(r[5],1)]));
+  const dp=box.querySelector('[data-t="Dpiv"]');if(dp){const G=['oodatust rohkem','oodatust vähem','ootuspärane'];let h='<table class="t piv"><thead><tr><th scope="col">Hinnang / mudel</th><th scope="col" class="r">Sõitude arv</th><th scope="col" class="r">Hinnakaebusi tegelikult</th><th scope="col" class="r">Hinnakaebusi oodatud</th></tr></thead>';let tn=0,tk=0,te=0;
+    G.forEach(g=>{const rs=H4['T3 Mudelid'].filter(r=>r[9]===g).sort((a,b)=>a[0].localeCompare(b[0]));const n=rs.reduce((a,r)=>a+r[3],0),k=rs.reduce((a,r)=>a+r[4],0),ex=rs.reduce((a,r)=>a+r[7],0);tn+=n;tk+=k;te+=ex;
+      h+=`<tbody><tr class="pg"><th scope="rowgroup">${g} (${rs.length})</th><td class="r">${fmt.format(n)}</td><td class="r">${fmt.format(k)}</td><td class="r">${fmt.format(Math.round(ex))}</td></tr>`+rs.map(r=>`<tr${g==='ootuspärane'?' class="pm" hidden':''}><th scope="row" style="font-weight:400;padding-left:1.4rem">${esc(r[0])}</th><td class="r">${fmt.format(r[3])}</td><td class="r">${fmt.format(r[4])}</td><td class="r">${fmt.format(Math.round(r[7]))}</td></tr>`).join('')+'</tbody>';});
+    h+=`<tfoot><tr><th scope="row">Kokku</th><td class="r"><b>${fmt.format(tn)}</b></td><td class="r"><b>${fmt.format(tk)}</b></td><td class="r"><b>${fmt.format(Math.round(te))}</b></td></tr></tfoot></table><button type="button" class="reset pmt">Näita ka ootuspäraseid mudeleid (53)</button>`;dp.innerHTML=h;
+    dp.querySelector('.pmt').onclick=ev=>{const hid=dp.querySelector('.pm').hidden;dp.querySelectorAll('.pm').forEach(x=>x.hidden=!hid);ev.target.textContent=hid?'Peida ootuspärased mudelid':'Näita ka ootuspäraseid mudeleid (53)';};}
+  const fc=box.querySelector('[data-t="Fci"]');if(fc){const mm=box.querySelector('.r4mf input:checked').value;const nf=v=>v==null?'–':new Intl.NumberFormat('et-EE',{maximumFractionDigits:2,minimumFractionDigits:2}).format(v);
+    fc.innerHTML=table(['Tegur','Šansside suhe','CI alumine','CI ülemine','p'],H4['T5 Regressioon'].filter(r=>r[0]===mm).map(r=>[R4L(r[1]),nf(r[2]),nf(r[3]),nf(r[4]),r[5]<0.001?'< 0,001':nf(r[5])]));}}
+document.querySelectorAll('.rq4').forEach(b=>b.addEventListener('change',()=>renderRQ4(b)));
+function renderAllRQ4(){document.querySelectorAll('.rq4').forEach(renderRQ4);}
+renderAllRQ4();
 let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;if(!document.getElementById('panel-doc').hidden){daily();render();renderK5();drawStar();}renderQ1();}},150)});
 </script>
 </body>
