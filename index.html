@@ -512,7 +512,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.0</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.1</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -807,17 +807,17 @@ ol.flowline li+li{margin-left:1.1rem}
       <thead><tr><th scope="col">Leid</th><th scope="col" class="r">Ridu</th><th scope="col">Miks oluline</th><th scope="col">Mis tehti</th></tr></thead>
       <tbody>
         <tr><td>Seadme token puudub <code>device_token</code></td><td class="r">4&nbsp;943 (100&nbsp;%)</td><td>Analüütilist väärtust pole.</td><td>Välja jäetud.</td></tr>
-        <tr><td>Hinnamuutuse põhjus puudub <code>change_reason_pricing</code></td><td class="r">4&nbsp;645 (94,0&nbsp;%)</td><td>Liiga hõre, ei sobi peamiseks selgitavaks tunnuseks.</td><td><b>[täita]</b></td></tr>
-        <tr><td>Pettuseskoor puudub <code>fraud_score</code></td><td class="r">2&nbsp;759 (55,8&nbsp;%)</td><td>Puudumine liiga suur lihtsaks võrdluseks.</td><td>Märgitud «Missing». <b>[kinnitada]</b></td></tr>
-        <tr><td>Eeldatav hind puudub <code>upfront_price</code></td><td class="r">1&nbsp;534 (31,0&nbsp;%)</td><td>Struktuurne: «prediction» hinnastamisel ja muudetud sihtkohaga sõitudel eeldatavat hinda pole.</td><td>Hälbe arvutusest välja. <b>[kinnitada]</b></td></tr>
-        <tr><td>Lõpuhind ja ennustused puuduvad</td><td class="r">20 (0,4&nbsp;%)</td><td>Samad 20 rida puuduvad kõigis neljas veerus. Suhtarvudest välja.</td><td><b>[täita]</b></td></tr>
-        <tr><td>Tellimuse tunnus kordub <code>order_id_new</code></td><td class="r">777 (15,7&nbsp;%)</td><td>4&nbsp;943 rida = 4&nbsp;166 tellimust. Rida on pöördumine, mitte unikaalne sõit.</td><td>Veebilehel koondatud tellimuse tasemele. <b>[teie SQL?]</b></td></tr>
+        <tr><td>Hinnamuutuse põhjus puudub <code>change_reason_pricing</code></td><td class="r">4&nbsp;645 (94,0&nbsp;%)</td><td>Liiga hõre, ei sobi peamiseks selgitavaks tunnuseks.</td><td>Jäeti alles; ei kasutata peamise analüütilise tunnusena suure puuduvuse tõttu.</td></tr>
+        <tr><td>Pettuseskoor puudub <code>fraud_score</code></td><td class="r">2&nbsp;759 (55,8&nbsp;%)</td><td>Puudumine liiga suur lihtsaks võrdluseks.</td><td>Puuduvad väärtused märgiti abiveerus <code>fraud_score_status</code> väärtusega «Missing».</td></tr>
+        <tr><td>Eeldatav hind puudub <code>upfront_price</code></td><td class="r">1&nbsp;534 (31,0&nbsp;%)</td><td>Struktuurne: «prediction» hinnastamisel ja muudetud sihtkohaga sõitudel eeldatavat hinda pole.</td><td>Jäeti hinnahälbe arvutusest välja, sest ilma eeldatava hinnata ei saa hinnahälvet arvutada.</td></tr>
+        <tr><td>Lõpuhind ja ennustused puuduvad</td><td class="r">20 (0,4&nbsp;%)</td><td>Samad 20 rida puuduvad kõigis neljas veerus. Suhtarvudest välja.</td><td>Märgiti nn «ghost ride»'ideks; hinnastuse ja prognoosiga seotud analüüsidest jäeti välja.</td></tr>
+        <tr><td>Tellimuse tunnus kordub <code>order_id_new</code></td><td class="r">777 (15,7&nbsp;%)</td><td>4&nbsp;943 rida = 4&nbsp;166 tellimust. Rida on pöördumine, mitte unikaalne sõit.</td><td>Analüüs koondati sõidu ehk tellimuse tasemele, et sama tellimus ei läheks mitmekordse pöördumise tõttu mitu korda arvesse.</td></tr>
         <tr><td>Tellimuse ja tellimuskatse tunnus erinevad</td><td class="r">58 (1,2&nbsp;%)</td><td>Kontrollitud: igal tellimusel on täpselt üks tellimuskatse tunnus, seega korduskatseid ei ole. Erinev on ainult tunnuse number.</td><td>Mõju analüüsile ei ole.</td></tr>
         <tr><td>Läbitud vahemaa 0 (kehtetu sõit)</td><td class="r">64 (1,3&nbsp;%)</td><td>Võimalik jälgimise viga või erijuht.</td><td>Märgitud; analüüsist välja.</td></tr>
         <tr><td>Kestus 0</td><td class="r">25 (0,5&nbsp;%)</td><td>Kõik 25 on ka vahemaa 0 ridade seas.</td><td>Kaetud eelmise reaga.</td></tr>
-        <tr><td>Ennustatud vahemaa ebausutav</td><td class="r">9 (0,2&nbsp;%)</td><td>Ennustus 0–1&nbsp;m, tegelik üle 1&nbsp;km (nt 6&nbsp;083&nbsp;m vs 1&nbsp;m). Moonutab suhtarve.</td><td><b>[täita]</b></td></tr>
+        <tr><td>Ennustatud vahemaa ebausutav</td><td class="r">9 (0,2&nbsp;%)</td><td>Ennustus 0–1&nbsp;m, tegelik üle 1&nbsp;km (nt 6&nbsp;083&nbsp;m vs 1&nbsp;m). Moonutab suhtarve.</td><td>Jäeti andmestikku, kuid käsitleti äärmusväärtustena; suhtarvudel põhinevas analüüsis arvestati tulemuste tõlgendamisel nende mõju.</td></tr>
         <tr><td>Hinnaskaalad erinevad piirkonniti</td><td class="r">kõik</td><td>Lõpuhinna mediaan ELis 5,90, väljaspool ELi 12&nbsp;768. Tõenäoliselt eri vääring. Absoluutseid hindu turgude vahel ei võrrelda.</td><td>Kasutatakse ainult suhtelist hälvet.</td></tr>
-        <tr><td>Tellimuse olek «active», kuigi sõit on lõpetatud</td><td class="r">1 (0,0&nbsp;%)</td><td>Olekute vastuolu.</td><td><b>[täita]</b></td></tr>
+        <tr><td>Tellimuse olek «active», kuigi sõit on lõpetatud</td><td class="r">1 (0,0&nbsp;%)</td><td>Olekute vastuolu.</td><td>Märgiti vastuoluliseks kirjeks; üksikjuhtum jäeti andmestikku, kuid sellele ei tuginetud analüüsis.</td></tr>
       </tbody>
     </table></div>
     <p class="draft-banner"><b>Tõlgenduse piirang.</b> Igal real on pöördumise tunnus ja mitu rida võib viidata samale tellimusele. Seega 6,8&nbsp;% ridadest on ülemaksu kaebused selles pöördumiste andmestikus, mitte «6,8&nbsp;% sõitudest tõi kaebuse». Tellimuse tasemel on see 7,4&nbsp;%. Tegeliku sageduse ja kaebuste võimaliku vähenemise hindamiseks on vaja kõigi samal perioodil ja turgudel lõpetatud sõitude arvu.</p>
