@@ -458,6 +458,42 @@ ol.flowline li+li{margin-left:1.1rem}
 .stage.done{border-style:dashed;border-top-style:solid;background:var(--surface)}
 .stage.done .sg-io dd{background:var(--bg)}
 .sg-note{margin:0 0 .4rem;font-size:var(--s-1)}
+/* Aruande loogika: neli sammu */
+.drillwrap{container-type:inline-size;max-width:var(--wide);margin:.8rem 0 1.2rem}
+.drill{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.6rem}
+.drill li{position:relative;border:1.5px solid var(--data);border-radius:4px;padding:.6rem .7rem;font-size:var(--s-1);font-weight:700;color:var(--ink);display:flex;gap:.5rem;align-items:flex-start;line-height:1.3;background:var(--bg)}
+.drill .dn{display:inline-grid;place-items:center;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--data);color:var(--bg);font-size:.75rem;flex:none}
+.drill li+li::before{content:"→";position:absolute;left:-1.25rem;top:50%;transform:translateY(-50%);color:var(--ink);font-weight:400}
+.drill-axis{max-width:none;display:flex;justify-content:space-between;margin:.5rem 0 0;font-size:.75rem;color:var(--muted);border-top:1px solid var(--line);padding-top:.25rem}
+@container (max-width:620px){
+  .drill{grid-template-columns:1fr;gap:1.3rem}
+  .drill li+li::before{content:"↓";left:.95rem;top:-1.15rem;transform:none}
+  .drill-axis{display:none}
+}
+/* Esitlus: uurimisküsimused ja dashboardid */
+.s-rq{list-style:none;margin:0;padding:0;display:grid;gap:.6rem;max-width:70rem;font-size:.85em}
+.s-rq li{max-width:none;display:grid;grid-template-columns:2.2rem 13rem minmax(0,1fr) auto;gap:1rem;align-items:center;border-top:1px solid var(--line);padding-top:.6rem;font-size:.85em}
+.s-rq .rq-n{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700}
+.s-rq .rq5 .rq-n{background:var(--data)}
+.s-rq .rq-k{font-weight:700;font-size:.8em;letter-spacing:.02em}
+.s-rq .who{font-size:.85em}
+.dash{display:flex;flex-direction:column;gap:.8rem;height:100%}
+.dash-head{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+.dash-q{margin:0;font-weight:700;max-width:50ch}
+.dash-filters{display:flex;gap:.5rem;flex-wrap:wrap}
+.dash-filters span{border:1.5px dashed var(--neutral);border-radius:4px;padding:.25rem .8rem;font-size:.7em;color:var(--muted)}
+.dash-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto minmax(9rem,1fr);gap:.7rem;flex:1;min-height:0}
+.dash-tile{border:1.5px dashed var(--neutral);border-radius:6px;display:grid;place-items:center;color:var(--muted);font-size:.7em;background:var(--surface)}
+.dash-tile.kpi{min-height:4.5rem}
+.dash-tile.main{grid-column:1/3}
+.slide.dashslide .s-title{font-size:clamp(1.6rem,3vw,2.6rem);margin-bottom:.8rem}
+.prop{border:1.5px solid var(--ink);border-top:4px solid var(--data);border-radius:6px;padding:.9em 1em}
+.prop dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.3rem .8rem;font-size:.8em}
+.prop dt{font-weight:700;color:var(--muted)}
+.prop dd{margin:0}
+.who-list{list-style:none;padding:0}
+.who-list li{display:flex;align-items:center;gap:.5rem}
+@media (max-width:700px){.s-rq li{grid-template-columns:2.2rem 1fr}.s-rq .rq-q,.s-rq .who{grid-column:2}.dash-grid{grid-template-columns:1fr}.dash-tile.main{grid-column:auto}}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -476,7 +512,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.48</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.0</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -937,7 +973,8 @@ MEDIANX(
   <section class="part" id="p4-pohimotted" data-status="mustand">
     <h3>Visualiseerimise põhimõtted</h3>
     <p>Power BI aruande visualiseeringud koostatakse nii, et kasutaja saaks liikuda üldisest ülevaatest hinnakaebustega seotud võimalike tegurite detailsema analüüsini. Analüüsi ülesehitus järgib loogikat:</p>
-    <ol class="flowline" aria-label="Aruande loogika"><li>hinnakaebuste üldine esinemine</li><li>sõidu tunnused</li><li>prognooside ja tegelike väärtuste kõrvalekalded</li><li>segmentide võrdlus</li></ol>
+    <div class="drillwrap"><ol class="drill" aria-label="Aruande loogika üldisest detailsemani"><li><span class="dn" aria-hidden="true">1</span>Hinnakaebuste üldine esinemine</li><li><span class="dn" aria-hidden="true">2</span>Sõidu tunnused</li><li><span class="dn" aria-hidden="true">3</span>Prognooside ja tegelike väärtuste kõrvalekalded</li><li><span class="dn" aria-hidden="true">4</span>Segmentide võrdlus</li></ol>
+    <p class="drill-axis" aria-hidden="true"><span>üldisem</span><span>detailsem</span></p></div>
     <p>Visualiseeringutes kasutatakse eelkõige dimensioonitabelites olevaid kirjeldavaid tunnuseid ja eraldi loodud DAX-mõõdikuid. Tehnilised võtmed ja aruande kasutaja jaoks ebavajalikud väljad on Report view's peidetud.</p>
     <p>Numbriliste väljade puhul kasutatakse summeerimist ainult juhul, kui see on analüütiliselt põhjendatud. Tunnuseid nagu <code>Fraud Score</code>, <code>GPS Confidence</code> ja protsentuaalsed kõrvalekalded ei käsitleta automaatselt summeeritavate väärtustena.</p>
     <p>Aruandes kasutatakse läbivalt samu mõisteid, mõõdikuid ja nimetusi, et erinevate visualiseeringute tulemused oleksid omavahel võrreldavad. Väljade ja mõõdikute tähendused dokumenteeritakse Power BI <code>Description</code> omaduse kaudu.</p>
@@ -1168,8 +1205,8 @@ MEDIANX(
 </div><!-- /panel-doc -->
 
 <div id="panel-esitlus" role="tabpanel" aria-labelledby="tab-esitlus">
- <div class="deck" id="deck" tabindex="-1" aria-roledescription="esitlus" aria-label="Esitlus, 9 slaidi">
-  <section class="slide" id="s1" data-i="1" aria-roledescription="slaid" aria-label="Slaid 1 / 9: Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?" hidden>
+ <div class="deck" id="deck" tabindex="-1" aria-roledescription="esitlus" aria-label="Esitlus, 13 slaidi">
+  <section class="slide" id="s1" data-i="1" aria-roledescription="slaid" aria-label="Slaid 1 / 13: Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?" hidden>
     <p class="s-kicker"><span class="num">01</span> Tutvustus ja eesmärk <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h2>
     <div class="s-body">
@@ -1178,20 +1215,24 @@ MEDIANX(
     </div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kes te olete ja mis probleemi te lahendasite.</aside>
   </section>
-  <section class="slide" id="s2" data-i="2" aria-roledescription="slaid" aria-label="Slaid 2 / 9: Probleem: lõpuhind erineb eeldatavast hinnast" hidden>
+  <section class="slide" id="s2" data-i="2" aria-roledescription="slaid" aria-label="Slaid 2 / 13: Probleem: lõpuhind võib erineda eeldatavast hinnast" hidden>
     <p class="s-kicker"><span class="num">01</span> Tutvustus ja eesmärk <span class="s-min">· 2 min</span></p>
-    <h2 class="s-title">Probleem: lõpuhind erineb eeldatavast hinnast</h2>
-    <div class="s-body">
-    <ul class="s-list">
-      <li>Sõitja näeb enne sõitu <b>eeldatavat hinda</b>, mis põhineb ennustatud vahemaal ja kestusel.</li>
-      <li><b>Lõpuhind</b> arvutatakse tegeliku sõidu järgi.</li>
-      <li>Kui sõitja maksab eeldatavast hinnast palju rohkem, tuleb <b>ülemaksu kaebus</b>.</li>
+    <h2 class="s-title">Probleem: lõpuhind võib erineda eeldatavast hinnast</h2>
+    <div class="s-body"><ul class="s-list">
+      <li>Sõitja näeb enne sõitu <b>eeldatavat hinda</b>, mis põhineb prognoositud distantsil ja kestusel.</li>
+      <li><b>Lõpuhind</b> arvutatakse tegeliku sõidu järgi ja võib eeldatavast erineda.</li>
+      <li>Uurisime <b>4&nbsp;166</b> pöördumisega tellimust. Neist <b>309</b> puhul kaebas sõitja, et hind oli liiga kõrge.</li>
     </ul>
-    <p class="s-goal"><b>Eesmärk:</b> leida peamised võimalused ülemaksu kaebuste arvu vähendamiseks.</p>
-    </div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Kes te olete ja mis probleemi te lahendasite.</aside>
+    <p class="s-goal"><b>Eesmärk:</b> leida peamised võimalused hinnakaebuste arvu vähendamiseks.</p></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Probleem ja eesmärk ühe minutiga.</aside>
   </section>
-  <section class="slide" id="s3" data-i="3" aria-roledescription="slaid" aria-label="Slaid 3 / 9: Andmete teekond algfailist juhtlauani" hidden>
+  <section class="slide" id="s3" data-i="3" aria-roledescription="slaid" aria-label="Slaid 3 / 13: Viis uurimisküsimust" hidden>
+    <p class="s-kicker"><span class="num">01</span> Tutvustus ja eesmärk <span class="s-min">· 2 min</span></p>
+    <h2 class="s-title">Viis uurimisküsimust</h2>
+    <div class="s-body"><ol class="s-rq"><li><span class="rq-n">1</span><span class="rq-k">KUS</span><span class="rq-q">Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</span><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></li><li><span class="rq-n">2</span><span class="rq-k">MILLINE HINNASTAMINE</span><span class="rq-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></li><li><span class="rq-n">3</span><span class="rq-k">MIS</span><span class="rq-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</span><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></li><li><span class="rq-n">4</span><span class="rq-k">MILLISED TEHNILISED TINGIMUSED</span><span class="rq-q">Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></li><li class="rq5"><span class="rq-n">5</span><span class="rq-k">MIDA</span><span class="rq-q">Milliseid sekkumisi prioriseerida?</span><span class="who">kõik neli</span></li></ol></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Kiire ülevaade, umbes 30 sekundit. Iga küsimuse vastus tuleb oma dashboardil.</aside>
+  </section>
+  <section class="slide" id="s4" data-i="4" aria-roledescription="slaid" aria-label="Slaid 4 / 13: Andmete teekond algfailist juhtlauani" hidden>
     <p class="s-kicker"><span class="num">02</span> Andmevoog, puhastus ja töötlus <span class="s-min">· 3 min</span></p>
     <h2 class="s-title">Andmete teekond algfailist juhtlauani</h2>
     <div class="s-body">
@@ -1199,60 +1240,109 @@ MEDIANX(
     </div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kust andmed tulid ja kuidas liikusid. Üks selge plokkskeem; ära näita koodiridu, selgita loogikat.</aside>
   </section>
-  <section class="slide" id="s4" data-i="4" aria-roledescription="slaid" aria-label="Slaid 4 / 9: Suurim väljakutse: üks rida ei ole üks sõit" hidden>
+  <section class="slide" id="s5" data-i="5" aria-roledescription="slaid" aria-label="Slaid 5 / 13: Suurim väljakutse: üks rida ei ole üks sõit" hidden>
     <p class="s-kicker"><span class="num">02</span> Andmevoog, puhastus ja töötlus <span class="s-min">· 3 min</span></p>
     <h2 class="s-title">Suurim väljakutse: üks rida ei ole üks sõit</h2>
-    <div class="s-body">
-    <div class="s-two">
+    <div class="s-body"><div class="s-two">
       <div><p class="s-big num">4&nbsp;943 <span>rida</span></p><p class="s-big num">4&nbsp;166 <span>tellimust</span></p>
-        <p>Ühe tellimusega võib olla kuni 6 pöördumist. Pöördumiste otse lugemine loeks sama sõitu mitu korda.</p>
-        <p><b>Lahendus:</b> <code>dim_order</code> märgib, kas tellimusega oli vähemalt üks ülemaksu kaebus.</p></div>
-      <div data-clone=".tkbars-fig"></div>
-    </div>
-    </div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Mis oli suurim andmekvaliteedi väljakutse (nt puuduvad väärtused, duplikaadid).</aside>
+        <p>Ühe tellimusega võib olla kuni 6 pöördumist. Pöördumiste otse lugemine loeks sama sõitu mitu korda.</p></div>
+      <div><p class="s-h">Lahendus</p>
+        <ul class="s-list sm"><li><code>dim_order</code> seob sõidud ja pöördumised tellimuse tasemel.</li><li>Tunnus <code>had_overpaid_ride_ticket</code>: kas tellimusel oli vähemalt üks hinnakaebus.</li><li>Mõõdikud loevad iga tellimuse ühe korra.</li><li>Võtmete ja väärtuste kontrollides erinevusi ei tuvastatud.</li></ul></div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Mis oli suurim andmekvaliteedi väljakutse (duplikaadid) ja kuidas see lahendati.</aside>
   </section>
-  <section class="slide" id="s5" data-i="5" aria-roledescription="slaid" aria-label="Slaid 5 / 9: Kasutuslugu 1" hidden>
+  <section class="slide dashslide" id="s6" data-i="6" aria-roledescription="slaid" aria-label="Slaid 6 / 13: Küsimus 1: kus probleem on?" hidden>
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
-    <h2 class="s-title">Kasutuslugu 1</h2>
-    <div class="s-body">
-    <div class="s-todo">Kirjutada: kasutuslugu (kes, mida tahab teada, mida dashboard näitab). Live-demo või ekraanisalvestis.</div>
-    </div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Näidake, kuidas kasutaja andmeid näeb ja mis väärtust see loob. Ära klikki suvaliselt: vali 1–2 konkreetset stsenaariumi.</aside>
+    <h2 class="s-title">Küsimus 1: kus probleem on?</h2>
+    <div class="s-body"><div class="dash">
+      <div class="dash-head"><p class="dash-q">Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></div>
+      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
+      <div class="dash-grid">
+        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
+        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
+        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+      </div>
+      <div class="s-todo">Interaktiivne dashboard Felena Sooaluste Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 1. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
-  <section class="slide" id="s6" data-i="6" aria-roledescription="slaid" aria-label="Slaid 6 / 9: Kasutuslugu 2" hidden>
+  <section class="slide dashslide" id="s7" data-i="7" aria-roledescription="slaid" aria-label="Slaid 7 / 13: Küsimus 2: milline hinnastamine probleemiga kaasneb?" hidden>
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
-    <h2 class="s-title">Kasutuslugu 2</h2>
-    <div class="s-body">
-    <div class="s-todo">Kirjutada: teine kasutuslugu, mis näitab lahenduse teist võimekust.</div>
-    </div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Kasutuslood peavad koos näitama lahenduse kogu võimekust.</aside>
+    <h2 class="s-title">Küsimus 2: milline hinnastamine probleemiga kaasneb?</h2>
+    <div class="s-body"><div class="dash">
+      <div class="dash-head"><p class="dash-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></div>
+      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
+      <div class="dash-grid">
+        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
+        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
+        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+      </div>
+      <div class="s-todo">Interaktiivne dashboard Liis Normak Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 2. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
-  <section class="slide" id="s7" data-i="7" aria-roledescription="slaid" aria-label="Slaid 7 / 9: Dokumentatsioon ja tööjaotus" hidden>
+  <section class="slide dashslide" id="s8" data-i="8" aria-roledescription="slaid" aria-label="Slaid 8 / 13: Küsimus 3: mis sõidus endas eristab probleemseid sõite?" hidden>
+    <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
+    <h2 class="s-title">Küsimus 3: mis sõidus endas eristab probleemseid sõite?</h2>
+    <div class="s-body"><div class="dash">
+      <div class="dash-head"><p class="dash-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></div>
+      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
+      <div class="dash-grid">
+        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
+        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
+        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+      </div>
+      <div class="s-todo">Interaktiivne dashboard Raiko Karpov Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 3. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
+  </section>
+  <section class="slide dashslide" id="s9" data-i="9" aria-roledescription="slaid" aria-label="Slaid 9 / 13: Küsimus 4: millised tehnilised tingimused probleemiga kaasnevad?" hidden>
+    <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
+    <h2 class="s-title">Küsimus 4: millised tehnilised tingimused probleemiga kaasnevad?</h2>
+    <div class="s-body"><div class="dash">
+      <div class="dash-head"><p class="dash-q">Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></div>
+      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
+      <div class="dash-grid">
+        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
+        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
+        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+      </div>
+      <div class="s-todo">Interaktiivne dashboard Hannes Seeberg Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 4. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
+  </section>
+  <section class="slide" id="s10" data-i="10" aria-roledescription="slaid" aria-label="Slaid 10 / 13: Meie ettepanekud hinnakaebuste vähendamiseks" hidden>
+    <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
+    <h2 class="s-title">Meie ettepanekud hinnakaebuste vähendamiseks</h2>
+    <div class="s-body"><div class="s-three">
+      <div class="prop"><p class="s-h">Ettepanek 1</p><dl><dt>Probleemkoht</dt><dd>–</dd><dt>Sekkumine</dt><dd>–</dd><dt>Maht</dt><dd>–</dd></dl></div>
+      <div class="prop"><p class="s-h">Ettepanek 2</p><dl><dt>Probleemkoht</dt><dd>–</dd><dt>Sekkumine</dt><dd>–</dd><dt>Maht</dt><dd>–</dd></dl></div>
+      <div class="prop"><p class="s-h">Ettepanek 3</p><dl><dt>Probleemkoht</dt><dd>–</dd><dt>Sekkumine</dt><dd>–</dd><dt>Maht</dt><dd>–</dd></dl></div>
+    </div>
+    <div class="s-todo" style="margin-top:1rem">Küsimuse 5 põhjal: kõrge riskiga ja piisavalt suure mahuga probleemkohad ning sekkumised (kõik neli).</div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Ettepanekud tulenevad küsimuste 1–4 tulemustest. Iga ettepaneku juures: kus, mida teha, kui suurt osa kaebustest see puudutab.</aside>
+  </section>
+  <section class="slide" id="s11" data-i="11" aria-roledescription="slaid" aria-label="Slaid 11 / 13: Dokumentatsioon ja tööjaotus" hidden>
     <p class="s-kicker"><span class="num">04</span> Dokumentatsioon ja tiim <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Dokumentatsioon ja tööjaotus</h2>
-    <div class="s-body">
-    <div class="s-two">
-      <div><p class="s-h">Dokumentatsioon</p><ul class="s-list sm"><li>See veebileht: andmevoog, mudel, andmekvaliteet, mõõdikud</li><li>GitHubi repo: SQL-skriptid, Power BI projekt, README</li></ul></div>
-      <div><p class="s-h">Kes mille eest vastutas</p><div class="s-todo">Kirjutada: 1 rida iga liikme kohta.</div></div>
-    </div>
-    </div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Näita kiirelt, et projekt on korrektselt dokumenteeritud (koodikommentaarid, README). Paari lausega, kes mille eest vastutas.</aside>
+    <div class="s-body"><div class="s-two">
+      <div><p class="s-h">Dokumentatsioon</p><ul class="s-list sm"><li>Ärimõisted ja uurimisküsimused</li><li>Andmevoog, tähtskeem ja grain</li><li>Andmekvaliteedi kontrollid</li><li>Üleandmine: 8 sammu taastamiseks</li><li>Väljade ja mõõdikute kirjeldused (<code>Description</code>)</li><li>GitHubi repo: SQL-skriptid, Power BI projekt</li></ul></div>
+      <div><p class="s-h">Kes mida analüüsis</p><ul class="s-list sm who-list"><li><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span> küsimus 1</li><li><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span> küsimus 2</li><li><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span> küsimus 3</li><li><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span> küsimus 4</li></ul><div class="s-todo">Lisaks: kes vastutas andmemudeli, aruande ja dokumentatsiooni eest.</div></div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Näita kiirelt, et projekt on dokumenteeritud. Paari lausega, kes mille eest vastutas.</aside>
   </section>
-  <section class="slide" id="s8" data-i="8" aria-roledescription="slaid" aria-label="Slaid 8 / 9: Õppetunnid" hidden>
+  <section class="slide" id="s12" data-i="12" aria-roledescription="slaid" aria-label="Slaid 12 / 13: Õppetunnid" hidden>
     <p class="s-kicker"><span class="num">05</span> Õppetunnid ja kokkuvõte <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Õppetunnid</h2>
-    <div class="s-body">
-    <div class="s-three">
-      <div class="lesson good"><p class="s-h">Läks hästi</p><div class="s-todo">Kirjutada</div></div>
+    <div class="s-body"><div class="s-three">
+      <div class="lesson good"><p class="s-h">Läks hästi</p><p>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</p></div>
       <div class="lesson bad"><p class="s-h">Läks valesti</p><div class="s-todo">Kirjutada</div></div>
-      <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><div class="s-todo">Kirjutada</div></div>
+      <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><p>Määrame grain'i enne mõõdikute loomist. Lisame valuutakursid ja hindame tunnuste koosmõju.</p></div>
     </div>
-    <p class="s-h" style="margin-top:1.5rem">Tehisaru kasutamine</p><div class="s-todo">Kirjutada: milleks AI-d kasutati ja kus oli kontroll vajalik.</div>
-    </div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Mis läks hästi, mis valesti, mida teeksite järgmisel korral teisiti. AI kasutamine.</aside>
+    <p class="s-h" style="margin-top:1.2rem">Tehisaru kasutamine</p><p>Abivahend SQL-i, DAX-i ja dokumentatsiooni jaoks. Väljundeid kontrolliti andmete ja Power BI tulemuste põhjal.</p></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Mis läks hästi, mis valesti, mida teeksite teisiti. AI kasutamine.</aside>
   </section>
-  <section class="slide" id="s9" data-i="9" aria-roledescription="slaid" aria-label="Slaid 9 / 9: Aitäh!" hidden>
+  <section class="slide" id="s13" data-i="13" aria-roledescription="slaid" aria-label="Slaid 13 / 13: Aitäh!" hidden>
     <p class="s-kicker"><span class="num">06</span> Kus töö asub ja lõpetamine <span class="s-min">· 1 min</span></p>
     <h2 class="s-title">Aitäh!</h2>
     <div class="s-body">
