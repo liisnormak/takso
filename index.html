@@ -388,6 +388,10 @@ details.readmore[open]>summary{margin-bottom:.6rem}
 .roles{max-width:var(--wide);font-size:var(--s0)}
 .roles>div{grid-template-columns:11rem minmax(0,1fr)}
 .roles dt{color:var(--ink)}
+ol.flowline{list-style:none;padding:0;margin:.6rem 0 1rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;max-width:var(--wide);font-size:var(--s-1);font-weight:700}
+ol.flowline li{border:1.5px solid var(--data);color:var(--data);border-radius:4px;padding:.3rem .7rem;display:flex;align-items:center}
+ol.flowline li+li::before{content:"→";color:var(--muted);margin:0 .5rem 0 -.1rem;font-weight:400;position:relative;left:-1.3rem;width:0}
+ol.flowline li+li{margin-left:1.1rem}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -406,7 +410,7 @@ details.readmore[open]>summary{margin-bottom:.6rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.35</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.39</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid tegelik sõit võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -748,107 +752,7 @@ DIVIDE(
 <section class="chapter story" id="p4" aria-labelledby="p4-h">
   <h2 id="p4-h"><span class="n">4</span>Analüüs ja visualiseerimine</h2>
 
-  <section class="part" id="p4-lugu" data-status="mustand">
-    <h3>Andmelugu</h3>
-    <p class="draft-banner"><b>Mustand.</b> Graafikud järgivad uurimisküsimuste mustandit K1–K5.</p>
-    <p> Filtrid muudavad kõiki selle peatüki graafikuid. Pealkirjad kirjeldavad kõiki andmeid; graafiku all olev lause näitab sinu valiku tulemust.</p>
-
-    <div class="global-scope">
-    <form class="filters" id="filters" aria-label="Graafikute filtrid" onsubmit="return false">
-      <button type="button" class="ftoggle" id="ftoggle" aria-expanded="false" aria-controls="filters">Filtrid</button>
-      <fieldset><legend>Piirkond</legend><div class="seg">
-        <label><input type="radio" name="eu" value="all" checked><span>Kõik</span></label>
-        <label><input type="radio" name="eu" value="1"><span>EL</span></label>
-        <label><input type="radio" name="eu" value="0"><span>Väljaspool ELi</span></label></div></fieldset>
-      <fieldset><legend>GPS-ühendus</legend><div class="seg">
-        <label><input type="radio" name="gps" value="all" checked><span>Kõik</span></label>
-        <label><input type="radio" name="gps" value="1"><span>Hea</span></label>
-        <label><input type="radio" name="gps" value="0"><span>Halb</span></label></div></fieldset>
-      <fieldset><legend>Sihtkoht</legend><div class="seg">
-        <label><input type="radio" name="dc" value="all" checked><span>Kõik</span></label>
-        <label><input type="radio" name="dc" value="0"><span>Muutmata</span></label>
-        <label><input type="radio" name="dc" value="1"><span>Muudetud</span></label></div></fieldset>
-      <label class="chk"><input type="checkbox" name="inv" checked> Jäta kehtetud sõidud välja</label>
-      <button type="button" class="reset" id="resetBtn">Tühista filtrid</button>
-      <p class="status-line num" id="filterStatus" aria-live="polite"></p>
-    </form>
-
-    <h3 class="claim" id="k1">K1. Ligi pooltel sõitudel läheb lõpuhind eeldatavast hinnast üle 20&nbsp;% mööda</h3>
-    <p>Eeldatava hinnaga tellimustest 45&nbsp;% said lõpuhinna, mis erines rohkem kui 20&nbsp;%. Ligi neli viiendikku neist olid eeldatavast hinnast kallimad.</p>
-    <figure class="chart">
-      <p class="ct">Tellimused hinnahälbe järgi</p>
-      <p class="cs">Osakaal eeldatava hinnaga tellimustest, 10-protsendipunktised vahemikud</p>
-      <ul class="key"><li><i class="c-alert" style="background:var(--alert)"></i>Suur hälve (üle ±20&nbsp;%)</li><li><i style="background:var(--neutral)"></i>±20&nbsp;% piires</li></ul>
-      <div id="chHist"></div>
-      <p class="live" id="liveHist" aria-live="polite"></p>
-      <figcaption>Hälve = (lõpuhind − eeldatav hind) ÷ eeldatav hind. Äärmised väärtused on koondatud: alla −90&nbsp;% ja üle +200&nbsp;%.</figcaption>
-      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbHist"></div></details>
-    </figure>
-
-    <h3 class="claim" id="k2">K2. Halva GPS-iga sõitudel on suur hälve 1,6 korda sagedamini</h3>
-    <p>Hea GPS-ühendusega sõitudest oli suur hälve 42&nbsp;%&#8209;l, halva ühendusega 70&nbsp;%&#8209;l. Muudetud sihtkoht ja piirkond väljaspool ELi tõstavad samuti osakaalu.</p>
-    <figure class="chart">
-      <p class="ct">Suure hälbega tellimuste osakaal tunnuse järgi</p>
-      <p class="cs">Katkendjoon: kogu valiku keskmine</p>
-      <ul class="key"><li><i style="background:var(--alert)"></i>Üle 5 protsendipunkti keskmisest</li><li><i style="background:var(--data)"></i>Muu</li></ul>
-      <div id="chFactors"></div>
-      <p class="live" id="liveFactors" aria-live="polite"></p>
-      <figcaption>Tunnused on omavahel seotud (nt väljaspool ELi on GPS sagedamini halb). Graafik näitab seost, mitte põhjust.</figcaption>
-      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbFactors"></div></details>
-    </figure>
-
-    <h3 class="claim" id="k3">K3. Kaebus tuleb alles siis, kui arve on eeldatavast hinnast üle kahe korra suurem</h3>
-    <p>Kui hälve jääb ±20&nbsp;% piiridesse, kaebab ülemaksu üle 2&nbsp;% tellimustest. Kui lõpuhind on eeldatavast hinnast üle kahe korra suurem, kaebab ligi iga viies.</p>
-    <figure class="chart">
-      <p class="ct">Ülemaksu kaebusega tellimuste osakaal hälbe järgi</p>
-      <p class="cs">Eeldatava hinnaga tellimused</p>
-      <div id="chComplaint"></div>
-      <p class="live" id="liveComplaint" aria-live="polite"></p>
-      <figcaption>Kõigil tellimustel on mingi pöördumine. Kaebuse märk näitab, kas vähemalt üks pöördumine oli ülemaksu kohta.</figcaption>
-      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbComplaint"></div></details>
-    </figure>
-
-    <h3 class="claim" id="k4">K4. Tellimusi on kõige rohkem reede pärastlõunal</h3>
-    <p>Tihedaim tund on reedel kell 15–16. Kella 4 ja 5 vahel on tellimusi kõige vähem.</p>
-    <figure class="chart">
-      <p class="ct" id="heatTitle">Tellimused nädalapäeva ja tunni järgi</p>
-      <fieldset style="border:0;padding:0;margin:.2rem 0 .6rem"><legend class="vh">Näitaja</legend><div class="seg">
-        <label><input type="radio" name="hm" value="n" checked><span>Tellimuste arv</span></label>
-        <label><input type="radio" name="hm" value="share"><span>Suure hälbe osakaal</span></label></div></fieldset>
-      <div id="chHeat"></div>
-      <p class="live" id="liveHeat" aria-live="polite"></p>
-      <figcaption>Tumedam ruut: suurem väärtus. Osakaalu vaates on alla 5 tellimusega ruudud tühjad (liiga vähe andmeid). Kellaaeg on andmestiku ajas; ajavööndit andmekirjeldus ei nimeta.</figcaption>
-      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbHeat"></div></details>
-    </figure>
-
-    </div>
-
-    <h3 class="claim" id="k5">K5. Ülemaksu kaebused on seotud odavate telefonimudelitega</h3>
-    <p>Kõigis andmetes tehti Tecno ja Infinixi telefoniga 22&nbsp;% tellimustest, aga neilt tuli 55&nbsp;% ülemaksu kaebustest. Nende telefonidega oli GPS halb umbes 4 korral 10-st.</p>
-    <p>Seos tuleb suuresti turust: kõik Tecno ja Infinixi tellimused on väljaspool ELi. Graafik näitab vaikimisi väljaspool ELi ennustusega tellimusi (984): seal on kaebuste määr 21,7&nbsp;% vs teistel 19,1&nbsp;%.</p>
-    <figure class="chart">
-      <p class="ct">Tellimuste voog: telefonibränd → GPS-ühendus → ülemaksu kaebus</p>
-      <p class="cs">Riba laius = tellimuste arv</p>
-      <form class="filters local" id="k5filters" aria-label="Telefonibrändi graafiku filtrid" onsubmit="return false">
-        <fieldset><legend>Piirkond</legend><div class="seg">
-          <label><input type="radio" name="k5eu" value="all"><span>Kõik</span></label>
-          <label><input type="radio" name="k5eu" value="1"><span>EL</span></label>
-          <label><input type="radio" name="k5eu" value="0" checked><span>Väljaspool ELi</span></label></div></fieldset>
-        <fieldset><legend>Hinnatüüp</legend><div class="seg">
-          <label><input type="radio" name="k5pt" value="all"><span>Kõik</span></label>
-          <label><input type="radio" name="k5pt" value="0"><span>Eeldatav hind</span></label>
-          <label><input type="radio" name="k5pt" value="1" checked><span>Ennustus</span></label>
-          <label><input type="radio" name="k5pt" value="2"><span>Siht muudetud</span></label></div></fieldset>
-        <p class="status-line num" id="k5Status" aria-live="polite"></p>
-      </form>
-      <ul class="key"><li><i style="background:var(--alert)"></i>Odav mudel (Tecno, Infinix) ja kaebus</li><li><i style="background:var(--ink)"></i>Halb GPS</li><li><i style="background:var(--neutral)"></i>Muu</li></ul>
-      <div id="chSankey"></div>
-      <p class="live" id="liveSankey" aria-live="polite"></p>
-      <figcaption>Keskmine veerg koondab: brändi ja kaebuse otseseos on tabelis. Bränd on tuletatud telefoni nimest; «Muu» on HMD, Itel, Sony jt. Seos ei ole põhjus.</figcaption>
-      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbSankey"></div></details>
-    </figure>
-    <p class="question">kas telefoni nimi on juhi või sõitja telefon? Andmekirjeldus seda ei ütle.</p>
-  </section>
+  
 
   <section class="part" id="p4-pq" data-status="mustand">
     <h3>Power BI aruanne</h3>
@@ -901,6 +805,31 @@ MEDIANX(
     ABS('Rides'[Distance Deviation %])
 )</code></pre>
     <p>Mõõdik näitab tegeliku ja prognoositud sõidudistantsi absoluutse protsentuaalse erinevuse mediaani. Absoluutväärtuse kasutamine võimaldab hinnata kõrvalekalde suurust sõltumata sellest, kas tegelik distants oli prognoositust pikem või lühem. Mediaani kasutatakse keskmise asemel selleks, et üksikud väga suured kõrvalekalded mõjutaksid tulemust vähem.</p>
+  </section>
+
+  <section class="part" id="p4-esialgne" data-status="mustand">
+    <h3>Esialgne analüüs</h3>
+    <p>Analüüsi esimeses etapis keskenduti sellele, millised sõidu tunnused eristavad hinnakaebusega ja hinnakaebuseta sõite. Eesmärk oli tuvastada tunnused, mille puhul ilmnevad kahe grupi vahel suuremad erinevused ning mida tuleks edasises analüüsis põhjalikumalt uurida.</p>
+    <p>Esialgses analüüsis võrreldi järgmisi tunnuseid:</p>
+    <ul><li>GPS-ühenduse kvaliteet;</li><li>tegeliku ja prognoositud distantsi erinevus;</li><li>tegeliku ja prognoositud sõidukestuse erinevus;</li><li>lõpuhinna ja eeldatava hinna suhteline erinevus;</li><li>ELi ja väljaspool ELi sõidud.</li></ul>
+    <p>Esialgsete tulemuste põhjal kujunesid olulisemateks edasisteks uurimissuundadeks GPS-ühenduse kvaliteet ja tegeliku ning prognoositud distantsi erinevus. Edasises analüüsis vaadeldakse neid tunnuseid nii eraldi kui ka koos, et hinnata, kas halva GPS-ühenduse ja suurema distantsi kõrvalekalde samaaegne esinemine on seotud hinnakaebuste suurema osakaaluga.</p>
+  </section>
+
+  <section class="part" id="p4-el" data-status="mustand">
+    <h3>ELi ja väljaspool ELi sõitude analüüs</h3>
+    <p>ELi ja väljaspool ELi sõitude võrdlemise eesmärk on hinnata, kas nende kahe segmendi vahel esineb erinevusi tunnustes, mis võivad olla seotud hinnakaebuste tekkimisega.</p>
+    <p>Segmentide võrdlemisel analüüsitakse:</p>
+    <ul><li>sõitude arvu ja osakaalu;</li><li>hinnakaebusega sõitude määra (<code>Overcharge Ride Rate</code>);</li><li>halva GPS-ühendusega sõitude osakaalu;</li><li>mediaanset absoluutset distantsi kõrvalekallet;</li><li>distantsi kõrvalekalde suunda;</li><li>hinna suhtelist kõrvalekallet;</li><li>tegeliku ja prognoositud sõidukestuse erinevust.</li></ul>
+    <p>ELi ja väljaspool ELi sõitude absoluutseid hindu omavahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside alusel ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel lõpuhinna ja eeldatava hinna protsentuaalset erinevust sama sõidu piires.</p>
+  </section>
+
+  <section class="part" id="p4-pohimotted" data-status="mustand">
+    <h3>Visualiseerimise põhimõtted</h3>
+    <p>Power BI aruande visualiseeringud koostatakse nii, et kasutaja saaks liikuda üldisest ülevaatest hinnakaebustega seotud võimalike tegurite detailsema analüüsini. Analüüsi ülesehitus järgib loogikat:</p>
+    <ol class="flowline" aria-label="Aruande loogika"><li>hinnakaebuste üldine esinemine</li><li>sõidu tunnused</li><li>prognooside ja tegelike väärtuste kõrvalekalded</li><li>segmentide võrdlus</li></ol>
+    <p>Visualiseeringutes kasutatakse eelkõige dimensioonitabelites olevaid kirjeldavaid tunnuseid ja eraldi loodud DAX-mõõdikuid. Tehnilised võtmed ja aruande kasutaja jaoks ebavajalikud väljad on Report view's peidetud.</p>
+    <p>Numbriliste väljade puhul kasutatakse summeerimist ainult juhul, kui see on analüütiliselt põhjendatud. Tunnuseid nagu <code>Fraud Score</code>, <code>GPS Confidence</code> ja protsentuaalsed kõrvalekalded ei käsitleta automaatselt summeeritavate väärtustena.</p>
+    <p>Aruandes kasutatakse läbivalt samu mõisteid, mõõdikuid ja nimetusi, et erinevate visualiseeringute tulemused oleksid omavahel võrreldavad. Väljade ja mõõdikute tähendused dokumenteeritakse Power BI <code>Description</code> omaduse kaudu.</p>
   </section>
 
   <section class="part" id="p4-visuaalid" data-status="tegemata">
@@ -977,23 +906,69 @@ MEDIANX(
     <div class="tw"><table class="t"><thead><tr><th scope="col">Skeem</th><th scope="col">Kuidas</th><th scope="col">Kes kannatab</th></tr></thead><tbody><tr><th scope="row">Vale hinnakaebus</th><td>Sõitja kaebab, et hind oli liiga kõrge, kuigi sõit oli korras, ja loodab automaatset tagasimakset.</td><td>Sõiduteenusepakkuja</td></tr><tr><th scope="row">Korduv kaebamine</th><td>Sama sõitja kaebab süstemaatiliselt, sest on õppinud, et tugi rahuldab väikesed summad kontrollimata.</td><td>Sõiduteenusepakkuja</td></tr><tr><th scope="row">Sihtkoha muutmine</th><td>Tellib lühikese sõidu madala eeldatava hinnaga ja muudab siis sihtkohta või palub juhil kaugemale sõita.</td><td>Juht või sõiduteenusepakkuja</td></tr><tr><th scope="row">Promokoodide kuritarvitamine</th><td>Mitu kontot ja seadet uue kasutaja soodustuste korduvaks saamiseks.</td><td>Sõiduteenusepakkuja</td></tr><tr><th scope="row">Maksmata jätmine</th><td>Kaardimakse ebaõnnestub tahtlikult, näiteks tühja või blokeeritud kaardiga.</td><td>Juht või sõiduteenusepakkuja</td></tr><tr><th scope="row">Vale kaebus juhi kohta</th><td>Väidab, et juht sõitis ringiga või käitus halvasti, et saada hüvitist.</td><td>Juht (reiting, tulu)</td></tr></tbody></table></div>
     </details>
   </section>
+
+  <section class="part" id="lt-halve" data-status="mustand">
+    <h3>Ligi pooltel sõitudel läheb lõpuhind eeldatavast hinnast üle 20&nbsp;% mööda</h3>
+    <p>Eeldatava hinnaga tellimustest 45&nbsp;% said lõpuhinna, mis erines rohkem kui 20&nbsp;%. Ligi neli viiendikku neist olid eeldatavast hinnast kallimad.</p>
+    <figure class="chart">
+      <p class="ct">Tellimused hinnahälbe järgi</p>
+      <p class="cs">Osakaal eeldatava hinnaga tellimustest, 10-protsendipunktised vahemikud</p>
+      <ul class="key"><li><i class="c-alert" style="background:var(--alert)"></i>Suur hälve (üle ±20&nbsp;%)</li><li><i style="background:var(--neutral)"></i>±20&nbsp;% piires</li></ul>
+      <div id="chHist"></div>
+      <p class="live" id="liveHist" aria-live="polite"></p>
+      <figcaption>Hälve = (lõpuhind − eeldatav hind) ÷ eeldatav hind. Äärmised väärtused on koondatud: alla −90&nbsp;% ja üle +200&nbsp;%.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbHist"></div></details>
+    </figure>
+  </section>
+
+  <section class="part" id="lt-aeg" data-status="mustand">
+    <h3>Tellimusi on kõige rohkem reede pärastlõunal</h3>
+    <p>Tihedaim tund on reedel kell 15–16. Kella 4 ja 5 vahel on tellimusi kõige vähem.</p>
+    <figure class="chart">
+      <p class="ct" id="heatTitle">Tellimused nädalapäeva ja tunni järgi</p>
+      <fieldset style="border:0;padding:0;margin:.2rem 0 .6rem"><legend class="vh">Näitaja</legend><div class="seg">
+        <label><input type="radio" name="hm" value="n" checked><span>Tellimuste arv</span></label>
+        <label><input type="radio" name="hm" value="share"><span>Suure hälbe osakaal</span></label></div></fieldset>
+      <div id="chHeat"></div>
+      <p class="live" id="liveHeat" aria-live="polite"></p>
+      <figcaption>Tumedam ruut: suurem väärtus. Osakaalu vaates on alla 5 tellimusega ruudud tühjad (liiga vähe andmeid). Kellaaeg on andmestiku ajas; ajavööndit andmekirjeldus ei nimeta.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbHeat"></div></details>
+    </figure>
+  </section>
+
+  <section class="part" id="lt-telefon" data-status="mustand">
+    <h3>Visualiseering: kaebused telefonimudelite kaupa</h3>
+    <p>Kõigis andmetes tehti Tecno ja Infinixi telefoniga 22&nbsp;% tellimustest, aga neilt tuli 55&nbsp;% ülemaksu kaebustest. Nende telefonidega oli GPS halb umbes 4 korral 10-st.</p>
+    <p>Seos tuleb suuresti turust: kõik Tecno ja Infinixi tellimused on väljaspool ELi. Graafik näitab vaikimisi väljaspool ELi ennustusega tellimusi (984): seal on kaebuste määr 21,7&nbsp;% vs teistel 19,1&nbsp;%.</p>
+    <figure class="chart">
+      <p class="ct">Tellimuste voog: telefonibränd → GPS-ühendus → ülemaksu kaebus</p>
+      <p class="cs">Riba laius = tellimuste arv</p>
+      <form class="filters local" id="k5filters" aria-label="Telefonibrändi graafiku filtrid" onsubmit="return false">
+        <fieldset><legend>Piirkond</legend><div class="seg">
+          <label><input type="radio" name="k5eu" value="all"><span>Kõik</span></label>
+          <label><input type="radio" name="k5eu" value="1"><span>EL</span></label>
+          <label><input type="radio" name="k5eu" value="0" checked><span>Väljaspool ELi</span></label></div></fieldset>
+        <fieldset><legend>Hinnatüüp</legend><div class="seg">
+          <label><input type="radio" name="k5pt" value="all"><span>Kõik</span></label>
+          <label><input type="radio" name="k5pt" value="0"><span>Eeldatav hind</span></label>
+          <label><input type="radio" name="k5pt" value="1" checked><span>Ennustus</span></label>
+          <label><input type="radio" name="k5pt" value="2"><span>Siht muudetud</span></label></div></fieldset>
+        <p class="status-line num" id="k5Status" aria-live="polite"></p>
+      </form>
+      <ul class="key"><li><i style="background:var(--alert)"></i>Odav mudel (Tecno, Infinix) ja kaebus</li><li><i style="background:var(--ink)"></i>Halb GPS</li><li><i style="background:var(--neutral)"></i>Muu</li></ul>
+      <div id="chSankey"></div>
+      <p class="live" id="liveSankey" aria-live="polite"></p>
+      <figcaption>Keskmine veerg koondab: brändi ja kaebuse otseseos on tabelis. Bränd on tuletatud telefoni nimest; «Muu» on HMD, Itel, Sony jt. Seos ei ole põhjus.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbSankey"></div></details>
+    </figure>
+  </section>
 </section>
 
 <!-- ============ 7 ============ -->
 <section class="chapter" id="p7" aria-labelledby="p7-h">
   <h2 id="p7-h"><span class="n">7</span>Kokkuvõte ja arutelu</h2>
-  <section class="part" id="p7-vastused" data-status="mustand"><h3>Vastused uurimisküsimustele</h3>
-    <div class="tw"><table class="t">
-      <thead><tr><th scope="col">Küsimus</th><th scope="col">Lühivastus</th><th scope="col">Kus lahenduses</th></tr></thead>
-      <tbody>
-        <tr><td>K1</td><td>45&nbsp;% eeldatava hinnaga tellimustest</td><td><a href="#k1">Graafik K1</a>; mõõdik «Suure hälbe osakaal»</td></tr>
-        <tr><td>K2</td><td>Halb GPS 70&nbsp;% vs hea 42&nbsp;%</td><td><a href="#k2">Graafik K2</a></td></tr>
-        <tr><td>K3</td><td>Üle +100&nbsp;% hälbe korral 19&nbsp;%, ±20&nbsp;% piires 2&nbsp;%</td><td><a href="#k3">Graafik K3</a>; mõõdik «Kaebuste määr»</td></tr>
-        <tr><td>K4</td><td>Reede; öö kell 4–5 kõige vaiksem</td><td><a href="#k4">Graafik K4</a></td></tr>
-        <tr><td>K5</td><td>Tecno ja Infinix: 22&nbsp;% tellimustest, 55&nbsp;% kaebustest. Väljaspool ELi vahe väike (19&nbsp;% vs 17&nbsp;%).</td><td><a href="#k5">Graafik K5</a></td></tr>
-      </tbody>
-    </table></div>
-    <div class="todo">lisada Power BI lehe nimi iga vastuse juurde.</div></section>
+  <section class="part" id="p7-vastused" data-status="tegemata"><h3>Vastused uurimisküsimustele</h3>
+    <div class="todo add">vastused uurimisküsimustele 1–5 ja viide, kus lahenduses (Power BI leht, joonis) vastus asub.</div></section>
   <section class="part" id="p7-soovitused" data-status="tegemata"><h3>Soovitused lahenduse kasutamiseks</h3>
     <div class="todo">kuidas vastust otsida ja mida mitte valesti lugeda. Näide: andmetes on ainult pöördumisega tellimused, seega osakaalud ei kehti kõigi sõiduteenusepakkuja sõitude kohta.</div></section>
   <section class="part" id="p7-piirangud" data-status="tegemata"><h3>Piirangud ja edasiarendused</h3>
@@ -1307,8 +1282,8 @@ function daily(){const eu=new Array(41).fill(0),ne=new Array(41).fill(0);D.day.f
 daily();
 
 /* ---------- Filtrid ---------- */
-const F=document.getElementById('filters');
-function state(){const g=n=>F.querySelector(`input[name="${n}"]:checked`).value;return{eu:g('eu'),gps:g('gps'),dc:g('dc'),inv:F.querySelector('input[name="inv"]').checked}}
+/* Üldfiltreid ei ole: graafikud näitavad kõiki kehtivaid tellimusi. Filtrid tulevad vajadusel iga joonise juurde (vt K5). */
+function state(){return{eu:'all',gps:'all',dc:'all',inv:true}}
 function pick(st){const idx=[];for(let i=0;i<N;i++){
   if(st.eu!=='all'&&D.eu[i]!=+st.eu)continue; if(st.gps!=='all'&&D.gps[i]!=+st.gps)continue;
   if(st.dc!=='all'&&D.dc[i]!=+st.dc)continue; if(st.inv&&D.inv[i])continue; idx.push(i);}return idx}
@@ -1316,9 +1291,6 @@ const big=i=>Math.abs(D.dev[i])>200;
 
 function render(){
   const st=state(),idx=pick(st),wd=idx.filter(i=>D.dev[i]!=null);
-  const lab=(n,m)=>F.querySelector(`input[name="${n}"]:checked`).nextElementSibling.textContent;
-  const sum=`Piirkond: ${lab('eu')} · GPS: ${lab('gps')} · Sihtkoht: ${lab('dc')}${st.inv?'':' · kehtetud sees'}`;
-  document.getElementById('filterStatus').textContent=`${sum}. Valikus ${fmt.format(idx.length)} tellimust, neist eeldatava hinnaga ${fmt.format(wd.length)}.`;
   const share=wd.length?wd.filter(big).length/wd.length:null;
 
   /* K1 histogramm */
@@ -1329,24 +1301,8 @@ function render(){
     return{x:b.x,v:wd.length?b.n/wd.length:0,c:isBig?'c-alert':'c-neutral',tip:`${lab}: ${fmt.format(b.n)} tellimust (${pct(wd.length?b.n/wd.length:0,1)})`,lab,n:b.n}});
   const over=wd.filter(i=>D.dev[i]>200).length, under=wd.filter(i=>D.dev[i]<-200).length;
   vbars(document.getElementById('chHist'),{items,label:'Hinnahälve, % (vahemiku alguspunkt)',xLabelEvery:3,aria:`Hinnahälbe jaotus. Suur hälve ${pct(share)} tellimustest: kallim ${pct(over/wd.length)}, odavam ${pct(under/wd.length)}.`});
-  document.getElementById('liveHist').innerHTML=wd.length?`Praeguses valikus on suur hälve <b>${pct(share)}</b> tellimustest: eeldatavast hinnast kallim <b>${pct(over/wd.length)}</b>, odavam <b>${pct(under/wd.length)}</b>.`:'Valikus pole eeldatava hinnaga tellimusi.';
+  document.getElementById('liveHist').innerHTML=wd.length?`Kõigis kehtivates tellimustes on suur hälve <b>${pct(share)}</b> tellimustest: eeldatavast hinnast kallim <b>${pct(over/wd.length)}</b>, odavam <b>${pct(under/wd.length)}</b>.`:'Valikus pole eeldatava hinnaga tellimusi.';
   document.getElementById('tbHist').innerHTML=table(['Hälve','Tellimusi','Osakaal'],items.map(d=>[d.lab,fmt.format(d.n),pct(d.v,1)]));
-
-  /* K2 tegurid */
-  const grp=(name,key,vals)=>({name,rows:vals.map(([v,label])=>{const s=wd.filter(i=>D[key][i]===v);return{label,n:s.length,v:s.length?s.filter(big).length/s.length:null,tip:`${label}: ${s.length?pct(s.filter(big).length/s.length):'–'} (n=${fmt.format(s.length)})`}})});
-  const groups=[grp('GPS-ühendus','gps',[[1,'Hea'],[0,'Halb']]),grp('Sihtkoht','dc',[[0,'Muutmata'],[1,'Muudetud']]),grp('Piirkond','eu',[[1,'EL'],[0,'Väljaspool ELi']]),grp('Aadressi sisestas','eb',[[0,'Sõitja'],[1,'Juht']])];
-  groups.forEach(g=>g.rows.forEach(r=>{if(r.v!=null&&share!=null&&r.v>share+0.05)r.c='c-alert'}));
-  hbars(document.getElementById('chFactors'),{groups,ref:share,aria:'Suure hälbe osakaal: '+groups.map(g=>g.name+': '+g.rows.map(r=>r.label+' '+pct(r.v)).join(', ')).join('; ')});
-  const gp=groups[0].rows; document.getElementById('liveFactors').innerHTML=(gp[0].v!=null&&gp[1].v!=null&&gp[0].v>0)?`Praeguses valikus: halva GPS-iga <b>${pct(gp[1].v)}</b>, hea GPS-iga <b>${pct(gp[0].v)}</b> (${new Intl.NumberFormat('et-EE',{maximumFractionDigits:1}).format(gp[1].v/gp[0].v)} korda).`:'GPS-i võrdlus pole selle valikuga võimalik.';
-  document.getElementById('tbFactors').innerHTML=table(['Tunnus','Tellimusi','Suure hälbe osakaal'],groups.flatMap(g=>g.rows.map(r=>[g.name+': '+r.label,fmt.format(r.n),pct(r.v,1)])));
-
-  /* K3 kaebused */
-  const cb=[['alla −20 %',v=>v<-200],['±20 % piires',v=>v>=-200&&v<=200],['+20…50 %',v=>v>200&&v<=500],['+50…100 %',v=>v>500&&v<=1000],['üle +100 %',v=>v>1000]];
-  const citems=cb.map(([x,f])=>{const s=wd.filter(i=>f(D.dev[i]));const k=s.filter(i=>D.ot[i]).length;const v=s.length?k/s.length:0;
-    return{x,v,n:s.length,k,top:s.length?pct(v,1):'–',c:x==='±20 % piires'?'c-neutral':'c-alert',tip:`${x}: ${fmt.format(k)} kaebust ${fmt.format(s.length)} tellimusest`}});
-  vbars(document.getElementById('chComplaint'),{items:citems,H:280,label:'Hinnahälve',aria:'Kaebuste osakaal hälbe järgi: '+citems.map(d=>d.x+' '+pct(d.v,1)).join(', ')});
-  const a=citems[1],b=citems[4]; document.getElementById('liveComplaint').innerHTML=`Praeguses valikus: ±20 % piires <b>${pct(a.v,1)}</b> (n=${fmt.format(a.n)}), üle +100 % <b>${pct(b.v,1)}</b> (n=${fmt.format(b.n)}).`+(b.n<30?' Väike valim, tõlgenda ettevaatlikult.':'');
-  document.getElementById('tbComplaint').innerHTML=table(['Hälve','Tellimusi','Kaebusi','Osakaal'],citems.map(d=>[d.x,fmt.format(d.n),fmt.format(d.k),pct(d.v,1)]));
 
   /* K4 soojuskaart */
   const mode=document.querySelector('input[name="hm"]:checked').value;
@@ -1358,11 +1314,10 @@ function render(){
   let best={v:-1};grid.forEach((r,d)=>r.forEach((v,h)=>{if(v!=null&&v>best.v)best={v,d,h}}));
   const dayTot=cnt.map(r=>r.reduce((a,b)=>a+b,0));const topDay=dayTot.indexOf(Math.max(...dayTot));
   heat(document.getElementById('chHeat'),{grid,fmtV:fv,aria:`${document.getElementById('heatTitle').textContent}. Suurim väärtus: ${best.d!=null?DOWL[best.d]+' kell '+best.h+', '+fv(best.v):'puudub'}.`});
-  document.getElementById('liveHeat').innerHTML=best.d!=null?`Praeguses valikus on suurim väärtus <b>${DOWL[best.d]} kell ${best.h}–${best.h+1}</b> (${fv(best.v)}). Kõige rohkem tellimusi päevas: <b>${DOWL[topDay]}</b>.`:'Valikus pole andmeid.';
+  document.getElementById('liveHeat').innerHTML=best.d!=null?`Kõigis kehtivates tellimustes on suurim väärtus <b>${DOWL[best.d]} kell ${best.h}–${best.h+1}</b> (${fv(best.v)}). Kõige rohkem tellimusi päevas: <b>${DOWL[topDay]}</b>.`:'Valikus pole andmeid.';
   const src=mode==='n'?cnt:grid;
   document.getElementById('tbHeat').innerHTML=`<table class="t"><thead><tr><th scope="col">Päev</th>${[...Array(24)].map((_,h)=>`<th scope="col" class="r">${h}</th>`).join('')}</tr></thead><tbody>${src.map((r,d)=>`<tr><th scope="row" style="font-weight:400">${DOWL[d]}</th>${r.map(v=>`<td class="r">${v==null?'–':mode==='n'?v:Math.round(v*100)}</td>`).join('')}</tr>`).join('')}</tbody></table><p>${mode==='n'?'Tellimuste arv.':'Suure hälbe osakaal protsentides; «–» alla 5 tellimuse.'}</p>`;
 }
-F.addEventListener('change',render);
 function renderK5(){
   const K=document.getElementById('k5filters'),g=n=>K.querySelector(`input[name="${n}"]:checked`);
   const eu=g('k5eu').value,pt=g('k5pt').value;
@@ -1389,11 +1344,8 @@ function renderK5(){
 }
 document.getElementById('k5filters').addEventListener('change',renderK5);
 renderK5();
-const ft=document.getElementById('ftoggle');
-ft.onclick=()=>{const o=F.classList.toggle('open');ft.setAttribute('aria-expanded',o);ft.textContent=o?'Sulge filtrid':'Filtrid';};
 
 document.querySelectorAll('input[name="hm"]').forEach(r=>r.addEventListener('change',render));
-document.getElementById('resetBtn').onclick=()=>{F.reset();render();document.getElementById('filterStatus').focus?.()};
 render();
 
 /* ---------- Vaated: Esitlus / Dokumentatsioon ---------- */
