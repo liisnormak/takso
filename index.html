@@ -533,6 +533,16 @@ ol.flowline li+li{margin-left:1.1rem}
 .dgrid2 .dt{font-size:.6em;font-weight:700;margin:0 0 .2rem}
 .slide .kpis b{font-size:1.3em}.slide .kpis span{font-size:.55em}
 @media (max-width:700px){.dgrid2{grid-template-columns:1fr}}
+/* Uurimisküsimused slaidil: üksteise all, kompaktsed read */
+.s-rqc{grid-template-columns:1fr;gap:.45rem}
+.s-rqc li{display:grid;grid-template-columns:2.4em minmax(0,1fr) auto;grid-template-areas:"n tag who" "n q who";column-gap:1em;row-gap:.1em;align-items:center;padding:.45em .9em}
+.s-rqc li.synth{grid-column:auto}
+.s-rqc .src-head{display:contents}
+.s-rqc .src-n{grid-area:n;font-size:1.7em}
+.s-rqc .src-tag{grid-area:tag}
+.s-rqc .src-q{grid-area:q;font-size:.78em}
+.s-rqc .who,.s-rqc .src-team{grid-area:who;margin:0}
+@media (max-width:700px){.s-rqc li{grid-template-columns:2.4em 1fr;grid-template-areas:"n tag" "n q" "n who"}}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -551,7 +561,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.4</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.5</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
