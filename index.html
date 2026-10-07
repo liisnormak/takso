@@ -406,7 +406,7 @@ details.readmore[open]>summary{margin-bottom:.6rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.33</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.35</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid tegelik sõit võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -469,34 +469,34 @@ details.readmore[open]>summary{margin-bottom:.6rem}
         <h4><span class="vh">Küsimus 1. </span>Millistes sõidukategooriates esineb ülehinnastamise kaebusi ebaproportsionaalselt palju?</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Tuvastada, millistesse sõidusegmentidesse ülehinnastamise probleem kõige rohkem koondub ja millele tuleks edasises analüüsis keskenduda.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>EL vs väljaspool ELi</li><li>segmentide osakaal ja ülehinnastamise kaebuste määr</li><li>pettuseskoor vajadusel toetava analüüsina</li></ul></dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>EL vs väljaspool ELi</li><li>segmentide osakaal ja ülehinnastamise kaebuste määr</li></ul></dd></div>
           <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dd></div>
         </dl>
       </li>
       <li class="rqcard" id="rq2">
-        <div class="rqhead"><span class="rqbig" aria-hidden="true">2</span><p class="rqtag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</p></div>
-        <h4><span class="vh">Küsimus 2. </span>Millised sõidu ja prognoosi erinevused on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <div class="rqhead"><span class="rqbig" aria-hidden="true">2</span><p class="rqtag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</p></div>
+        <h4><span class="vh">Küsimus 2. </span>Millised hinnastamisega seotud tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
-          <div><dt>Eesmärk</dt><dd>Tuvastada, millised erinevused prognoositud ja tegeliku sõidu vahel on ülehinnastamisega kõige tugevamalt seotud.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>tegelik vs prognoositud distants (kõrvalekalle ja suund)</li><li>tegelik vs prognoositud kestus (kõrvalekalle ja suund)</li><li>sõidu pikkus ja kestus</li><li>vajadusel aeg</li></ul></dd></div>
+          <div><dt>Eesmärk</dt><dd>Leida hinnastamisega seotud tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>hinnatüüp: <code>prediction</code> vs <code>upfront</code></li><li>hinnahälve eeldatava hinnaga sõitudel</li><li>sihtkoha muutus</li><li>hinnamuutuse põhjus ja aadressi sisestaja (<code>change_reason_pricing</code>, <code>entered_by</code>)</li><li>hinnastamise tegurite kombinatsioonid</li></ul></dd></div>
           <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></dd></div>
         </dl>
       </li>
       <li class="rqcard" id="rq3">
-        <div class="rqhead"><span class="rqbig" aria-hidden="true">3</span><p class="rqtag">Vastab küsimusele: <b>MILLISED TEHNILISED TINGIMUSED</b> probleemiga kaasnevad?</p></div>
-        <h4><span class="vh">Küsimus 3. </span>Millised tehnilised tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <div class="rqhead"><span class="rqbig" aria-hidden="true">3</span><p class="rqtag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</p></div>
+        <h4><span class="vh">Küsimus 3. </span>Millised sõidu ja prognoosi erinevused on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
-          <div><dt>Eesmärk</dt><dd>Leida tehnilised tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>GPS-ühenduse kvaliteet (<code>gps_confidence</code>)</li><li>sõitja ja juhi rakenduse versioon</li><li>seade</li><li>vajadusel nende kombinatsioonid</li></ul></dd></div>
+          <div><dt>Eesmärk</dt><dd>Tuvastada, millised erinevused prognoositud ja tegeliku sõidu vahel on ülehinnastamisega kõige tugevamalt seotud.</dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>tegelik vs prognoositud distants (kõrvalekalle ja suund)</li><li>tegelik vs prognoositud kestus (kõrvalekalle ja suund)</li><li>sõidu pikkus ja kestus</li><li>vajadusel aeg</li></ul></dd></div>
           <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></dd></div>
         </dl>
       </li>
       <li class="rqcard" id="rq4">
-        <div class="rqhead"><span class="rqbig" aria-hidden="true">4</span><p class="rqtag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</p></div>
-        <h4><span class="vh">Küsimus 4. </span>Millised hinnastamisega seotud tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <div class="rqhead"><span class="rqbig" aria-hidden="true">4</span><p class="rqtag">Vastab küsimusele: <b>MILLISED TEHNILISED TINGIMUSED</b> probleemiga kaasnevad?</p></div>
+        <h4><span class="vh">Küsimus 4. </span>Millised tehnilised tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
-          <div><dt>Eesmärk</dt><dd>Leida hinnastamisega seotud tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>hinnatüüp: <code>prediction</code> vs <code>upfront</code></li><li>hinnahälve eeldatava hinnaga sõitudel</li><li>sihtkoha muutus</li><li>hinnamuutuse põhjus ja aadressi sisestaja (<code>change_reason_pricing</code>, <code>entered_by</code>)</li><li>hinnastamise tegurite kombinatsioonid</li></ul></dd></div>
+          <div><dt>Eesmärk</dt><dd>Leida tehnilised tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>GPS-ühenduse kvaliteet (<code>gps_confidence</code>)</li><li>sõitja ja juhi rakenduse versioon</li><li>seade</li><li>vajadusel nende kombinatsioonid</li></ul></dd></div>
           <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></dd></div>
         </dl>
       </li>
