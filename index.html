@@ -392,6 +392,9 @@ ol.flowline{list-style:none;padding:0;margin:.6rem 0 1rem;display:flex;flex-wrap
 ol.flowline li{border:1.5px solid var(--data);color:var(--data);border-radius:4px;padding:.3rem .7rem;display:flex;align-items:center}
 ol.flowline li+li::before{content:"→";color:var(--muted);margin:0 .5rem 0 -.1rem;font-weight:400;position:relative;left:-1.3rem;width:0}
 ol.flowline li+li{margin-left:1.1rem}
+.team dd .todo{margin:0}
+.team>div{grid-template-columns:14rem minmax(0,1fr);align-items:center}
+@media (max-width:560px){.team>div{grid-template-columns:1fr}}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -410,7 +413,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.40</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.41</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid tegelik sõit võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1025,12 +1028,31 @@ MEDIANX(
 <!-- ============ 8 ============ -->
 <section class="chapter" id="p8" aria-labelledby="p8-h">
   <h2 id="p8-h"><span class="n">8</span>Grupi tööjaotus ja eneserefleksioon</h2>
-  <section class="part" id="p8-jaotus" data-status="tegemata"><h3>Tööjaotus</h3>
-    <div class="todo">kes mida tegi: andmetöötlus, analüüs, aruanne, korraldus, dokument, esitlus.</div></section>
-  <section class="part" id="p8-valjakutse" data-status="tegemata"><h3>Suurim väljakutse</h3>
-    <div class="todo">tehniline või korralduslik väljakutse ja mida õpiti.</div></section>
-  <section class="part" id="p8-ai" data-status="tegemata"><h3>AI-kogemus</h3>
-    <div class="todo">mida tehisaru tegi hästi ja kus oli kontroll vajalik.</div></section>
+  <section class="part" id="p8-jaotus" data-status="mustand">
+    <h3>Tööjaotus</h3>
+    <p>Projekt viidi läbi neljaliikmelises rühmas. Töö jagati andmete ettevalmistamise, andmemudeli loomise, analüüsi, visualiseerimise, dokumenteerimise ja projekti koordineerimise vahel. Olulisemad andmemudeli ja analüüsi otsused arutati grupis ühiselt.</p>
+    <dl class="rqdl roles team"><div><dt><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div></dl>
+  </section>
+  <section class="part" id="p8-valjakutse" data-status="mustand">
+    <h3>Tehniline eneserefleksioon</h3>
+    <p>Üheks projekti olulisemaks tehniliseks väljakutseks oli erineva detailsusastmega andmete ühendamine viisil, mis ei põhjustaks Power BI analüüsis topeltlugemist.</p>
+    <p>Sõidu ehk tellimuse ja klienditoe pöördumise grain ei olnud sama: ühe tellimusega võis olla seotud mitu klienditoe pöördumist. Kui hinnakaebusi oleks analüüsitud otse pöördumiste ridade põhjal, oleks üks tellimus saanud analüüsis esineda mitu korda.</p>
+    <p>Probleemi lahendamiseks kasutati <code>dim_order</code> tabelit ning tellimuse tasemele loodi <code>had_overpaid_ride_ticket</code> tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks hinnakaebus. Power BI mõõdikutes arvestatakse hinnakaebusega sõite unikaalsete tellimuste põhjal.</p>
+    <p>Selle probleemi lahendamine näitas, kui oluline on enne visualiseerimise ja mõõdikute loomist määratleda iga tabeli grain ning mõista tabelite vahelisi seoseid. Õige arvutusvalem üksi ei taga korrektset tulemust, kui andmemudeli seosed või analüüsi detailsusaste on valesti määratud.</p>
+    <p>Teine oluline õppetund oli tähtskeemi roll analüüsimudelis. Projekti käigus korrastati tellimuse, seadme, rakenduse versiooni, kuupäeva ja hinnastamise kontekstiga seotud tunnused vastavatesse dimensioonitabelitesse. Faktitabelisse jäänud dubleeruvad tehnilised või dimensioonitunnused peideti Power BI Report view's, et kasutaja kasutaks analüüsis järjepidevalt õigeid dimensioonivälju.</p>
+  </section>
+  <section class="part" id="p8-korraldus" data-status="mustand">
+    <h3>Korralduslik eneserefleksioon</h3>
+    <p>Nelja grupiliikme töö sünkroniseerimine tõi esile vajaduse eristada andmebaasi ennast ning selle taastamiseks vajalikku koodi. PostgreSQL-i andmebaas töötab lokaalses keskkonnas, samas kui SQL-skriptid ja Power BI projekt peavad olema teistele grupiliikmetele kättesaadavad ja taastatavad.</p>
+    <p>Projekti failide versioonihalduseks kasutatakse Git-repositooriumi. Repositooriumisse salvestatakse SQL-skriptid ning Power BI Projecti failid. Andmebaasi ennast Git-repositooriumisse ei salvestata; eesmärk on, et iga grupiliige saaks repositooriumis oleva lahenduse põhjal sama andmestruktuuri oma lokaalses keskkonnas taastada.</p>
+    <div class="todo add">muud korralduslikud õppetunnid.</div>
+  </section>
+  <section class="part" id="p8-ai" data-status="mustand">
+    <h3>AI-kogemus</h3>
+    <p>Tehisaru oli projekti käigus kõige kasulikum tehniliste probleemide samm-sammulisel lahendamisel, SQL- ja DAX-loogika selgitamisel ning võimalike lahendusvariantide võrdlemisel. Samuti kasutati tehisaru dokumentatsiooni struktureerimise ja sõnastamise toetamiseks.</p>
+    <p>Samas tuli tehisaru pakutud lahendusi kontrollida projekti tegeliku andmemudeli ja andmete põhjal. Näiteks Power BI-s võib vale tulemuse põhjus esmapilgul tunduda DAX-valemi või seose probleemina, kuigi tegelik põhjus võib olla visualiseeringus kasutatud väli valest või andmemudeliga ühendamata tabelist. Projekti käigus ilmnes selline olukord seadme tunnuse kasutamisel.</p>
+    <p>Sellised juhtumid näitasid, et tehisaru on kasulik probleemide lahendamise ja õppimise abivahend, kuid ei asenda andmemudeli mõistmist ega tulemuste kontrollimist. Tehisaru soovitusi valideeriti SQL-päringute, Power BI mudeli ja tegelike analüüsitulemuste abil.</p>
+  </section>
 </section>
 
 </main>
