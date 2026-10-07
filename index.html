@@ -79,11 +79,17 @@ header.top .lead{font-size:var(--s1);line-height:1.55;margin:1.25rem 0 1.5rem;ma
 .open-list li{break-inside:avoid;margin:.2rem 0}
 
 /* Staatuse märk: kuju + tekst, mitte ainult värv */
-.st{display:inline-flex;align-items:center;gap:.35rem;font-size:var(--s-1);font-weight:400;color:var(--muted);white-space:nowrap}
-.st svg{width:14px;height:14px;flex:none}
-.st circle{stroke:var(--ink);stroke-width:1.6;fill:none}
-.st .fill{fill:var(--ink);stroke:none}
+/* Staatuse silt: tööinfo, mitte sisu. Pill-kuju, värv + ikoon + tekst. */
+.st{display:inline-flex;align-items:center;gap:.3rem;font-size:.72rem;font-weight:700;line-height:1;letter-spacing:.01em;padding:.28rem .6rem .28rem .45rem;border-radius:999px;border:1px solid;white-space:nowrap;vertical-align:middle;font-family:var(--f)}
+.st svg{width:11px;height:11px;flex:none}
+.st circle{stroke:currentColor;stroke-width:1.8;fill:none}
+.st .fill{fill:currentColor;stroke:none}
+.st[data-s="valmis"]{background:#e3f1ea;border-color:#0b6e4f;color:#0a5a41}
+.st[data-s="mustand"]{background:#fff3c4;border-color:#b08f00;color:#5c4700}
+.st[data-s="tegemata"]{background:#fbe7ec;border-color:#a8204c;color:#7d1638}
+.st[data-s="valikuline"]{background:var(--surface);border-color:var(--neutral);border-style:dashed;color:var(--muted)}
 .st[data-s="valikuline"] circle{stroke-dasharray:2.4 2.2}
+nav.toc .cnt{display:flex;margin-top:.3rem}
 
 /* Paigutus */
 .layout{max-width:1180px;margin:0 auto;padding:0 1.5rem 4rem;display:grid;grid-template-columns:220px minmax(0,1fr);gap:3rem}
@@ -93,8 +99,18 @@ nav.toc ol{list-style:none;margin:0;padding:0}
 nav.toc li{margin:0 0 .55rem}
 nav.toc a{text-decoration:none;display:block;line-height:1.35}
 nav.toc a:hover span.t{text-decoration:underline}
-nav.toc .cnt{display:block;color:var(--muted);font-size:.8rem}
+
 nav.toc a[aria-current="true"]{font-weight:700}
+nav.toc .tsub{margin:.35rem 0 .2rem .1rem;padding-left:.7rem;border-left:2px solid var(--line)}
+nav.toc .tsub li{margin:0 0 .3rem}
+nav.toc .tsub a{display:flex;gap:.4rem;align-items:flex-start;font-size:.82rem;color:var(--muted);line-height:1.3}
+nav.toc .tsub a[aria-current="true"]{color:var(--data);font-weight:700}
+nav.toc .tsub .tm{flex:none;margin-top:.1rem}
+nav.toc .tsub .tm svg{width:11px;height:11px}
+nav.toc .tsub .tm circle{stroke:currentColor;stroke-width:1.6;fill:none}
+nav.toc .tsub .tm .fill{fill:currentColor;stroke:none}
+nav.toc .tsub .tm[data-s="valikuline"] circle{stroke-dasharray:2.4 2.2}
+
 @media (max-width:860px){
   .layout{grid-template-columns:minmax(0,1fr);gap:0}
   nav.toc{position:static;max-height:none;border-bottom:1px solid var(--line);padding-bottom:1rem;margin-bottom:1rem}
@@ -413,7 +429,7 @@ ol.flowline li+li{margin-left:1.1rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.41</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 1.43</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid tegelik sõit võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1201,15 +1217,23 @@ function buildStatus(){
   document.getElementById('tocList').innerHTML=[...document.querySelectorAll('.chapter')].map(ch=>{
     const ps=[...ch.querySelectorAll('.part')]; const t=ps.filter(p=>p.dataset.status==='tegemata').length;
     const h=ch.querySelector('h2'); const n=h.querySelector('.n').textContent; const title=h.textContent.replace(n,'').trim();
-    return `<li><a href="#${ch.id}"><span class="t">${n}. ${esc(title)}</span><span class="cnt">${t?t+' tegemata':'kõik alustatud'}</span></a></li>`}).join('');
+    const sub=ps.map(p=>{const s=p.dataset.status;return `<li><a href="#${p.id}" data-part><span class="tm" data-s="${s}" aria-hidden="true">${icon(s)}</span><span class="t">${esc(p.querySelector('h3').firstChild.textContent.trim())}</span><span class="vh"> (${STATES[s]})</span></a></li>`}).join('');
+    return `<li class="tch" data-ch="${ch.id}"><a href="#${ch.id}" aria-controls="toc-${ch.id}"><span class="t">${n}. ${esc(title)}</span><span class="cnt">${(()=>{const allDone=ps.length&&ps.every(p=>p.dataset.status==='valmis');const s=t?'tegemata':allDone?'valmis':'mustand';return `<span class="st" data-s="${s}">${icon(s)}${t?t+' tegemata':allDone?'valmis':'kõik alustatud'}</span>`})()}</span></a><ol class="tsub" id="toc-${ch.id}" hidden>${sub}</ol></li>`}).join('');
+  /* Peatüki klõps avab selle alampeatükid ja sulgeb teised */
+  document.querySelectorAll('#tocList .tch>a').forEach(a=>a.addEventListener('click',()=>openTocCh(a.parentElement.dataset.ch,true)));
 }
 buildStatus();
 // Aktiivne peatükk sisukorras
 /* Aktiivne peatükk: viimane peatükk, mille algus on ülevalt 30 % piirist üleval. Arvutatakse kerimisel. */
 const CHS=[...document.querySelectorAll('.chapter')];let tocRaf=0;
+let tocPinned=null;
+function openTocCh(id,pin){if(pin)tocPinned=id;document.querySelectorAll('#tocList .tch').forEach(li=>{const on=li.dataset.ch===id;li.querySelector('.tsub').hidden=!on;li.querySelector(':scope>a').setAttribute('aria-expanded',on);});}
 function markToc(){tocRaf=0;if(document.getElementById('panel-doc').hidden)return;
   const lim=innerHeight*.3;let cur=CHS[0];for(const c of CHS){if(c.getBoundingClientRect().top<=lim)cur=c;else break;}
-  document.querySelectorAll('#tocList a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+cur.id?'true':'false'));}
+  let curP=null;cur.querySelectorAll('.part').forEach(p=>{if(p.getBoundingClientRect().top<=lim)curP=p;});
+  document.querySelectorAll('#tocList .tch>a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+cur.id?'true':'false'));
+  document.querySelectorAll('#tocList a[data-part]').forEach(a=>a.setAttribute('aria-current',curP&&a.getAttribute('href')==='#'+curP.id?'true':'false'));
+  if(tocPinned&&tocPinned!==cur.id)return; tocPinned=null; openTocCh(cur.id,false);}
 addEventListener('scroll',()=>{if(!tocRaf)tocRaf=requestAnimationFrame(markToc);},{passive:true});
 addEventListener('resize',()=>{if(!tocRaf)tocRaf=requestAnimationFrame(markToc);});
 markToc();
