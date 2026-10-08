@@ -767,7 +767,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.35</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.36</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -813,7 +813,7 @@ ol.vprops{padding-left:1.4rem}
   <section class="part" id="p1-eesmark" data-status="valmis">
     <h3>Eesmärk</h3>
     <p>Taksoteenuse hinna kujunemine sõltub sõidu kohta kogutud andmetest, sealhulgas läbitud distantsist, sõidu kestusest ja GPS-andmetest. Sõidu tellimisel kuvatakse kliendile eeldatav hind, mis põhineb prognoositud distantsil ja kestusel. Tegelik sõit võib prognoosist erineda ning osa klientidest pöördub pärast sõitu klienditoe poole kaebusega, et sõidu eest küsitud hind oli liiga kõrge.</p>
-    <p>Töö eesmärk on analüüsida ülehinnastamisega seotud klienditoe pöördumisi ning tuvastada tunnused ja olukorrad, mille puhul selliseid kaebusi esineb sagedamini. <b>Analüüsi eesmärk on leida peamised võimalused ülemaksu kaebuste arvu vähendamiseks.</b></p>
+    <p>Töö eesmärk on analüüsida ülehinnastamisega seotud klienditoe pöördumisi ning tuvastada tunnused ja olukorrad, mille puhul selliseid kaebusi esineb sagedamini. <b>Analüüsi eesmärk on leida peamised võimalused hinnakaebuste arvu vähendamiseks.</b></p>
     <p>Töö tehnilise osa eesmärk on valmistada algandmed analüüsiks ette, kontrollida andmete kvaliteeti, luua PostgreSQL-is dimensioonmudel ning ehitada Power BI-s analüüsimudel, mõõdikud ja visualiseeringud.</p>
   </section>
 
@@ -828,16 +828,16 @@ ol.vprops{padding-left:1.4rem}
     <ol class="rqcards">
       <li class="rqcard" id="rq1">
         <div class="rqhead"><span class="rqbig" aria-hidden="true">1</span><p class="rqtag">Vastab küsimusele: <b>KUS</b> probleem on?</p></div>
-        <h4><span class="vh">Küsimus 1. </span>Millistes sõidukategooriates esineb ülehinnastamise kaebusi ebaproportsionaalselt palju?</h4>
+        <h4><span class="vh">Küsimus 1. </span>Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Tuvastada, millistesse sõidusegmentidesse ülehinnastamise probleem kõige rohkem koondub ja millele tuleks edasises analüüsis keskenduda.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>EL vs väljaspool ELi</li><li>segmentide osakaal ja ülehinnastamise kaebuste määr</li></ul></dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>EL vs väljaspool ELi</li><li>segmentide osakaal ja hinnakaebuste määr</li></ul></dd></div>
           <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dd></div>
         </dl>
       </li>
       <li class="rqcard" id="rq2">
         <div class="rqhead"><span class="rqbig" aria-hidden="true">2</span><p class="rqtag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</p></div>
-        <h4><span class="vh">Küsimus 2. </span>Millised sõidu ja prognoosi erinevused on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <h4><span class="vh">Küsimus 2. </span>Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Tuvastada, millised erinevused prognoositud ja tegeliku sõidu vahel on ülehinnastamisega kõige tugevamalt seotud.</dd></div>
           <div><dt>Analüüsime</dt><dd><ul><li>tegelik vs prognoositud distants (kõrvalekalle ja suund)</li><li>tegelik vs prognoositud kestus (kõrvalekalle ja suund)</li><li>sõidu pikkus ja kestus</li><li>vajadusel aeg</li></ul></dd></div>
@@ -846,7 +846,7 @@ ol.vprops{padding-left:1.4rem}
       </li>
       <li class="rqcard" id="rq3">
         <div class="rqhead"><span class="rqbig" aria-hidden="true">3</span><p class="rqtag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</p></div>
-        <h4><span class="vh">Küsimus 3. </span>Millised hinnastamisega seotud tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <h4><span class="vh">Küsimus 3. </span>Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Leida hinnastamisega seotud tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
           <div><dt>Analüüsime</dt><dd><ul><li>hinnatüüp: <code>prediction</code> vs <code>upfront</code></li><li>hinnahälve eeldatava hinnaga sõitudel</li><li>sihtkoha muutus</li><li>hinnamuutuse põhjus ja aadressi sisestaja (<code>change_reason_pricing</code>, <code>entered_by</code>)</li><li>hinnastamise tegurite kombinatsioonid</li></ul></dd></div>
@@ -855,7 +855,7 @@ ol.vprops{padding-left:1.4rem}
       </li>
       <li class="rqcard" id="rq4">
         <div class="rqhead"><span class="rqbig" aria-hidden="true">4</span><p class="rqtag">Vastab küsimusele: <b>MILLISED TEHNILISED TINGIMUSED</b> probleemiga kaasnevad?</p></div>
-        <h4><span class="vh">Küsimus 4. </span>Millised tehnilised tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <h4><span class="vh">Küsimus 4. </span>Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Leida tehnilised tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
           <div><dt>Analüüsime</dt><dd><ul><li>GPS-ühenduse kvaliteet (<code>gps_confidence</code>)</li><li>sõitja ja juhi rakenduse versioon</li><li>seade</li><li>vajadusel nende kombinatsioonid</li></ul></dd></div>
@@ -864,10 +864,10 @@ ol.vprops{padding-left:1.4rem}
       </li>
       <li class="rqcard synth" id="rq5">
         <div class="rqhead"><span class="rqbig" aria-hidden="true">5</span><p class="rqtag">Vastab küsimusele: <b>MIDA</b> tulemuste põhjal prioriseerida?</p></div>
-        <h4><span class="vh">Küsimus 5. </span>Milliste tegurite ja nende kombinatsioonide korral esineb ülehinnastamise kaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</h4>
+        <h4><span class="vh">Küsimus 5. </span>Milliste tegurite ja nende kombinatsioonide korral esineb hinnakaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</h4>
         <dl class="rqdl">
-          <div><dt>Eesmärk</dt><dd>Tuvastada kõrge riskiga, kuid samal ajal piisavalt suure mahuga probleemkohad, mille parandamine võiks vähendada ülehinnastamise kaebuste koguarvu.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>Kombineerime küsimustes 1–4 oluliseks osutunud tegureid: piirkond, hinnatüüp, GPS-i kvaliteet, distantsi ja kestuse kõrvalekalded.</li><li>Vaatame, milliste kombinatsioonide korral on ülehinnastamise kaebuste määr kõige kõrgem.</li><li>Arvestame lisaks määrale probleemi mahtu: kui suurt osa kõigist ülehinnastamise kaebustest kombinatsioon puudutab.</li><li>Eeldatava hinnaga sõitudel analüüsime hinnahälvet: kas suurema hälbe korral esineb kaebusi rohkem.</li><li>Tulemuste põhjal määratleme peamised probleemkohad ja sekkumiskohad, millele ettevõttel oleks kõige mõistlikum keskenduda.</li></ul></dd></div>
+          <div><dt>Eesmärk</dt><dd>Tuvastada kõrge riskiga, kuid samal ajal piisavalt suure mahuga probleemkohad, mille parandamine võiks vähendada hinnakaebuste koguarvu.</dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>Kombineerime küsimustes 1–4 oluliseks osutunud tegureid: piirkond, hinnatüüp, GPS-i kvaliteet, distantsi ja kestuse kõrvalekalded.</li><li>Vaatame, milliste kombinatsioonide korral on hinnakaebuste määr kõige kõrgem.</li><li>Arvestame lisaks määrale probleemi mahtu: kui suurt osa kõigist hinnakaebustest kombinatsioon puudutab.</li><li>Eeldatava hinnaga sõitudel analüüsime hinnahälvet: kas suurema hälbe korral esineb kaebusi rohkem.</li><li>Tulemuste põhjal määratleme peamised probleemkohad ja sekkumiskohad, millele ettevõttel oleks kõige mõistlikum keskenduda.</li></ul></dd></div>
           <div><dt>Analüütikud</dt><dd><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dd></div>
         </dl>
       </li>
@@ -878,7 +878,7 @@ ol.vprops{padding-left:1.4rem}
     <h3>Ärimõisted</h3>
     <div class="tw"><table class="t terms">
       <thead><tr><th scope="col">Mõiste</th><th scope="col">Ingliskeelne termin</th><th scope="col">Tähendus</th></tr></thead>
-      <tbody><tr><th scope="row">Sõit</th><td lang="en" class="en">Ride</td><td>Üks tellimusega seotud taksosõit.</td></tr><tr><th scope="row">Prognoositud distants</th><td lang="en" class="en">Predicted distance</td><td>Sõidu tellimise hetkel sisestatud pealevõtu- ja sihtkoha põhjal prognoositud sõidudistants.</td></tr><tr><th scope="row">Tegelik distants</th><td lang="en" class="en">Actual distance</td><td>Sõidu jooksul tegelikult läbitud distants.</td></tr><tr><th scope="row">Prognoositud kestus</th><td lang="en" class="en">Predicted duration</td><td>Sõidu tellimise hetkel prognoositud sõidu kestus.</td></tr><tr><th scope="row">Tegelik kestus</th><td lang="en" class="en">Actual duration</td><td>Sõidu tegelik kestus.</td></tr><tr><th scope="row">Eeldatav hind</th><td lang="en" class="en">Upfront price</td><td>Kliendile enne sõitu kuvatud eeldatav hind, mis põhineb prognoositud distantsil ja kestusel.</td></tr><tr><th scope="row">Lõpuhind</th><td lang="en" class="en">Metered price</td><td>Sõidu tegelike parameetrite põhjal kujunenud hind.</td></tr><tr><th scope="row">Ülehinnastamise kaebus</th><td lang="en" class="en">Overcharge ticket</td><td>Klienditoe pöördumine, milles klient kaebab, et sõidu eest küsitud hind oli liiga kõrge.</td></tr><tr><th scope="row">Ülehinnastamise kaebusega sõit</th><td lang="en" class="en">Overcharge ride</td><td>Sõit, mille tellimusega on seotud vähemalt üks ülehinnastamise kaebus. Ühe tellimusega võib olla seotud mitu klienditoe pöördumist, kuid analüüsis arvestatakse sellist sõitu ühe ülehinnastamise kaebusega sõiduna, et vältida sama sõidu mitmekordset lugemist.</td></tr><tr><th scope="row">GPS-ühenduse kvaliteet</th><td lang="en" class="en">GPS confidence</td><td>GPS-ühenduse kvaliteedi indikaator, kus 1 tähistab head ja 0 halba GPS-ühendust.</td></tr><tr><th scope="row">Distantsi hälve</th><td lang="en" class="en">Distance deviation</td><td>Tegeliku ja prognoositud sõidudistantsi suhteline erinevus.</td></tr><tr><th scope="row">Hinnahälve</th><td lang="en" class="en">Price deviation</td><td>Lõpuhinna ja eeldatava hinna suhteline erinevus.</td></tr></tbody>
+      <tbody><tr><th scope="row">Sõit</th><td lang="en" class="en">Ride</td><td>Üks tellimusega seotud taksosõit.</td></tr><tr><th scope="row">Prognoositud distants</th><td lang="en" class="en">Predicted distance</td><td>Sõidu tellimise hetkel sisestatud pealevõtu- ja sihtkoha põhjal prognoositud sõidudistants.</td></tr><tr><th scope="row">Tegelik distants</th><td lang="en" class="en">Actual distance</td><td>Sõidu jooksul tegelikult läbitud distants.</td></tr><tr><th scope="row">Prognoositud kestus</th><td lang="en" class="en">Predicted duration</td><td>Sõidu tellimise hetkel prognoositud sõidu kestus.</td></tr><tr><th scope="row">Tegelik kestus</th><td lang="en" class="en">Actual duration</td><td>Sõidu tegelik kestus.</td></tr><tr><th scope="row">Eeldatav hind</th><td lang="en" class="en">Upfront price</td><td>Kliendile enne sõitu kuvatud eeldatav hind, mis põhineb prognoositud distantsil ja kestusel.</td></tr><tr><th scope="row">Lõpuhind</th><td lang="en" class="en">Metered price</td><td>Sõidu tegelike parameetrite põhjal kujunenud hind.</td></tr><tr><th scope="row">Hinnakaebus</th><td lang="en" class="en">Overcharge ticket</td><td>Klienditoe pöördumine, milles klient kaebab, et sõidu eest küsitud hind oli liiga kõrge.</td></tr><tr><th scope="row">Hinnakaebusega sõit</th><td lang="en" class="en">Overcharge ride</td><td>Sõit, mille tellimusega on seotud vähemalt üks hinnakaebus. Ühe tellimusega võib olla seotud mitu klienditoe pöördumist, kuid analüüsis arvestatakse sellist sõitu ühe hinnakaebusega sõiduna, et vältida sama sõidu mitmekordset lugemist.</td></tr><tr><th scope="row">GPS-ühenduse kvaliteet</th><td lang="en" class="en">GPS confidence</td><td>GPS-ühenduse kvaliteedi indikaator, kus 1 tähistab head ja 0 halba GPS-ühendust.</td></tr><tr><th scope="row">Distantsi hälve</th><td lang="en" class="en">Distance deviation</td><td>Tegeliku ja prognoositud sõidudistantsi suhteline erinevus.</td></tr><tr><th scope="row">Hinnahälve</th><td lang="en" class="en">Price deviation</td><td>Lõpuhinna ja eeldatava hinna suhteline erinevus.</td></tr></tbody>
     </table></div>
   </section>
 </section>
@@ -893,7 +893,7 @@ ol.vprops{padding-left:1.4rem}
     <p>Andmed on pärit sõiduteenusepakkujalt, kes jagab neid Google Sheetsi failina tootejuhi ametikoha kandidaatidele. Andmed ei pruugi olla täielikult usaldusväärsed: osa äri- ja sõiduandmetest on failist eemaldatud.</p>
     <p><b>Andmestikus on ainult lõpetatud sõidud, mille kohta on tehtud klienditoe pöördumine.</b> Tulemused ei kirjelda seega kõiki sõiduteenusepakkuja sõite.</p>
     <p>Algandmestik sisaldab muu hulgas järgmisi tunnuseid:</p>
-    <ul class="cols2"><li>tellimuse ja sõidu identifikaatorid</li><li>tegelik ja prognoositud sõidudistants ning kestus</li><li>eeldatav hind (<span lang="en">upfront price</span>) ja lõpuhind (<span lang="en">metered price</span>)</li><li>GPS-ühenduse kvaliteet</li><li>sõidu ja tellimuse staatus</li><li>sihtkoha sisestamiste ja muudatuste arv</li><li>hinnastamise ja hinnamuudatustega seotud tunnused</li><li>sõitja ja juhi rakenduse versioonid</li><li>seadmega seotud andmed</li><li>EL / väljaspool ELi indikaator</li><li>pettuseskoor (<span lang="en">fraud score</span>)</li><li>klienditoe pöördumise identifikaator</li><li>ülehinnastamise kaebuse indikaator (<span lang="en">overpaid ride ticket</span>)</li></ul>
+    <ul class="cols2"><li>tellimuse ja sõidu identifikaatorid</li><li>tegelik ja prognoositud sõidudistants ning kestus</li><li>eeldatav hind (<span lang="en">upfront price</span>) ja lõpuhind (<span lang="en">metered price</span>)</li><li>GPS-ühenduse kvaliteet</li><li>sõidu ja tellimuse staatus</li><li>sihtkoha sisestamiste ja muudatuste arv</li><li>hinnastamise ja hinnamuudatustega seotud tunnused</li><li>sõitja ja juhi rakenduse versioonid</li><li>seadmega seotud andmed</li><li>EL / väljaspool ELi indikaator</li><li>pettuseskoor (<span lang="en">fraud score</span>)</li><li>klienditoe pöördumise identifikaator</li><li>hinnakaebuse indikaator (<span lang="en">overpaid ride ticket</span>)</li></ul>
     <p>Konfidentsiaalsuse tagamiseks ei kasutata projektis ega Git-repositooriumis andmestiku ega selle päritoluettevõtte tegelikku nime.</p>
     <figure class="chart shot">
       <p class="ct">Algfail Google Sheetsis</p>
@@ -938,7 +938,7 @@ ol.vprops{padding-left:1.4rem}
   <section class="part" id="p2-mudel" data-status="valmis">
     <h3>Dimensioonid SQL-andmebaasis</h3>
     <p>PostgreSQL-is loodi analüüsi jaoks dimensioonmudel, mille keskne faktitabel on <code>fact_rides</code>. Faktitabel on võtmete kaudu seotud kuupäeva, seadme, rakenduse versiooni, hinnastamise konteksti ja tellimuse dimensioonidega. Klienditoe pöördumised paiknevad eraldi <code>fact_tickets</code> tabelis ning on sõitudega seotud <code>dim_order</code> kaudu.</p>
-    <div class="callout"><p class="callout-h">Miks <code>dim_order</code> on oluline</p><p><code>dim_order</code> on mudelis keskne: see seob sõiduandmed tellimuse tasemel klienditoe pöördumistega. Nii saab analüüsida, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus, ilma et mitme pöördumisega tellimusi loetaks mitu korda.</p></div>
+    <div class="callout"><p class="callout-h">Miks <code>dim_order</code> on oluline</p><p><code>dim_order</code> on mudelis keskne: see seob sõiduandmed tellimuse tasemel klienditoe pöördumistega. Nii saab analüüsida, kas tellimusega oli seotud vähemalt üks hinnakaebus, ilma et mitme pöördumisega tellimusi loetaks mitu korda.</p></div>
     <figure class="chart star">
       <p class="ct">Tähtskeem: faktid, dimensioonid ja võtmed</p>
       <p class="cs">Vali tabel, et näha selgitust ja seoseid. Nool näitab seost dimensioonist faktitabelisse.</p>
@@ -966,7 +966,7 @@ ol.vprops{padding-left:1.4rem}
       <div class="tw"><table class="t tkbars"><thead><tr><th scope="col">Pöördumisi</th><th scope="col">Tellimusi</th></tr></thead><tbody><tr><th scope="row">1</th><td><span class="gb" style="width:80.0%"></span><span class="gv">3&nbsp;554</span></td></tr><tr><th scope="row">2</th><td><span class="gb" style="width:11.0%"></span><span class="gv">487</span></td></tr><tr><th scope="row">3</th><td><span class="gb" style="width:2.1%"></span><span class="gv">94</span></td></tr><tr><th scope="row">4</th><td><span class="gb" style="width:0.6%"></span><span class="gv">24</span></td></tr><tr><th scope="row">5</th><td><span class="gb" style="width:0.5%"></span><span class="gv">5</span></td></tr><tr><th scope="row">6</th><td><span class="gb" style="width:0.5%"></span><span class="gv">2</span></td></tr></tbody></table></div>
           <figcaption>Tellimuste arv pöördumiste arvu järgi. Suurim pöördumiste arv ühe tellimuse kohta on kuus.</figcaption>
     </figure>
-    <p>Selle vältimiseks loodi <code>dim_order</code> tabelisse tellimuse taseme tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus. Nii saab ülemaksu analüüsida tellimuse tasemel, sõltumata sellest, mitu pöördumist tellimusega seotud on.</p>
+    <p>Selle vältimiseks loodi <code>dim_order</code> tabelisse tellimuse taseme tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks hinnakaebus. Nii saab hinnakaebusi analüüsida tellimuse tasemel, sõltumata sellest, mitu pöördumist tellimusega seotud on.</p>
     <p class="draft-note">Tekst grupi kirjelduse põhjal; «order», «ticket» ja «overcharge-ticket» on asendatud lehe mõistetega.</p>
   </section>
 
@@ -996,7 +996,7 @@ ol.vprops{padding-left:1.4rem}
         <p class="jh"><span class="jn" aria-hidden="true">4</span><span class="jw">järel</span></p>
         <h4>Pöördumine</h4>
         <p class="jd">Sõitja pöördub klienditoe poole.</p>
-        <dl><div class="jc"><dt><code>overpaid_ride_ticket</code> <span class="jt">täisarv</span></dt><dd>Kas sõitja kaebas ülemakstud sõidu üle: 1 = jah.</dd></div><div class="jc"><dt><code>ticket_id_new</code> <span class="jt">täisarv</span></dt><dd>Klienditoe pöördumise tunnus. Üks rida = üks pöördumine.</dd></div><div class="jc"><dt><code>fraud_score</code> <span class="jt">arv</span></dt><dd>Sõitja pettuseskoor. Mida suurem, seda tõenäolisemalt sõitja petab. 56&nbsp;% ridadest tühi.</dd></div></dl>
+        <dl><div class="jc"><dt><code>overpaid_ride_ticket</code> <span class="jt">täisarv</span></dt><dd>Kas sõitja kaebas, et sõidu hind oli liiga kõrge (hinnakaebus): 1 = jah.</dd></div><div class="jc"><dt><code>ticket_id_new</code> <span class="jt">täisarv</span></dt><dd>Klienditoe pöördumise tunnus. Üks rida = üks pöördumine.</dd></div><div class="jc"><dt><code>fraud_score</code> <span class="jt">arv</span></dt><dd>Sõitja pettuseskoor. Mida suurem, seda tõenäolisemalt sõitja petab. 56&nbsp;% ridadest tühi.</dd></div></dl>
       </li>
     </ol>
     <div class="jctx">
@@ -1023,7 +1023,7 @@ ol.vprops{padding-left:1.4rem}
         <tr><th scope="row">Sõit ELis</th><td class="r"><b>59,6&nbsp;%</b> <span class="gn">2&nbsp;484</span></td><td class="r">56,0&nbsp;% <span class="gn">2&nbsp;770</span></td></tr>
         <tr><th scope="row">Sõit väljaspool ELi</th><td class="r"><b>40,4&nbsp;%</b> <span class="gn">1&nbsp;682</span></td><td class="r">44,0&nbsp;% <span class="gn">2&nbsp;173</span></td></tr>
         <tr><th scope="row">Halb GPS (<code>gps_confidence</code> = 0)</th><td class="r"><b>18,3&nbsp;%</b> <span class="gn">762</span></td><td class="r">19,9&nbsp;% <span class="gn">985</span></td></tr>
-        <tr><th scope="row">Ülemaksu kaebusega</th><td class="r"><b>7,4&nbsp;%</b> <span class="gn">309</span></td><td class="r">6,8&nbsp;% <span class="gn">337</span></td></tr>
+        <tr><th scope="row">Hinnakaebusega</th><td class="r"><b>7,4&nbsp;%</b> <span class="gn">309</span></td><td class="r">6,8&nbsp;% <span class="gn">337</span></td></tr>
         <tr><th scope="row">Olek «finished»</th><td class="r"><b>4&nbsp;165</b> <span class="gn">1 «active»</span></td><td class="r">4&nbsp;942 <span class="gn">1 «active»</span></td></tr>
       </tbody>
     </table></div>
@@ -1055,7 +1055,7 @@ ol.vprops{padding-left:1.4rem}
     <h3>Andmekvaliteet</h3>
     <p>Andmete ettevalmistamisel kontrolliti eelkõige võtmete unikaalsust, tabelite detailsusastet, tabelitevaheliste seoste korrektsust ning võimalikke topeltlugemise riske.</p>
     <p>Oluline andmestruktuuriga seotud probleem oli tellimuste ja klienditoe pöördumiste erinev detailsusaste. Algandmestikus oli 4&nbsp;943 rida, kuid 4&nbsp;166 unikaalset tellimust. Ühe tellimusega võis olla seotud mitu klienditoe pöördumist ning suurim tuvastatud pöördumiste arv ühe tellimuse kohta oli kuus. Seetõttu põhjustaks pöördumiste otsene lugemine sõitude analüüsis sama tellimuse mitmekordset arvestamist.</p>
-    <p>Selle vältimiseks loodi <code>dim_order</code> tabelisse tellimuse taseme tunnus <code>had_overpaid_ride_ticket</code>, mis näitab, kas tellimusega oli seotud vähemalt üks ülehinnastamise kaebus. See võimaldab analüüsida ülehinnastamise esinemist tellimuse tasemel sõltumata ühe tellimusega seotud pöördumiste arvust.</p>
+    <p>Selle vältimiseks loodi <code>dim_order</code> tabelisse tellimuse taseme tunnus <code>had_overpaid_ride_ticket</code>, mis näitab, kas tellimusega oli seotud vähemalt üks hinnakaebus. See võimaldab analüüsida ülehinnastamise esinemist tellimuse tasemel sõltumata ühe tellimusega seotud pöördumiste arvust.</p>
     <p>Andmete ettevalmistamisel kontrolliti lisaks:</p>
     <ul><li>dimensioonitabelite võtmete vastavust <code>fact_rides</code> tabeli võtmetele;</li><li>tellimusega seotud tunnuste unikaalsust ühe <code>order_key</code> kohta;</li><li><code>order_state</code> ja <code>order_try_state</code> väärtuste vastavust enne nende lisamist <code>dim_order</code> tabelisse;</li><li><code>order_try_id_new</code> unikaalsust ühe tellimuse kohta;</li><li><code>calc_created</code> ehk tellimuse loomise aja unikaalsust ühe tellimuse kohta;</li><li>fakti- ja dimensioonitabelite väärtuste vastavust pärast tunnuste ülekandmist.</li></ul>
     <p>Nende kontrollide käigus ei tuvastatud väärtuste erinevusi ning kontrollitud <code>dim_order</code> väljade puhul ei tekkinud puuduvaid väärtusi.</p>
@@ -1079,7 +1079,7 @@ ol.vprops{padding-left:1.4rem}
         <tr><td>Tellimuse olek «active», kuigi sõit on lõpetatud</td><td class="r">1 (0,0&nbsp;%)</td><td>Olekute vastuolu.</td><td>Märgiti vastuoluliseks kirjeks; üksikjuhtum jäeti andmestikku, kuid sellele ei tuginetud analüüsis.</td></tr>
       </tbody>
     </table></div>
-    <p class="draft-banner"><b>Tõlgenduse piirang.</b> Igal real on pöördumise tunnus ja mitu rida võib viidata samale tellimusele. Seega 6,8&nbsp;% ridadest on ülemaksu kaebused selles pöördumiste andmestikus, mitte «6,8&nbsp;% sõitudest tõi kaebuse». Tellimuse tasemel on see 7,4&nbsp;%. Tegeliku sageduse ja kaebuste võimaliku vähenemise hindamiseks on vaja kõigi samal perioodil ja turgudel lõpetatud sõitude arvu.</p>
+    <p class="draft-banner"><b>Tõlgenduse piirang.</b> Igal real on pöördumise tunnus ja mitu rida võib viidata samale tellimusele. Seega 6,8&nbsp;% ridadest on hinnakaebused selles pöördumiste andmestikus, mitte «6,8&nbsp;% sõitudest tõi kaebuse». Tellimuse tasemel on see 7,4&nbsp;%. Tegeliku sageduse ja kaebuste võimaliku vähenemise hindamiseks on vaja kõigi samal perioodil ja turgudel lõpetatud sõitude arvu.</p>
     <p>Kuna hinnaskaalad erinevad, ei väida see analüüs, et kõrgem nominaalhind põhjustab pöördumisi.</p>
   </section>
 
@@ -1548,7 +1548,7 @@ DIVIDE(
       <tbody>
         <tr><td>Hinnahälve</td><td>(lõpuhind − eeldatav hind) ÷ eeldatav hind</td></tr>
         <tr><td>Suure hälbe osakaal</td><td>tellimused, mille hälve on üle ±20&nbsp;% ÷ eeldatava hinnaga kehtivad tellimused</td></tr>
-        <tr><td>Kaebuste määr</td><td>ülemaksu kaebusega tellimused ÷ kehtivad tellimused</td></tr>
+        <tr><td>Kaebuste määr</td><td>hinnakaebusega tellimused ÷ kehtivad tellimused</td></tr>
       </tbody>
     </table></div>
   </section>
@@ -1633,10 +1633,10 @@ DIVIDE(
 
   <section class="part" id="lt-telefon" data-status="valmis">
     <h3>Visualiseering: kaebused telefonimudelite kaupa</h3>
-    <p>Kõigis andmetes tehti Tecno ja Infinixi telefoniga 22&nbsp;% tellimustest, aga neilt tuli 55&nbsp;% ülemaksu kaebustest. Nende telefonidega oli GPS halb umbes 4 korral 10-st.</p>
+    <p>Kõigis andmetes tehti Tecno ja Infinixi telefoniga 22&nbsp;% tellimustest, aga neilt tuli 55&nbsp;% hinnakaebustest. Nende telefonidega oli GPS halb umbes 4 korral 10-st.</p>
     <p>Seos tuleb suuresti turust: kõik Tecno ja Infinixi tellimused on väljaspool ELi. Graafik näitab vaikimisi väljaspool ELi ennustusega tellimusi (984): seal on kaebuste määr 21,7&nbsp;% vs teistel 19,1&nbsp;%.</p>
     <figure class="chart">
-      <p class="ct">Tellimuste voog: telefonibränd → GPS-ühendus → ülemaksu kaebus</p>
+      <p class="ct">Tellimuste voog: telefonibränd → GPS-ühendus → hinnakaebus</p>
       <p class="cs">Riba laius = tellimuste arv</p>
       <form class="filters local" id="k5filters" aria-label="Telefonibrändi graafiku filtrid" onsubmit="return false">
         <fieldset><legend>Piirkond</legend><div class="seg">
@@ -2117,7 +2117,7 @@ function sankey(el,{cols,links,aria,W=cw(el)}){
 const ST={
  fact_rides:{k:'Faktitabel',d:'Sõidu taseme faktid ja mõõdetavad tunnused: tegelik ja prognoositud hind, vahemaa ja kestus, GPS-ühenduse kvaliteet ning pettuseskoor.'},
  fact_tickets:{k:'Faktitabel',d:'Klienditoe pöördumistega seotud andmed.'},
- dim_order:{k:'Dimensioon',d:'Tellimuse kirjeldavad tunnused: tellimuse ja tellimuskatse ID, tellimuse ja tellimuskatse olek, loomise aeg ning märge, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus. Seob sõidud ja pöördumised.'},
+ dim_order:{k:'Dimensioon',d:'Tellimuse kirjeldavad tunnused: tellimuse ja tellimuskatse ID, tellimuse ja tellimuskatse olek, loomise aeg ning märge, kas tellimusega oli seotud vähemalt üks hinnakaebus. Seob sõidud ja pöördumised.'},
  dim_date:{k:'Dimensioon',d:'Sõidu kuupäevaga seotud tunnused.'},
  dim_device:{k:'Dimensioon',d:'Sõiduga seotud seadme tunnused.'},
  dim_app_version:{k:'Dimensioon',d:'Sõitja ja juhi rakenduse versioonide tunnused.'},
