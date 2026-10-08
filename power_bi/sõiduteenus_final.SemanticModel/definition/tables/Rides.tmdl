@@ -1,0 +1,607 @@
+table Rides
+	lineageTag: 7c6d36af-f7a9-435c-b97d-e469a0b8c4dd
+
+	column 'Order ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: bc029e9d-1ff0-4f50-8f1d-1df549204e51
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Order Try ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e2d0a0a2-8abb-4e2a-bfaa-26f7f48b0397
+		summarizeBy: none
+		sourceColumn: Order Try ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	column 'Order Created At'
+		dataType: string
+		isHidden
+		lineageTag: 84b7f6ba-233e-41c5-bbaf-e433800cd86f
+		summarizeBy: none
+		sourceColumn: Order Created At
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// The length of a ride.
+	column Time
+		dataType: string
+		lineageTag: 3cc869cc-6c74-43b3-a3ba-b1b5aa46db10
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Actual price of a ride.
+	column 'Metered Price'
+		dataType: double
+		formatString: 0.0
+		lineageTag: 070071be-0335-4bca-a0ec-d3b6428a7cf0
+		summarizeBy: none
+		sourceColumn: Metered Price
+
+		annotation SummarizationSetBy = User
+
+	/// Price promised to the rider based on predicted duration and distance.
+	column 'Upfront Price'
+		dataType: double
+		formatString: 0.0
+		lineageTag: 6bde1714-f248-4ced-b5a1-87a48992d65b
+		summarizeBy: none
+		sourceColumn: Upfront Price
+
+		annotation SummarizationSetBy = User
+
+	/// Distance of a ride.
+	column Distance
+		dataType: int64
+		formatString: 0
+		lineageTag: a64a69c4-4387-40bc-a6b5-1d2874ff7733
+		summarizeBy: none
+		sourceColumn: Distance
+
+		annotation SummarizationSetBy = User
+
+	/// Duration of a ride.
+	column Duration
+		dataType: int64
+		formatString: 0
+		lineageTag: 092ef7c0-1ca9-4707-b24f-18f8cff51302
+		summarizeBy: none
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = User
+
+	/// Number of destination changes by a rider and a driver. It includes the original input of the destination by a rider. That is why the minimum value of it is 1.
+	column 'Destination Change Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 14c76254-2b66-45ab-bef6-11bcd8cbb509
+		summarizeBy: none
+		sourceColumn: Destination Change Number
+
+		annotation SummarizationSetBy = User
+
+	/// Predicted distance of a ride based on the pickup and drop off points entered by the rider requesting a car.
+	column 'Predicted Distance'
+		dataType: double
+		lineageTag: f3ae7c62-d407-4513-81e4-e764b3f8520d
+		summarizeBy: none
+		sourceColumn: Predicted Distance
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Predicted duration of a ride based on the pickup and drop off points entered by the rider requesting a car.
+	column 'Predicted Duration'
+		dataType: double
+		lineageTag: ab8d4aeb-fec1-4be9-abe9-6a6c760356d1
+		summarizeBy: none
+		sourceColumn: Predicted Duration
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Fraud score of a rider. The higher it is the more likely the rider will cheat.
+	column 'Fraud Score'
+		dataType: double
+		lineageTag: 634d8e89-9d35-426b-9e99-9246b6abd775
+		summarizeBy: none
+		sourceColumn: Fraud Score
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Indicator for good GPS connection (1 - good one, 0 - bad one).
+	column 'GPS Confidence'
+		dataType: int64
+		formatString: 0
+		lineageTag: a3696af8-5395-4f6a-bd1d-7b9bc82d83df
+		summarizeBy: none
+		sourceColumn: GPS Confidence
+
+		annotation SummarizationSetBy = User
+
+	/// State of a ride (finished implies that the ride was actually done).
+	column 'Ride State'
+		dataType: string
+		lineageTag: ff9cea1d-b3e6-4fa1-8e72-919c6015d292
+		summarizeBy: none
+		sourceColumn: Ride State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order State'
+		dataType: string
+		isHidden
+		lineageTag: 4258a0c0-ad3b-4fcc-8862-465ee06630f8
+		summarizeBy: none
+		sourceColumn: Order State
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Try State'
+		dataType: string
+		isHidden
+		lineageTag: e147c464-6481-4f46-99d6-9d26cfbf6961
+		summarizeBy: none
+		sourceColumn: Order Try State
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Whether a ride happens in EU (1 - EU, 0 - non-EU).
+	column 'EU Indicator'
+		dataType: int64
+		formatString: 0
+		lineageTag: d6f8accb-e1ba-4374-86bf-6f6cb4bf5318
+		summarizeBy: none
+		sourceColumn: EU Indicator
+
+		annotation SummarizationSetBy = User
+
+	/// Indicator showing whether the ride is classified as invalid.
+	column 'Is Invalid Ride'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b69ba64f-349e-4da0-9b6c-067a0edef8c9
+		summarizeBy: none
+		sourceColumn: Is Invalid Ride
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Status associated with the rider fraud score.
+	column 'Fraud Score Status'
+		dataType: string
+		lineageTag: 99ac5455-b166-4974-8d12-9589e6ffc634
+		summarizeBy: none
+		sourceColumn: Fraud Score Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6503d21f-6974-461b-8db4-79ca0289a02b
+		summarizeBy: none
+		sourceColumn: Date Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Unique key identifying a ride in the data model.
+	column 'Ride Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a31c4a7-262c-4050-9bfe-21777c44c339
+		summarizeBy: none
+		sourceColumn: Ride Key
+
+		annotation SummarizationSetBy = User
+
+	column 'Order Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5daa9f51-2b28-43d1-8786-eeafeb9bd79c
+		summarizeBy: none
+		sourceColumn: Order Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Key used to link a ride to the Device dimension.
+	column 'Device Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2b8b4a56-fb2e-49f7-9bf5-518eee2fe4ff
+		summarizeBy: none
+		sourceColumn: Device Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'App Version Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8dd70a0d-fcee-45d8-a345-f7470a0870cb
+		summarizeBy: none
+		sourceColumn: App Version Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pricing Context Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: aab6ad54-c4b0-4bf6-8288-d91510acfb3d
+		summarizeBy: none
+		sourceColumn: Pricing Context Key
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Percentage difference between actual ride distance and predicted distance.
+	column 'Distance Deviation %' =
+			
+			DIVIDE(
+			    'Rides'[Distance] -
+			    'Rides'[Predicted Distance],
+			    'Rides'[Predicted Distance]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 82d36081-9056-4631-8cae-2ac5cbaf1c07
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	/// Category grouping rides by the percentage difference between actual and predicted distance.
+	column 'Distance Deviation Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Distance Deviation %] < -0.25, "< -25%",
+			    'Rides'[Distance Deviation %] < -0.10, "-25% to -10%",
+			    'Rides'[Distance Deviation %] <= 0.10, "-10% to +10%",
+			    'Rides'[Distance Deviation %] <= 0.25, "+10% to +25%",
+			    'Rides'[Distance Deviation %] <= 0.50, "+25% to +50%",
+			    "> +50%"
+			)
+		lineageTag: 84cbca1c-c116-4300-be00-2335401c52b1
+		summarizeBy: none
+		sortByColumn: 'Distance Deviation Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Numeric helper field used to sort Distance Deviation Group in logical order.
+	column 'Distance Deviation Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Distance Deviation %] < -0.25, 1,
+			    'Rides'[Distance Deviation %] < -0.10, 2,
+			    'Rides'[Distance Deviation %] <= 0.10, 3,
+			    'Rides'[Distance Deviation %] <= 0.25, 4,
+			    'Rides'[Distance Deviation %] <= 0.50, 5,
+			    6
+			)
+		isHidden
+		formatString: 0
+		lineageTag: e3513efe-158a-44e7-9082-ae85edb6a0ed
+		summarizeBy: none
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = User
+
+	/// Percentage difference between metered price and upfront price.
+	column 'Price Deviation %' =
+			
+			DIVIDE(
+			    'Rides'[Metered Price] - 'Rides'[Upfront Price],
+			    'Rides'[Upfront Price]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 42ff1a86-06ad-4d5a-8bbf-cd216ea3ef55
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Destination Change Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Destination Change Number] = 1, "No change",
+			    'Rides'[Destination Change Number] = 2, "1 change",
+			    'Rides'[Destination Change Number] = 3, "2 changes",
+			    'Rides'[Destination Change Number] >= 4, "3+ changes",
+			    "Unknown"
+			)
+		lineageTag: feef1890-9ab8-49b5-b876-205c1cb5f862
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Price Deviation Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Price Deviation %] < 0, "< 0%",
+			    'Rides'[Price Deviation %] = 0, "0%",
+			    'Rides'[Price Deviation %] <= 0.1, "0–10%",
+			    'Rides'[Price Deviation %] <= 0.2, "10–20%",
+			    'Rides'[Price Deviation %] <= 0.3, "20–30%",
+			    'Rides'[Price Deviation %] <= 0.5, "30–50%",
+			    'Rides'[Price Deviation %] <= 1, "50–100%",
+			    'Rides'[Price Deviation %] > 1, "100%+",
+			    "Unknown"
+			)
+		lineageTag: 2732851d-6548-4605-8a01-96f1e69137a1
+		summarizeBy: none
+		sortByColumn: 'Price Deviation Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Price Deviation Sort' =
+			
+			SWITCH(
+			    TRUE(),
+			    'Rides'[Price Deviation %] <= 0, 1,
+			    'Rides'[Price Deviation %] <= 0.1, 2,
+			    'Rides'[Price Deviation %] <= 0.2, 3,
+			    'Rides'[Price Deviation %] <= 0.3, 4,
+			    'Rides'[Price Deviation %] <= 0.5, 5,
+			    'Rides'[Price Deviation %] <= 1, 6,
+			    'Rides'[Price Deviation %] > 1, 7,
+			    99
+			)
+		formatString: 0
+		lineageTag: 96f9905c-d8b4-4b08-9967-30521afb8a9b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EU / Non-EU' =
+			
+			IF(
+			    'Rides'[EU Indicator] = 1,
+			    "EU",
+			    "Non-EU"
+			)
+		lineageTag: 9d8db0bc-8c05-49ef-b8ac-7fcd7b9025e4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GPS Confidence Level' =
+			
+			IF(
+			    'Rides'[GPS Confidence] = 1,
+			    "High",
+			    "Low"
+			)
+		lineageTag: 8ba4b9ea-e537-45b2-b0e2-af505145e2bb
+		summarizeBy: none
+		sortByColumn: 'GPS Confidence Sort'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'GPS Confidence Sort' =
+			
+			IF(
+			    'Rides'[GPS Confidence] = 0,
+			    1,
+			    2
+			)
+		formatString: 0
+		lineageTag: 37a7ff70-be82-4dfe-872a-b23b57718787
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration_min = Rides[Duration]/60
+		formatString: 0.00
+		lineageTag: dfd71750-64b8-443c-95b4-c050b33f29f3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column predicted_duration_min = Rides[Predicted Duration] / 60
+		formatString: 0.00
+		lineageTag: 0dd22bf8-ebb9-41a1-a514-ff2de3447b6d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_dif = Rides[Duration_min] - Rides[predicted_duration_min]
+		formatString: 0.00
+		lineageTag: 14079f15-aed3-4ced-8d90-b5473d4e47b2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_km = Rides[Distance] / 1000
+		formatString: 0.00
+		lineageTag: 7f2e4a91-6c38-4b15-a8d7-91e5f03c624b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_group =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[distance_km] <= 2, "0–2 km",
+			    Rides[distance_km] <= 5, "2–5 km",
+			    Rides[distance_km] <= 10, "5–10 km",
+			    Rides[distance_km] <= 15, "10–15 km",
+			    Rides[distance_km] <= 20, "15–20 km",
+			    "≥ 20 km"
+			)
+		lineageTag: fade8c95-fc24-4283-a529-ee3cb8b83c3b
+		summarizeBy: none
+		sortByColumn: distance_group_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column distance_group_order =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[distance_km] <= 2, 1,
+			    Rides[distance_km] <= 5, 2,
+			    Rides[distance_km] <= 10, 3,
+			    Rides[distance_km] <= 15, 4,
+			    Rides[distance_km] <= 20, 5,
+			    6
+			)
+		formatString: 0
+		lineageTag: 349e7af8-c625-4f51-9ec2-5156083dbbff
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_dif_group =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[duration_dif] <= -10, BLANK(),
+			    Rides[duration_dif] <= -5, "−10 kuni −5 min",
+			    Rides[duration_dif] <= 0, "−5 kuni 0 min",
+			    Rides[duration_dif] <= 5, "0 kuni 5 min",
+			    Rides[duration_dif] <= 10, "5 kuni 10 min",
+			    Rides[duration_dif] <= 20, "10 kuni 20 min",
+			    Rides[duration_dif] <= 30, "20 kuni 30 min",
+			    Rides[duration_dif] <= 60, "30 kuni 60 min",
+			    "≥ 60 min"
+			)
+		lineageTag: c526bbd4-9868-48ac-8044-313d52076a62
+		summarizeBy: none
+		sortByColumn: duration_dif_group_order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column duration_dif_group_order =
+			
+			SWITCH(
+			    TRUE(),
+			    Rides[duration_dif] <= -5, 1,
+			    Rides[duration_dif] <= 0, 2,
+			    Rides[duration_dif] <= 5, 3,
+			    Rides[duration_dif] <= 10, 4,
+			    Rides[duration_dif] <= 20, 5,
+			    Rides[duration_dif] <= 30, 6,
+			    Rides[duration_dif] <= 60, 7,
+			    8
+			)
+		formatString: 0
+		lineageTag: c33fefc4-2aae-4307-b978-725b3f1d521b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column predicted_distance_km =
+			
+			DIVIDE(Rides[Predicted Distance], 1000)
+		formatString: 0.00
+		lineageTag: 06e19a8e-0336-4e38-9e98-00551224bbc5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Duration Deviation %' =
+			
+			DIVIDE(
+			    'Rides'[Duration] - 'Rides'[Predicted Duration],
+			    'Rides'[Predicted Duration],
+			    BLANK()
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9d62c29f-9c38-4e9b-8c7b-c711a3719d70
+		summarizeBy: none
+
+		annotation SummarizationSetBy = User
+
+	partition Rides = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "postgres"),
+				    public_fact_rides = Source{[Schema="public",Item="fact_rides"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(
+				    public_fact_rides,
+				    {
+				        {"b_state", "Ride State"},
+				        {"app_version_key", "App Version Key"},
+				        {"date_key", "Date Key"},
+				        {"device_key", "Device Key"},
+				        {"dest_change_number", "Destination Change Number"},
+				        {"calc_created", "Order Created At"},
+				        {"distance", "Distance"},
+				        {"duration", "Duration"},
+				        {"eu_indicator", "EU Indicator"},
+				        {"fraud_score", "Fraud Score"},
+				        {"fraud_score_status", "Fraud Score Status"},
+				        {"gps_confidence", "GPS Confidence"},
+				        {"is_invalid_ride", "Is Invalid Ride"},
+				        {"metered_price", "Metered Price"},
+				        {"order_state", "Order State"},
+				        {"order_try_id_new", "Order Try ID"},
+				        {"order_try_state", "Order Try State"},
+				        {"predicted_distance", "Predicted Distance"},
+				        {"predicted_duration", "Predicted Duration"},
+				        {"ride_key", "Ride Key"},
+				        {"time", "Time"},
+				        {"upfront_price", "Upfront Price"},
+				        {"pricing_context_key", "Pricing Context Key"},
+				        {"order_id_new", "Order ID"},
+				        {"order_key", "Order Key"}
+				    }
+				)
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

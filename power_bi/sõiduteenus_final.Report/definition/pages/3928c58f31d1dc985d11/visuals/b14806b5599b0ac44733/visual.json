@@ -1,0 +1,95 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "b14806b5599b0ac44733",
+  "position": {
+    "x": 0,
+    "y": 1573.3333333333335,
+    "z": 1000,
+    "height": 226.66666666666669,
+    "width": 1253.3333333333335,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Prediction hinnastusega sõitudel esineb overcharge-ticket'e rohkem kui upfront hinnastusega sõitudel.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Prediction-sõitudest on overcharge-ticketiga 20,3%, samas kui upfront-sõitudest ainult 3,5%.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Non-EUs on prediction-sõitudest overcharge ticketiga 20,4%, ning upfront-sõitudel 13,4%. Samuti oli kõrge osakaal overcharge ticketeid juhul kui sõidu sihtkoht muutus, kuid kogu nende sõitude arv oli ise pigem madal (13).",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "→ ",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "16pt"
+                    }
+                  },
+                  {
+                    "value": "Prediction hinnastamise tüüp on seotud kõrgema overcharge rate'iga Non-EU sees, kuid regioon selgitab osa algselt nähtud suurest erinevusest.",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Segoe UI Semibold",
+                      "fontSize": "16pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

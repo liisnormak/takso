@@ -1,0 +1,328 @@
+table _Measures
+	lineageTag: dbf7af3c-c8b6-4873-8eab-f901a2100371
+
+	/// Number of unique rides.
+	measure 'Distinct Ride Count' =
+			
+			DISTINCTCOUNT('Rides'[Ride Key])
+		formatString: 0.00
+		lineageTag: 111406f4-6adb-4179-8428-aa4fb0065587
+
+	/// Number of unique rides associated with an order that had at least one overpaid ride ticket.
+	measure 'Overcharge Ride Count' =
+			
+			CALCULATE(
+			    DISTINCTCOUNT('Rides'[Order Key]),
+			    'Order'[Had Overpaid Ride Ticket] = 1
+			)
+		formatString: 0
+		lineageTag: 9823a7ea-f099-4319-8411-cda0a0eb36a2
+
+	/// Share of rides associated with an order that had at least one overpaid ride ticket.
+	measure 'Overcharge Ride Rate' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    [Distinct Ride Count],
+			    0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 66232e4c-e376-432b-bdda-ca49d88d04c8
+
+	/// Share of rides with poor GPS connection (GPS Confidence = 0).
+	measure 'Low GPS Ride Rate' =
+			
+			DIVIDE(
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        'Rides'[GPS Confidence] = 0
+			    ),
+			    [Distinct Ride Count]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3cc5d86b-ec73-4232-acec-394ca10a86e4
+
+	/// Average percentage difference between actual and predicted ride distance.
+	measure 'Average Distance Deviation' =
+			
+			AVERAGE('Rides'[Distance Deviation %])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 0382b5fd-12cc-485a-9c51-4a0ffbf9c614
+
+	/// Median absolute percentage difference between actual and predicted ride distance, ignoring whether the deviation is positive or negative.
+	measure 'Median Absolute Distance Deviation %' =
+			
+			MEDIANX(
+			    'Rides',
+			    ABS('Rides'[Distance Deviation %])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 9a9f5e95-cc1f-4f6e-8698-30aa1dd4b29e
+
+	/// Median percentage difference between actual and predicted ride distance.
+	measure 'Median Distance Deviation %' =
+			
+			MEDIAN(
+			    'Rides'[Distance Deviation %]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 31170978-1ec3-4f1c-b21f-2d42d4c7fe94
+
+	measure 'Overcharge + Low GPS Ride Count' =
+			
+			CALCULATE(
+			    [Overcharge Ride Count],
+			    'Rides'[GPS Confidence] = 0
+			)
+		formatString: 0
+		lineageTag: aaa9ff34-83eb-4113-afa1-5c0f0177076b
+
+	measure '% of Rides' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Pricing Context'[Prediction Price Type])
+			    ),
+			    0
+			)
+		lineageTag: b1d57feb-714d-4cb3-bdc5-21e6eee0d723
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% of All Overcharges' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    CALCULATE(
+			        [Overcharge Ride Count],
+			        REMOVEFILTERS('Pricing Context'[Prediction Price Type])
+			    ),
+			    0
+			)
+		lineageTag: 13699daa-3c86-4a28-b000-f6d81e96c336
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% of Rides by Destination Change' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Rides'[Destination Change Group])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4bd645fc-6dd9-44c5-bda9-abef923b0c97
+
+	measure '% of Overcharges by Destination Change' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    CALCULATE(
+			        [Overcharge Ride Count],
+			        REMOVEFILTERS('Rides'[Destination Change Group])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 738e966f-277d-4e5e-83ed-6b55ae9376a0
+
+	measure 'Ticket rate' = DIVIDE(CALCULATE(DISTINCTCOUNT('Order'[Order ID]), 'Order'[Had Overpaid Ride Ticket] = 1), DISTINCTCOUNT('Order'[Order ID]))
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: b02aca44-b765-4ce6-af26-9a749355fae9
+
+	measure 'UK3 T1 Kaebuste määr' = AVERAGE('UK3 T1 GPS'[rate])
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: 1a247e25-8448-4dd4-b275-beab7ea28afa
+
+	measure 'UK3 T2 Kaebuste määr' = AVERAGE('UK3 T2 Apid'[rate])
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: ce9cd3f5-5d6b-4eae-8c13-14181b0eaa7f
+
+	measure 'UK3 T3 Kaebuste määr' = AVERAGE('UK3 T3 Mudelid'[rate])
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: 127b4e60-442e-49f5-beb8-cfc8517b5561
+
+	measure 'UK3 T3 Halva GPS osakaal' = AVERAGE('UK3 T3 Mudelid'[gps_low_share])
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: 0e7a9b4f-b5fb-46ed-b5df-bfe0764f262c
+
+	measure 'UK3 T3 Sõitude arv' = SUM('UK3 T3 Mudelid'[n])
+		formatString: 0
+		displayFolder: UK3
+		lineageTag: 7dd61d91-2cb4-431b-b8e5-b4f26f881b84
+
+	measure 'UK3 T3 Kaebusi tegelikult' = SUM('UK3 T3 Mudelid'[tickets])
+		formatString: 0
+		displayFolder: UK3
+		lineageTag: 7f081545-9e29-4649-91c6-c4a95ac02bd4
+
+	measure 'UK3 T3 Kaebusi oodatud' = SUM('UK3 T3 Mudelid'[expected])
+		formatString: 0.0
+		displayFolder: UK3
+		lineageTag: 76461a29-45ad-4b3a-bf6f-aeaed40e7995
+
+	measure 'UK3 T4 Kaebuste määr' = AVERAGE('UK3 T4 GPS x app'[rate])
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: e0f8bf61-814a-449b-97c7-ead3dc67d82f
+
+	measure 'UK3 T5 Odds ratio' = AVERAGE('UK3 T5 Regressioon'[odds_ratio])
+		formatString: 0.00
+		displayFolder: UK3
+		lineageTag: ad697f75-bf82-44d1-beeb-545adc50b224
+
+	measure 'UK3 T5 CI alumine' = AVERAGE('UK3 T5 Regressioon'[ci_low])
+		formatString: 0.00
+		displayFolder: UK3
+		lineageTag: 77329a1a-f1a3-4377-b865-74d2e447024c
+
+	measure 'UK3 T5 CI ülemine' = AVERAGE('UK3 T5 Regressioon'[ci_high])
+		formatString: 0.00
+		displayFolder: UK3
+		lineageTag: f626f3c6-1903-4b7e-87aa-e2f3abf090c9
+
+	measure 'UK3 T6 Sõitude arv' = SUM('UK3 T6 Segmendid'[n])
+		formatString: 0
+		displayFolder: UK3
+		lineageTag: 4608f487-03c7-4f1a-b281-024cae8f11c5
+
+	measure 'UK3 T6 Kaebusi' = SUM('UK3 T6 Segmendid'[tickets])
+		formatString: 0
+		displayFolder: UK3
+		lineageTag: 09e61d07-6e6b-425a-9016-a415fa28264b
+
+	measure 'UK3 T6 Kaebuste määr' = AVERAGE('UK3 T6 Segmendid'[rate])
+		formatString: 0.0%
+		displayFolder: UK3
+		lineageTag: 272d6875-7bfb-434f-bc98-04f0586b13dd
+
+	measure 'Non-EU Both Prices Count' =
+			
+			CALCULATE(
+				[Distinct Ride Count],
+				'Rides'[EU Indicator] = 0,
+				NOT(ISBLANK('Rides'[Metered Price])),
+				NOT(ISBLANK('Rides'[Upfront Price]))
+			)
+		formatString: 0
+		lineageTag: 76c22bf3-1f6b-4a27-81c6-fb93886b61b7
+
+	measure 'Non-EU Ride Count' =
+			
+			CALCULATE(
+				[Distinct Ride Count],
+				'Rides'[EU Indicator] = 0
+			)
+		formatString: 0
+		lineageTag: f7558dbe-394c-456c-90dc-6c88eb21db58
+
+	measure 'Ride Share by Region %' =
+			
+			DIVIDE(
+			    [Distinct Ride Count],
+			    CALCULATE(
+			        [Distinct Ride Count],
+			        REMOVEFILTERS('Rides'[EU / Non-EU])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 94accf43-2419-42a2-b485-73e7e5604c9b
+
+	measure 'Overcharge Share by Region %' =
+			
+			DIVIDE(
+			    [Overcharge Ride Count],
+			    CALCULATE(
+			        [Overcharge Ride Count],
+			        REMOVEFILTERS('Rides'[EU / Non-EU])
+			    ),
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d33f5cb0-d76b-48ca-91ac-7ad8720e2385
+
+	measure 'Non-EU Overcharge Ride Count' =
+			
+			CALCULATE(
+			    [Distinct Ride Count],
+			    'Rides'[EU Indicator] = 0,
+			    'Order'[Had Overpaid Ride Ticket] = 1
+			)
+		formatString: 0
+		lineageTag: feae46fe-f3e3-4134-8d66-37f01370c6c4
+
+	measure 'Both Prices Count' =
+			
+			CALCULATE(
+			    [Distinct Ride Count],
+			    NOT(ISBLANK('Rides'[Metered Price])),
+			    NOT(ISBLANK('Rides'[Upfront Price]))
+			)
+		formatString: 0
+		lineageTag: e6c10218-7c25-4357-bb94-495f8fa580d7
+
+	measure 'Non-EU Overcharge Ride Rate' =
+			
+			DIVIDE(
+			    [Non-EU Overcharge Ride Count],
+			    [Non-EU Ride Count],
+			    0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: b2136be8-77bf-4984-bab2-7d4dc2f5c115
+
+	measure 'Both Prices Overcharge Ride Count' =
+			
+			CALCULATE(
+			    [Overcharge Ride Count],
+			    NOT(ISBLANK('Rides'[Upfront Price])),
+			    NOT(ISBLANK('Rides'[Metered Price]))
+			)
+		formatString: 0
+		lineageTag: a0b86e67-0988-4985-84a5-e9807e5e4f67
+
+	measure 'Both Prices Overcharge Ride Rate' =
+			
+			DIVIDE(
+			    [Both Prices Overcharge Ride Count],
+			    [Both Prices Count],
+			    0
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 5f6d1955-c046-4fd5-98c3-092e731688e4
+
+	measure 'Average Price Deviation' =
+			
+			AVERAGE('Rides'[Price Deviation %])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7b75de97-8713-48e6-8d2b-e0dffa3961bf
+
+	column Column
+		isHidden
+		formatString: 0
+		lineageTag: 49d60f10-a7df-42aa-a6d7-6ee4dacbfc55
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = User
+
+	partition _Measures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 40bbf2658dde4969ac867176412c6ea2
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

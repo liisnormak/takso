@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "sõiduteenus_final"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "678db556-cc15-4647-a097-54b2b23057ab"
+  }
+}
