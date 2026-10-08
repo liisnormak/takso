@@ -5,7 +5,7 @@ table _Measures
 	measure 'Distinct Ride Count' =
 			
 			DISTINCTCOUNT('Rides'[Ride Key])
-		formatString: 0
+		formatString: 0.00
 		lineageTag: 111406f4-6adb-4179-8428-aa4fb0065587
 
 	/// Number of unique rides associated with an order that had at least one overpaid ride ticket.

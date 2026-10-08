@@ -1,1 +1,7 @@
 bolt_andmed.csv
+__pycache__/
+.venv/
+venv/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
