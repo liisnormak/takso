@@ -1,0 +1,85 @@
+table Order
+	lineageTag: 7790662d-1a71-4866-ac90-f8eb5080a490
+
+	/// ID of an order.
+	column 'Order ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: dc28df3c-3101-45d5-8388-05f09f51400d
+		summarizeBy: none
+		sourceColumn: Order ID
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Unique key created to link order-level information across the Rides, Order and Tickets tables.
+	column 'Order Key'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8dbe9712-10c9-472f-aedf-1058815b1307
+		summarizeBy: none
+		sourceColumn: Order Key
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Indicator showing whether an order had at least one customer support ticket related to an overpaid ride.
+	column 'Had Overpaid Ride Ticket'
+		dataType: int64
+		formatString: 0
+		lineageTag: ab782d8e-1951-498d-ad1b-8b4c31174d8c
+		summarizeBy: none
+		sourceColumn: Had Overpaid Ride Ticket
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order State'
+		dataType: string
+		lineageTag: f831a8fb-8d9d-4e95-99fc-844a5519a673
+		summarizeBy: none
+		sourceColumn: Order State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Try State'
+		dataType: string
+		lineageTag: f8129d87-7c55-4094-bc05-fb3efcc8353c
+		summarizeBy: none
+		sourceColumn: Order Try State
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Try ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e895d2d-1f5b-4fd8-8222-47a8a671c4d3
+		summarizeBy: none
+		sourceColumn: Order Try ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Order Created At'
+		dataType: string
+		lineageTag: dd569fcd-1aa5-49bd-8191-1bb7e3b1b6f3
+		summarizeBy: none
+		sourceColumn: Order Created At
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Order = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost:5432", "postgres"),
+				    public_dim_order = Source{[Schema="public",Item="dim_order"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(public_dim_order,{{"had_overpaid_ride_ticket", "Had Overpaid Ride Ticket"}, {"order_id_new", "Order ID"}, {"order_key", "Order Key"}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Renamed Columns",{"Order Key", "Order ID", "Had Overpaid Ride Ticket", "public.fact_rides", "public.fact_tickets"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Reordered Columns", {"Order ID"}, Rides, {"Order ID"}, "Rides", JoinKind.LeftOuter),
+				    #"Expanded Rides" = Table.ExpandTableColumn(#"Merged Queries", "Rides", {"Order Try ID", "Order Created At", "Order State", "Order Try State"}, {"Order Try ID", "Order Created At", "Order State", "Order Try State"}),
+				    #"Renamed Columns1" = #"Expanded Rides",
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Renamed Columns1",{"Order Key", "Order ID", "Had Overpaid Ride Ticket", "Order State", "Order Try State", "Order Try ID", "Order Created At", "public.fact_rides", "public.fact_tickets"})
+				in
+				    #"Reordered Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

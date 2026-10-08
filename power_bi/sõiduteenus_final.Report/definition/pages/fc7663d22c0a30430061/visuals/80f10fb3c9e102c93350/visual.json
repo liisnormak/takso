@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "80f10fb3c9e102c93350",
+  "position": {
+    "x": 7.5,
+    "y": 68.75,
+    "z": 4000,
+    "height": 112.5,
+    "width": 181.25,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Tickets"
+                    }
+                  },
+                  "Property": "Support Tickets Display"
+                }
+              },
+              "queryRef": "Tickets.Support Tickets Display",
+              "nativeQueryRef": "Support tickets",
+              "displayName": "Support tickets"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,81 @@
+table 'UK3 T5 Regressioon'
+	lineageTag: 1c141903-cedf-47f9-91dc-75300770305d
+
+	column model
+		dataType: string
+		lineageTag: 1a65b50d-c2c2-4f03-9701-2d48115aa4a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [model]
+
+		annotation SummarizationSetBy = User
+
+	column term
+		dataType: string
+		lineageTag: c31e6cff-cd9f-4dc5-b47e-95e12bdd6cde
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [term]
+
+		annotation SummarizationSetBy = User
+
+	column odds_ratio
+		dataType: double
+		formatString: 0.00
+		lineageTag: ebf7be33-089b-4113-bc35-20a5cbc04086
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [odds_ratio]
+
+		annotation SummarizationSetBy = User
+
+	column ci_low
+		dataType: double
+		formatString: 0.00
+		lineageTag: 35043738-65a7-4abb-a061-1d96cc07ffe0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ci_low]
+
+		annotation SummarizationSetBy = User
+
+	column ci_high
+		dataType: double
+		formatString: 0.00
+		lineageTag: 7094a39b-7c24-4773-ac93-dbfc3a67adfe
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ci_high]
+
+		annotation SummarizationSetBy = User
+
+	column p_value
+		dataType: double
+		formatString: 0.00
+		lineageTag: 10d1e4d4-38af-429e-ace5-4d212ff85689
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [p_value]
+
+		annotation SummarizationSetBy = User
+
+	partition 'UK3 T5 Regressioon' = calculated
+		mode: import
+		source =
+				DATATABLE(
+					"model", STRING, "term", STRING, "odds_ratio", DOUBLE, "ci_low", DOUBLE, "ci_high", DOUBLE, "p_value", DOUBLE,
+					{
+					{"kõik, piirkond kontrollitud", "GPS confidence = 0", 3.2434686277, 2.4991429076, 4.2094786605, 0.0000000000},
+					{"kõik, piirkond kontrollitud", "Vana juhi äpp (9+ versiooni vanem)", 2.6310263728, 1.9166581156, 3.6116507779, 0.0000000022},
+					{"kõik, piirkond kontrollitud", "Juhi äpp = iOS", 0.5161766401, 0.2010193744, 1.3254360410, 0.1693137154},
+					{"kõik, piirkond kontrollitud", "Kliendi äpp = iOS", 1.2203160431, 0.9314901118, 1.5986978566, 0.1484753662},
+					{"ainult EL", "GPS confidence = 0", 9.8070476506, 2.9341524672, 32.7788636396, 0.0002086178},
+					{"ainult EL", "Vana juhi äpp (9+ versiooni vanem)", 1.2095047114, 0.1530776350, 9.5565994763, 0.8568704506},
+					{"ainult EL", "Kliendi äpp = iOS", 2.9480348369, 0.8062217019, 10.7798008648, 0.1021852796},
+					{"ainult mitte-EL", "GPS confidence = 0", 3.1157300076, 2.3948222845, 4.0536508881, 0.0000000000},
+					{"ainult mitte-EL", "Vana juhi äpp (9+ versiooni vanem)", 2.7111316021, 1.9626620846, 3.7450331475, 0.0000000014},
+					{"ainult mitte-EL", "Juhi äpp = iOS", 0.6391899957, 0.2434833603, 1.6779949563, 0.3634241778},
+					{"ainult mitte-EL", "Kliendi äpp = iOS", 1.1629770083, 0.8794656431, 1.5378832960, 0.2895809499}
+					}
+				)
+

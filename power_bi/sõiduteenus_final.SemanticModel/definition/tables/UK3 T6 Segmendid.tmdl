@@ -1,0 +1,83 @@
+table 'UK3 T6 Segmendid'
+	lineageTag: 100e8718-f645-42cb-8857-23e74a66a272
+
+	column segment
+		dataType: string
+		lineageTag: 1c56d32b-7cfa-4874-80f6-3702163c478d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [segment]
+
+		annotation SummarizationSetBy = User
+
+	column gps_grp
+		dataType: string
+		lineageTag: 3bd9216e-31bc-4c2e-bc6d-8200f3ed0f4c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [gps_grp]
+
+		annotation SummarizationSetBy = User
+
+	column driver_app_old
+		dataType: string
+		lineageTag: c6cb79f3-ecc6-4753-bc7b-aef47f542be9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [driver_app_old]
+
+		annotation SummarizationSetBy = User
+
+	column n
+		dataType: int64
+		formatString: 0
+		lineageTag: aca4e5e2-16e2-4c65-9274-4f05a5024705
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [n]
+
+		annotation SummarizationSetBy = User
+
+	column tickets
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f325e08-13d0-4cc2-82aa-7cc41ef5f688
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [tickets]
+
+		annotation SummarizationSetBy = User
+
+	column rate
+		dataType: double
+		formatString: 0.0%
+		lineageTag: d7bcfb78-7ad6-4de1-9bf4-fd54007fe2da
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [rate]
+
+		annotation SummarizationSetBy = User
+
+	column share_of_all_tickets
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 538aea7d-5914-4d9d-820d-455320ed7d5a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [share_of_all_tickets]
+
+		annotation SummarizationSetBy = User
+
+	partition 'UK3 T6 Segmendid' = calculated
+		mode: import
+		source =
+				DATATABLE(
+					"segment", STRING, "gps_grp", STRING, "driver_app_old", STRING, "n", INTEGER, "tickets", INTEGER, "rate", DOUBLE, "share_of_all_tickets", DOUBLE,
+					{
+					{"GPS halb (0) + uuem äpp (kuni 8 versiooni vanem)", "GPS halb (0)", "uuem äpp (kuni 8 versiooni vanem)", 663, 138, 0.2081447964, 0.4466019417},
+					{"GPS halb (0) + vana äpp (9+ versiooni vanem)", "GPS halb (0)", "vana äpp (9+ versiooni vanem)", 99, 48, 0.4848484848, 0.1553398058},
+					{"GPS hea (1) + uuem äpp (kuni 8 versiooni vanem)", "GPS hea (1)", "uuem äpp (kuni 8 versiooni vanem)", 3076, 96, 0.0312093628, 0.3106796117},
+					{"GPS hea (1) + vana äpp (9+ versiooni vanem)", "GPS hea (1)", "vana äpp (9+ versiooni vanem)", 328, 27, 0.0823170732, 0.0873786408}
+					}
+				)
+

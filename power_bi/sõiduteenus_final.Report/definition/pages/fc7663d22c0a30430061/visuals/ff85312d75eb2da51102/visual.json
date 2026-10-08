@@ -1,0 +1,253 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "ff85312d75eb2da51102",
+  "position": {
+    "x": 0,
+    "y": 373.75,
+    "z": 0,
+    "height": 605,
+    "width": 1438.75,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "keyDriversVisual",
+    "query": {
+      "queryState": {
+        "ExplainBy": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Pricing Context"
+                    }
+                  },
+                  "Property": "Prediction Price Type"
+                }
+              },
+              "queryRef": "Pricing Context.Prediction Price Type",
+              "nativeQueryRef": "Prediction Price Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "EU / Non-EU"
+                }
+              },
+              "queryRef": "Rides.EU / Non-EU",
+              "nativeQueryRef": "EU / Non-EU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "GPS Confidence Level"
+                }
+              },
+              "queryRef": "Rides.GPS Confidence Level",
+              "nativeQueryRef": "GPS Confidence Level"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "Distance Deviation Group"
+                }
+              },
+              "queryRef": "Rides.Distance Deviation Group",
+              "nativeQueryRef": "Distance Deviation",
+              "displayName": "Distance Deviation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Rides"
+                    }
+                  },
+                  "Property": "Duration Deviation %"
+                }
+              },
+              "queryRef": "Sum(Rides.Duration Deviation %)",
+              "nativeQueryRef": "Duration Deviation",
+              "displayName": "Duration Deviation"
+            }
+          ]
+        },
+        "Target": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Order"
+                    }
+                  },
+                  "Property": "Had Overpaid Ride Ticket"
+                }
+              },
+              "queryRef": "Order.Had Overpaid Ride Ticket",
+              "nativeQueryRef": "Had Overpaid Ride Ticket"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "keyDrivers": [
+        {
+          "properties": {
+            "selectedAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'keyInfluencers'"
+                }
+              }
+            },
+            "selectedNumericAnalysis": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "targetValue": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1L'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyDriversDrillVisual": [
+        {
+          "properties": {
+            "defaultColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "keyInfluencersVisual": [
+        {
+          "properties": {
+            "primaryColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9fe23a028c613837d508",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Pricing Context"
+              }
+            },
+            "Property": "Prediction Price Type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "990a5acd55acf3e2f175",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "EU / Non-EU"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8e2b011da1c8b7c7878c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "GPS Confidence Level"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "88dd67d6fe6c74b8b5b7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Order"
+              }
+            },
+            "Property": "Had Overpaid Ride Ticket"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "763b393fcb0f69cd751e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Rides"
+              }
+            },
+            "Property": "Distance Deviation Group"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

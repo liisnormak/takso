@@ -1,0 +1,36 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: et-EE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["xtakso_andmed_clean","Tickets","Rides","Order","Pricing Context","Device","Date","App Version"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table xtakso_andmed_clean
+ref table Tickets
+ref table Rides
+ref table Order
+ref table 'Pricing Context'
+ref table Device
+ref table Date
+ref table DateTableTemplate_3ad2c87f-b221-46ff-9129-1b9d7f14559b
+ref table LocalDateTable_bf8a385d-8e03-44c1-a214-786dbe92c4d6
+ref table 'App Version'
+ref table _Measures
+ref table 'UK3 T1 GPS'
+ref table 'UK3 T2 Apid'
+ref table 'UK3 T3 Mudelid'
+ref table 'UK3 T4 GPS x app'
+ref table 'UK3 T5 Regressioon'
+ref table 'UK3 T6 Segmendid'
+ref table LocalDateTable_ed1ff732-bd49-457f-beb8-d1cd305fcf76
+
+ref cultureInfo en-US
+
