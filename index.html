@@ -588,6 +588,8 @@ figure.chart.wide{max-width:var(--wide)}
 .extlink{font-size:var(--s-1)}
 @media (max-width:760px){.rq3g,.slide .rq3g{grid-template-columns:1fr}}
 .toc-home{display:inline-flex;align-items:center;gap:.4rem;margin:0 0 1rem;padding:.35rem .8rem;border:1.5px solid var(--ink);border-radius:4px;font-size:var(--s-1);font-weight:700;text-decoration:none;color:var(--ink);background:var(--bg)}
+.toc-pres{margin-top:-.5rem}
+.toc-home .ti{width:1em;height:1em}
 .toc-home:hover{background:var(--surface);text-decoration:underline}
 /* Uurimisküsimus 4 */
 :root{--br0:#3a8fb7;--br1:#d1495b;--br2:#1d5f99;--br3:#7c828b;--br4:#e07b39;--br5:#2e9e6b;--br6:#9b1239;--br7:#0b6e4f;--b0:#1f6fb2;--b1:#1b2a6b;--b2:#d55e00;--b3:#6a1b6a;--b4:#c2408a;--b5:#7b61c4;--b6:#b08600;--b7:#b22222}
@@ -749,6 +751,25 @@ figure.chart .dkey{font-size:.85rem}
 .p5s-pl{margin:0;font-size:.55em;font-weight:700;color:var(--data);text-transform:none;max-width:none}
 .p5s-pl span{display:block;font-weight:400;color:var(--muted);margin-top:.1em}
 ol.vprops{padding-left:1.4rem}
+/* Uurimisküsimus 2: hajuvusdiagrammid */
+#rq3d .rq3g{grid-template-columns:repeat(2,minmax(0,1fr))}
+#rq3d .rq3g>div:nth-child(3),#rq3d .rq3g>div:nth-child(4){grid-column:1/-1}
+.r3sc svg{touch-action:none;cursor:crosshair}
+.r3zbar{display:flex;gap:.8rem;align-items:center;margin-top:.2rem;font-size:.75rem;color:var(--muted)}
+.r3zbar .reset{font-size:.75rem}
+#rq3s .rq3g{grid-template-columns:minmax(0,1fr) minmax(0,2.4fr);grid-template-rows:auto auto;gap:.3rem 1.2rem}
+#rq3s .rq3g>div:nth-child(1){grid-column:1;grid-row:1}
+#rq3s .rq3g>div:nth-child(2){grid-column:1;grid-row:2}
+#rq3s .rq3g>div:nth-child(3){grid-column:2;grid-row:2}
+#rq3s .rq3g>div:nth-child(4){grid-column:2;grid-row:1}
+#rq3s .r3sc{position:relative}
+#rq3s .r3zbar{position:absolute;top:0;right:0;font-size:.42em;margin:0}
+#rq3s .r3zhint{display:none}
+#rq3s .lqnext{padding:.3em .8em}
+#rq3s .rq3g .dt{font-size:.5em;margin:0}
+#rq3s .rq3g .key{font-size:.45em;margin:0}
+#rq3s .rq3f .kpis b{font-size:1em}
+#rq3s .rq3f{margin-bottom:.1rem}#rq3s .r3zbar .reset{font-size:1em;padding:.1em .5em}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -767,7 +788,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.36</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.38</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -800,6 +821,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="layout">
 <nav class="toc" aria-labelledby="toc-h">
   <a class="toc-home" href="#top" id="tocHome"><span aria-hidden="true">↑</span> Esileht</a>
+  <a class="toc-home toc-pres" href="#esitlus" id="tocPres"><svg class="ti" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg> Esitlus</a>
   <h2 id="toc-h">Sisukord</h2>
   <ol id="tocList"></ol>
 </nav>
@@ -1363,13 +1385,17 @@ DIVIDE(
   <section class="part rqres" id="p4-rq2" data-status="valmis">
     <h3>Uurimisküsimus 2: mis sõidus endas eristab probleemseid sõite?</h3>
     <div class="rqres-head"><p class="rqres-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></p></div>
-    <h4 class="subh">Andmed ja meetod</h4>
-    <p>Analüüs on tehtud sõidu ehk tellimuse tasemel mõõdikutega <code>Distinct Ride Count</code> ja <code>Overcharge Ride Rate</code>. Sõidud on jaotatud rühmadesse tegeliku distantsi järgi (<code>distance_group</code>) ning selle järgi, mitu minutit kestis sõit prognoosist kauem (<code>duration_dif_group</code> = tegelik − prognoositud kestus). Hajuvusdiagrammid võrdlevad tegelikku ja prognoositud distantsi ning kestust; punktiirjoon on regressioonijoon. Filtrid on samad mis Raiko Power BI lehel: piirkond, GPS-ühendus ja hinnatüüp.</p>
+    <h4 class="subh">Andmed ja meetod: tunnused, mõõdikud ja filtrid</h4>
+    <p>Analüüsis kasutati esmalt kahte tulpdiagrammi, mille x-teljel olid sõitude distantsi ja kestuse vahemikud (<code>distance_group</code> ja <code>duration_group</code>), järjestatuna väiksemast väärtusest suuremani. Y-teljel kuvati iga rühma hinnakaebuste osakaal (<code>overcharge_rate</code>). Iga tulba kohal kuvati vastava rühma sõitude arv (<code>total_rides</code>), et anda hinnakaebuste osakaalule valimi suuruse kontekst.</p>
+    <p>Teises analüüsiplokis kasutati kahte hajuvusdiagrammi. Esimesel võrreldi prognoositud sõidu kestust (<code>predicted_duration</code>) tegeliku sõidu kestusega (<code>actual_duration</code>) ning teisel prognoositud distantsi (<code>predicted_distance</code>) tegeliku distantsiga (<code>actual_distance</code>). Mõlemal visuaalil paiknes prognoositud väärtus x-teljel ja tegelik väärtus y-teljel.</p>
+    <p>Sõitude tähistamiseks kasutati tunnust <code>overpaid_ride_ticket</code>, mille alusel eristati hinnakaebusega ja hinnakaebuseta sõidud erinevate värvidega.</p>
+    <p>Võrdluse aluseks kasutati ideaaljoont <b>y = x</b>, mis tähistab olukorda, kus prognoositud ja tegelik väärtus langevad täpselt kokku. Ideaaljoonest <b>ülespoole</b> jäävate sõitude puhul oli tegelik väärtus prognoositust suurem, ideaaljoonest <b>allapoole</b> jäävate sõitude puhul väiksem ning ideaaljoonel paiknevate sõitude puhul võrdus tegelik väärtus prognoosituga.</p>
+    <p>Lisaks kuvati regressioonijoon ja <b>R²</b>. Regressioonijoon kirjeldab prognoositud ja tegeliku väärtuse vahelist lineaarset seost ning R² näitab, kui suure osa tegeliku väärtuse varieeruvusest lineaarne seos prognoositud väärtusega kirjeldab. Eraldi loendurid näitavad ideaaljoonest ülespoole, ideaaljoonel ja allapoole jäävate sõitude arvu.</p>
     <p class="extlink">Raportit saab näha siin: <a href="https://vali-it-zbqb2vb4c9bxuexkw9jna5.streamlit.app/" target="_blank" rel="noopener">vali-it-zbqb2vb4c9bxuexkw9jna5.streamlit.app/</a><span class="vh"> (avaneb uues aknas)</span></p>
     <h4 class="subh">Tulemused</h4>
     <figure class="chart wide">
-      <p class="ct">Hinnakaebuste osakaal kasvab koos sõidu pikkusega ja prognoosist pikema kestusega</p>
-      <p class="cs">Vali filtrid: kõik neli visualiseeringut ja näitajad uuenevad</p>
+      <p class="ct">Hinnakaebuste osakaal sõidu pikkuse ja kestuse järgi; prognoos vs tegelik</p>
+      <p class="cs">Vali filtrid: kõik neli visualiseeringut ja näitajad uuenevad. Hajuvusdiagrammil vali hiirega ala, et sisse suumida.</p>
       <div class="rq3" id="rq3d" data-sfx="d">
         <form class="dfil rq3f" onsubmit="return false" aria-label="Filtrid">
           <fieldset><legend>Piirkond</legend><div class="seg">
@@ -1389,15 +1415,18 @@ DIVIDE(
         <div class="rq3g">
           <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
           <div><p class="dt">Hinnakaebuste osakaal: kui palju kestis sõit prognoosist kauem</p><div class="r3c" data-c="dur"></div></div>
-          <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3c" data-c="sd"></div></div>
-          <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3c" data-c="sdu"></div></div>
+          <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
+          <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
         </div>
       </div>
-      <figcaption>Raiko Power BI lehe visuaalid: 2 tulpdiagrammi ja 2 hajuvusdiagrammi koos filtritega. Kestuse diagrammil on ainult sõidud, mis kestsid prognoosist kauem, nagu Power BI-s. Arvud on üle kontrollitud failist <code>takso_andmed_clean.csv</code>.</figcaption>
+      <figcaption>Raiko visuaalid: 2 tulpdiagrammi (tulba kohal sõitude arv) ja 2 hajuvusdiagrammi. Must katkendjoon: y&nbsp;=&nbsp;x; roheline joon: regressioonijoon. Kehtetud sõidud (distants 0) on välja jäetud. Loendurid võivad Raiko graafikust erineda kuni 8 sõidu võrra, sest Raiko jättis välja mõned äärmuslikud sõidud.</figcaption>
     </figure>
     <h4 class="subh">Vastus küsimusele</h4>
-    <div class="callout"><p>Hinnakaebusi on sagedamini <b>pikematel sõitudel</b> ja sõitudel, mis <b>kestavad prognoosist kauem</b>. Hinnakaebuste osakaal kasvab 4,2&nbsp;%-lt (0–2&nbsp;km) 19,1&nbsp;%-ni (20&nbsp;km ja rohkem). Kui sõit kestab prognoosist 0–5 minutit kauem, on osakaal 3,7&nbsp;%; kui 20–30 minutit kauem, siis 17,0&nbsp;%.</p></div>
-    <h4 class="subh">Järeldused</h4>
+    <div class="callout"><p>Ainuüksi prognoositust pikemaks kujunenud sõit ei näi seletavat kõrget hinnakaebuste osakaalu. Kuigi upfront-rühmas kujunes tegelik kestus <b>59,3&nbsp;%</b> sõitudest prognoositust pikemaks, oli hinnakaebuste osakaal selles rühmas vaid <b>3,5&nbsp;%</b>. Prediction-rühmas oli tegelik kestus prognoositust pikem <b>75,4&nbsp;%</b> sõitudest ning hinnakaebuste osakaal ulatus <b>20,4&nbsp;%-ni</b>.</p>
+    <p>See näitab, et prediction- ja upfront-rühm erinevad märgatavalt nii prognoositud ja tegeliku sõidu kestuse suhte kui ka hinnakaebuste osakaalu poolest. Samas ei tõenda see, et prognoosi ja tegeliku sõidu erinevus põhjustas hinnakaebusi.</p></div>
+    <h4 class="subh">Uurime seega täpsemalt hinnastamistüüpi</h4>
+    <p>Järgmise sammuna vaatleme hinnastamistüüpe eraldi, et selgitada, kas mõni hinnastamistüüp on seotud suurema hinnakaebuste osakaaluga (<a href="#p4-rq3">Uurimisküsimus 3</a>).</p>
+    <h4 class="subh">Täiendavad tähelepanekud</h4>
     <ul>
       <li>Kui tegelik distants on prognoositust üle 20&nbsp;% suurem, on hinnakaebuste osakaal 11,3&nbsp;%, muudel sõitudel 5,8&nbsp;%. Kestuse puhul vastavalt 9,7&nbsp;% ja 5,5&nbsp;%.</li>
       <li>Muster kehtib ka väljaspool ELi: osakaal kasvab 7,5&nbsp;%-lt (0–2&nbsp;km) 33,5&nbsp;%-ni (20&nbsp;km ja rohkem).</li>
@@ -1531,9 +1560,12 @@ DIVIDE(
     <p>Mõju on hinnatud hinnakaebuste osakaalu järgi; tegelik vähenemine võib olla väiksem, sest analüüs näitab seost, mitte põhjust. Probleemid kattuvad osaliselt. Ettepanekuid tuleks enne laiemat kasutuselevõttu katsetada väiksemas piirkonnas (A/B-test).</p>
   </section>
 
-  <section class="part" id="p4-juhend" data-status="tegemata">
+  <section class="part" id="p4-juhend" data-status="valmis">
     <h3>Kasutajajuhend</h3>
-    <div class="todo">5–8 sammu aruande avamiseks ja lugemiseks.</div>
+    <p>Kasutusjuhend kirjeldab, kuidas luua projekti andmebaas oma arvutis ja avada Power BI aruanne. Selleks on vaja PostgreSQL-i, DBeaverit ja Power BI Desktopi ning GitHubi repositooriumist kolme faili: puhastatud CSV, tähtskeemi SQL-skript ja Power BI fail.</p>
+    <p>Sammud on järgmised: CSV importimine DBeaveriga tabelisse <code>public.takso_andmed_clean</code>, tähtskeemi skripti käivitamine ning Power BI andmeallika ühendamine kohaliku andmebaasiga ja andmete värskendamine. Iga sammu järel on kontrollpäring koos oodatavate arvudega (näiteks 4&nbsp;943 rida ja 4&nbsp;166 sõitu).</p>
+    <p>Juhend selgitab ka aruande nelja lehe lugemist ja tuletab meelde, et tulemused näitavad seoseid klienditoe pöördumisega sõitude andmestikus, mitte kõigis sõitudes.</p>
+    <p class="extlink">Täielik juhend: <a href="https://github.com/raikokarpov-star/takso/blob/main/kasutusjuhend.md" target="_blank" rel="noopener">kasutusjuhend.md GitHubis</a><span class="vh"> (avaneb uues aknas)</span></p>
   </section>
 
   <section class="part" id="p4-info" data-status="tegemata">
@@ -1674,7 +1706,7 @@ DIVIDE(
     <h4 class="subh">2. Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</h4>
     <p class="vlink"><a href="#p4-rq2">Vaata: Uurimisküsimus 2 →</a></p>
     <p>Tegeliku ja prognoositud distantsi erinevuse hindamiseks kasutatakse nii <code>Distance Deviation %</code> tunnust kui ka <code>Median Absolute Distance Deviation %</code> mõõdikut. <code>Distance Deviation %</code> võimaldab hinnata kõrvalekalde suunda, samas kui absoluutse kõrvalekalde mediaan kirjeldab kõrvalekalde tüüpilist suurust sõltumata sellest, kas tegelik distants oli prognoositust suurem või väiksem.</p>
-        <p><b>Tulemus:</b> hinnakaebusi on sagedamini pikematel sõitudel ja sõitudel, mis kestavad prognoosist kauem. Hinnakaebuste määr kasvab 4,2&nbsp;%-lt (0–2&nbsp;km) 19,1&nbsp;%-ni (üle 20&nbsp;km) ning on 17,0&nbsp;%, kui sõit kestis prognoosist 20–30 minutit kauem. Kui tegelik distants ületas prognoosi üle 20&nbsp;%, oli määr 11,3&nbsp;% (muudel sõitudel 5,8&nbsp;%). Sama muster kehtib ka väljaspool ELi.</p>
+        <p><b>Tulemus:</b> ainuüksi prognoositust pikemaks kujunenud sõit ei näi seletavat kõrget hinnakaebuste osakaalu. Upfront-rühmas kujunes tegelik kestus 59,3&nbsp;% sõitudest prognoositust pikemaks, kuid hinnakaebuste osakaal oli vaid 3,5&nbsp;%; prediction-rühmas olid vastavad näitajad 75,4&nbsp;% ja 20,4&nbsp;%. Rühmad erinevad nii kestuse suhte kui ka hinnakaebuste osakaalu poolest, kuid see ei tõenda põhjuslikku seost. Seepärast uuriti järgmisena hinnastamistüüpe (küsimus 3).</p>
     <h4 class="subh">3. Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
     <p class="vlink"><a href="#p4-rq3">Vaata: Uurimisküsimus 3 →</a></p>
     <p>Hinnastamise seoste hindamiseks võrreldi erinevate hinnatüüpide (<code>Prediction Price Type</code>) <code>Overcharge Ride Rate</code> mõõdikut ning analüüsiti nende jaotust ELi ja väljaspool ELi piirkondades. Lisaks uuriti eeldatava hinna ja lõpuhinna erinevust, hinnamuutuse põhjuseid ning sihtkoha muutmiste arvu.</p>
@@ -1881,11 +1913,11 @@ DIVIDE(
         <div class="rq3g">
           <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
           <div><p class="dt">Hinnakaebuste osakaal: kui palju kestis sõit prognoosist kauem</p><div class="r3c" data-c="dur"></div></div>
-          <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3c" data-c="sd"></div></div>
-          <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3c" data-c="sdu"></div></div>
+          <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
+          <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
         </div>
       </div>
-      <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Hinnakaebusi on rohkem pikematel sõitudel ja sõitudel, mis kestavad prognoosist kauem.</p><ul><li>0–2 km: 4,2 %, ≥20 km: 19,1 %</li><li>kestus prognoosist 20–30 min kauem: 17,0 %</li><li>tegelik distants prognoosist &gt;20 % suurem: 11,3 % vs 5,8 %</li></ul></div></div>
+      <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prognoosist pikem sõit üksi ei seleta hinnakaebusi.</p><ul><li>upfront: 59,3 % sõitudest pikemad, hinnakaebusi 3,5 %</li><li>prediction: 75,4 % pikemad, hinnakaebusi 20,4 %</li><li>uurime täpsemalt hinnastamistüüpi (küsimus 3)</li></ul></div></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 2. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
@@ -2349,36 +2381,54 @@ function r3bars(el,cats,vals,ns,aria,W,H){const m={l:38,r:6,t:20,b:34},iw=W-m.l-
   const gw=iw/cats.length,bw=gw*.72;let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria)}">`;
   for(let i=0;i<=4;i++){const y=m.t+ih-ih*i/4;s+=`<line class="axl" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" stroke-dasharray="2 3"/><text class="ax" x="${m.l-4}" y="${y+4}" text-anchor="end">${pct(max*i/4,0)}</text>`;}
   cats.forEach((c,i)=>{const v=vals[i],h=ih*v/max,x=m.l+i*gw+(gw-bw)/2;s+=`<rect class="c-alert" x="${x}" y="${m.t+ih-h}" width="${bw}" height="${h}" data-tip="${esc(c+': '+pct(v,1)+' (n='+fmt.format(ns[i])+')')}"/>`;
-    if(W>360)s+=`<text class="ax" x="${x+bw/2}" y="${m.t+ih-h-4}" text-anchor="middle" style="font-weight:700;fill:var(--ink)">${pct(v,1)}</text>`;
+    s+=`<text class="ax" x="${x+bw/2}" y="${m.t+ih-h-4}" text-anchor="middle" style="font-weight:700;fill:var(--ink);font-size:${W<360?9:11}px">${fmt.format(ns[i])}</text>`;
     s+=`<text class="ax" x="${x+bw/2}" y="${m.t+ih+13}" text-anchor="middle" style="font-size:10px">${esc(W<360?c.replace(/ (km|min)$/,''):c)}</text>`;});
   if(W<360)s+=`<text class="ax" x="${m.l+iw/2}" y="${H-2}" text-anchor="middle">${cats[0].includes('km')?'km':'min'}</text>`;
   el.innerHTML=s+'</svg>';}
-function r3scatter(el,pts,unit,aria,W,H){const m={l:40,r:8,t:10,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
-  const mx=Math.max(...pts.map(p=>p[0]),1),my=Math.max(...pts.map(p=>p[1]),1);const nice=v=>{const p=Math.pow(10,Math.floor(Math.log10(v)));return [1,2,2.5,5,10].map(k=>k*p).find(k=>k>=v)};const X=nice(mx),Y=nice(my);
-  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria)}">`;
-  for(let i=0;i<=4;i++){const y=m.t+ih-ih*i/4,x=m.l+iw*i/4;s+=`<line class="axl" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}" stroke-dasharray="2 3"/><text class="ax" x="${m.l-4}" y="${y+4}" text-anchor="end">${fmt.format(Y*i/4)}</text><text class="ax" x="${x}" y="${H-m.b+14}" text-anchor="middle">${fmt.format(X*i/4)}</text>`;}
-  s+=`<text class="ax" x="${m.l+iw/2}" y="${H-2}" text-anchor="middle">prognoositud (${unit})</text>`;
-  const sx=v=>m.l+iw*v/X,sy=v=>m.t+ih-ih*v/Y;
-  pts.filter(p=>!p[2]).forEach(p=>{s+=`<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="2.6" class="c-neutral" fill-opacity=".45"/>`;});
-  pts.filter(p=>p[2]).forEach(p=>{s+=`<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="3" class="c-alert" fill-opacity=".85"/>`;});
-  const n=pts.length;if(n>2){let a=0,b=0,c=0,d=0;pts.forEach(p=>{a+=p[0];b+=p[1];c+=p[0]*p[0];d+=p[0]*p[1];});const sl=(n*d-a*b)/(n*c-a*a),ic=(b-sl*a)/n;
-    s+=`<line x1="${sx(0)}" y1="${sy(Math.max(0,ic))}" x2="${sx(X)}" y2="${sy(Math.min(Y,ic+sl*X))}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 4"/>`;}
-  el.innerHTML=s+'</svg>';}
+function r3scatter(el,pts,unit,aria,W,H,dom){const m={l:44,r:10,t:10,b:32},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const st=el._zoom||dom;const X0=st[0],X1=st[1],Y0=st[2],Y1=st[3];
+  const sx=v=>m.l+iw*(v-X0)/(X1-X0),sy=v=>m.t+ih-ih*(v-Y0)/(Y1-Y0);
+  const n=pts.length;let a=0,b=0,c=0,d=0,e2=0,up=0,on=0,dn=0;pts.forEach(p=>{a+=p[0];b+=p[1];c+=p[0]*p[0];d+=p[0]*p[1];e2+=p[1]*p[1];const df=Math.round((p[1]-p[0])*1e6);if(df>0)up++;else if(df<0)dn++;else on++;});
+  const sl=(n*d-a*b)/(n*c-a*a),ic=(b-sl*a)/n,r=(n*d-a*b)/Math.sqrt((n*c-a*a)*(n*e2-b*b)),r2=r*r;
+  const tick=(lo,hi)=>{const span=hi-lo,st=[1,2,5,10,20,25,50,100].find(s=>span/s<=6)||200;const out=[];for(let v=Math.ceil(lo/st)*st;v<=hi+1e-9;v+=st)out.push(v);return out;};
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(aria+'. R² '+r2.toFixed(2)+'; üle y=x '+up+', y=x peal '+on+', alla y=x '+dn)}"><defs><clipPath id="cp${el.dataset.c}${el.closest('.rq3').dataset.sfx}"><rect x="${m.l}" y="${m.t}" width="${iw}" height="${ih}"/></clipPath></defs>`;
+  tick(Y0,Y1).forEach(v=>{const y=sy(v);s+=`<line class="axl" x1="${m.l}" x2="${W-m.r}" y1="${y}" y2="${y}"/><text class="ax" x="${m.l-4}" y="${y+4}" text-anchor="end">${fmt.format(v)}</text>`;});
+  tick(X0,X1).forEach(v=>{s+=`<text class="ax" x="${sx(v)}" y="${H-m.b+14}" text-anchor="middle">${fmt.format(v)}</text>`;});
+  s+=`<text class="ax" x="${m.l+iw/2}" y="${H-2}" text-anchor="middle">prognoositud (${unit})</text><text class="ax" transform="translate(11 ${m.t+ih/2}) rotate(-90)" text-anchor="middle">tegelik (${unit})</text>`;
+  s+=`<g clip-path="url(#cp${el.dataset.c}${el.closest('.rq3').dataset.sfx})">`;
+  pts.filter(p=>!p[2]).forEach(p=>{s+=`<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="2.6" class="c-neutral" fill-opacity=".4"/>`;});
+  pts.filter(p=>p[2]).forEach(p=>{s+=`<circle cx="${sx(p[0]).toFixed(1)}" cy="${sy(p[1]).toFixed(1)}" r="3" class="c-alert" fill-opacity=".8"/>`;});
+  const L=Math.min(X0,Y0),R=Math.max(X1,Y1);s+=`<line x1="${sx(L)}" y1="${sy(L)}" x2="${sx(R)}" y2="${sy(R)}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+  s+=`<line x1="${sx(X0)}" y1="${sy(ic+sl*X0)}" x2="${sx(X1)}" y2="${sy(ic+sl*X1)}" stroke="var(--data)" stroke-width="2.5"/></g>`;
+  const bx=m.l+8,by=m.t+6,f=(W<420||H<140)?9:12;s+=`<g class="r3stat"><rect x="${bx-4}" y="${by-2}" width="${f*9.5}" height="${f*5.4}" fill="var(--bg)" fill-opacity=".85" rx="3"/>`+[`R² = ${r2.toFixed(2).replace('.',',')}`,`Üle y=x: ${fmt.format(up)}`,`y=x peal: ${fmt.format(on)}`,`Alla y=x: ${fmt.format(dn)}`].map((x,i)=>`<text x="${bx}" y="${by+f*(i+1)*1.25}" style="font:${i?400:700} ${f}px var(--f);fill:var(--ink)">${x}</text>`).join('')+'</g>';
+  s+=`<rect class="r3brush" x="0" y="0" width="0" height="0" fill="var(--data)" fill-opacity=".12" stroke="var(--data)"/></svg>`;
+  el.innerHTML=s;
+  const svg=el.querySelector('svg'),br=svg.querySelector('.r3brush');let start=null;
+  const pt=ev=>{const r=svg.getBoundingClientRect();return[(ev.clientX-r.left)*W/r.width,(ev.clientY-r.top)*H/r.height];};
+  svg.onpointerdown=ev=>{start=pt(ev);svg.setPointerCapture(ev.pointerId);};
+  svg.onpointermove=ev=>{if(!start)return;const q=pt(ev);br.setAttribute('x',Math.min(start[0],q[0]));br.setAttribute('y',Math.min(start[1],q[1]));br.setAttribute('width',Math.abs(q[0]-start[0]));br.setAttribute('height',Math.abs(q[1]-start[1]));};
+  svg.onpointerup=ev=>{if(!start)return;const q=pt(ev);const x0=Math.min(start[0],q[0]),x1=Math.max(start[0],q[0]),y0=Math.min(start[1],q[1]),y1=Math.max(start[1],q[1]);start=null;
+    if(x1-x0<8||y1-y0<8){br.setAttribute('width',0);return;}
+    const ix=v=>X0+(v-m.l)/iw*(X1-X0),iy=v=>Y0+(m.t+ih-v)/ih*(Y1-Y0);el._zoom=[ix(x0),ix(x1),iy(y1),iy(y0)];renderRQ3(el.closest('.rq3'));};}
+
 function renderRQ3(box){if(!box)return;const idx=r3filter(box);const n=idx.length,k=idx.reduce((s,i)=>s+D.ot[i],0);
   box.querySelector('.rq3k').innerHTML=`<li><b class="num">${fmt.format(n)}</b><span>sõitu</span></li><li><b class="num">${n?pct(k/n,2):'–'}</b><span>hinnakaebuste osakaal</span></li>`;
   const DC=['0–2 km','2–5 km','5–10 km','10–15 km','15–20 km','≥ 20 km'],DE=[2,5,10,15,20,1e9];const dn=DC.map(()=>0),dk=DC.map(()=>0);
   const UC=['0–5 min','5–10 min','10–20 min','20–30 min','30–60 min','≥ 60 min'],UE=[5,10,20,30,60,1e9];const un=UC.map(()=>0),uk=UC.map(()=>0);
   const sd=[],su=[];
   idx.forEach(i=>{const km=D.dm[i]/1000;const di=DE.findIndex(e=>km<=e);dn[di]++;dk[di]+=D.ot[i];
-    if(D.pds[i]>=0){const dif=(D.ds[i]-D.pds[i])/60;if(dif>0){const ui=UE.findIndex(e=>dif<=e);un[ui]++;uk[ui]+=D.ot[i];}su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);}
-    if(D.pdm[i]>=0)sd.push([D.pdm[i]/1000,km,D.ot[i]]);});
+    if(D.pds[i]>=0){const dif=(D.ds[i]-D.pds[i])/60;if(dif>0){const ui=UE.findIndex(e=>dif<=e);un[ui]++;uk[ui]+=D.ot[i];}if(!D.inv[i]&&D.pdm[i]>=0)su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);}
+    if(D.pdm[i]>=0&&D.pds[i]>=0&&!D.inv[i])sd.push([D.pdm[i]/1000,km,D.ot[i]]);});
   const small=box.closest('.slide')!==null;
-  box.querySelectorAll('.r3c').forEach(el=>{const W=Math.max(240,el.clientWidth||420),H=small?190:240;const c=el.dataset.c;
+  box.querySelectorAll('.r3c').forEach(el=>{const W=Math.max(240,el.clientWidth||420),H=small?(innerHeight<820?100:160):240;const c=el.dataset.c;
     if(c==='dist'){const v=DC.map((_,i)=>dn[i]?dk[i]/dn[i]:0);r3bars(el,DC,v,dn,'Hinnakaebuste osakaal distantsi järgi: '+DC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
     if(c==='dur'){const v=UC.map((_,i)=>un[i]?uk[i]/un[i]:0);r3bars(el,UC,v,un,'Hinnakaebuste osakaal selle järgi, kui palju kestis sõit prognoosist kauem: '+UC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
-    if(c==='sd')r3scatter(el,sd,'km','Hajuvusdiagramm: tegelik vs prognoositud distants, '+sd.length+' sõitu',W,H);
-    if(c==='sdu')r3scatter(el,su,'min','Hajuvusdiagramm: tegelik vs prognoositud kestus, '+su.length+' sõitu',W,H);});}
+    const SH=small?(innerHeight<820?118:innerHeight<1000?175:215):340;
+    if(c==='sd')r3scatter(el,sd,'km','Hajuvusdiagramm: tegelik vs prognoositud distants, '+sd.length+' sõitu',W,SH,[0,150,0,160]);
+    if(c==='sdu')r3scatter(el,su,'min','Hajuvusdiagramm: tegelik vs prognoositud kestus, '+su.length+' sõitu',W,SH,[0,135,0,260]);});}
 document.querySelectorAll('.rq3').forEach(b=>b.querySelector('.rq3f').addEventListener('change',()=>renderRQ3(b)));
+
+document.querySelectorAll('.r3zr').forEach(bt=>bt.addEventListener('click',()=>{const box=bt.closest('.rq3');const el=box.querySelector(`.r3c[data-c="${bt.dataset.c}"]`);el._zoom=null;renderRQ3(box);}));
 function renderAllRQ3(){document.querySelectorAll('.rq3').forEach(renderRQ3);}
 renderAllRQ3();
 document.getElementById('tocHome').addEventListener('click',ev=>{ev.preventDefault();window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});document.getElementById('tab-doc').focus({preventScroll:true});});
@@ -2476,6 +2526,7 @@ renderAllLQ();
 
 /* Slaidilt dokumentatsiooni */
 document.querySelectorAll('.s-doclink,.s-doclink2').forEach(a=>a.addEventListener('click',ev=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(!el)return;ev.preventDefault();if(document.fullscreenElement)document.exitFullscreen();showView('doc');setHash(null,'','#'+id);requestAnimationFrame(()=>{el.scrollIntoView();el.querySelector('h3')?.setAttribute('tabindex','-1');el.querySelector('h3')?.focus({preventScroll:true});});}));
+document.getElementById('tocPres').addEventListener('click',ev=>{ev.preventDefault();showView('esitlus');setHash(null,'','#esitlus');requestAnimationFrame(()=>document.getElementById('deck').scrollIntoView());});
 let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;if(!document.getElementById('panel-doc').hidden){daily();render();renderK5();drawStar();}renderQ1();}},150)});
 </script>
 </body>
