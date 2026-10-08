@@ -624,7 +624,7 @@ figure.chart .dkey{font-size:.85rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.12</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.13</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -957,6 +957,17 @@ DIVIDE(
     'Rides'[Predicted Distance]
 )</code></pre>
     <p>Positiivne väärtus tähendab, et tegelik distants oli prognoositust pikem, ning negatiivne väärtus, et tegelik distants oli prognoositust lühem.</p>
+    <p>Distantsi kõrvalekallete analüüsimiseks loodi lisaks <code>Distance Deviation Group</code>, mille abil jaotatakse sõidud kõrvalekalde suuruse alusel rühmadesse.</p>
+<pre><code>Distance Deviation Group =
+SWITCH(
+    TRUE(),
+    'Rides'[Distance Deviation %] &lt; -0.25, "&lt; -25%",
+    'Rides'[Distance Deviation %] &lt; -0.10, "-25% to -10%",
+    'Rides'[Distance Deviation %] &lt;= 0.10, "-10% to +10%",
+    'Rides'[Distance Deviation %] &lt;= 0.25, "+10% to +25%",
+    'Rides'[Distance Deviation %] &lt;= 0.50, "+25% to +50%",
+    "&gt; +50%"
+)</code></pre>
     <h4 class="subh"><code>Distance Deviation Sort</code></h4>
     <p>Tehniline sortimisväli, mis paneb eelmise tunnuse rühmad loogilisse järjestusse.</p>
 <pre><code>Distance Deviation Sort =
@@ -969,18 +980,6 @@ SWITCH(
     'Rides'[Distance Deviation %] &lt;= 0.50, 5,
     6
 )</code></pre>
-    <p>Distantsi kõrvalekallete analüüsimiseks loodi lisaks <code>Distance Deviation Group</code>, mille abil jaotatakse sõidud kõrvalekalde suuruse alusel rühmadesse.</p>
-<pre><code>Distance Deviation Group =
-SWITCH(
-    TRUE(),
-    'Rides'[Distance Deviation %] &lt; -0.25, "&lt; -25%",
-    'Rides'[Distance Deviation %] &lt; -0.10, "-25% to -10%",
-    'Rides'[Distance Deviation %] &lt;= 0.10, "-10% to +10%",
-    'Rides'[Distance Deviation %] &lt;= 0.25, "+10% to +25%",
-    'Rides'[Distance Deviation %] &lt;= 0.50, "+25% to +50%",
-    "&gt; +50%"
-)</code></pre>
-    <p>Rühmade loogilises järjekorras kuvamiseks loodi tehniline sortimisväli <code>Distance Deviation Sort</code>.</p>
     <p>Hinna kõrvalekalde analüüsimiseks loodi <code>Price Deviation %</code>, mis näitab lõpuhinna ja eeldatava hinna suhtelist erinevust:</p>
 <pre><code>Price Deviation % =
 DIVIDE(
