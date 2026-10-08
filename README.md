@@ -1,3 +1,3 @@
-# Sõiduteenuste andmete analüüs
+# Sõiduteenuse andmete analüüs. Kuidas vähendada hinnakaebuste arvu?
 
-[🚕 Laadi alla grupitöö esitlus (HTML)](./index.html)
+[🚕 Lae alla grupitöö esitlus (HTML)](./index.html)
