@@ -17,6 +17,10 @@ st.markdown("""
 .stApp * {
     color: black;
 }
+
+[data-testid="stMarkdownContainer"] h1 {
+    text-align: center;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -147,9 +151,23 @@ st.write(
 st.subheader("Puhastatud andmestik")
 
 st.write(
-    "Algandmete sisu ei muudetud, vaid väärtused teisendati "
-    "analüüsi ja tulemuste tõlgendamise jaoks sobivamatesse "
-    "mõõtühikutesse."
+    "Algandmeid ei kustutatud ega muudetud algses tähenduses. "
+    "Analüüsi jaoks teisendati mõõtühikuid ning arvutati "
+    "täiendavaid tunnuseid."
 )
 
 st.dataframe(order_andmed)
+
+st.subheader("7. Analüütilise valimi määratlemine")
+
+analüüs = order_andmed[
+    (order_andmed["predicted_distance"] > 0) &
+    (order_andmed["predicted_duration"] > 0) &
+    (order_andmed["distance"] > 0) &
+    (order_andmed["duration"] > 0)
+].copy()
+
+st.write(
+    f"Analüüsi kaasati {len(analüüs)} sõitu, "
+    "mille tegelik ja prognoositud vahemaa ning sõiduaeg olid suuremad kui 0."
+)

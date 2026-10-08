@@ -191,6 +191,14 @@ if nädalapäev != "Kõik":
     filtreeritud = filtreeritud[
         filtreeritud["weekday"] == nädalapäev
     ]
+
+analüüs = filtreeritud[
+    (filtreeritud["predicted_distance"] > 0) &
+    (filtreeritud["predicted_duration"] > 0) &
+    (filtreeritud["distance"] > 0) &
+    (filtreeritud["duration"] > 0)
+].copy()
+
 st.title("Andmed")
 
 st.download_button(

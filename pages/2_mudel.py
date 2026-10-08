@@ -261,7 +261,7 @@ feature_importance = pd.DataFrame({
 feature_importance["Olulisus (%)"] = feature_importance["Olulisus"] * 100
 
 fig_importance = px.bar(
-    feature_importance.sort_values("Olulisus (%)"),
+    feature_importance.nlargest(10,"Olulisus (%)"),
     x="Olulisus (%)",
     y="Tunnus",
     orientation="h",
@@ -311,7 +311,7 @@ st.write(
 st.subheader("Mudel 2 — prognoositud sõitude mudel")
 st.markdown(
     '<div style="text-align: center; color: #555555; font-size: 16px; margin-bottom: 20px;">'
-    'Testandmestik: 200 sõitu (20%)'
+    'Testandmestik: 197 sõitu (20%)'
     '</div>',
     unsafe_allow_html=True
 )
@@ -327,13 +327,13 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
 
-with col2: st.markdown(""" <div class="model-kpi-card"> <div class="model-kpi-title">Täpsus</div> <div class="model-kpi-value">78%</div> <div class="model-kpi-description">Kõikidest prognoosidest õiged</div> </div> """, unsafe_allow_html=True)
+with col2: st.markdown(""" <div class="model-kpi-card"> <div class="model-kpi-title">Täpsus</div> <div class="model-kpi-value">80%</div> <div class="model-kpi-description">Kõikidest prognoosidest õiged</div> </div> """, unsafe_allow_html=True)
 
 with col3:
     st.markdown("""
     <div class="model-kpi-card">
         <div class="model-kpi-title">Kaebuse recall</div>
-        <div class="model-kpi-value">37%</div>
+        <div class="model-kpi-value">42%</div>
         <div class="model-kpi-description">Tegelikest kaebustest leitud</div>
     </div>
     """, unsafe_allow_html=True)
@@ -342,7 +342,7 @@ with col4:
     st.markdown("""
     <div class="model-kpi-card">
         <div class="model-kpi-title">F1-skoor</div>
-        <div class="model-kpi-value">41%</div>
+        <div class="model-kpi-value">47%</div>
         <div class="model-kpi-description">Täpsuse ja recall'i tasakaal</div>
     </div>
     """, unsafe_allow_html=True)
@@ -369,10 +369,10 @@ with col1:
     st.markdown("**Mudel: ei**")
 
 with col2:
-    st.metric("Õige prognoos", "141")
+    st.metric("Õige prognoos", "157")
 
 with col3:
-    st.metric("Kaebus jäi leidmata", "26")
+    st.metric("Kaebus jäi leidmata", "18")
 
 
 # Mudel: jah
@@ -382,10 +382,10 @@ with col1:
     st.markdown("**Mudel: jah**")
 
 with col2:
-    st.metric("Kaebust ei olnud", "18")
+    st.metric("Kaebust ei olnud", "23")
 
 with col3:
-    st.metric("Õige prognoos", "15")
+    st.metric("Õige prognoos", "17")
 
 st.subheader("Mudeli tunnuste olulisus")
 
@@ -440,7 +440,7 @@ feature_importance_prediction["Olulisus (%)"] = (
     feature_importance_prediction["Olulisus"] * 100
 )
 fig_importance_prediction = px.bar(
-    feature_importance_prediction.sort_values("Olulisus (%)"),
+    feature_importance_prediction.nlargest(10,"Olulisus (%)"),
     x="Olulisus (%)",
     y="Tunnus",
     orientation="h",
