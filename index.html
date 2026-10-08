@@ -172,7 +172,7 @@ figure.chart svg{display:block;width:100%;height:auto;overflow:visible}
 main{counter-reset:ch}
 .chapter{counter-increment:ch;counter-reset:fig}
 figure.chart{counter-increment:fig}
-figure.chart figcaption{display:block;position:relative;padding-left:5.6rem;margin-top:1rem;padding-top:.55rem;border-top:1px solid var(--ink);font-size:var(--s-1);line-height:1.5;color:var(--ink);max-width:var(--measure)}
+figure.chart figcaption{display:block;position:relative;padding-left:6.6rem;margin-top:1rem;padding-top:.55rem;border-top:1px solid var(--ink);font-size:var(--s-1);line-height:1.5;color:var(--ink);max-width:var(--measure)}
 figure.chart figcaption::before{content:"Joonis " counter(ch) "." counter(fig);position:absolute;left:0;top:.6rem;font-weight:700;font-size:.78rem;letter-spacing:.02em;background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:.05rem .45rem;white-space:nowrap}
 .slide figcaption{display:none}
 @media (max-width:560px){figure.chart figcaption{padding-left:0}figure.chart figcaption::before{position:static;display:inline-block;margin-right:.5rem}}
@@ -651,10 +651,39 @@ figure.chart .dkey{font-size:.85rem}
 .refl-h .av{width:2.2rem;height:2.2rem}
 .refl .subh{margin-top:.8rem}
 @media (max-height:820px){.s-rqc li{padding:.4em .2em}.s-rqc .src-q{font-size:.78em}.s-rqc .src-tag{font-size:.45em}}
-.lesson .s-list{font-size:.72em;margin:.3em 0 0}
+.lesson .s-list{font-size:.7em;margin:.3em 0 0}
+.lesson{padding:.7em 1em .8em}
 .lesson .s-list li{margin:.25em 0}
 .lesson .s-h{margin-bottom:.2em}
 .s-ai{margin-top:.9em;font-size:.72em;border-left:4px solid var(--ink);padding:.4em .8em;background:var(--surface);max-width:none}
+/* Uurimisküsimus 5 */
+.p5list{list-style:none;margin:.6rem 0 1rem;padding:0;display:grid;gap:.9rem;max-width:var(--wide)}
+.prop5{border:1.5px solid var(--line);border-left:5px solid var(--alert);border-radius:4px;padding:.8rem 1rem;max-width:none}
+.p5-h{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:.4rem}
+.p5-h b{display:block;font-size:var(--s1);line-height:1.3}
+.p5-n{display:inline-grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--ink);color:var(--bg);font-weight:700;flex:none}
+.p5-imp{display:flex;align-items:center;gap:.5rem;font-size:var(--s-1);color:var(--muted);margin-top:.2rem}
+.p5-bar{display:inline-block;width:8rem;height:.6rem;background:var(--surface);border-radius:2px;overflow:hidden;flex:none}
+.p5-bar span{display:block;height:100%;background:var(--alert)}
+.p5dl{font-size:var(--s-1)}
+.s-p5{display:flex;flex-direction:column;gap:.6em}
+.p5slide{list-style:none;margin:0;padding:0;display:grid;gap:.5em}
+.p5slide li{display:grid;grid-template-columns:auto minmax(0,1fr) 12rem;gap:1em;align-items:center;border-bottom:1px solid var(--line);padding:.45em 0;max-width:none}
+.p5slide b{font-size:.85em}
+.p5s-why{display:block;font-size:.55em;color:var(--muted)}
+.p5s-why b{font-size:1em;color:var(--alert)}
+.p5slide .p5-bar{width:100%;height:.9rem}
+.p5s-low{font-size:.55em;margin:.3em 0 0;max-width:none}
+.p5s-note{font-size:.5em;color:var(--muted);margin:0}
+@media (max-width:700px){.p5slide li{grid-template-columns:auto 1fr}.p5slide .p5-bar{grid-column:2}}
+.slide.propslide .s-title{font-size:clamp(1.6rem,3vw,2.6rem);margin-bottom:.6rem;max-width:none}
+.s-p5 p{max-width:none}
+.p5slide li{padding:.3em 0}
+.s11{grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr)!important}
+.s11>div{font-size:.8em}
+.wl2{font-size:1em}
+.wl2 li{display:grid;grid-template-columns:12.5em 1fr;gap:1.2em;align-items:start;margin:.35em 0;max-width:none}
+.wl2 .wl-t{font-size:.9em}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -673,7 +702,7 @@ figure.chart .dkey{font-size:.85rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.20</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.23</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1371,14 +1400,30 @@ DIVIDE(
     <p>ELi tulemused põhinevad ainult 13 hinnakaebusel. 59 telefonimudeli võrdluses võib 2–3 «leidu» tekkida juhuslikult. Analüüs näitab seost, mitte põhjust.</p>
   </section>
 
-  <section class="part rqres" id="p4-rq5" data-status="tegemata">
+  <section class="part rqres" id="p4-rq5" data-status="valmis">
     <h3>Uurimisküsimus 5: mida tulemuste põhjal prioriseerida?</h3>
-    <div class="rqres-head"><p class="rqres-q">Milliste tegurite ja nende kombinatsioonide korral esineb hinnakaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</p><p class="rqres-who"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></p></div>
-    <div class="todo add"><ul>
-      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
-      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
-      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
-      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
+    <div class="rqres-head"><p class="rqres-q">Milliste tegurite ja nende kombinatsioonide korral esineb hinnakaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</p><p class="rqres-who"><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></p></div>
+    <h4 class="subh">Andmed ja meetod</h4>
+    <p>Ettepanekud tulenevad uurimisküsimuste 1–4 tulemustest. Iga ettepanek on seotud konkreetse probleemiga ning järjestatud selle järgi, kui suurt osa praegustest hinnakaebustest (309) see probleem puudutab. Uurimisküsimuse 1 järgi on 96&nbsp;% hinnakaebustest väljaspool ELi, seega on ettepanekute mõju suurim seal.</p>
+    <figure class="chart wide">
+      <p class="ct">Halb GPS puudutab 60&nbsp;% hinnakaebustest, teised probleemid alla veerandi</p>
+      <p class="cs">Osakaal kõigist 309 hinnakaebusest, probleemi järgi</p>
+      <div id="chQ5"></div>
+      <figcaption>Probleemid kattuvad osaliselt (näiteks halb GPS ja vana rakendus), seega osakaale ei saa kokku liita. Osakaal näitab, kui palju hinnakaebusi probleemiga kaasneb, mitte seda, kui palju sekkumine neid vähendab.</figcaption>
+      <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbQ5"></div></details>
+    </figure>
+    <h4 class="subh">Ettepanekud prioriteedi järgi</h4>
+    <ol class="p5list"><li class="prop5"><div class="p5-h"><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5-imp"><span class="p5-bar"><span style="width:100%"></span></span>60&nbsp;% hinnakaebustest</span></div></div>
+      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Halb GPS-ühendus (<a href="#p4-rq4">Uurimisküsimus 4</a>). Halva GPS-iga sõidud on 18&nbsp;% sõitudest, kuid annavad 60&nbsp;% hinnakaebustest (186 / 309). Hinnakaebuste määr on 24,4&nbsp;% vs 3,6&nbsp;%.</dd></div><div><dt>Mida teha</dt><dd>GPS-i kvaliteeti ei pea ette teadma: <code>gps_confidence</code> on teada sõidu lõpus, arveldamise hetkel. Kui GPS oli halb, kasutatakse lõpuhinna arvutamisel prognoositud distantsi või piiratakse lõpuhinna kõrvalekallet eeldatavast hinnast.</dd></div><div><dt>Riskid</dt><dd>Kui tegelik marsruut oli põhjendatult pikem, saab juht vähem tasu. Vajab reeglit, millal juht saab erandit taotleda.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">2</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5-imp"><span class="p5-bar"><span style="width:40%"></span></span>24&nbsp;% hinnakaebustest</span></div></div>
+      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Vana juhi rakendus (9+ versiooni vanem) (<a href="#p4-rq4">Uurimisküsimus 4</a>). Vana juhi rakendus on 10&nbsp;% sõitudest, kuid annab 24&nbsp;% hinnakaebustest. Väljaspool ELi kahekordistab see hinnakaebuste määra (šansside suhe 2,7); koos halva GPS-iga lõpeb iga teine sõit hinnakaebusega.</dd></div><div><dt>Mida teha</dt><dd>Sundida või meelde tuletada uuendust, kui juhi rakendus on uusimast üle 8 versiooni vanem. Lihtsaim ja odavaim samm.</dd></div><div><dt>Riskid</dt><dd>Vanad telefonid ei pruugi uut versiooni toetada; seos võib osaliselt tuleneda telefonist, mitte versioonist.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">3</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5-imp"><span class="p5-bar"><span style="width:40%"></span></span>24&nbsp;% hinnakaebustest</span></div></div>
+      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Pikad sõidud (<a href="#p4-rq2">Uurimisküsimus 2</a>). Üle 20&nbsp;km sõidud on 9&nbsp;% sõitudest, kuid annavad 24&nbsp;% hinnakaebustest (73 / 309); määr 19,1&nbsp;%. Pikematel sõitudel ületab tegelik distants prognoosi sagedamini.</dd></div><div><dt>Mida teha</dt><dd>Kui prognoositud distants on üle 20&nbsp;km, märgib süsteem sõidu. Sõidu lõpus võrreldakse tegelikku ja prognoositud distantsi ning suure kõrvalekalde korral kontrollitakse hinda enne arveldamist.</dd></div><div><dt>Riskid</dt><dd>Kontroll vajab klienditoe või automaatse reegli ressurssi. Kattub osaliselt ettepanekuga 1.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">4</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5-imp"><span class="p5-bar"><span style="width:28%"></span></span>17&nbsp;% hinnakaebustest</span></div></div>
+      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Halva GPS-iga telefonimudelid (<a href="#p4-rq4">Uurimisküsimus 4</a>). Kolm telefonimudelit (TECNO B1, TECNO B1p, TECNO-J8) on 4&nbsp;% sõitudest, kuid annavad 17&nbsp;% hinnakaebustest. TECNO B1 puhul oli GPS halb 94&nbsp;% sõitudest.</dd></div><div><dt>Mida teha</dt><dd>Pakkuda juhtidele, kelle telefoni halva GPS-i osakaal on kõrge, rendiks taastatud (refurbished) parema GPS-iga telefoni.</dd></div><div><dt>Riskid</dt><dd>Kulu ja logistika; mõju ilmneb aeglaselt. Kattub ettepanekuga 1, mis lahendab sama probleemi tarkvaraga.</dd></div></dl></li></ol>
+    <h4 class="subh">Ettepanekud, mida ei prioriseeri</h4>
+    <ul><li><b>Hoiatada klienti enne sõidu lõppu, et hind tõuseb.</b> Probleem on reaalne (hinnakaebus tuleb, kui lõpuhind ületab eeldatavat hinda oluliselt), aga hoiatus sõidu lõpus mõjub kliendile emotsionaalselt külma dušina ja võib jätta pettuse mulje. Parem on näidata hinna muutust rakenduses läbipaistvalt kogu sõidu jooksul.</li><li><b>Turvatõkked (trellid või sein) juhi ja sõitja vahele.</b> Analüüsi andmed ei näita seost turvatõkete ja hinnakaebuste vahel. See on turvalisuse küsimus, mitte hinnakaebuste vähendamise meede, ja jääb selle töö ulatusest välja.</li></ul>
+    <h4 class="subh">Vastus küsimusele</h4>
+    <div class="callout"><p>Hinnakaebusi on kõige rohkem siis, kui sõidul on <b>halb GPS-ühendus</b>, eriti koos <b>vana juhi rakendusega</b> ja <b>väljaspool ELi</b>. Esimene prioriteet on muuta hinna arvutamist halva GPS-i korral, sest see puudutab 60&nbsp;% hinnakaebustest. Teine on juhi rakenduse uuendamine: väiksem mõju (24&nbsp;%), aga lihtsaim teostada.</p></div>
+    <h4 class="subh">Piirangud</h4>
+    <p>Mõju on hinnatud hinnakaebuste osakaalu järgi; tegelik vähenemine võib olla väiksem, sest analüüs näitab seost, mitte põhjust. Probleemid kattuvad osaliselt. Ettepanekuid tuleks enne laiemat kasutuselevõttu katsetada väiksemas piirkonnas (A/B-test).</p>
   </section>
 
   <section class="part" id="p4-visuaalid" data-status="tegemata">
@@ -1582,7 +1627,7 @@ DIVIDE(
   <section class="part" id="p8-jaotus" data-status="valmis">
     <h3>Tööjaotus</h3>
     <p>Projekt viidi läbi neljaliikmelises rühmas. Töö jagati andmete ettevalmistamise, andmemudeli loomise, analüüsi, visualiseerimise, dokumenteerimise ja projekti koordineerimise vahel. Olulisemad andmemudeli ja analüüsi otsused arutati grupis ühiselt.</p>
-    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li></ul>
+    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><ul><li>Tehniliste tegurite analüüs: GPS, rakendused, telefonimudelid ja nende kombinatsioonid.</li><li>Projekti teema valik ja kickoff.</li><li>Projekti esimese faasi planeerimine, standup-rutiinid ja projekti viimase faasi planeerimine.</li><li>Esitluse ja dokumentatsiooni lahenduse loomine ning kujundus.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li></ul>
   </section>
   <section class="part" id="p8-valjakutse" data-status="valmis">
     <h3>Tehniline eneserefleksioon</h3>
@@ -1605,7 +1650,14 @@ DIVIDE(
     <p>GitHubi versioonihaldusega kogesime tagasilööke, mille käigus läks osa tööd kaotsi ja tuli taastada, merge'e tagasi pöörata ja konfliktid uuesti lahendada.</p>
     <h4 class="subh">Mida teeksime teisiti?</h4>
     <p>Uued väljad ja mõõdikud dokumenteeriksime kohe nende loomise ajal, mitte projekti lõpus. See vähendab dubleerimist ja hilisemat kontrolltööd.</p></div>
-    <div class="refl"><p class="refl-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b></p><div class="todo add">korralduslik eneserefleksioon.</div></div>
+    <div class="refl"><p class="refl-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b></p>
+    <h4 class="subh">Mis läks hästi?</h4>
+    <p>Saime hea teema, mille abil on võimalik analüüsida SaaS-ettevõtte tooteandmeid. Meeskonda liitusid inimesed, kellele see teema meeldis.</p>
+    <p>Projekti algus, meeskonna vaib ja ennast juhtivad tiimiliikmed, kes võtsid initsiatiivi ning leidsid endale sobivaid ja meeldivaid ülesandeid.</p>
+    <h4 class="subh">Kus kogesime raskusi?</h4>
+    <p>Igaühele ei sobi teatud ülesanded. Mõnikord oli vaja teha asju, mis polnud tugevad küljed või mis lihtsalt ei meeldinud, näiteks Power BI kasutamine: raske kasutajaliides ning väga keeruline failide sünkroniseerimine GitHubi kaudu.</p>
+    <h4 class="subh">Mida teeksime teisiti?</h4>
+    <p>Kuna tehisaru kasutamine osutus meie igaühe planeerimata, kuid loomulikuks osaks, võiks selle kasutamise teadvustada ja projekti sisse planeerida. Võiks mõelda, mida saaks järgmine kord tehisaru abil automatiseerida, ja nii ka tokeneid säästa.</p></div>
     <div class="refl"><p class="refl-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b></p><div class="todo add">korralduslik eneserefleksioon.</div></div>
   </section>
   <section class="part" id="p8-ai" data-status="valmis">
@@ -1756,33 +1808,32 @@ DIVIDE(
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 4. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
-  <section class="slide" id="s10" data-i="10" aria-roledescription="slaid" aria-label="Slaid 10 / 13: Meie ettepanekud hinnakaebuste vähendamiseks" hidden>
+  <section class="slide propslide" id="s10" data-i="10" aria-roledescription="slaid" aria-label="Slaid 10 / 13: Meie ettepanekud hinnakaebuste vähendamiseks" hidden>
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
     <h2 class="s-title">Meie ettepanekud hinnakaebuste vähendamiseks</h2>
-    <div class="s-body"><div class="s-three">
-      <div class="prop"><p class="s-h">Ettepanek 1</p><dl><dt>Probleemkoht</dt><dd>–</dd><dt>Sekkumine</dt><dd>–</dd><dt>Maht</dt><dd>–</dd></dl></div>
-      <div class="prop"><p class="s-h">Ettepanek 2</p><dl><dt>Probleemkoht</dt><dd>–</dd><dt>Sekkumine</dt><dd>–</dd><dt>Maht</dt><dd>–</dd></dl></div>
-      <div class="prop"><p class="s-h">Ettepanek 3</p><dl><dt>Probleemkoht</dt><dd>–</dd><dt>Sekkumine</dt><dd>–</dd><dt>Maht</dt><dd>–</dd></dl></div>
-    </div>
-    <div class="s-todo" style="margin-top:1rem">Küsimuse 5 põhjal: kõrge riskiga ja piisavalt suure mahuga probleemkohad ning sekkumised (kõik neli).</div></div>
+    <div class="s-body"><div class="s-p5">
+      <ol class="p5slide"><li><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5s-why">Halb GPS-ühendus: <b>60&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:100%"></span></span></li><li><span class="p5-n">2</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5s-why">Vana juhi rakendus (9+ versiooni vanem): <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:40%"></span></span></li><li><span class="p5-n">3</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5s-why">Pikad sõidud: <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 2</span></span></div><span class="p5-bar"><span style="width:40%"></span></span></li><li><span class="p5-n">4</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5s-why">Halva GPS-iga telefonimudelid: <b>17&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:28%"></span></span></li></ol>
+      <p class="p5s-low"><b>Ei prioriseeri:</b> kliendi hoiatamine sõidu lõpus (jätab pettuse mulje) · turvatõkked juhi ja sõitja vahel (andmed ei näita seost).</p>
+      <p class="p5s-note">Järjestus: kui suurt osa 309 hinnakaebusest probleem puudutab. 96&nbsp;% hinnakaebustest on väljaspool ELi.</p>
+    </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Ettepanekud tulenevad küsimuste 1–4 tulemustest. Iga ettepaneku juures: kus, mida teha, kui suurt osa kaebustest see puudutab.</aside>
   </section>
-  <section class="slide" id="s11" data-i="11" aria-roledescription="slaid" aria-label="Slaid 11 / 13: Dokumentatsioon ja tööjaotus" hidden>
+  <section class="slide propslide" id="s11" data-i="11" aria-roledescription="slaid" aria-label="Slaid 11 / 13: Dokumentatsioon ja tööjaotus" hidden>
     <p class="s-kicker"><span class="num">04</span> Dokumentatsioon ja tiim <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Dokumentatsioon ja tööjaotus</h2>
-    <div class="s-body"><div class="s-two">
+    <div class="s-body"><div class="s-two s11">
       <div><p class="s-h">Dokumentatsioon</p><ul class="s-list sm"><li>Ärimõisted ja uurimisküsimused</li><li>Andmevoog, tähtskeem ja grain</li><li>Andmekvaliteedi kontrollid</li><li>Üleandmine: 8 sammu taastamiseks</li><li>Väljade ja mõõdikute kirjeldused (<code>Description</code>)</li><li>GitHubi repo: SQL-skriptid, Power BI projekt</li></ul></div>
-      <div><p class="s-h">Kes mida analüüsis</p><ul class="s-list sm who-list"><li><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span> küsimus 1</li><li><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span> küsimus 2</li><li><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span> küsimus 3</li><li><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span> küsimus 4</li></ul><div class="s-todo">Lisaks: kes vastutas andmemudeli, aruande ja dokumentatsiooni eest.</div></div>
+      <div><p class="s-h">Kes mida tegi</p><ul class="s-list sm who-list wl2"><li><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span><span class="wl-t">Küsimus 1 · andmete puhastamine (Python), andmemudel (DBeaver), Power BI seosed ja DAX</span></li><li><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span><span class="wl-t">Küsimus 2</span></li><li><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span><span class="wl-t">Küsimus 3 · andmete puhastamine (Python), andmemudel (DBeaver), Power BI seosed ja DAX, dokumentatsioon</span></li><li><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span><span class="wl-t">Küsimus 4 · teema valik ja kickoff, projekti planeerimine ja standupid, esitluse ja dokumentatsiooni lahendus ning kujundus</span></li></ul><div class="s-todo">Raiko ülesanded.</div></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita kiirelt, et projekt on dokumenteeritud. Paari lausega, kes mille eest vastutas.</aside>
   </section>
-  <section class="slide" id="s12" data-i="12" aria-roledescription="slaid" aria-label="Slaid 12 / 13: Õppetunnid" hidden>
+  <section class="slide propslide" id="s12" data-i="12" aria-roledescription="slaid" aria-label="Slaid 12 / 13: Õppetunnid" hidden>
     <p class="s-kicker"><span class="num">05</span> Õppetunnid ja kokkuvõte <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Õppetunnid</h2>
     <div class="s-body"><div class="s-three">
-      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
-      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li></ul></div>
-      <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><ul class="s-list sm"><li>Dokumenteerime väljad ja mõõdikud kohe nende loomisel.</li><li>Määrame grain'i enne mõõdikute loomist.</li><li>Lisame valuutakursid ja hindame tunnuste koosmõju.</li></ul></div>
+      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Hea teema ja meeskond, kellele see meeldis; ennast juhtivad tiimiliikmed.</li><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
+      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li><li>Power BI keeruline kasutajaliides ja failide sünkroniseerimine; mitte igaühele sobivad ülesanded.</li></ul></div>
+      <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><ul class="s-list sm"><li>Dokumenteerime väljad ja mõõdikud kohe nende loomisel.</li><li>Määrame grain'i enne mõõdikute loomist.</li><li>Lisame valuutakursid ja hindame tunnuste koosmõju.</li><li>Planeerime tehisaru kasutuse teadlikult sisse: mida automatiseerida.</li></ul></div>
     </div>
     <div class="s-ai"><b>Tehisaru kasutamine:</b> abivahend SQL-i, DAX-i ja dokumentatsiooni jaoks. Väljundeid kontrolliti andmete ja Power BI tulemuste põhjal.</div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Mis läks hästi, mis valesti, mida teeksite teisiti. AI kasutamine.</aside>
@@ -2271,6 +2322,12 @@ function renderRQ4(box){if(!box||typeof H4==='undefined')return;const sel=box.qu
 document.querySelectorAll('.rq4').forEach(b=>b.addEventListener('change',()=>renderRQ4(b)));
 function renderAllRQ4(){document.querySelectorAll('.rq4').forEach(renderRQ4);}
 renderAllRQ4();
+
+/* ---------- Uurimisküsimus 5: prioriteedid ---------- */
+function renderQ5(){const el=document.getElementById('chQ5');if(!el)return;
+  hgrp(el,['Halb GPS-ühendus','Vana juhi rakendus (9+)','Üle 20 km sõidud','3 TECNO mudelit'],[{name:'osakaal hinnakaebustest',f:'var(--alert)',v:[.602,.24,.236,.17]}],Math.max(320,el.clientWidth||700),26,v=>pct(v,0),{max:1,lw:210,aria:'Hinnakaebuste osakaal probleemi järgi: halb GPS 60 %, vana juhi rakendus 24 %, üle 20 km 24 %, kolm TECNO mudelit 17 %.'});
+  const tb=document.getElementById('tbQ5');if(tb)tb.innerHTML=table(['Probleem','Osakaal hinnakaebustest','Allikas'],[['Halb GPS-ühendus','60 %','Uurimisküsimus 4'],['Vana juhi rakendus (9+)','24 %','Uurimisküsimus 4'],['Üle 20 km sõidud','24 %','Uurimisküsimus 2'],['3 TECNO mudelit','17 %','Uurimisküsimus 4']]);}
+try{renderQ5();}catch(e){console.error(e)}
 let rz,lastW=innerWidth;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(innerWidth!==lastW){lastW=innerWidth;if(!document.getElementById('panel-doc').hidden){daily();render();renderK5();drawStar();}renderQ1();}},150)});
 </script>
 </body>
