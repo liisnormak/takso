@@ -624,7 +624,7 @@ figure.chart .dkey{font-size:.85rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.14</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.15</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -989,6 +989,34 @@ DIVIDE(
     <p>Protsentuaalse hinnakõrvalekalde kasutamine võimaldab võrrelda sõidusisest hinnamuutust ka ELi ja väljaspool ELi segmentide analüüsimisel, kus absoluutsete hindade otsene võrdlemine ei ole erinevate valuutade tõttu sobiv.</p>
     <p>Seda saab kasutada ainult sõitudel, millel on eeldatav hind (<code>Upfront Price</code>) olemas.</p>
     <p>Analüüsis kasutatakse lisaks absoluutset kõrvalekallet olukordades, kus oluline on kõrvalekalde suurus, mitte selle suund. Näiteks distantsi puhul kasutatakse mediaanset absoluutset kõrvalekallet, et positiivsed ja negatiivsed erinevused üksteist ei tasandaks.</p>
+    <h4 class="subh"><code>Destination Change Group</code></h4>
+    <p>Muudab sihtkoha muutmiste toorarvu analüütiliselt loetavamateks kategooriateks.</p>
+<pre><code>Destination Change Group =
+SWITCH(
+    TRUE(),
+    'Rides'[Destination Change Number] = 1, "No change",
+    'Rides'[Destination Change Number] = 2, "1 change",
+    'Rides'[Destination Change Number] = 3, "2 changes",
+    'Rides'[Destination Change Number] &gt;= 4, "3+ changes",
+    "Unknown"
+)</code></pre>
+    <p><code>Destination Change Number = 1</code> tähendab, et muudatust ei toimunud, sest algne sihtkoha sisestus läheb loendisse sisse.</p>
+    <h4 class="subh"><code>EU / Non-EU</code></h4>
+    <p>Muudab binaarse <code>EU Indicator</code> välja raportis loetavaks kategooriaks.</p>
+<pre><code>EU / Non-EU =
+IF(
+    'Rides'[EU Indicator] = 1,
+    "EU",
+    "Non-EU"
+)</code></pre>
+    <h4 class="subh"><code>GPS Confidence Level</code></h4>
+    <p>Muudab binaarse GPS-tunnuse kasutajasõbralikumaks kategooriaks.</p>
+<pre><code>GPS Confidence Level =
+IF(
+    'Rides'[GPS Confidence] = 1,
+    "High",
+    "Low"
+)</code></pre>
   </section>
 
   <section class="part" id="p3-yleandmine" data-status="valmis">
@@ -1024,10 +1052,13 @@ DIVIDE(
       <figcaption>Sammude numbrid 1–8 näitavad täitmise järjekorda. Pythoni etapp on juba tehtud: selle tulemus, puhastatud CSV, on repositooriumis.</figcaption>
     </figure>
     <p>Git-repositooriumis hoitakse SQL-skripte, Power BI projekti faile ja projekti dokumentatsiooni. Lokaalseid andmebaasifaile, paroole ega konfidentsiaalseid algandmeid Git-repositooriumisse ei lisata.</p>
-    <div class="todo add"><ul>
-      <li>algandmete asukoht ja nende PostgreSQL-i laadimise täpne juhis;</li>
-      <li>SQL-skriptide lõplikud failinimed ja käivitamise järjekord;</li>
-      <li>Power BI ja PostgreSQL-i lokaalse ühenduse seadistamise täpne juhis.</li></ul></div>
+    <h4 class="subh">Täiendav tehniline kirjeldus</h4>
+    <ul>
+      <li>Algandmed asuvad jagatud Google Sheeti failis.</li>
+      <li>Nende töötlemiseks kasutati Pythonit, mille abil valmistati andmed ette andmebaasi laadimiseks. Töödeldud andmed laaditi DBeaveri kaudu lokaalsesse PostgreSQL-i andmebaasi. PostgreSQL-is loodi SQL-skriptide abil analüüsiks vajalik andmemudel ning fakti- ja dimensioonitabelid.</li>
+      <li>SQL-skriptid käivitatakse sõltuvuste järjekorras: esmalt luuakse analüüsiks vajalikud baastabelid ja dimensioonitabelid ning seejärel faktitabelid ja andmekvaliteedi kontrollid.</li>
+      <li>Power BI ühendatakse lokaalse PostgreSQL-i andmebaasiga PostgreSQL connectori kaudu. Ühenduse loomisel kasutatakse lokaalse andmebaasi serveri, andmebaasi ja kasutaja andmeid. Pärast ühenduse loomist värskendatakse Power BI andmed ning kontrollitakse, et andmemudel ja visualiseeringud töötavad korrektselt.</li>
+    </ul>
   </section>
 </section>
 
@@ -1088,6 +1119,32 @@ MEDIANX(
     ABS('Rides'[Distance Deviation %])
 )</code></pre>
     <p>Mõõdik näitab tegeliku ja prognoositud sõidudistantsi absoluutse protsentuaalse erinevuse mediaani. Absoluutväärtuse kasutamine võimaldab hinnata kõrvalekalde suurust sõltumata sellest, kas tegelik distants oli prognoositust pikem või lühem. Mediaani kasutatakse keskmise asemel selleks, et üksikud väga suured kõrvalekalded mõjutaksid tulemust vähem.</p>
+    <h4 class="subh"><code>Average Price Deviation</code></h4>
+<pre><code>Average Price Deviation =
+AVERAGE('Rides'[Price Deviation %])</code></pre>
+    <p>Mõõdik näitab eeldatava hinna ja lõpuhinna keskmist suhtelist erinevust. Arvutatakse ainult eeldatava hinnaga sõitude puhul, kuna <code>prediction</code>-tüüpi hinnastusega sõitudel eeldatav hind puudub.</p>
+    <h4 class="subh"><code>Overcharge Share by Region %</code></h4>
+<pre><code>Overcharge Share by Region % =
+DIVIDE(
+    [Overcharge Ride Count],
+    CALCULATE(
+        [Overcharge Ride Count],
+        REMOVEFILTERS('Rides'[EU / Non-EU])
+    ),
+    0
+)</code></pre>
+    <p>Mõõdik näitab, kui suur osa kõigist hinnakaebusega sõitudest kuulub ELi või väljaspool ELi segmenti. Näiteks 296 väljaspool ELi hinnakaebusega sõitu 309-st moodustavad 95,8&nbsp;%. <code>REMOVEFILTERS</code> tagab, et nimetajas kasutatakse kõigi piirkondade hinnakaebusega sõitude koguarvu.</p>
+    <h4 class="subh"><code>Ride Share by Region %</code></h4>
+<pre><code>Ride Share by Region % =
+DIVIDE(
+    [Distinct Ride Count],
+    CALCULATE(
+        [Distinct Ride Count],
+        REMOVEFILTERS('Rides'[EU / Non-EU])
+    ),
+    0
+)</code></pre>
+    <p>Mõõdik näitab, kui suure osa kõigist analüüsitavatest sõitudest moodustab valitud ELi või väljaspool ELi segment. Näiteks kui väljaspool ELi sõite on 1&nbsp;682 ja kõiki sõite kokku 4&nbsp;166, siis moodustavad väljaspool ELi sõidud 40,4&nbsp;% kõigist sõitudest. <code>REMOVEFILTERS</code> tagab, et nimetajas kasutatakse kõigi piirkondade sõitude koguarvu, mitte ainult parajasti valitud segmenti.</p>
   </section>
 
   <section class="part" id="p4-esialgne" data-status="valmis">
@@ -1095,7 +1152,7 @@ MEDIANX(
     <p>Analüüsi esimeses etapis keskenduti sellele, millised sõidu tunnused eristavad hinnakaebusega ja hinnakaebuseta sõite. Eesmärk oli tuvastada tunnused, mille puhul ilmnevad kahe grupi vahel suuremad erinevused ning mida tuleks edasises analüüsis põhjalikumalt uurida.</p>
     <p>Esialgses analüüsis võrreldi järgmisi tunnuseid:</p>
     <ul><li>GPS-ühenduse kvaliteet;</li><li>tegeliku ja prognoositud distantsi erinevus;</li><li>tegeliku ja prognoositud sõidukestuse erinevus;</li><li>lõpuhinna ja eeldatava hinna suhteline erinevus;</li><li>ELi ja väljaspool ELi sõidud.</li></ul>
-    <p>Esialgsete tulemuste põhjal kujunesid olulisemateks edasisteks uurimissuundadeks GPS-ühenduse kvaliteet ja tegeliku ning prognoositud distantsi erinevus. Edasises analüüsis vaadeldakse neid tunnuseid nii eraldi kui ka koos, et hinnata, kas halva GPS-ühenduse ja suurema distantsi kõrvalekalde samaaegne esinemine on seotud hinnakaebuste suurema osakaaluga.</p>
+    <p>Esialgsete tulemuste põhjal kujunesid olulisemateks edasisteks uurimissuundadeks GPS-ühenduse kvaliteet, ELi ja väljaspool ELi sõidud, hinnastamistüübid ning tegeliku ja prognoositud distantsi erinevus. Edasises analüüsis vaadeldakse neid tunnuseid nii eraldi kui ka koos, et hinnata, kas halva GPS-ühenduse ja suurema distantsi kõrvalekalde samaaegne esinemine on seotud hinnakaebuste suurema osakaaluga.</p>
   </section>
 
   <section class="part" id="p4-el" data-status="valmis">
@@ -1439,6 +1496,10 @@ MEDIANX(
     <h3>Piirangud</h3>
     <h4 class="subh">Erinevad valuutad</h4>
     <p>Andmestikus sisalduvad hinnad erinevates valuutades. Kuna valuutakursside infot ei ole analüüsi lisatud, ei saa eri valuutades esitatud absoluutseid hindu usaldusväärselt omavahel võrrelda. Seetõttu kasutatakse segmentide hinnastamise võrdlemisel eelkõige protsentuaalset erinevust eeldatava hinna ja lõpuhinna vahel.</p>
+    <h4 class="subh">Piiratud andmed</h4>
+    <p>Andmestikus sisaldusid vaid andmed, mis olid seotud vähemalt ühe klienditoe pöördumisega, mis tähendab, et nende puhul oli juba teatud kõrvalekalle normaalsest ideaalsest sõidust. Samuti oli andmestikus vaid teada, kas tegemist oli klienditoe poole pöördumisega ülehinnastamisega seoses või muul põhjusel. Muud põhjused ei olnud omakorda selgemalt kodeeritud.</p>
+    <h4 class="subh">Puuduolevad väärtused</h4>
+    <p>Mitmel tunnusel (pettuseskoor, hinnad jne) oli kuni 50&nbsp;% ulatuses puuduvaid väärtusi, mis kohati muutis teatud analüüside tegemise vähem usaldusväärseks väiksema andmemahu tõttu.</p>
     <h4 class="subh">Hinnakaebuse definitsioon</h4>
     <p>Hinnakaebust käsitletakse kliendi esitatud ülehinnastamise pöördumise (<code>overpaid_ride_ticket</code>) põhjal. Mõõdik näitab seega kliendi kaebuse olemasolu, mitte sõltumatu kontrolliga kinnitatud hinnastamisviga. Hinnakaebus ei tähenda automaatselt, et hind oli objektiivselt vale, ning hinnakaebuse puudumine ei tõesta, et hinnastamisega probleemi ei esinenud.</p>
     <h4 class="subh">Kirjeldav analüüs</h4>
