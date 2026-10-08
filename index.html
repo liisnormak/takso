@@ -105,7 +105,7 @@ nav.toc .tsub{margin:.35rem 0 .2rem .1rem;padding-left:.7rem;border-left:2px sol
 nav.toc .tsub li{margin:0 0 .3rem}
 nav.toc .tsub a{display:flex;gap:.4rem;align-items:flex-start;font-size:.82rem;color:var(--muted);line-height:1.3}
 nav.toc .tsub a[aria-current="true"]{color:var(--data);font-weight:700}
-nav.toc .tsub .tm{flex:none;margin-top:.1rem}
+nav.toc .tsub .tm{flex:none;margin-top:.1rem;width:11px}
 nav.toc .tsub .tm svg{width:11px;height:11px}
 nav.toc .tsub .tm circle{stroke:currentColor;stroke-width:1.6;fill:none}
 nav.toc .tsub .tm .fill{fill:currentColor;stroke:none}
@@ -624,7 +624,7 @@ figure.chart .dkey{font-size:.85rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.13</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.14</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -667,19 +667,19 @@ figure.chart .dkey{font-size:.85rem}
 <section class="chapter" id="p1" aria-labelledby="p1-h">
   <h2 id="p1-h"><span class="n">1</span>Sissejuhatus ja probleemi püstitus</h2>
 
-  <section class="part" id="p1-eesmark" data-status="mustand">
+  <section class="part" id="p1-eesmark" data-status="valmis">
     <h3>Eesmärk</h3>
     <p>Taksoteenuse hinna kujunemine sõltub sõidu kohta kogutud andmetest, sealhulgas läbitud distantsist, sõidu kestusest ja GPS-andmetest. Sõidu tellimisel kuvatakse kliendile eeldatav hind, mis põhineb prognoositud distantsil ja kestusel. Tegelik sõit võib prognoosist erineda ning osa klientidest pöördub pärast sõitu klienditoe poole kaebusega, et sõidu eest küsitud hind oli liiga kõrge.</p>
     <p>Töö eesmärk on analüüsida ülehinnastamisega seotud klienditoe pöördumisi ning tuvastada tunnused ja olukorrad, mille puhul selliseid kaebusi esineb sagedamini. <b>Analüüsi eesmärk on leida peamised võimalused ülemaksu kaebuste arvu vähendamiseks.</b></p>
     <p>Töö tehnilise osa eesmärk on valmistada algandmed analüüsiks ette, kontrollida andmete kvaliteeti, luua PostgreSQL-is dimensioonmudel ning ehitada Power BI-s analüüsimudel, mõõdikud ja visualiseeringud.</p>
   </section>
 
-  <section class="part" id="p1-aktuaalsus" data-status="mustand">
+  <section class="part" id="p1-aktuaalsus" data-status="valmis">
     <h3>Aktuaalsus</h3>
     <p>Ülehinnastamisega seotud kaebused on ettevõtte jaoks olulised nii kliendikogemuse kui ka operatiivse efektiivsuse seisukohalt. Kaebuste tekkimisega seotud tunnuste ja olukordade tuvastamine aitab paremini mõista võimalikke probleemkohti hinnastamises, sõidu prognoosides ja sõiduandmete kvaliteedis. Analüüsi tulemusi saab kasutada nende probleemkohtade täpsemaks uurimiseks ning ülehinnastamisega seotud kaebuste vähendamise võimaluste leidmiseks.</p>
   </section>
 
-  <section class="part" id="p1-kusimused" data-status="mustand">
+  <section class="part" id="p1-kusimused" data-status="valmis">
     <h3>Uurimisküsimused</h3>
     <p>Viis küsimust liiguvad probleemi asukohast sekkumisteni. Küsimused 1–4 otsivad tegureid eri suundadest, küsimus 5 ühendab need.</p>
     <ol class="rqcards">
@@ -731,7 +731,7 @@ figure.chart .dkey{font-size:.85rem}
     </ol>
   </section>
 
-  <section class="part" id="p1-moisted" data-status="mustand">
+  <section class="part" id="p1-moisted" data-status="valmis">
     <h3>Ärimõisted</h3>
     <div class="tw"><table class="t terms">
       <thead><tr><th scope="col">Mõiste</th><th scope="col">Ingliskeelne termin</th><th scope="col">Tähendus</th></tr></thead>
@@ -744,7 +744,7 @@ figure.chart .dkey{font-size:.85rem}
 <section class="chapter" id="p2" aria-labelledby="p2-h">
   <h2 id="p2-h"><span class="n">2</span>Andmeallikad ja andmevoog</h2>
 
-  <section class="part" id="p2-paritolu" data-status="mustand">
+  <section class="part" id="p2-paritolu" data-status="valmis">
     <h3>Päritolu</h3>
     <p>Analüüsi aluseks on anonümiseeritud taksoteenuse andmestik. See sisaldab sõitude, tellimuste, hinnastamise, kasutatud seadmete, rakenduse versioonide ja klienditoe pöördumistega seotud andmeid.</p>
     <p>Andmed on pärit sõiduteenusepakkujalt, kes jagab neid Google Sheetsi failina tootejuhi ametikoha kandidaatidele. Andmed ei pruugi olla täielikult usaldusväärsed: osa äri- ja sõiduandmetest on failist eemaldatud.</p>
@@ -760,7 +760,7 @@ figure.chart .dkey{font-size:.85rem}
     </figure>
   </section>
 
-  <section class="part" id="p2-voog" data-status="mustand">
+  <section class="part" id="p2-voog" data-status="valmis">
     <h3>Andmevoo skeem</h3>
     <figure class="chart">
       <p class="ct">Andmete teekond algfailist juhtlauani</p>
@@ -792,7 +792,7 @@ figure.chart .dkey{font-size:.85rem}
     <p>Algandmed puhastati ja kontrolliti esmalt Pythonis Jupyter Notebookis ning salvestati puhastatud CSV-failina. Seejärel laaditi andmed PostgreSQL-i, kus DBeaveris SQL-i abil loodi fakti- ja dimensioonitabelid ning kontrolliti mudeli võtmeid ja seoseid. Power BI loeb neid tabeleid PostgreSQL connectori kaudu. Power Querys korrastati väljade nimetusi ning DAX-iga lisati mõõdikud ja analüütilised väljad.</p>
   </section>
 
-  <section class="part" id="p2-mudel" data-status="mustand">
+  <section class="part" id="p2-mudel" data-status="valmis">
     <h3>Dimensioonid SQL-andmebaasis</h3>
     <p>PostgreSQL-is loodi analüüsi jaoks dimensioonmudel, mille keskne faktitabel on <code>fact_rides</code>. Faktitabel on võtmete kaudu seotud kuupäeva, seadme, rakenduse versiooni, hinnastamise konteksti ja tellimuse dimensioonidega. Klienditoe pöördumised paiknevad eraldi <code>fact_tickets</code> tabelis ning on sõitudega seotud <code>dim_order</code> kaudu.</p>
     <div class="callout"><p class="callout-h">Miks <code>dim_order</code> on oluline</p><p><code>dim_order</code> on mudelis keskne: see seob sõiduandmed tellimuse tasemel klienditoe pöördumistega. Nii saab analüüsida, kas tellimusega oli seotud vähemalt üks ülemaksu kaebus, ilma et mitme pöördumisega tellimusi loetaks mitu korda.</p></div>
@@ -808,7 +808,7 @@ figure.chart .dkey{font-size:.85rem}
     </figure>
   </section>
 
-  <section class="part" id="p2-grain" data-status="mustand">
+  <section class="part" id="p2-grain" data-status="valmis">
     <h3>Tabelite detailsusaste (grain)</h3>
     <p>Dimensioonmudeli tabelid on erineva detailsusastmega. Iga tabeli grain määrab, mida üks tabeli rida esindab.</p>
     <div class="tw"><table class="t grain">
@@ -827,7 +827,7 @@ figure.chart .dkey{font-size:.85rem}
     <p class="draft-note">Tekst grupi kirjelduse põhjal; «order», «ticket» ja «overcharge-ticket» on asendatud lehe mõistetega.</p>
   </section>
 
-  <section class="part" id="p2-veerud" data-status="mustand">
+  <section class="part" id="p2-veerud" data-status="valmis">
     <h3>Veergude kirjeldus</h3>
     <p>Veerud on jaotatud sõitja teekonna etappide järgi: millal väärtus tekib.</p>
     <ol class="journey" aria-label="Sõitja teekond ja selle veerud">
@@ -869,7 +869,7 @@ figure.chart .dkey{font-size:.85rem}
     </table></div></details>
   </section>
 
-  <section class="part" id="p2-profiil" data-status="mustand">
+  <section class="part" id="p2-profiil" data-status="valmis">
     <h3>Maht ja profiil</h3>
     <p>Algandmestikus on 4&nbsp;943 rida ja 4&nbsp;166 unikaalset tellimust. Vahe tuleb sellest, et ühe tellimusega võib olla seotud mitu pöördumist. Suurim pöördumiste arv ühe tellimuse kohta on kuus.</p>
     <p>Detailsusastme kontrollis ei leitud ühtegi tellimust, millel oleks mitu erinevat tellimuskatse tunnust (<code>order_try_id</code>).</p>
@@ -900,13 +900,13 @@ figure.chart .dkey{font-size:.85rem}
 <section class="chapter" id="p3" aria-labelledby="p3-h">
   <h2 id="p3-h"><span class="n">3</span>Andmetöötlus</h2>
 
-  <section class="part" id="p3-kaitse" data-status="mustand">
+  <section class="part" id="p3-kaitse" data-status="valmis">
     <h3>Andmekaitse laadimisel</h3>
     <p>Analüüsiks kasutatud algandmestik oli anonümiseeritud. Andmestik ei sisaldanud klientide nimesid ega muid otseseid isikut tuvastavaid andmeid. Analüüsis kasutati tehnilisi identifikaatoreid, mis võimaldasid siduda omavahel sõitude, tellimuste ja klienditoe pöördumistega seotud andmeid.</p>
     <p>Konfidentsiaalsuse tagamiseks ei kasutata projekti failides ega Git-repositooriumis andmestiku ega selle päritoluettevõtte tegelikku nime.</p>
   </section>
 
-  <section class="part" id="p3-kvaliteet" data-status="mustand">
+  <section class="part" id="p3-kvaliteet" data-status="valmis">
     <h3>Andmekvaliteet</h3>
     <p>Andmete ettevalmistamisel kontrolliti eelkõige võtmete unikaalsust, tabelite detailsusastet, tabelitevaheliste seoste korrektsust ning võimalikke topeltlugemise riske.</p>
     <p>Oluline andmestruktuuriga seotud probleem oli tellimuste ja klienditoe pöördumiste erinev detailsusaste. Algandmestikus oli 4&nbsp;943 rida, kuid 4&nbsp;166 unikaalset tellimust. Ühe tellimusega võis olla seotud mitu klienditoe pöördumist ning suurim tuvastatud pöördumiste arv ühe tellimuse kohta oli kuus. Seetõttu põhjustaks pöördumiste otsene lugemine sõitude analüüsis sama tellimuse mitmekordset arvestamist.</p>
@@ -937,7 +937,7 @@ figure.chart .dkey{font-size:.85rem}
     <p>Kuna hinnaskaalad erinevad, ei väida see analüüs, et kõrgem nominaalhind põhjustab pöördumisi.</p>
   </section>
 
-  <section class="part" id="p3-transform" data-status="mustand">
+  <section class="part" id="p3-transform" data-status="valmis">
     <h3>Transformeerimine</h3>
     <p>Andmete põhiline transformeerimine tehti PostgreSQL-is SQL-i abil. Algandmete põhjal loodi analüüsiks eraldi fakti- ja dimensioonitabelid ning nende ühendamiseks vajalikud võtmed. Eesmärk oli luua dimensioonmudel, mida saab kasutada otse Power BI analüüsimudeli alusena.</p>
     <p>Tellimusega seotud kirjeldavad tunnused koondati <code>dim_order</code> tabelisse. Nende hulka kuuluvad:</p>
@@ -947,7 +947,7 @@ figure.chart .dkey{font-size:.85rem}
     <p>Power BI Power Querys dimensioonmudelit uuesti ei loodud. Power Queryt kasutati peamiselt aruande kasutatavuse parandamiseks ja tehniliste veerunimede korrastamiseks. Näiteks nimetati <code>gps_confidence</code> ümber <code>GPS Confidence</code>-iks ning <code>metered_price</code> ümber <code>Metered Price</code>-iks. Samal põhimõttel korrastati ka teiste aruandes kasutatavate väljade nimetused.</p>
   </section>
 
-  <section class="part" id="p3-rikastamine" data-status="mustand">
+  <section class="part" id="p3-rikastamine" data-status="valmis">
     <h3>Rikastamine</h3>
     <p>Analüüsi jaoks loodi algandmete põhjal täiendavad arvutatud tunnused, mis võimaldavad võrrelda tegelikke sõiduparameetreid enne sõitu tehtud prognoosidega.</p>
     <p><code>Distance Deviation %</code> näitab tegeliku ja prognoositud sõidudistantsi suhtelist erinevust:</p>
@@ -991,7 +991,7 @@ DIVIDE(
     <p>Analüüsis kasutatakse lisaks absoluutset kõrvalekallet olukordades, kus oluline on kõrvalekalde suurus, mitte selle suund. Näiteks distantsi puhul kasutatakse mediaanset absoluutset kõrvalekallet, et positiivsed ja negatiivsed erinevused üksteist ei tasandaks.</p>
   </section>
 
-  <section class="part" id="p3-yleandmine" data-status="mustand">
+  <section class="part" id="p3-yleandmine" data-status="valmis">
     <h3>Üleandmine</h3>
     <p>Projekti tehniline lahendus on üles ehitatud nii, et iga grupiliige saaks sama andmebaasi struktuuri ja Power BI aruande oma lokaalses keskkonnas taastada. Projekti failide, SQL-skriptide ja muudatuste versioonihalduseks kasutatakse Git-repositooriumi.</p>
     <figure class="chart">
@@ -1037,7 +1037,7 @@ DIVIDE(
 
   
 
-  <section class="part" id="p4-pq" data-status="mustand">
+  <section class="part" id="p4-pq" data-status="valmis">
     <h3>Power BI aruanne</h3>
     <p>Power BI Desktop ühendati PostgreSQL-is loodud dimensioonmudeliga. Power Querys uut dimensioonmudelit ei loodud, vaid aruande aluseks kasutatakse SQL-is ettevalmistatud <code>fact_rides</code>, <code>fact_tickets</code> ja dimensioonitabeleid.</p>
     <p>Power Queryt kasutati peamiselt väljade nimetuste korrastamiseks ja aruande kasutajasõbralikumaks muutmiseks. Tehnilised veerunimed nimetati ümber selgemateks ärilisteks nimetusteks. Power BI Report view's peideti tehnilised võtmed ning faktitabelis olevad tunnused, mida kasutatakse aruandes vastavate dimensioonitabelite kaudu. See vähendab dubleerivate väljade kasutamise võimalust ning aitab tagada, et analüüsis kasutatakse tunnuseid järjepidevalt õigetest tabelitest.</p>
@@ -1048,7 +1048,7 @@ DIVIDE(
     <p>DAX-mõõdikute koondamiseks loodi Power BI-s eraldi <code>_Measures</code> tabel. Täiendavaid fakti- või dimensioonitabeleid Power BI-s ei loodud.</p>
   </section>
 
-  <section class="part" id="p4-dax" data-status="mustand">
+  <section class="part" id="p4-dax" data-status="valmis">
     <h3>DAX-mõõdikud</h3>
     <p>Analüüsi jaoks loodi Power BI-s DAX-mõõdikud, mis võimaldavad arvutada sõitude arvu, hinnakaebuste esinemist, GPS-i kvaliteeti ning tegeliku ja prognoositud distantsi erinevust.</p>
     <h4 class="subh"><code>Distinct Ride Count</code></h4>
@@ -1090,7 +1090,7 @@ MEDIANX(
     <p>Mõõdik näitab tegeliku ja prognoositud sõidudistantsi absoluutse protsentuaalse erinevuse mediaani. Absoluutväärtuse kasutamine võimaldab hinnata kõrvalekalde suurust sõltumata sellest, kas tegelik distants oli prognoositust pikem või lühem. Mediaani kasutatakse keskmise asemel selleks, et üksikud väga suured kõrvalekalded mõjutaksid tulemust vähem.</p>
   </section>
 
-  <section class="part" id="p4-esialgne" data-status="mustand">
+  <section class="part" id="p4-esialgne" data-status="valmis">
     <h3>Esialgne analüüs</h3>
     <p>Analüüsi esimeses etapis keskenduti sellele, millised sõidu tunnused eristavad hinnakaebusega ja hinnakaebuseta sõite. Eesmärk oli tuvastada tunnused, mille puhul ilmnevad kahe grupi vahel suuremad erinevused ning mida tuleks edasises analüüsis põhjalikumalt uurida.</p>
     <p>Esialgses analüüsis võrreldi järgmisi tunnuseid:</p>
@@ -1098,7 +1098,7 @@ MEDIANX(
     <p>Esialgsete tulemuste põhjal kujunesid olulisemateks edasisteks uurimissuundadeks GPS-ühenduse kvaliteet ja tegeliku ning prognoositud distantsi erinevus. Edasises analüüsis vaadeldakse neid tunnuseid nii eraldi kui ka koos, et hinnata, kas halva GPS-ühenduse ja suurema distantsi kõrvalekalde samaaegne esinemine on seotud hinnakaebuste suurema osakaaluga.</p>
   </section>
 
-  <section class="part" id="p4-el" data-status="mustand">
+  <section class="part" id="p4-el" data-status="valmis">
     <h3>ELi ja väljaspool ELi sõitude analüüs</h3>
     <p>ELi ja väljaspool ELi sõitude võrdlemise eesmärk on hinnata, kas nende kahe segmendi vahel esineb erinevusi tunnustes, mis võivad olla seotud hinnakaebuste tekkimisega.</p>
     <p>Segmentide võrdlemisel analüüsitakse:</p>
@@ -1106,7 +1106,7 @@ MEDIANX(
     <p>ELi ja väljaspool ELi sõitude absoluutseid hindu omavahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside alusel ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel lõpuhinna ja eeldatava hinna protsentuaalset erinevust sama sõidu piires.</p>
   </section>
 
-  <section class="part" id="p4-pohimotted" data-status="mustand">
+  <section class="part" id="p4-pohimotted" data-status="valmis">
     <h3>Visualiseerimise põhimõtted</h3>
     <p>Power BI aruande visualiseeringud koostatakse nii, et kasutaja saaks liikuda üldisest ülevaatest hinnakaebustega seotud võimalike tegurite detailsema analüüsini. Analüüsi ülesehitus järgib loogikat:</p>
     <div class="drillwrap"><ol class="drill" aria-label="Aruande loogika üldisest detailsemani"><li><span class="dn" aria-hidden="true">1</span>Hinnakaebuste üldine esinemine</li><li><span class="dn" aria-hidden="true">2</span>Sõidu tunnused</li><li><span class="dn" aria-hidden="true">3</span>Prognooside ja tegelike väärtuste kõrvalekalded</li><li><span class="dn" aria-hidden="true">4</span>Segmentide võrdlus</li></ol>
@@ -1116,7 +1116,7 @@ MEDIANX(
     <p>Aruandes kasutatakse läbivalt samu mõisteid, mõõdikuid ja nimetusi, et erinevate visualiseeringute tulemused oleksid omavahel võrreldavad. Väljade ja mõõdikute tähendused dokumenteeritakse Power BI <code>Description</code> omaduse kaudu.</p>
   </section>
 
-  <section class="part rqres" id="p4-rq1" data-status="mustand">
+  <section class="part rqres" id="p4-rq1" data-status="valmis">
     <h3>Uurimisküsimus 1: kus probleem on?</h3>
     <div class="rqres-head"><p class="rqres-q">Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><p class="rqres-who"><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></p></div>
     <h4 class="subh">Andmed ja meetod</h4>
@@ -1167,7 +1167,7 @@ MEDIANX(
       <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
   </section>
 
-  <section class="part rqres" id="p4-rq3" data-status="mustand">
+  <section class="part rqres" id="p4-rq3" data-status="valmis">
     <h3>Uurimisküsimus 3: mis sõidus endas eristab probleemseid sõite?</h3>
     <div class="rqres-head"><p class="rqres-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></p></div>
     <h4 class="subh">Andmed ja meetod</h4>
@@ -1215,7 +1215,7 @@ MEDIANX(
     <p>Analüüs põhineb ainult pöördumisega sõitudel. Seos ei tõenda, et pikem sõit või prognoosist pikem kestus põhjustab kaebuse. 19 sõidul puudub prognoos, need ei ole hajuvusdiagrammidel.</p>
   </section>
 
-  <section class="part rqres" id="p4-rq4" data-status="mustand">
+  <section class="part rqres" id="p4-rq4" data-status="valmis">
     <h3>Uurimisküsimus 4: millised tehnilised tingimused probleemiga kaasnevad?</h3>
     <div class="rqres-head"><p class="rqres-q">Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></p></div>
     <h4 class="subh">Andmed ja meetod</h4>
@@ -1290,7 +1290,7 @@ MEDIANX(
     <div class="todo">kust andmed tulevad, millal viimati uuendati, kuidas number allikani viia (visuaal → mõõdik → tabel → allikas).</div>
   </section>
 
-  <section class="part" id="p4-sonastik" data-status="mustand">
+  <section class="part" id="p4-sonastik" data-status="valmis">
     <h3>Mõõdikute tabel</h3>
     <div class="tw"><table class="t">
       <thead><tr><th scope="col">Mõõdik</th><th scope="col">Tähendus</th></tr></thead>
@@ -1307,19 +1307,19 @@ MEDIANX(
 <section class="chapter" id="p5" aria-labelledby="p5-h">
   <h2 id="p5-h"><span class="n">5</span>Andmekorraldus</h2>
 
-  <section class="part" id="p5-meta" data-status="mustand">
+  <section class="part" id="p5-meta" data-status="valmis">
     <h3>Metaandmete haldus</h3>
     <p>Analüüsimudeli loetavuse ja edasise kasutatavuse parandamiseks dokumenteeriti Power BI mudelis väljade ja mõõdikute tähendused <code>Description</code> omaduse kaudu. Algandmetest pärinevate väljade kirjelduste aluseks kasutati andmestikuga kaasa antud andmesõnastikku. Projekti käigus loodud tunnuste ja mõõdikute puhul lisati kirjeldus vastavalt nende arvutusloogikale ja analüütilisele eesmärgile.</p>
     <p>Kirjeldused lisati muu hulgas tehnilistele võtmetele, analüütilistele tunnustele ja DAX-mõõdikutele. Näiteks dokumenteeriti <code>Distance Deviation %</code>, <code>Price Deviation %</code>, <code>Overcharge Ride Count</code> ja <code>Median Absolute Distance Deviation %</code> tähendus ning tehniliste võtmete puhul nende roll tabelite ühendamisel.</p>
     <p>Uue välja või mõõdiku lisamisel tuleb dokumenteerida ka selle tähendus. Power BI aruande tasemel kasutatakse selleks <code>Description</code> omadust.</p>
     <div class="todo add">kas ja millistele tabelitele või veergudele lisati SQL <code>COMMENT</code>.</div>
   </section>
-  <section class="part" id="p5-rollid" data-status="mustand">
+  <section class="part" id="p5-rollid" data-status="valmis">
     <h3>Rollid lahenduse kasutamisel</h3>
     <p>Lahenduse kasutamise ja haldamise seisukohalt eristatakse järgmisi rolle:</p>
     <dl class="rqdl roles"><div><dt>Omanik</dt><dd>vastutab analüüsi ärilise eesmärgi, põhimõistete ja uurimisküsimuste eest.</dd></div><div><dt>Haldur / arendaja</dt><dd>vastutab PostgreSQL-i andmemudeli, SQL-skriptide, Power BI mudeli ning andmevoo tehnilise toimimise eest.</dd></div><div><dt>Analüütik</dt><dd>kasutab ettevalmistatud andmemudelit, loob ja kontrollib mõõdikuid ning analüüsib hinnakaebustega seotud mustreid.</dd></div><div><dt>Aruande kasutaja</dt><dd>kasutab Power BI juhtlauda tulemuste vaatamiseks ja uurimisküsimustele vastuste leidmiseks. Aruande kasutamine ei eelda SQL-i ega andmemudeli tehnilise ülesehituse tundmist.</dd></div></dl>
   </section>
-  <section class="part" id="p5-kontroll" data-status="mustand">
+  <section class="part" id="p5-kontroll" data-status="valmis">
     <h3>Reeglite ja kvaliteedi kontroll</h3>
     <p>Andmekvaliteedi kontrollid tehakse eelkõige PostgreSQL-is enne andmete kasutamist Power BI-s. Tähtskeemi muutmisel kontrollitakse, et dimensioonitabelisse viidav tunnus oleks vastava võtme tasemel üheselt määratud.</p>
     <p>Näiteks enne <code>order_state</code>, <code>order_try_state</code>, <code>order_try_id_new</code> ja <code>calc_created</code> lisamist <code>dim_order</code> tabelisse kontrolliti, et ühe <code>order_key</code> kohta ei esineks mitut erinevat väärtust. Pärast tunnuste lisamist kontrolliti fakti- ja dimensioonitabelite väärtuste vastavust. Tehtud kontrollides ei tuvastatud erinevusi.</p>
@@ -1327,7 +1327,7 @@ MEDIANX(
     <div class="todo add">kes vastutab lõplikus lahenduses regulaarsete kvaliteedikontrollide tegemise eest ja millal neid tehakse.</div>
   </section>
 
-  <section class="part" id="p5-turve" data-status="mustand">
+  <section class="part" id="p5-turve" data-status="valmis">
     <h3>Turve valmis aruandes</h3>
     <p>Analüüsiks kasutatav andmestik sisaldab tehnilisi identifikaatoreid ning ettevõtte tegevust ja hinnastamist kirjeldavaid andmeid. Andmestikus ei ole analüüsi jaoks vajalikke otseseid isikut tuvastavaid andmeid, näiteks kliendi nime või kontaktandmeid.</p>
     <p>Andmeväljad liigitatakse lahenduse kontekstis järgmiselt:</p>
@@ -1340,7 +1340,7 @@ MEDIANX(
 <!-- ============ 6 ============ -->
 <section class="chapter" id="p6" aria-labelledby="p6-h">
   <h2 id="p6-h"><span class="n">6</span>Lisatulemused</h2>
-  <section class="part" id="p6-lisa" data-status="mustand">
+  <section class="part" id="p6-lisa" data-status="valmis">
     <h3>Kuidas võib sõitja manipuleerida juhti või sõiduteenusepakkujat?</h3>
     <details class="data readmore"><summary>Loe analüüsi</summary>
     <p>Sõiduteenusepakkuja maksab juhile ja võtab sõitjalt raha. Iga kord, kui sõitja saab põhjendamata tagasimakse, soodustuse või jätab maksmata, kannab kahju sõiduteenusepakkuja või juht. Pettuseskoor aitab otsustada automaatselt, kas kaebus rahuldada kohe või saata see käsitsi kontrolli.</p>
@@ -1350,7 +1350,7 @@ MEDIANX(
     </details>
   </section>
 
-  <section class="part" id="lt-halve" data-status="mustand">
+  <section class="part" id="lt-halve" data-status="valmis">
     <h3>Ligi pooltel sõitudel läheb lõpuhind eeldatavast hinnast üle 20&nbsp;% mööda</h3>
     <p>Eeldatava hinnaga tellimustest 45&nbsp;% said lõpuhinna, mis erines rohkem kui 20&nbsp;%. Ligi neli viiendikku neist olid eeldatavast hinnast kallimad.</p>
     <figure class="chart">
@@ -1364,7 +1364,7 @@ MEDIANX(
     </figure>
   </section>
 
-  <section class="part" id="lt-aeg" data-status="mustand">
+  <section class="part" id="lt-aeg" data-status="valmis">
     <h3>Tellimusi on kõige rohkem reede pärastlõunal</h3>
     <p>Tihedaim tund on reedel kell 15–16. Kella 4 ja 5 vahel on tellimusi kõige vähem.</p>
     <figure class="chart">
@@ -1379,7 +1379,7 @@ MEDIANX(
     </figure>
   </section>
 
-  <section class="part" id="lt-telefon" data-status="mustand">
+  <section class="part" id="lt-telefon" data-status="valmis">
     <h3>Visualiseering: kaebused telefonimudelite kaupa</h3>
     <p>Kõigis andmetes tehti Tecno ja Infinixi telefoniga 22&nbsp;% tellimustest, aga neilt tuli 55&nbsp;% ülemaksu kaebustest. Nende telefonidega oli GPS halb umbes 4 korral 10-st.</p>
     <p>Seos tuleb suuresti turust: kõik Tecno ja Infinixi tellimused on väljaspool ELi. Graafik näitab vaikimisi väljaspool ELi ennustusega tellimusi (984): seal on kaebuste määr 21,7&nbsp;% vs teistel 19,1&nbsp;%.</p>
@@ -1410,7 +1410,7 @@ MEDIANX(
 <!-- ============ 7 ============ -->
 <section class="chapter" id="p7" aria-labelledby="p7-h">
   <h2 id="p7-h"><span class="n">7</span>Kokkuvõte ja arutelu</h2>
-  <section class="part" id="p7-vastused" data-status="mustand">
+  <section class="part" id="p7-vastused" data-status="valmis">
     <h3>Vastused uurimisküsimustele</h3>
     <h4 class="subh">Millised sõidu tunnused on kõige tugevamalt seotud hinnakaebuse tekkimisega?</h4>
     <p>Analüüsis võrreldakse hinnakaebusega ja hinnakaebuseta sõite, et hinnata, millised sõidu omadused eristavad neid kahte gruppi. Analüüsitavate tunnuste hulka kuuluvad GPS-i kvaliteet, tegeliku ja prognoositud distantsi erinevus, tegeliku ja prognoositud kestuse erinevus, hinna kõrvalekalle, sihtkoha muutmiste arv ning muud andmestikus olemasolevad sõidu ja hinnastamise tunnused.</p>
@@ -1427,7 +1427,7 @@ MEDIANX(
     <p>Absoluutseid hindu ELi ja väljaspool ELi sõitude vahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside abil ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel sama sõidu lõpuhinna ja eeldatava hinna protsentuaalset erinevust.</p>
     <div class="todo add">tulemused.</div>
   </section>
-  <section class="part" id="p7-soovitused" data-status="mustand">
+  <section class="part" id="p7-soovitused" data-status="valmis">
     <h3>Praktilised soovitused lahenduse kasutamiseks</h3>
     <p>Power BI aruande kasutamisel alustatakse üldistest mõõdikutest ning liigutakse seejärel detailsemate segmentide ja võimalike probleemitegurite juurde.</p>
     <p>Hinnakaebuste analüüsimisel ei kasutata ainult klienditoe pöördumiste arvu, sest ühe tellimusega võib olla seotud mitu pöördumist. Sõitude võrdlemiseks kasutatakse <code>Overcharge Ride Count</code> ja <code>Overcharge Ride Rate</code> mõõdikuid, mis arvestavad ühe tellimuse ainult ühe korra.</p>
@@ -1435,7 +1435,7 @@ MEDIANX(
     <p>ELi ja väljaspool ELi segmentide hindade võrdlemisel ei kasutata lõpuhinna ega eeldatava hinna absoluutseid väärtusi, kuna andmestikus esineb erinevaid valuutasid. Segmentide võrdlemiseks kasutatakse sama sõidu sees arvutatud protsentuaalset hinnakõrvalekallet.</p>
     <p>Visualiseeringute filtreerimisel tuleb jälgida, millisele populatsioonile mõõdik parasjagu rakendub. Filtrite muutmisel muutub ka mõõdikute filtrikontekst (<span lang="en">filter context</span>) ning seetõttu tuleb tulemusi tõlgendada valitud segmendi kontekstis.</p>
   </section>
-  <section class="part" id="p7-piirangud" data-status="mustand">
+  <section class="part" id="p7-piirangud" data-status="valmis">
     <h3>Piirangud</h3>
     <h4 class="subh">Erinevad valuutad</h4>
     <p>Andmestikus sisalduvad hinnad erinevates valuutades. Kuna valuutakursside infot ei ole analüüsi lisatud, ei saa eri valuutades esitatud absoluutseid hindu usaldusväärselt omavahel võrrelda. Seetõttu kasutatakse segmentide hinnastamise võrdlemisel eelkõige protsentuaalset erinevust eeldatava hinna ja lõpuhinna vahel.</p>
@@ -1449,7 +1449,7 @@ MEDIANX(
     <p>Projekt viiakse läbi piiratud õppetöö aja jooksul ning seetõttu keskendutakse uurimisküsimuste seisukohalt olulisematele tunnustele. Kõigi andmestikus sisalduvate muutujate ammendav analüüs ega põhjusliku mudeli loomine ei kuulu projekti praegusesse ulatusse.</p>
     <div class="todo add">muud piirangud, kui neid lisandub.</div>
   </section>
-  <section class="part" id="p7-edasi" data-status="mustand">
+  <section class="part" id="p7-edasi" data-status="valmis">
     <h3>Edasiarendused</h3>
     <p>Lahenduse üheks võimalikuks edasiarenduseks on valuutakursside lisamine, mis võimaldaks eri turgude hindu ühtsesse valuutasse teisendada ning absoluutseid hindu usaldusväärsemalt võrrelda.</p>
     <p>Analüüsi võiks edasi arendada mitme tunnuse koosmõju hindamise suunas. Näiteks võiks kvantifitseerida, kuidas muutub hinnakaebuse esinemise tõenäosus juhul, kui samaaegselt esinevad halb GPS, suur distantsi kõrvalekalle ja muud analüüsis oluliseks osutunud tunnused.</p>
@@ -1457,7 +1457,7 @@ MEDIANX(
     <p>Pikema ajaperioodi andmete olemasolul võiks analüüsida ka hinnakaebuste ja nendega seotud tunnuste muutumist ajas ning hinnata võimalike toote- või hinnastamismuudatuste mõju.</p>
     <div class="todo add">muud edasiarendused, kui neid lisandub.</div>
   </section>
-  <section class="part" id="p7-ai" data-status="mustand">
+  <section class="part" id="p7-ai" data-status="valmis">
     <h3>Tehisaru kasutamine</h3>
     <p>Tehisaru kasutati projekti käigus abivahendina SQL- ja DAX-päringute koostamisel ja selgitamisel, andmemudeli ülesehituse arutamisel, andmekvaliteedi kontrollide kavandamisel, analüüsivõimaluste leidmisel ning dokumentatsiooni struktureerimisel ja sõnastamisel.</p>
     <p>Tehisaru väljundeid ei käsitletud automaatselt õigete tulemustena. SQL- ja DAX-lahendusi kontrolliti tegelike andmete ja Power BI tulemuste põhjal ning vajadusel parandati. Eriti oluline oli kontroll olukordades, kus tulemus sõltus andmemudeli seostest, tabelite grain'ist või konkreetse välja ärilisest tähendusest.</p>
@@ -1468,12 +1468,12 @@ MEDIANX(
 <!-- ============ 8 ============ -->
 <section class="chapter" id="p8" aria-labelledby="p8-h">
   <h2 id="p8-h"><span class="n">8</span>Grupi tööjaotus ja eneserefleksioon</h2>
-  <section class="part" id="p8-jaotus" data-status="mustand">
+  <section class="part" id="p8-jaotus" data-status="valmis">
     <h3>Tööjaotus</h3>
     <p>Projekt viidi läbi neljaliikmelises rühmas. Töö jagati andmete ettevalmistamise, andmemudeli loomise, analüüsi, visualiseerimise, dokumenteerimise ja projekti koordineerimise vahel. Olulisemad andmemudeli ja analüüsi otsused arutati grupis ühiselt.</p>
     <dl class="rqdl roles team"><div><dt><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div></dl>
   </section>
-  <section class="part" id="p8-valjakutse" data-status="mustand">
+  <section class="part" id="p8-valjakutse" data-status="valmis">
     <h3>Tehniline eneserefleksioon</h3>
     <p>Üheks projekti olulisemaks tehniliseks väljakutseks oli erineva detailsusastmega andmete ühendamine viisil, mis ei põhjustaks Power BI analüüsis topeltlugemist.</p>
     <p>Sõidu ehk tellimuse ja klienditoe pöördumise grain ei olnud sama: ühe tellimusega võis olla seotud mitu klienditoe pöördumist. Kui hinnakaebusi oleks analüüsitud otse pöördumiste ridade põhjal, oleks üks tellimus saanud analüüsis esineda mitu korda.</p>
@@ -1481,13 +1481,13 @@ MEDIANX(
     <p>Selle probleemi lahendamine näitas, kui oluline on enne visualiseerimise ja mõõdikute loomist määratleda iga tabeli grain ning mõista tabelite vahelisi seoseid. Õige arvutusvalem üksi ei taga korrektset tulemust, kui andmemudeli seosed või analüüsi detailsusaste on valesti määratud.</p>
     <p>Teine oluline õppetund oli tähtskeemi roll analüüsimudelis. Projekti käigus korrastati tellimuse, seadme, rakenduse versiooni, kuupäeva ja hinnastamise kontekstiga seotud tunnused vastavatesse dimensioonitabelitesse. Faktitabelisse jäänud dubleeruvad tehnilised või dimensioonitunnused peideti Power BI Report view's, et kasutaja kasutaks analüüsis järjepidevalt õigeid dimensioonivälju.</p>
   </section>
-  <section class="part" id="p8-korraldus" data-status="mustand">
+  <section class="part" id="p8-korraldus" data-status="valmis">
     <h3>Korralduslik eneserefleksioon</h3>
     <p>Nelja grupiliikme töö sünkroniseerimine tõi esile vajaduse eristada andmebaasi ennast ning selle taastamiseks vajalikku koodi. PostgreSQL-i andmebaas töötab lokaalses keskkonnas, samas kui SQL-skriptid ja Power BI projekt peavad olema teistele grupiliikmetele kättesaadavad ja taastatavad.</p>
     <p>Projekti failide versioonihalduseks kasutatakse Git-repositooriumi. Repositooriumisse salvestatakse SQL-skriptid ning Power BI Projecti failid. Andmebaasi ennast Git-repositooriumisse ei salvestata; eesmärk on, et iga grupiliige saaks repositooriumis oleva lahenduse põhjal sama andmestruktuuri oma lokaalses keskkonnas taastada.</p>
     <div class="todo add">muud korralduslikud õppetunnid.</div>
   </section>
-  <section class="part" id="p8-ai" data-status="mustand">
+  <section class="part" id="p8-ai" data-status="valmis">
     <h3>AI-kogemus</h3>
     <p>Tehisaru oli projekti käigus kõige kasulikum tehniliste probleemide samm-sammulisel lahendamisel, SQL- ja DAX-loogika selgitamisel ning võimalike lahendusvariantide võrdlemisel. Samuti kasutati tehisaru dokumentatsiooni struktureerimise ja sõnastamise toetamiseks.</p>
     <p>Samas tuli tehisaru pakutud lahendusi kontrollida projekti tegeliku andmemudeli ja andmete põhjal. Näiteks Power BI-s võib vale tulemuse põhjus esmapilgul tunduda DAX-valemi või seose probleemina, kuigi tegelik põhjus võib olla visualiseeringus kasutatud väli valest või andmemudeliga ühendamata tabelist. Projekti käigus ilmnes selline olukord seadme tunnuse kasutamisel.</p>
@@ -1710,7 +1710,7 @@ const badge = s => `<span class="st" data-s="${s}">${icon(s)}${STATES[s]}</span>
 function buildStatus(){
   const parts=[...document.querySelectorAll('.part')];
   const cnt={valmis:0,mustand:0,tegemata:0,valikuline:0};
-  parts.forEach(p=>{const s=p.dataset.status; cnt[s]++; const h=p.querySelector('h3'); if(!h.querySelector('.st')) h.insertAdjacentHTML('beforeend',badge(s));});
+  parts.forEach(p=>{const s=p.dataset.status; cnt[s]++; const h=p.querySelector('h3'); if(s!=='valmis'&&!h.querySelector('.st')) h.insertAdjacentHTML('beforeend',badge(s));});
   const req=cnt.valmis+cnt.mustand+cnt.tegemata;
   document.getElementById('progressText').textContent=`Kohustuslikke osi ${req}: valmis ${cnt.valmis}, mustand ${cnt.mustand}, tegemata ${cnt.tegemata}. Valikulisi ${cnt.valikuline}.`;
   document.getElementById('progressBar').innerHTML=['valmis','mustand','tegemata'].map(s=>`<span class="s-${s}" style="width:${cnt[s]/req*100}%"></span>`).join('');
@@ -1721,8 +1721,8 @@ function buildStatus(){
   document.getElementById('tocList').innerHTML=[...document.querySelectorAll('.chapter')].map(ch=>{
     const ps=[...ch.querySelectorAll('.part')]; const t=ps.filter(p=>p.dataset.status==='tegemata').length;
     const h=ch.querySelector('h2'); const n=h.querySelector('.n').textContent; const title=h.textContent.replace(n,'').trim();
-    const sub=ps.map(p=>{const s=p.dataset.status;return `<li><a href="#${p.id}" data-part><span class="tm" data-s="${s}" aria-hidden="true">${icon(s)}</span><span class="t">${esc(p.querySelector('h3').firstChild.textContent.trim())}</span><span class="vh"> (${STATES[s]})</span></a></li>`}).join('');
-    return `<li class="tch" data-ch="${ch.id}"><a href="#${ch.id}" aria-controls="toc-${ch.id}"><span class="t">${n}. ${esc(title)}</span><span class="cnt">${(()=>{const allDone=ps.length&&ps.every(p=>p.dataset.status==='valmis');const s=t?'tegemata':allDone?'valmis':'mustand';return `<span class="st" data-s="${s}">${icon(s)}${t?t+' tegemata':allDone?'valmis':'kõik alustatud'}</span>`})()}</span></a><ol class="tsub" id="toc-${ch.id}" hidden>${sub}</ol></li>`}).join('');
+    const sub=ps.map(p=>{const s=p.dataset.status;return `<li><a href="#${p.id}" data-part><span class="tm" data-s="${s}" aria-hidden="true">${s==="valmis"?"":icon(s)}</span><span class="t">${esc(p.querySelector('h3').firstChild.textContent.trim())}</span>${s==="valmis"?"":`<span class="vh"> (${STATES[s]})</span>`}</a></li>`}).join('');
+    return `<li class="tch" data-ch="${ch.id}"><a href="#${ch.id}" aria-controls="toc-${ch.id}"><span class="t">${n}. ${esc(title)}</span><span class="cnt">${t?`<span class="st" data-s="tegemata">${icon('tegemata')}${t} tegemata</span>`:''}</span></a><ol class="tsub" id="toc-${ch.id}" hidden>${sub}</ol></li>`}).join('');
   /* Peatüki klõps avab selle alampeatükid ja sulgeb teised */
   document.querySelectorAll('#tocList .tch>a').forEach(a=>a.addEventListener('click',()=>openTocCh(a.parentElement.dataset.ch,true)));
 }
