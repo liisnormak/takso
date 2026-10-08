@@ -606,6 +606,55 @@ table.piv tfoot th,table.piv tfoot td{border-top:2px solid var(--ink)}
 .r4next .q1fact{font-size:1.1em}.r4next ul{font-size:1em;display:block}.r4next li{margin:.2em 0}
 @media (max-width:900px){.rq4g{grid-template-columns:1fr}}
 figure.chart .dkey{font-size:.85rem}
+/* Tööjaotus */
+.tw-grid{list-style:none;margin:1rem 0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem;max-width:var(--wide)}
+.tw-card{border:1.5px solid var(--line);border-top:4px solid var(--ink);border-radius:4px;padding:.8rem 1rem;max-width:none}
+.tw-card:first-child{grid-column:1/-1;border-top-color:var(--data);background:var(--surface)}
+.tw-h{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:0 0 .5rem}
+.tw-h .av{width:2.2rem;height:2.2rem}
+.tw-h b{font-size:var(--s1)}
+.tw-rq{flex-basis:100%;font-size:var(--s-1);font-weight:700}
+.tw-card ul{margin:0;padding-left:1.1rem;font-size:var(--s-1)}
+.tw-card li{margin:.2rem 0}
+@media (max-width:640px){.tw-grid{grid-template-columns:1fr}}
+.s-star{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.45fr);gap:1.6rem;align-items:start}
+.s-star .s-big{margin:0 0 .2em;font-size:clamp(1.5rem,2.6vw,2.4rem)}
+.s-star .s-big span{font-size:.45em}
+.s-star-l{font-size:.72em}
+.s-star .s-list li{margin:.15em 0}
+.s-starfig{max-width:none}
+.s-starnote{font-size:.55em;color:var(--muted);margin:.2em 0 0}
+.s-starpanel{max-width:none;font-size:.95em;min-height:0;margin-top:.6em}
+@media (max-width:900px){.s-star{grid-template-columns:1fr}}
+.slide.starslide .s-title{font-size:clamp(1.6rem,3vw,2.6rem);margin-bottom:.6rem}
+.slide.starslide .s-body{min-height:0}
+.s-star{height:100%}
+
+#chStarS svg{display:block;width:100%;height:auto;max-height:calc(100vh - 300px);margin:0 auto}
+@media (max-height:800px){.s-star-l{font-size:.62em}.s-star .s-big{font-size:1.6rem}.s-starpanel{margin-top:.3em}}
+/* Slaid 3: õhulisem, küsimus esiplaanil */
+.s-rqc{gap:0;max-width:72rem}
+.s-rqc li{border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:.75em .2em;column-gap:1.4em}
+.s-rqc li:first-child{border-top:1px solid var(--line)}
+.s-rqc li.synth{background:none;border-left:4px solid var(--data);padding-left:.8em}
+.s-rqc .src-n{font-size:1.1em;color:var(--muted);font-weight:700;align-self:start;margin-top:.15em}
+.s-rqc .synth .src-n{color:var(--data)}
+.s-rqc .src-tag{font-size:.5em;letter-spacing:.01em}
+.s-rqc .src-tag b{color:var(--muted);font-weight:700}
+.s-rqc .src-q{font-size:.9em;line-height:1.3;font-weight:600}
+.s-rqc .who{font-size:.5em;font-weight:400;color:var(--muted)}
+.s-rqc .who .av{width:1.8rem;height:1.8rem}
+.s-rqc .src-team .av{width:1.5rem;height:1.5rem}
+.s-rqc .src-team .lbl{font-weight:400;color:var(--muted)}
+.refl{border-left:4px solid var(--line);padding:.2rem 0 .2rem 1rem;margin:1rem 0 1.4rem;max-width:var(--wide)}
+.refl-h{display:flex;align-items:center;gap:.6rem;margin:0 0 .4rem;font-size:var(--s1)}
+.refl-h .av{width:2.2rem;height:2.2rem}
+.refl .subh{margin-top:.8rem}
+@media (max-height:820px){.s-rqc li{padding:.4em .2em}.s-rqc .src-q{font-size:.78em}.s-rqc .src-tag{font-size:.45em}}
+.lesson .s-list{font-size:.72em;margin:.3em 0 0}
+.lesson .s-list li{margin:.25em 0}
+.lesson .s-h{margin-bottom:.2em}
+.s-ai{margin-top:.9em;font-size:.72em;border-left:4px solid var(--ink);padding:.4em .8em;background:var(--surface);max-width:none}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -624,7 +673,7 @@ figure.chart .dkey{font-size:.85rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.15</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.20</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -693,21 +742,21 @@ figure.chart .dkey{font-size:.85rem}
         </dl>
       </li>
       <li class="rqcard" id="rq2">
-        <div class="rqhead"><span class="rqbig" aria-hidden="true">2</span><p class="rqtag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</p></div>
-        <h4><span class="vh">Küsimus 2. </span>Millised hinnastamisega seotud tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
-        <dl class="rqdl">
-          <div><dt>Eesmärk</dt><dd>Leida hinnastamisega seotud tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>hinnatüüp: <code>prediction</code> vs <code>upfront</code></li><li>hinnahälve eeldatava hinnaga sõitudel</li><li>sihtkoha muutus</li><li>hinnamuutuse põhjus ja aadressi sisestaja (<code>change_reason_pricing</code>, <code>entered_by</code>)</li><li>hinnastamise tegurite kombinatsioonid</li></ul></dd></div>
-          <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></dd></div>
-        </dl>
-      </li>
-      <li class="rqcard" id="rq3">
-        <div class="rqhead"><span class="rqbig" aria-hidden="true">3</span><p class="rqtag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</p></div>
-        <h4><span class="vh">Küsimus 3. </span>Millised sõidu ja prognoosi erinevused on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <div class="rqhead"><span class="rqbig" aria-hidden="true">2</span><p class="rqtag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</p></div>
+        <h4><span class="vh">Küsimus 2. </span>Millised sõidu ja prognoosi erinevused on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Tuvastada, millised erinevused prognoositud ja tegeliku sõidu vahel on ülehinnastamisega kõige tugevamalt seotud.</dd></div>
           <div><dt>Analüüsime</dt><dd><ul><li>tegelik vs prognoositud distants (kõrvalekalle ja suund)</li><li>tegelik vs prognoositud kestus (kõrvalekalle ja suund)</li><li>sõidu pikkus ja kestus</li><li>vajadusel aeg</li></ul></dd></div>
           <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></dd></div>
+        </dl>
+      </li>
+      <li class="rqcard" id="rq3">
+        <div class="rqhead"><span class="rqbig" aria-hidden="true">3</span><p class="rqtag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</p></div>
+        <h4><span class="vh">Küsimus 3. </span>Millised hinnastamisega seotud tegurid on seotud ülehinnastamise kaebuse suurema tõenäosusega?</h4>
+        <dl class="rqdl">
+          <div><dt>Eesmärk</dt><dd>Leida hinnastamisega seotud tingimused, mida ettevõttel on võimalik toote või süsteemi tasandil mõjutada.</dd></div>
+          <div><dt>Analüüsime</dt><dd><ul><li>hinnatüüp: <code>prediction</code> vs <code>upfront</code></li><li>hinnahälve eeldatava hinnaga sõitudel</li><li>sihtkoha muutus</li><li>hinnamuutuse põhjus ja aadressi sisestaja (<code>change_reason_pricing</code>, <code>entered_by</code>)</li><li>hinnastamise tegurite kombinatsioonid</li></ul></dd></div>
+          <div><dt>Analüütik</dt><dd><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></dd></div>
         </dl>
       </li>
       <li class="rqcard" id="rq4">
@@ -1207,25 +1256,15 @@ DIVIDE(
       <figcaption>Power BI <span lang="en">Key influencers</span>. Kordaja = hinnakaebuste osakaal tunnusega ÷ osakaal ilma tunnuseta. Katkendjoon: keskmine ilma valitud väärtuseta. Seos ei tõenda põhjust.</figcaption>
     </figure>
     <p><b>Uurime seega täpsemalt:</b></p>
-    <ul><li><a href="#p4-rq2">hinnastamist</a>;</li><li><a href="#p4-rq3">sõidu kulgemist (distants ja kestus)</a>;</li><li><a href="#p4-rq4">kasutatavat riist- ja tarkvara</a>.</li></ul>
+    <ul><li><a href="#p4-rq3">hinnastamist</a>;</li><li><a href="#p4-rq2">sõidu kulgemist (distants ja kestus)</a>;</li><li><a href="#p4-rq4">kasutatavat riist- ja tarkvara</a>.</li></ul>
     <h4 class="subh">Vastus küsimusele</h4>
     <div class="callout"><p>Analüüsi esimeses etapis selgus, et hinnakaebused koonduvad <b>väljaspool ELi sõitudele</b>. Need on 40,4&nbsp;% analüüsitud sõitudest, kuid 95,8&nbsp;% hinnakaebusega sõitudest; hinnakaebuste osakaal on 17,60&nbsp;%, ELis 0,52&nbsp;%. Seetõttu keskendub edasine analüüs väljaspool ELi segmendi sõidu-, tehnilistele ja hinnastamise tunnustele. ELi sõidud jäävad võrdlusgrupiks, kus valim seda võimaldab.</p></div>
     <h4 class="subh">Piirangud</h4>
     <p>Analüüs põhineb ainult pöördumisega sõitudel. ELis on hinnakaebusi vaid 13, seega on ELi osakaal ebakindel. Mõjutegurid näitavad seost, mitte põhjust.</p>
   </section>
 
-  <section class="part rqres" id="p4-rq2" data-status="tegemata">
-    <h3>Uurimisküsimus 2: milline hinnastamine probleemiga kaasneb?</h3>
-    <div class="rqres-head"><p class="rqres-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></p></div>
-    <div class="todo add"><ul>
-      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
-      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
-      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
-      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
-  </section>
-
-  <section class="part rqres" id="p4-rq3" data-status="valmis">
-    <h3>Uurimisküsimus 3: mis sõidus endas eristab probleemseid sõite?</h3>
+  <section class="part rqres" id="p4-rq2" data-status="valmis">
+    <h3>Uurimisküsimus 2: mis sõidus endas eristab probleemseid sõite?</h3>
     <div class="rqres-head"><p class="rqres-q">Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></p></div>
     <h4 class="subh">Andmed ja meetod</h4>
     <p>Analüüs on tehtud sõidu ehk tellimuse tasemel mõõdikutega <code>Distinct Ride Count</code> ja <code>Overcharge Ride Rate</code>. Sõidud on jaotatud rühmadesse tegeliku distantsi järgi (<code>distance_group</code>) ning selle järgi, mitu minutit kestis sõit prognoosist kauem (<code>duration_dif_group</code> = tegelik − prognoositud kestus). Hajuvusdiagrammid võrdlevad tegelikku ja prognoositud distantsi ning kestust; punktiirjoon on regressioonijoon. Filtrid on samad mis Raiko Power BI lehel: piirkond, GPS-ühendus ja hinnatüüp.</p>
@@ -1270,6 +1309,16 @@ DIVIDE(
     </ul>
     <h4 class="subh">Piirangud</h4>
     <p>Analüüs põhineb ainult pöördumisega sõitudel. Seos ei tõenda, et pikem sõit või prognoosist pikem kestus põhjustab kaebuse. 19 sõidul puudub prognoos, need ei ole hajuvusdiagrammidel.</p>
+  </section>
+
+  <section class="part rqres" id="p4-rq3" data-status="tegemata">
+    <h3>Uurimisküsimus 3: milline hinnastamine probleemiga kaasneb?</h3>
+    <div class="rqres-head"><p class="rqres-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></p></div>
+    <div class="todo add"><ul>
+      <li><b>Andmed ja meetod:</b> millised tunnused, mõõdikud ja filtrid;</li>
+      <li><b>Tulemused:</b> Power BI lehe visualiseeringud koos selgitusega (iga joonis koos allkirjaga);</li>
+      <li><b>Vastus küsimusele:</b> 2–3 lauset;</li>
+      <li><b>Piirangud:</b> mida tulemus ei näita.</li></ul></div>
   </section>
 
   <section class="part rqres" id="p4-rq4" data-status="valmis">
@@ -1516,6 +1565,7 @@ DIVIDE(
     <p>Analüüsi võiks edasi arendada mitme tunnuse koosmõju hindamise suunas. Näiteks võiks kvantifitseerida, kuidas muutub hinnakaebuse esinemise tõenäosus juhul, kui samaaegselt esinevad halb GPS, suur distantsi kõrvalekalle ja muud analüüsis oluliseks osutunud tunnused.</p>
     <p>Täiendavate geograafiliste andmete olemasolul võiks ELi ja väljaspool ELi jaotuse asemel analüüsida konkreetseid riike või turge. See võimaldaks hinnata, kas väljaspool ELi sõitude võimalikud erinevused tulenevad konkreetsest turust või on nähtavad laiemalt.</p>
     <p>Pikema ajaperioodi andmete olemasolul võiks analüüsida ka hinnakaebuste ja nendega seotud tunnuste muutumist ajas ning hinnata võimalike toote- või hinnastamismuudatuste mõju.</p>
+    <p>Kuna analüüsis saime kasutada vaid andmeid, mis kõik olid seotud klienditoe pöördumisega, siis edasi oleks hea võrrelda kogu andmemahtu toimunud sõitude kohta, sealhulgas sõite, mis olid nii-öelda ideaalsed. See aitaks veelgi sügavamalt hinnata, mis eristab hinnakaebusega sõite kaebuseta sõitudest.</p>
     <div class="todo add">muud edasiarendused, kui neid lisandub.</div>
   </section>
   <section class="part" id="p7-ai" data-status="valmis">
@@ -1532,7 +1582,7 @@ DIVIDE(
   <section class="part" id="p8-jaotus" data-status="valmis">
     <h3>Tööjaotus</h3>
     <p>Projekt viidi läbi neljaliikmelises rühmas. Töö jagati andmete ettevalmistamise, andmemudeli loomise, analüüsi, visualiseerimise, dokumenteerimise ja projekti koordineerimise vahel. Olulisemad andmemudeli ja analüüsi otsused arutati grupis ühiselt.</p>
-    <dl class="rqdl roles team"><div><dt><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div><div><dt><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></dt><dd><div class="todo add">ülesanded ja vastutus.</div></dd></div></dl>
+    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li></ul>
   </section>
   <section class="part" id="p8-valjakutse" data-status="valmis">
     <h3>Tehniline eneserefleksioon</h3>
@@ -1544,9 +1594,19 @@ DIVIDE(
   </section>
   <section class="part" id="p8-korraldus" data-status="valmis">
     <h3>Korralduslik eneserefleksioon</h3>
+    <div class="refl"><p class="refl-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b></p>
     <p>Nelja grupiliikme töö sünkroniseerimine tõi esile vajaduse eristada andmebaasi ennast ning selle taastamiseks vajalikku koodi. PostgreSQL-i andmebaas töötab lokaalses keskkonnas, samas kui SQL-skriptid ja Power BI projekt peavad olema teistele grupiliikmetele kättesaadavad ja taastatavad.</p>
-    <p>Projekti failide versioonihalduseks kasutatakse Git-repositooriumi. Repositooriumisse salvestatakse SQL-skriptid ning Power BI Projecti failid. Andmebaasi ennast Git-repositooriumisse ei salvestata; eesmärk on, et iga grupiliige saaks repositooriumis oleva lahenduse põhjal sama andmestruktuuri oma lokaalses keskkonnas taastada.</p>
-    <div class="todo add">muud korralduslikud õppetunnid.</div>
+    <p>Projekti failide versioonihalduseks kasutatakse Git-repositooriumi. Repositooriumisse salvestatakse SQL-skriptid ning Power BI Projecti failid. Andmebaasi ennast Git-repositooriumisse ei salvestata; eesmärk on, et iga grupiliige saaks repositooriumis oleva lahenduse põhjal sama andmestruktuuri oma lokaalses keskkonnas taastada.</p></div>
+    <div class="refl"><p class="refl-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b></p>
+    <h4 class="subh">Mis läks hästi?</h4>
+    <p>Töö jagamine etappideks, fookuse hoidmine peamisel äriküsimusel, andmete puhastamine Pythonis, mudeli loomine DBeaveris ja visualiseeritud tulemuste kontroll SQL-päringutega. Sujus ka uurimisküsimuste jaotamine ja regulaarne grupikommunikatsioon värskemate leidude jagamiseks ning nende leidude kombineerimine järeldusteks.</p>
+    <h4 class="subh">Kus kogesime raskusi?</h4>
+    <p>Andmemudeli analüütiliste tunnuste järjepidev haldamine on keeruline, kui neli inimest kasutavad mudelit korraga. Tunnused ja mõõdikud võivad hakata üksteist dubleerima ja nendes orienteerumine võib olla raskendatud.</p>
+    <p>GitHubi versioonihaldusega kogesime tagasilööke, mille käigus läks osa tööd kaotsi ja tuli taastada, merge'e tagasi pöörata ja konfliktid uuesti lahendada.</p>
+    <h4 class="subh">Mida teeksime teisiti?</h4>
+    <p>Uued väljad ja mõõdikud dokumenteeriksime kohe nende loomise ajal, mitte projekti lõpus. See vähendab dubleerimist ja hilisemat kontrolltööd.</p></div>
+    <div class="refl"><p class="refl-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b></p><div class="todo add">korralduslik eneserefleksioon.</div></div>
+    <div class="refl"><p class="refl-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b></p><div class="todo add">korralduslik eneserefleksioon.</div></div>
   </section>
   <section class="part" id="p8-ai" data-status="valmis">
     <h3>AI-kogemus</h3>
@@ -1585,7 +1645,7 @@ DIVIDE(
   <section class="slide" id="s3" data-i="3" aria-roledescription="slaid" aria-label="Slaid 3 / 13: Viis uurimisküsimust" hidden>
     <p class="s-kicker"><span class="num">01</span> Tutvustus ja eesmärk <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Viis uurimisküsimust</h2>
-    <div class="s-body"><ol class="s-rqc"><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">1</span><span class="src-tag">Vastab küsimusele: <b>KUS</b> probleem on?</span></p><p class="src-q"><span class="vh">Küsimus 1. </span>Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">2</span><span class="src-tag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</span></p><p class="src-q"><span class="vh">Küsimus 2. </span>Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">3</span><span class="src-tag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</span></p><p class="src-q"><span class="vh">Küsimus 3. </span>Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">4</span><span class="src-tag">Vastab küsimusele: <b>MILLISED TEHNILISED TINGIMUSED</b> probleemiga kaasnevad?</span></p><p class="src-q"><span class="vh">Küsimus 4. </span>Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></li><li class="src synth"><p class="src-head"><span class="src-n" aria-hidden="true">5</span><span class="src-tag">Vastab küsimusele: <b>MIDA</b> tulemuste põhjal prioriseerida?</span></p><p class="src-q"><span class="vh">Küsimus 5. </span>Milliste tegurite kombinatsioonide korral esineb hinnakaebusi kõige rohkem ja milliseid sekkumisi prioriseerida?</p><span class="src-team"><span class="av av-raiko" aria-hidden="true"></span><span class="av av-liis" aria-hidden="true"></span><span class="av av-hannes" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><span class="lbl">kõik neli</span></span></li></ol></div>
+    <div class="s-body"><ol class="s-rqc"><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">1</span><span class="src-tag">Vastab küsimusele: <b>KUS</b> probleem on?</span></p><p class="src-q"><span class="vh">Küsimus 1. </span>Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</p><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">2</span><span class="src-tag">Vastab küsimusele: <b>MIS</b> sõidus endas eristab probleemseid sõite?</span></p><p class="src-q"><span class="vh">Küsimus 2. </span>Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">3</span><span class="src-tag">Vastab küsimusele: <b>MILLINE HINNASTAMINE</b> probleemiga kaasneb?</span></p><p class="src-q"><span class="vh">Küsimus 3. </span>Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></li><li class="src"><p class="src-head"><span class="src-n" aria-hidden="true">4</span><span class="src-tag">Vastab küsimusele: <b>MILLISED TEHNILISED TINGIMUSED</b> probleemiga kaasnevad?</span></p><p class="src-q"><span class="vh">Küsimus 4. </span>Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span></li><li class="src synth"><p class="src-head"><span class="src-n" aria-hidden="true">5</span><span class="src-tag">Vastab küsimusele: <b>MIDA</b> tulemuste põhjal prioriseerida?</span></p><p class="src-q"><span class="vh">Küsimus 5. </span>Milliste tegurite kombinatsioonide korral esineb hinnakaebusi kõige rohkem ja milliseid sekkumisi prioriseerida?</p><span class="src-team"><span class="av av-raiko" aria-hidden="true"></span><span class="av av-liis" aria-hidden="true"></span><span class="av av-hannes" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><span class="lbl">kõik neli</span></span></li></ol></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kiire ülevaade, umbes 30 sekundit. Iga küsimuse vastus tuleb oma dashboardil.</aside>
   </section>
   <section class="slide" id="s4" data-i="4" aria-roledescription="slaid" aria-label="Slaid 4 / 13: Andmete teekond algfailist juhtlauani" hidden>
@@ -1596,14 +1656,16 @@ DIVIDE(
     </div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kust andmed tulid ja kuidas liikusid. Üks selge plokkskeem; ära näita koodiridu, selgita loogikat.</aside>
   </section>
-  <section class="slide" id="s5" data-i="5" aria-roledescription="slaid" aria-label="Slaid 5 / 13: Suurim väljakutse: üks rida ei ole üks sõit" hidden>
+  <section class="slide starslide" id="s5" data-i="5" aria-roledescription="slaid" aria-label="Slaid 5 / 13: Suurim väljakutse: üks rida ei ole üks sõit" hidden>
     <p class="s-kicker"><span class="num">02</span> Andmevoog, puhastus ja töötlus <span class="s-min">· 3 min</span></p>
     <h2 class="s-title">Suurim väljakutse: üks rida ei ole üks sõit</h2>
-    <div class="s-body"><div class="s-two">
-      <div><p class="s-big num">4&nbsp;943 <span>rida</span></p><p class="s-big num">4&nbsp;166 <span>tellimust</span></p>
-        <p>Ühe tellimusega võib olla kuni 6 pöördumist. Pöördumiste otse lugemine loeks sama sõitu mitu korda.</p></div>
-      <div><p class="s-h">Lahendus</p>
-        <ul class="s-list sm"><li><code>dim_order</code> seob sõidud ja pöördumised tellimuse tasemel.</li><li>Tunnus <code>had_overpaid_ride_ticket</code>: kas tellimusel oli vähemalt üks hinnakaebus.</li><li>Mõõdikud loevad iga tellimuse ühe korra.</li><li>Võtmete ja väärtuste kontrollides erinevusi ei tuvastatud.</li></ul></div>
+    <div class="s-body"><div class="s-star">
+      <div class="s-star-l"><p class="s-big num">4&nbsp;943 <span>rida</span> · 4&nbsp;166 <span>tellimust</span></p>
+        <p>Ühe tellimusega võib olla kuni 6 pöördumist. Pöördumiste otse lugemine loeks sama sõitu mitu korda.</p>
+        <p class="s-h">Lahendus: tähtskeem</p>
+        <ul class="s-list sm"><li>Tunnus <code>had_overpaid_ride_ticket</code>: kas tellimusel oli vähemalt üks hinnakaebus.</li><li>Mõõdikud loevad iga tellimuse ühe korra; kontrollides erinevusi ei tuvastatud.</li></ul>
+        <div class="star-panel s-starpanel" id="starPanelS" aria-live="polite"></div></div>
+      <div class="star s-starfig"><div id="chStarS" class="star-svg"></div><p class="s-starnote">Vali tabel, et näha selle sisu ja seoseid.</p></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Mis oli suurim andmekvaliteedi väljakutse (duplikaadid) ja kuidas see lahendati.</aside>
   </section>
@@ -1627,24 +1689,9 @@ DIVIDE(
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 1. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
-  <section class="slide dashslide" id="s7" data-i="7" aria-roledescription="slaid" aria-label="Slaid 7 / 13: Küsimus 2: Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?" hidden>
+  <section class="slide dashslide" id="s7" data-i="7" aria-roledescription="slaid" aria-label="Slaid 8 / 13: Küsimus 2: Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?" hidden>
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
-    <h2 class="s-title">Küsimus 2: Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</h2>
-    <div class="s-body"><div class="dash">
-      <div class="dash-head"><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></div>
-      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
-      <div class="dash-grid">
-        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
-        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
-        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
-      </div>
-      <div class="s-todo">Interaktiivne dashboard Liis Normak Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
-    </div></div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 2. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
-  </section>
-  <section class="slide dashslide" id="s8" data-i="8" aria-roledescription="slaid" aria-label="Slaid 8 / 13: Küsimus 3: Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?" hidden>
-    <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
-    <h2 class="s-title">Küsimus 3: Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</h2>
+    <h2 class="s-title">Küsimus 2: Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</h2>
     <div class="s-body"><div class="dash dash-live">
       <div class="dash-head"><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span></div>
       <div class="rq3" id="rq3s" data-sfx="s">
@@ -1671,6 +1718,21 @@ DIVIDE(
         </div>
       </div>
       <div class="q1next"><p class="dt">Järeldused</p><div><p class="q1fact">Hinnakaebusi on rohkem pikematel sõitudel ja sõitudel, mis kestavad prognoosist kauem.</p><ul><li>0–2 km: 4,2 %, ≥20 km: 19,1 %</li><li>kestus prognoosist 20–30 min kauem: 17,0 %</li><li>tegelik distants prognoosist &gt;20 % suurem: 11,3 % vs 5,8 %</li></ul></div></div>
+    </div></div>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 2. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
+  </section>
+  <section class="slide dashslide" id="s8" data-i="8" aria-roledescription="slaid" aria-label="Slaid 7 / 13: Küsimus 3: Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?" hidden>
+    <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span></p>
+    <h2 class="s-title">Küsimus 3: Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</h2>
+    <div class="s-body"><div class="dash">
+      <div class="dash-head"><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></div>
+      <div class="dash-filters" aria-label="Filtrid"><span>Filter</span><span>Filter</span><span>Filter</span></div>
+      <div class="dash-grid">
+        <div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div><div class="dash-tile kpi"><span>Näitaja</span></div>
+        <div class="dash-tile main"><span>Peamine visualiseering</span></div>
+        <div class="dash-tile side"><span>Tabel / lisavisualiseering</span></div>
+      </div>
+      <div class="s-todo">Interaktiivne dashboard Liis Normak Power BI lehe põhjal: filtrid, näitajad, visualiseeringud ja vastus küsimusele.</div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 3. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
@@ -1710,7 +1772,7 @@ DIVIDE(
     <h2 class="s-title">Dokumentatsioon ja tööjaotus</h2>
     <div class="s-body"><div class="s-two">
       <div><p class="s-h">Dokumentatsioon</p><ul class="s-list sm"><li>Ärimõisted ja uurimisküsimused</li><li>Andmevoog, tähtskeem ja grain</li><li>Andmekvaliteedi kontrollid</li><li>Üleandmine: 8 sammu taastamiseks</li><li>Väljade ja mõõdikute kirjeldused (<code>Description</code>)</li><li>GitHubi repo: SQL-skriptid, Power BI projekt</li></ul></div>
-      <div><p class="s-h">Kes mida analüüsis</p><ul class="s-list sm who-list"><li><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span> küsimus 1</li><li><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span> küsimus 2</li><li><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span> küsimus 3</li><li><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span> küsimus 4</li></ul><div class="s-todo">Lisaks: kes vastutas andmemudeli, aruande ja dokumentatsiooni eest.</div></div>
+      <div><p class="s-h">Kes mida analüüsis</p><ul class="s-list sm who-list"><li><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span> küsimus 1</li><li><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span> küsimus 2</li><li><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span> küsimus 3</li><li><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span> küsimus 4</li></ul><div class="s-todo">Lisaks: kes vastutas andmemudeli, aruande ja dokumentatsiooni eest.</div></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita kiirelt, et projekt on dokumenteeritud. Paari lausega, kes mille eest vastutas.</aside>
   </section>
@@ -1718,11 +1780,11 @@ DIVIDE(
     <p class="s-kicker"><span class="num">05</span> Õppetunnid ja kokkuvõte <span class="s-min">· 2 min</span></p>
     <h2 class="s-title">Õppetunnid</h2>
     <div class="s-body"><div class="s-three">
-      <div class="lesson good"><p class="s-h">Läks hästi</p><p>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</p></div>
-      <div class="lesson bad"><p class="s-h">Läks valesti</p><div class="s-todo">Kirjutada</div></div>
-      <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><p>Määrame grain'i enne mõõdikute loomist. Lisame valuutakursid ja hindame tunnuste koosmõju.</p></div>
+      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
+      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li></ul></div>
+      <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><ul class="s-list sm"><li>Dokumenteerime väljad ja mõõdikud kohe nende loomisel.</li><li>Määrame grain'i enne mõõdikute loomist.</li><li>Lisame valuutakursid ja hindame tunnuste koosmõju.</li></ul></div>
     </div>
-    <p class="s-h" style="margin-top:1.2rem">Tehisaru kasutamine</p><p>Abivahend SQL-i, DAX-i ja dokumentatsiooni jaoks. Väljundeid kontrolliti andmete ja Power BI tulemuste põhjal.</p></div>
+    <div class="s-ai"><b>Tehisaru kasutamine:</b> abivahend SQL-i, DAX-i ja dokumentatsiooni jaoks. Väljundeid kontrolliti andmete ja Power BI tulemuste põhjal.</div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Mis läks hästi, mis valesti, mida teeksite teisiti. AI kasutamine.</aside>
   </section>
   <section class="slide" id="s13" data-i="13" aria-roledescription="slaid" aria-label="Slaid 13 / 13: Aitäh!" hidden>
@@ -1904,25 +1966,26 @@ function starLayout(W){
 }
 let starSel='dim_order';
 function edgePt(c,o,bw,bh){const dx=o[0]-c[0],dy=o[1]-c[1];const sx=dx?(bw/2)/Math.abs(dx):Infinity,sy=dy?(bh/2)/Math.abs(dy):Infinity;const s=Math.min(sx,sy);return [c[0]+dx*s,c[1]+dy*s];}
-function drawStar(){
-  const el=document.getElementById('chStar'); if(!el) return;
-  const L=starLayout(Math.max(300,Math.min(el.clientWidth||880,920))), {W,H,bw,bh,p}=L;
+function drawStar(){[['chStar','starPanel','a'],['chStarS','starPanelS','b',620]].forEach(([id,pid,px,fw])=>drawStarInto(id,pid,px,fw));}
+function drawStarInto(id,pid,px,fw){
+  const el=document.getElementById(id); if(!el||!el.offsetParent&&id!=='chStar') {if(el&&!el.offsetParent)return;} if(!el)return;
+  const L=starLayout(fw||Math.max(300,Math.min(el.clientWidth||880,920))), {W,H,bw,bh,p}=L;
   const on=new Set(SE.filter(e=>e[0]===starSel||e[1]===starSel).flatMap(e=>[e[0],e[1]]));
   let s=`<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Tähtskeem, 7 tabelit. Vali tabel selgituse nägemiseks.">
-  <defs><marker id="sa" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="var(--neutral)"/></marker>
-  <marker id="sa2" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="var(--data)"/></marker></defs>`;
+  <defs><marker id="sa${px}" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="var(--neutral)"/></marker>
+  <marker id="sa2${px}" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" refX="11" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 Z" fill="var(--data)"/></marker></defs>`;
   SE.forEach(([a,b,k])=>{const A=edgePt(p[a],p[b],bw+8,bh+8),B=edgePt(p[b],p[a],bw+10,bh+10);const act=a===starSel||b===starSel;
     const f=L.narrow&&b!=='fact_tickets'?(a==='dim_app_version'?.55:.22):.5,mx=A[0]+(B[0]-A[0])*f,my=A[1]+(B[1]-A[1])*f-(Math.abs(A[1]-B[1])<2?14:0),tw=k.length*7+10;
-    s+=`<g class="sedge${act?' on':''}" aria-hidden="true"><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" marker-end="url(#${act?'sa2':'sa'})"/><rect x="${mx-tw/2}" y="${my-9}" width="${tw}" height="17" rx="3"/><text x="${mx}" y="${my+4}" text-anchor="middle">${k}</text></g>`;});
+    s+=`<g class="sedge${act?' on':''}" aria-hidden="true"><line x1="${A[0]}" y1="${A[1]}" x2="${B[0]}" y2="${B[1]}" marker-end="url(#${act?'sa2':'sa'}${px})"/><rect x="${mx-tw/2}" y="${my-9}" width="${tw}" height="17" rx="3"/><text x="${mx}" y="${my+4}" text-anchor="middle">${k}</text></g>`;});
   Object.keys(ST).forEach(n=>{const [x,y]=p[n],f=n.startsWith('fact');
     s+=`<g class="snode${f?' fact':''}${starSel&&!on.has(n)&&n!==starSel?' dim-out':''}" data-t="${n}" tabindex="0" role="button" aria-pressed="${n===starSel}" aria-label="${n}, ${ST[n].k.toLowerCase()}">
       <rect x="${x-bw/2}" y="${y-bh/2}" width="${bw}" height="${bh}" rx="4"/><text x="${x}" y="${y+1}" text-anchor="middle"${n.length>15?' class="long"':''}>${n}</text><text class="kindt" x="${x}" y="${y+17}" text-anchor="middle">${f?'fakt':'dimensioon'}</text></g>`;});
   el.innerHTML=s+'</svg>';
-  el.closest('.star').classList.toggle('has-sel',!!starSel);
-  el.querySelectorAll('.snode').forEach(g=>{const pick=()=>{starSel=g.dataset.t;drawStar();el.querySelector(`.snode[data-t="${starSel}"]`).focus();};
+  const stc=el.closest('.star');if(stc)stc.classList.toggle('has-sel',!!starSel);
+  el.querySelectorAll('.snode').forEach(g=>{const pick=()=>{starSel=g.dataset.t;drawStar();document.getElementById(id).querySelector(`.snode[data-t="${starSel}"]`).focus();};
     g.addEventListener('click',pick);g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();pick();}});});
   const T=ST[starSel],rel=SE.filter(e=>e[0]===starSel||e[1]===starSel);
-  document.getElementById('starPanel').innerHTML=`<span class="kind">${T.k}</span><h4>${starSel}</h4><p>${T.d}</p><p><b>Seosed</b></p><ul>${rel.map(([a,b,k])=>a===starSel?`<li>→ <code>${b}</code> võtmega <code>${k}</code></li>`:`<li>← <code>${a}</code> võtmega <code>${k}</code></li>`).join('')}</ul>`;
+  if(pid)document.getElementById(pid).innerHTML=`<span class="kind">${T.k}</span><h4>${starSel}</h4><p>${T.d}</p><p><b>Seosed</b></p><ul>${rel.map(([a,b,k])=>a===starSel?`<li>→ <code>${b}</code> võtmega <code>${k}</code></li>`:`<li>← <code>${a}</code> võtmega <code>${k}</code></li>`).join('')}</ul>`;
 }
 (function(){const tb=document.getElementById('tbStar');if(!tb)return;
   tb.innerHTML=`<table class="t"><thead><tr><th scope="col">Tabel</th><th scope="col">Liik</th><th scope="col">Sisu</th><th scope="col">Seosed</th></tr></thead><tbody>${Object.keys(ST).map(n=>`<tr><th scope="row" style="font-weight:400"><code>${n}</code></th><td>${ST[n].k}</td><td>${ST[n].d}</td><td>${SE.filter(e=>e[0]===n||e[1]===n).map(([a,b,k])=>(a===n?'→ '+b:'← '+a)+' ('+k+')').join('<br>')}</td></tr>`).join('')}</tbody></table>`;})();
@@ -2021,7 +2084,7 @@ Object.entries(TABS).forEach(([k,[tb]])=>{tb.addEventListener('click',()=>{showV
 const SLIDES=[...document.querySelectorAll('.slide')];let curSlide=1;
 document.querySelectorAll('[data-clone]').forEach(h=>{const src=document.querySelector('#panel-doc '+h.dataset.clone);if(src){const c=src.cloneNode(true);c.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));h.appendChild(c);}});
 (function(){const p=document.getElementById('deckProg');p.innerHTML=SLIDES.map(()=>'<span></span>').join('');})();
-function goSlide(i,silent){setTimeout(()=>{try{renderQ1()}catch(e){}},0);
+function goSlide(i,silent){setTimeout(()=>{try{renderQ1();drawStar()}catch(e){}},0);
   curSlide=Math.max(1,Math.min(SLIDES.length,i));
   SLIDES.forEach(s=>s.hidden=+s.dataset.i!==curSlide);
   const s=SLIDES[curSlide-1];
