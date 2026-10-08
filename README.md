@@ -1,2 +1,3 @@
 # Sõiduteenuste andmete analüüs
-Andmetarkus kursuse grupitöö
+
+[🚕 Laadi alla grupitöö esitlus (HTML)](./index.html)
