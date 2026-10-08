@@ -740,6 +740,8 @@ figure.chart .dkey{font-size:.85rem}
 .dgrid-ki .dt{font-size:.6em;font-weight:700;margin:0 0 .15rem}
 @media (max-height:820px){.slide .ki-it{padding:.25rem .5rem}.slide .kiv-say{margin:0}}
 .rq4g .brkey{font-size:.45em;gap:.1em .5em}
+.vlink{margin:-.2rem 0 .4rem;font-size:var(--s-1)}
+.vprops li{margin:.4rem 0}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -758,7 +760,7 @@ figure.chart .dkey{font-size:.85rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.29</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.30</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1019,6 +1021,8 @@ figure.chart .dkey{font-size:.85rem}
       </tbody>
     </table></div>
     <p class="draft-note">Analüüsis kasutatakse tellimuse taseme arve. Ridade tase näitab, kui palju mitmekordne lugemine arve nihutaks. Sõidu olek (<code>b_state</code>) ja tellimuskatse olek on kõigil ridadel «finished»; tellimuse olekus on üks erand («active»).</p>
+    <p>Andmestiku täpsemaks profileerimiseks kirjeldatakse lisaks järgmisi näitajaid seoses hinnakaebustega:</p>
+    <ul><li>ELi ja väljaspool ELi sõitude osakaal;</li><li><code>gps_confidence</code> = 0 osakaal;</li><li>hinnastamisega seotud näitajad;</li><li>tegelikud ning prognoositud distantsid ja ajaperioodid.</li></ul>
     <figure class="chart">
       <p class="ct">Tellimused päevas piirkonna järgi</p>
       <p class="cs">Kõik 4 166 tellimust, 2.02.–13.03.2020</p>
@@ -1048,6 +1052,7 @@ figure.chart .dkey{font-size:.85rem}
     <p>Andmete ettevalmistamisel kontrolliti lisaks:</p>
     <ul><li>dimensioonitabelite võtmete vastavust <code>fact_rides</code> tabeli võtmetele;</li><li>tellimusega seotud tunnuste unikaalsust ühe <code>order_key</code> kohta;</li><li><code>order_state</code> ja <code>order_try_state</code> väärtuste vastavust enne nende lisamist <code>dim_order</code> tabelisse;</li><li><code>order_try_id_new</code> unikaalsust ühe tellimuse kohta;</li><li><code>calc_created</code> ehk tellimuse loomise aja unikaalsust ühe tellimuse kohta;</li><li>fakti- ja dimensioonitabelite väärtuste vastavust pärast tunnuste ülekandmist.</li></ul>
     <p>Nende kontrollide käigus ei tuvastatud väärtuste erinevusi ning kontrollitud <code>dim_order</code> väljade puhul ei tekkinud puuduvaid väärtusi.</p>
+    <p>Algandmetes olid ka veerud <code>device_token</code> ja <code>device_token_new</code>, kuid kuna need olid alati tühjad, eemaldati need edasisest analüüsist. Samuti esines veerge, kus andmeväljad olid täidetud osaliselt. Arvestades nende andmete olemasolevat mahtu ja olulisust, jäeti need andmed alles ning neid analüüsiti edaspidi hoolikalt, arvestades piiranguid.</p>
     <h4 class="subh">Anomaaliad ja piirangud</h4>
     <p>Osakaal on arvutatud 4&nbsp;943 reast.</p>
     <div class="tw"><table class="t">
@@ -1577,6 +1582,7 @@ DIVIDE(
     <div class="tw"><table class="t terms"><thead><tr><th scope="col">Liigitus</th><th scope="col">Andmed</th></tr></thead><tbody><tr><th scope="row">Isikuandmed / pseudonüümsed identifikaatorid</th><td>tehnilised sõitja, seadme ja tellimuse identifikaatorid juhul, kui nende kaudu on võimalik andmeid isikuga seostada</td></tr><tr><th scope="row">Eriliigilised isikuandmed</th><td>andmestikus ei ole tuvastatud</td></tr><tr><th scope="row">Tundlik äriinfo</th><td>hinnad, hinnastamise kontekst, pettuseskoor, hinnakaebused ja ettevõttesisesed ennustuse tüübid</td></tr><tr><th scope="row">Üldine analüütiline info</th><td>distants, kestus, GPS-ühenduse kvaliteet, sõidu olek, sihtkoha muutmiste arv ja ELi tunnus</td></tr></tbody></table></div>
     <p>Avalikule juhtlauale ei kuvata rea taseme tehnilisi identifikaatoreid ega muud infot, mille abil oleks võimalik konkreetset sõitu, seadet või kasutajat tuvastada. Juhtlaual kasutatakse eelkõige agregeeritud mõõdikuid ja segmentide võrdlusi.</p>
     <p>Power BI mudelis on tehnilised võtmed ja analüüsiks mittevajalikud tehnilised väljad Report view's kasutaja eest peidetud. Välja peitmine parandab mudeli kasutatavust, kuid seda ei käsitleta ligipääsuõiguse või andmeturbe meetmena.</p>
+    <p>Lõplik Power BI mudel laaditakse üles grupi GitHubi, mis on avalik kaust grupiliikmetele kasutamiseks ning potentsiaalsete huvilistega jagamiseks.</p>
   </section>
 </section>
 
@@ -1655,20 +1661,31 @@ DIVIDE(
   <h2 id="p7-h"><span class="n">7</span>Kokkuvõte ja arutelu</h2>
   <section class="part" id="p7-vastused" data-status="valmis">
     <h3>Vastused uurimisküsimustele</h3>
-    <h4 class="subh">Millised sõidu tunnused on kõige tugevamalt seotud hinnakaebuse tekkimisega?</h4>
+    <h4 class="subh">1. Millistes sõidukategooriates esineb hinnakaebusi ebaproportsionaalselt palju?</h4>
+    <p class="vlink"><a href="#p4-rq1">Vaata: Uurimisküsimus 1 →</a></p>
     <p>Analüüsis võrreldakse hinnakaebusega ja hinnakaebuseta sõite, et hinnata, millised sõidu omadused eristavad neid kahte gruppi. Analüüsitavate tunnuste hulka kuuluvad GPS-i kvaliteet, tegeliku ja prognoositud distantsi erinevus, tegeliku ja prognoositud kestuse erinevus, hinna kõrvalekalle, sihtkoha muutmiste arv ning muud andmestikus olemasolevad sõidu ja hinnastamise tunnused.</p>
     <p>Esialgse analüüsi põhjal on olulisemateks edasisteks uurimissuundadeks kujunenud GPS-i kvaliteet ning tegeliku ja prognoositud distantsi erinevus.</p>
-    <div class="todo add">tulemused.</div>
-    <h4 class="subh">Kuidas on GPS-i kvaliteet seotud hinnakaebuse esinemisega?</h4>
-    <p>GPS-i kvaliteedi mõju hindamiseks võrreldakse hea (<code>GPS Confidence = 1</code>) ja halva (<code>GPS Confidence = 0</code>) GPS-iga sõitude <code>Overcharge Ride Rate</code> mõõdikut. GPS-i kvaliteeti analüüsitakse ka koos teiste tunnustega, eelkõige tegeliku ja prognoositud distantsi erinevusega.</p>
-    <div class="todo add">tulemused.</div>
-    <h4 class="subh">Kuidas on tegeliku ja prognoositud distantsi erinevus seotud hinnakaebustega?</h4>
-    <p>Tegeliku ja prognoositud distantsi erinevuse hindamiseks kasutatakse nii <code>Distance Deviation %</code> tunnust kui ka <code>Median Absolute Distance Deviation %</code> mõõdikut. <code>Distance Deviation %</code> võimaldab hinnata kõrvalekalde suunda, samas kui absoluutse kõrvalekalde mediaan kirjeldab kõrvalekalde tüüpilist suurust sõltumata sellest, kas tegelik distants oli prognoositust suurem või väiksem.</p>
-    <div class="todo add">tulemused.</div>
-    <h4 class="subh">Mille poolest erinevad ELi ja väljaspool ELi sõidud ning kas erinevused aitavad selgitada hinnakaebuste esinemist?</h4>
-    <p>ELi ja väljaspool ELi sõitude võrdlemisel kasutatakse hinnakaebusega sõitude määra, halva GPS-i osakaalu ning distantsi-, kestuse- ja hinna kõrvalekaldeid.</p>
+    <p>ELi ja väljaspool ELi sõitude võrdlemisel kasutatakse hinnakaebuste määra, halva GPS-i osakaalu ning distantsi-, kestuse- ja hinna kõrvalekaldeid.</p>
     <p>Absoluutseid hindu ELi ja väljaspool ELi sõitude vahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside abil ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel sama sõidu lõpuhinna ja eeldatava hinna protsentuaalset erinevust.</p>
-    <div class="todo add">tulemused.</div>
+    <h4 class="subh">2. Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</h4>
+    <p class="vlink"><a href="#p4-rq2">Vaata: Uurimisküsimus 2 →</a></p>
+    <p>Tegeliku ja prognoositud distantsi erinevuse hindamiseks kasutatakse nii <code>Distance Deviation %</code> tunnust kui ka <code>Median Absolute Distance Deviation %</code> mõõdikut. <code>Distance Deviation %</code> võimaldab hinnata kõrvalekalde suunda, samas kui absoluutse kõrvalekalde mediaan kirjeldab kõrvalekalde tüüpilist suurust sõltumata sellest, kas tegelik distants oli prognoositust suurem või väiksem.</p>
+    <h4 class="subh">3. Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
+    <p class="vlink"><a href="#p4-rq3">Vaata: Uurimisküsimus 3 →</a></p>
+    <p>Hinnastamise seoste hindamiseks võrreldi erinevate hinnatüüpide (<code>Prediction Price Type</code>) <code>Overcharge Ride Rate</code> mõõdikut ning analüüsiti nende jaotust ELi ja väljaspool ELi piirkondades. Lisaks uuriti eeldatava hinna ja lõpuhinna erinevust, hinnamuutuse põhjuseid ning sihtkoha muutmiste arvu.</p>
+    <p>Analüüs näitas, et prediction-hinnastusega sõitudel esines hinnakaebusi sagedamini kui upfront-sõitudel (20,3&nbsp;% vs 3,5&nbsp;%). Samas olid prediction-sõidud peaaegu täielikult seotud väljaspool ELi piirkonnaga. Suurema hinnakaebuste esinemissagedusega eristusid ka sõidud, mille lõpuhind ületas eeldatavat hinda rohkem kui kaks korda (18,7&nbsp;%). Sihtkoha muutmine ja hinnamuutuse põhjused selget seost kõrgema hinnakaebuste määraga ei näidanud.</p>
+    <p>Kokkuvõttes eristusid peamiste riskikohtadena prediction-hinnastus ja väga suur hinnatõus, kuid prediction-hinnastuse seost tuleb tõlgendada koos piirkonna mõjuga.</p>
+    <h4 class="subh">4. Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
+    <p class="vlink"><a href="#p4-rq4">Vaata: Uurimisküsimus 4 →</a></p>
+    <p>GPS-i kvaliteedi mõju hindamiseks võrreldakse hea (<code>GPS Confidence = 1</code>) ja halva (<code>GPS Confidence = 0</code>) GPS-iga sõitude <code>Overcharge Ride Rate</code> mõõdikut. GPS-i kvaliteeti analüüsitakse ka koos teiste tunnustega, eelkõige tegeliku ja prognoositud distantsi erinevusega.</p>
+    <p>Analüüs näitas, et halb GPS-ühendus on tugevaim tehniline tegur: halva GPS-iga sõidud moodustavad 18&nbsp;% sõitudest, kuid annavad 60&nbsp;% hinnakaebustest (hinnakaebuste määr 24,4&nbsp;% vs 3,6&nbsp;%). Seos püsib ka siis, kui teised tegurid on arvesse võetud (šansside suhe 3,2). Väljaspool ELi on teine oluline tegur vana juhi rakendus (uusimast 9 või rohkem versiooni vanem): see kahekordistab hinnakaebuste määra (šansside suhe 2,7) ning koos halva GPS-iga lõppes ligikaudu iga teine sõit hinnakaebusega. Sõitja ja juhi rakenduse platvorm (Android või iOS) ei olnud statistiliselt olulised.</p>
+    <p>Telefonimudelite lõikes erines halva GPS-i osakaal väga palju: kolm TECNO mudelit moodustasid 4&nbsp;% sõitudest, kuid 17&nbsp;% hinnakaebustest.</p>
+    <p>Kokkuvõttes eristusid peamiste tehniliste riskikohtadena halb GPS-ühendus ja vana juhi rakendus. ELi tulemused põhinevad vähesel hinnakaebuste arvul (13) ning on seetõttu ebakindlad.</p>
+    <h4 class="subh">5. Milliste tegurite ja nende kombinatsioonide korral esineb hinnakaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</h4>
+    <p class="vlink"><a href="#p4-rq5">Vaata: Uurimisküsimus 5 →</a></p>
+    <p>Analüüsi tulemuste sünteesi põhjal pakub grupp välja järgmised võimalikud sekkumismeetmed, mille rakendatavust ja tõhusust tuleks täiendavalt hinnata.</p>
+    <ul class="vprops"><li><b>Juhi rakenduse ajakohasuse tagamine.</b> Kuna väljaspool ELi ilmnes seos vanemate rakenduseversioonide ja kõrgema hinnakaebuste esinemissageduse vahel, võiks kaaluda automaatseid uuendusi või vananenud versioonide kasutamise piiramist.</li><li><b>Juhtide seadmete tehnilise kvaliteedi parandamine.</b> Võimaliku lahendusena võiks kaaluda kontrollitud kvaliteediga taastatud nutitelefonide (<span lang="en">refurbished devices</span>) rendiprogrammi, et parandada juhtide ligipääsu töökindlatele seadmetele. Meetme põhjendamiseks tuleks täiendavalt hinnata seadmete vanuse ja tehniliste omaduste seost GPS-i kvaliteediga.</li><li><b>GPS-i ebatäpsuste arvestamine hinnaarvutuses.</b> Madala GPS-i usaldusväärsuse korral võiks kaaluda alternatiivset hinnaarvutust, mis tugineb osaliselt prognoositud distantsile. GPS-i kvaliteeti oleks võimalik jälgida sõidu ajal ning ebatäpsuste ilmnemisel kohandada hinnaarvutust või suunata sõit täiendavasse kontrolli.</li><li><b>Kliendi teavitamine võimalikust hinnamuutusest.</b> Märkimisväärse hinnakõrvalekalde korral võiks süsteem klienti enne sõidu lõppu teavitada ning selgitada hinnamuutuse põhjust. See aitaks suurendada hinnastamise läbipaistvust, kuid teavituse ajastust ja sõnastust tuleks testida, et vältida negatiivset kliendikogemust.</li><li><b>Juhi ja reisija füüsilise eraldatuse suurendamine.</b> Võimaliku meetmena võiks kaaluda sõidukitesse kaitsevaheseinte paigaldamist, et vähendada juhi ja reisija vahelisi konflikte ning parandada turvalisust. See võimaldaks turvalisemalt pakkuda juhtidele kaasaegsemaid ja paremini töötavaid vahendeid turgudel, kus see muidu võiks olla probleemiks.</li><li><b>Pikemate sõitude täiendav kontroll.</b> Üle 20&nbsp;km pikkuste sõitude puhul võiks rakendada automaatset riskimärgistust ning kontrollida sõidu lõppedes tegeliku ja prognoositud distantsi ning hinna erinevusi. Kontrolli käivitamiseks võiks kasutada mitme riskiteguri kombinatsiooni, et vältida põhjendamatult suure hulga sõitude märgistamist.</li></ul>
+    <p>Sekkumiste prioriseerimisel tuleks arvestada nii riskiteguritega seotud hinnakaebuste esinemissagedust, mõjutatud sõitude arvu kui ka meetmete rakendamise keerukust ja võimalikku mõju. Esmajärjekorras võiks hinnata rakenduseversioonide ajakohastamist, GPS-i ebatäpsuste tuvastamist ning suure hinnakõrvalekaldega sõitude automaatset kontrolli.</p>
   </section>
   <section class="part" id="p7-soovitused" data-status="valmis">
     <h3>Praktilised soovitused lahenduse kasutamiseks</h3>
