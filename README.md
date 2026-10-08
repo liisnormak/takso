@@ -2,4 +2,4 @@
 
 [🚕 Lae alla grupitöö esitlus (HTML)](./index.html)
 
-[Power BI aruande kasutusjuhend](./KASUTUSJUHEND.md)
+[Power BI aruande kasutusjuhend](./kasutusjuhend.md)
