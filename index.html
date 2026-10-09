@@ -784,6 +784,8 @@ ol.vprops{padding-left:1.4rem}
 @media (max-height:820px){#lqSlide .lqg .key{display:inline-flex}#lqSlide .lqg .dt{display:inline;margin-right:.6em}}
 .p5why2{font-weight:400;color:var(--muted)}
 .s-rqc .synth .src-q{color:var(--data)}
+.p5nobar li{grid-template-columns:auto minmax(0,1fr)!important}
+.p5nobar .p5s-why b{color:var(--alert)}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -802,7 +804,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.54</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.56</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1953,7 +1955,7 @@ DIVIDE(
         <div><p class="dt">Hinnakaebuste määr hinnatüübi järgi</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>sõitude arv</li><li><i class="kline"></i>hinnakaebuste määr</li></ul><div class="lqc" data-c="pt"></div></div>
         <div><p class="dt">2. Hinnakaebuste määr hinnamuutuse järgi</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>sõitude arv</li><li><i class="kline"></i>hinnakaebuste määr</li></ul><div class="lqc" data-c="dev"></div></div>
       
-        <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prediction-hinnastus: 20,3&nbsp;% vs upfront 3,5&nbsp;%, aga 997 / 998 on väljaspool ELi.</p><ul><li>väljaspool ELi: prediction 20,4 % vs upfront 13,4 %</li><li>lõpphind üle 2× eeldatavast: 18,7 %</li><li>sihtkoha muutmine ja hinnamuutuse põhjus ei ole riskitegurid</li></ul></div></div>
+        <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prediction-sõitudest sai kaebuse 20,3&nbsp;%, upfront-sõitudest 3,5&nbsp;%, aga 997 / 998 prediction-sõitu on väljaspool ELi.</p><ul><li>väljaspool ELi: prediction 20,4 % vs upfront 13,4 %</li><li>lõpphind üle 2× eeldatavast: 18,7 %</li><li>sihtkoha muutmine ja hinnamuutuse põhjus ei ole riskitegurid</li></ul></div></div>
       </div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 3. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
@@ -1981,10 +1983,10 @@ DIVIDE(
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span><a class="s-doclink" href="#p4-rq5">Loe lähemalt: Uurimisküsimus 5: ettepanekud <span aria-hidden="true">→</span></a></p>
     <h2 class="s-title">Meie ettepanekud hinnakaebuste vähendamiseks</h2>
     <div class="s-body"><div class="s-p5">
-      <p class="p5s-pl">Prioriteet 1 <span>mõõdetava ja kontrollitava mõjuga, järjestatud osakaalu (309 hinnakaebusest) ja seose kindluse järgi.</span></p><ol class="p5slide"><li><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5s-why">Halb GPS-ühendus: <b>60&nbsp;%</b> hinnakaebustest · <span>küsimus 4 · <span class="p5why2">seos püsib ka teiste tegurite arvessevõtmisel</span></span></div><span class="p5-bar"><span style="width:91%"></span></span></li><li><span class="p5-n">2</span><div><b>Väljaspool ELi kasutada prediction-hinnastuse asemel eeldatavat hinda ja piirata suurt hinnatõusu</b><span class="p5s-why">Prediction-hinnastus: <b>66&nbsp;%</b> hinnakaebustest · <span>küsimus 3 · <span class="p5why2">mõju ei saa piirkonnast eraldada</span></span></div><span class="p5-bar"><span style="width:100%"></span></span></li><li><span class="p5-n">3</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5s-why">Vana juhi rakendus (9+ versiooni vanem): <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:36%"></span></span></li><li><span class="p5-n">4</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5s-why">Pikad sõidud: <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 2</span></span></div><span class="p5-bar"><span style="width:36%"></span></span></li><li><span class="p5-n">5</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5s-why">Halva GPS-iga telefonimudelid: <b>17&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:26%"></span></span></li></ol>
+      <p class="p5s-pl">Prioriteet 1 <span>mõõdetava ja kontrollitava mõjuga; järjestatud selle järgi, kui suurt osa kaebustest probleem puudutab ja kui kindel on seos (vt dokumentatsioon).</span></p><ol class="p5slide p5nobar"><li><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5s-why">Halva GPS-iga sõitudest sai kaebuse <b>24,4&nbsp;%</b>, hea GPS-iga 3,6&nbsp;% · küsimus 4</span></div></li><li><span class="p5-n">2</span><div><b>Väljaspool ELi kasutada prediction-hinnastuse asemel eeldatavat hinda ja piirata suurt hinnatõusu</b><span class="p5s-why">Prediction-sõitudest sai kaebuse <b>20,3&nbsp;%</b>, upfront-sõitudest 3,5&nbsp;% · küsimus 3</span></div></li><li><span class="p5-n">3</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5s-why">9+ versiooni vanema rakendusega sõitudest sai kaebuse <b>17,6&nbsp;%</b>, uusimaga 6,6&nbsp;% · küsimus 4</span></div></li><li><span class="p5-n">4</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5s-why">Üle 20&nbsp;km sõitudest sai kaebuse <b>19,1&nbsp;%</b>, 0–2&nbsp;km sõitudest 4,2&nbsp;% · küsimus 2</span></div></li><li><span class="p5-n">5</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5s-why">3 TECNO mudeliga sõitudest sai kaebuse <b>34,4&nbsp;%</b>, keskmiselt 7,4&nbsp;% · küsimus 4</span></div></li></ol>
       <p class="p5s-low"><b>Prioriteet 2 (nice-to-have, tajutud probleem vajab valideerimist):</b> kliendi teavitamine enne sõidu lõppu · kaitsevaheseinad juhi ja sõitja vahel.</p>
     </div></div>
-    <aside class="s-notes" hidden><b>Märkmed:</b> Ettepanekud tulenevad küsimuste 1–4 tulemustest. Iga ettepaneku juures: kus, mida teha, kui suurt osa kaebustest see puudutab.</aside>
+    <aside class="s-notes" hidden><b>Märkmed:</b> Arvud on samad mis uurimisküsimuste slaididel (kaebuste määr). Järjekorra põhjus: halb GPS puudutab 186 / 309 kaebust (60 %) ja seos püsib ka teiste tegurite arvessevõtmisel; prediction-sõitudelt tuli 203 / 309 kaebust (66 %), kuid 997 / 998 neist on väljaspool ELi, seega ei saa hinnatüübi mõju piirkonnast eraldada. Väljaspool ELi tõstab halb GPS kaebuste määra 2,5×, prediction 1,5×.</aside>
   </section>
   <section class="slide propslide" id="s11" data-i="11" aria-roledescription="slaid" aria-label="Slaid 11 / 13: Dokumentatsioon ja tööjaotus" hidden>
     <p class="s-kicker"><span class="num">04</span> Dokumentatsioon ja tiim <span class="s-min">· 2 min</span><a class="s-doclink" href="#p8-jaotus">Loe lähemalt: Tööjaotus <span aria-hidden="true">→</span></a></p>
