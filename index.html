@@ -788,7 +788,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.41</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.43</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -807,16 +807,7 @@ ol.vprops{padding-left:1.4rem}
 </header>
 
 <div id="panel-doc" role="tabpanel" aria-labelledby="tab-doc" hidden>
-<section class="progress" aria-labelledby="progress-h">
-  <h2 id="progress-h">Töö seis</h2>
-  <p id="progressText" class="num" style="margin:0"></p>
-  <div class="bar" id="progressBar" aria-hidden="true"></div>
-  <ul class="legend-row" id="legendRow"></ul>
-  <details>
-    <summary>Tegemata osad (<span id="openCount">0</span>)</summary>
-    <ul class="open-list" id="openList"></ul>
-  </details>
-</section>
+
 
 <div class="layout">
 <nav class="toc" aria-labelledby="toc-h">
@@ -1567,11 +1558,6 @@ DIVIDE(
     <p class="extlink">Täielik juhend: <a href="https://github.com/raikokarpov-star/takso/blob/main/kasutusjuhend.md" target="_blank" rel="noopener">kasutusjuhend.md GitHubis</a><span class="vh"> (avaneb uues aknas)</span></p>
   </section>
 
-  <section class="part" id="p4-info" data-status="tegemata">
-    <h3>Info-leht</h3>
-    <div class="todo">kust andmed tulevad, millal viimati uuendati, kuidas number allikani viia (visuaal → mõõdik → tabel → allikas).</div>
-  </section>
-
   <section class="part" id="p4-sonastik" data-status="valmis">
     <h3>Mõõdikute tabel</h3>
     <div class="tw"><table class="t">
@@ -1775,15 +1761,24 @@ DIVIDE(
   <section class="part" id="p8-jaotus" data-status="valmis">
     <h3>Tööjaotus</h3>
     <p>Projekt viidi läbi neljaliikmelises rühmas. Töö jagati andmete ettevalmistamise, andmemudeli loomise, analüüsi, visualiseerimise, dokumenteerimise ja projekti koordineerimise vahel. Olulisemad andmemudeli ja analüüsi otsused arutati grupis ühiselt.</p>
-    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><ul><li>Tehniliste tegurite analüüs: GPS, rakendused, telefonimudelid ja nende kombinatsioonid.</li><li>Projekti teema valik ja kickoff.</li><li>Projekti esimese faasi planeerimine, standup-rutiinid ja projekti viimase faasi planeerimine.</li><li>Esitluse ja dokumentatsiooni lahenduse loomine ning kujundus.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li></ul>
+    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><ul><li>Tehniliste tegurite analüüs: GPS, rakendused, telefonimudelid ja nende kombinatsioonid.</li><li>Projekti teema valik ja kickoff.</li><li>Projekti esimese faasi planeerimine, standup-rutiinid ja projekti viimase faasi planeerimine.</li><li>Esitluse ja dokumentatsiooni lahenduse loomine ning kujundus.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><ul><li>Uurimisküsimus 2: millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega.</li><li>Visuaalide loomine arenduskeskkonnas Visual Studio Code ja Power BI-s.</li><li>Uurimisküsimuse probleemi lahenduse otsimine ning tulemuste tõlgendamine.</li></ul></li></ul>
   </section>
   <section class="part" id="p8-valjakutse" data-status="valmis">
     <h3>Tehniline eneserefleksioon</h3>
-    <p>Üheks projekti olulisemaks tehniliseks väljakutseks oli erineva detailsusastmega andmete ühendamine viisil, mis ei põhjustaks Power BI analüüsis topeltlugemist.</p>
-    <p>Sõidu ehk tellimuse ja klienditoe pöördumise grain ei olnud sama: ühe tellimusega võis olla seotud mitu klienditoe pöördumist. Kui hinnakaebusi oleks analüüsitud otse pöördumiste ridade põhjal, oleks üks tellimus saanud analüüsis esineda mitu korda.</p>
-    <p>Probleemi lahendamiseks kasutati <code>dim_order</code> tabelit ning tellimuse tasemele loodi <code>had_overpaid_ride_ticket</code> tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks hinnakaebus. Power BI mõõdikutes arvestatakse hinnakaebusega sõite unikaalsete tellimuste põhjal.</p>
-    <p>Selle probleemi lahendamine näitas, kui oluline on enne visualiseerimise ja mõõdikute loomist määratleda iga tabeli grain ning mõista tabelite vahelisi seoseid. Õige arvutusvalem üksi ei taga korrektset tulemust, kui andmemudeli seosed või analüüsi detailsusaste on valesti määratud.</p>
-    <p>Teine oluline õppetund oli tähtskeemi roll analüüsimudelis. Projekti käigus korrastati tellimuse, seadme, rakenduse versiooni, kuupäeva ja hinnastamise kontekstiga seotud tunnused vastavatesse dimensioonitabelitesse. Faktitabelisse jäänud dubleeruvad tehnilised või dimensioonitunnused peideti Power BI Report view's, et kasutaja kasutaks analüüsis järjepidevalt õigeid dimensioonivälju.</p>
+    <div class="refl"><p class="refl-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b></p>
+    <p>Üheks projekti olulisemaks tehniliseks väljakutseks oli erineva detailsusastmega andmete ühendamine nii, et Power BI analüüsis ei tekiks topeltlugemist. Kuna ühe tellimusega võis olla seotud mitu klienditoe pöördumist, tuli tagada, et sama sõitu ei arvestataks analüüsis mitu korda. Selle lahendamiseks kasutati <code>dim_order</code> tabelis tunnust <code>had_overpaid_ride_ticket</code>, mille abil sai tuvastada, kas tellimusega oli seotud vähemalt üks hinnakaebus. See õpetas mulle, kui oluline on enne analüüsi alustamist mõista andmete detailsusastet (grain) ja tabelitevahelisi seoseid.</p>
+    <p>Teiseks oluliseks õppetunniks oli tähtskeemi ülesehituse ja dimensioonitabelite rolli mõistmine. Projekti käigus korrastati andmemudelit ning eraldati erinevad tunnused vastavatesse dimensioonitabelitesse. Samuti peideti Power BI-s dubleeruvad väljad, et analüüsimisel kasutataks järjepidevalt õigeid tunnuseid. Sain paremini aru, et korrektne andmemudel on usaldusväärsete analüüsitulemuste eelduseks.</p>
+    <p>Korraldusliku poole pealt oli suurimaks väljakutseks nelja grupiliikme töö sünkroniseerimine. Kuna igaüks töötas lokaalse PostgreSQL-i andmebaasi ja Power BI projektiga, oli oluline tagada, et kõik kasutaksid sama andmestruktuuri ja projekti ajakohast versiooni. Git-repositooriumi kasutamine aitas muudatusi hallata, kuid tõi esile ka vajaduse selgete kokkulepete ja järjepideva suhtluse järele.</p>
+    <p>Kokkuvõttes andis projekt mulle parema arusaama andmemudeli ülesehitamisest, andmete korrektsuse tagamisest ning meeskonnatöö ja versioonihalduse olulisusest ühise analüüsilahenduse arendamisel.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b></p>
+    <h4 class="subh">Mis läks hästi?</h4>
+    <p>Uurimistöö teema on esiteks väga aktuaalne ning teisalt huvipakkuv, mistõttu teema uurimine ei valmistanud igavust. Ma tahan kiita tiimi sünergiat ja koostöövalmidust, kannatlikkust ning kestvat kirge kogu uurimisprobleemi otsimise kestel. Eraldi sooviksin kiita programmeerimiskeele Pythoni võimekust ja selle kasutamise sõbralikkust.</p>
+    <h4 class="subh">Kus kogesime raskusi?</h4>
+    <p>Loodud tiim koges esmakordselt ühtse eesmärgini jõudmist ning varasem teadmine teineteisest oli pinnapealne, mistõttu tuli ühelt poolt lahendada mõistatust ning paralleelselt võtta arvesse ka iga tiimiliikme omapära. Nende kahe tunnuse liitmisel kogetud raskust hindaksin justkui tuleviku väetisena, mis ajas kasvas kindlamaks kujuks. Töövahenditest tooksin välja GitHubi versioonihalduse jonnakuse, aga nii nagu inimestega, on temaga sama lugu: mida rohkem praktiseerida ja kasutada, seda lihtsamaks läheb ka tema käsitlus.</p>
+    <h4 class="subh">Mida teeksime teisiti?</h4>
+    <p>Ei oska midagi esile tõsta ja võtan kogu projekti kogemust tervikuna. Kindlasti on palju tehnilisi ning suhtluse nüansse, mis tulevad minuga kaasa, ja uutel väljakutsetel oskan juba teadlikumalt ning kogenumana raskustele reageerida.</p>
+    </div>
   </section>
   <section class="part" id="p8-korraldus" data-status="valmis">
     <h3>Korralduslik eneserefleksioon</h3>
@@ -1810,9 +1805,20 @@ DIVIDE(
   </section>
   <section class="part" id="p8-ai" data-status="valmis">
     <h3>AI-kogemus</h3>
+    <div class="refl"><p class="refl-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b></p>
     <p>Tehisaru oli projekti käigus kõige kasulikum tehniliste probleemide samm-sammulisel lahendamisel, SQL- ja DAX-loogika selgitamisel ning võimalike lahendusvariantide võrdlemisel. Samuti kasutati tehisaru dokumentatsiooni struktureerimise ja sõnastamise toetamiseks.</p>
     <p>Samas tuli tehisaru pakutud lahendusi kontrollida projekti tegeliku andmemudeli ja andmete põhjal. Näiteks Power BI-s võib vale tulemuse põhjus esmapilgul tunduda DAX-valemi või seose probleemina, kuigi tegelik põhjus võib olla visualiseeringus kasutatud väli valest või andmemudeliga ühendamata tabelist. Projekti käigus ilmnes selline olukord seadme tunnuse kasutamisel.</p>
     <p>Sellised juhtumid näitasid, et tehisaru on kasulik probleemide lahendamise ja õppimise abivahend, kuid ei asenda andmemudeli mõistmist ega tulemuste kontrollimist. Tehisaru soovitusi valideeriti SQL-päringute, Power BI mudeli ja tegelike analüüsitulemuste abil.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b></p>
+    <p>Tehisaru aitas kirjutada Pythoni koodi andmete puhastamise faasis, SQL-päringuid andmemudeli loomise etapis ja DAX-i visuaalide loomise juures. Kasutasin teda eraõpetajana, et selgitada DBeaveri, Power BI ja GitHubi töövoogusid ja leida üles vajalikke funktsionaalsusi, parandada katkisi visuaale, ühendada (merge) failiversioone, pöörata neid tagasi ja lahendada konflikte. Põrgatasin tehisaruga ka oma analüüsiideid ja säästsin aega, kui tehisaru hinnangul ei oleks analüüs meie andmete põhjal väärtusliku järelduseni viinud.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b></p>
+    <p>Tehisaru aitas kogu selle perioodi jooksul nii Visual Studio Code’is kui ka GitHubis orienteeruda. Lisaks aitas see suunata paremale ning täpsemale mõistmisele ja lahendada olukordi, kus ilmnesid mingil põhjusel tõrked.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b></p>
+    <div class="todo add">AI-kogemus.</div>
+    </div>
   </section>
 </section>
 
@@ -1970,7 +1976,7 @@ DIVIDE(
     <h2 class="s-title">Dokumentatsioon ja tööjaotus</h2>
     <div class="s-body"><div class="s-two s11">
       <div><p class="s-h">Dokumentatsioon</p><ul class="s-list sm s11docs"><li><a class="s-doclink2" href="#p1-moisted">Ärimõisted ja uurimisküsimused</a></li><li><a class="s-doclink2" href="#p2-voog">Andmevoog, tähtskeem ja grain</a></li><li><a class="s-doclink2" href="#p3-kvaliteet">Andmekvaliteedi kontrollid</a></li><li><a class="s-doclink2" href="#p3-yleandmine">Üleandmine: 8 sammu taastamiseks</a></li><li><a class="s-doclink2" href="#p5-meta">Väljade ja mõõdikute kirjeldused (<code>Description</code>)</a></li><li><a href="https://github.com/raikokarpov-star/takso" target="_blank" rel="noopener">GitHubi repo: SQL-skriptid, Power BI projekt</a></li></ul></div>
-      <div><p class="s-h">Kes mida tegi</p><ul class="s11cards"><li><p class="s11h"><span class="av av-felena" aria-hidden="true"></span><span><b>Felena Sooaluste</b><span class="s11rq">Küsimus 1 · piirkonnad</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel DBeaveris</li><li>Power BI seosed ja DAX-mõõdikud</li></ul></li><li><p class="s11h"><span class="av av-raiko" aria-hidden="true"></span><span><b>Raiko Karpov</b><span class="s11rq">Küsimus 2 · sõit vs prognoos</span></span></p><ul><li>Sõidu pikkuse ja kestuse analüüs</li><li>Interaktiivne Streamlit-raport</li></ul></li><li><p class="s11h"><span class="av av-liis" aria-hidden="true"></span><span><b>Liis Normak</b><span class="s11rq">Küsimus 3 · hinnastamine</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel, Power BI ja DAX</li><li>Dokumentatsioon</li></ul></li><li><p class="s11h"><span class="av av-hannes" aria-hidden="true"></span><span><b>Hannes Seeberg</b><span class="s11rq">Küsimus 4 · tehnilised tegurid</span></span></p><ul><li>Teema valik ja kickoff</li><li>Planeerimine ja standupid</li><li>Esitluse ja dokumentatsiooni lahendus</li></ul></li></ul></div>
+      <div><p class="s-h">Kes mida tegi</p><ul class="s11cards"><li><p class="s11h"><span class="av av-felena" aria-hidden="true"></span><span><b>Felena Sooaluste</b><span class="s11rq">Küsimus 1 · piirkonnad</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel DBeaveris</li><li>Power BI seosed ja DAX-mõõdikud</li></ul></li><li><p class="s11h"><span class="av av-raiko" aria-hidden="true"></span><span><b>Raiko Karpov</b><span class="s11rq">Küsimus 2 · sõit vs prognoos</span></span></p><ul><li>Visuaalid VS Code’is ja Power BI-s</li><li>Lahenduse otsimine ja tulemuste tõlgendamine</li></ul></li><li><p class="s11h"><span class="av av-liis" aria-hidden="true"></span><span><b>Liis Normak</b><span class="s11rq">Küsimus 3 · hinnastamine</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel, Power BI ja DAX</li><li>Dokumentatsioon</li></ul></li><li><p class="s11h"><span class="av av-hannes" aria-hidden="true"></span><span><b>Hannes Seeberg</b><span class="s11rq">Küsimus 4 · tehnilised tegurid</span></span></p><ul><li>Teema valik ja kickoff</li><li>Planeerimine ja standupid</li><li>Esitluse ja dokumentatsiooni lahendus</li></ul></li></ul></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita kiirelt, et projekt on dokumenteeritud. Paari lausega, kes mille eest vastutas.</aside>
   </section>
@@ -1978,11 +1984,11 @@ DIVIDE(
     <p class="s-kicker"><span class="num">05</span> Õppetunnid ja kokkuvõte <span class="s-min">· 2 min</span><a class="s-doclink" href="#p8-korraldus">Loe lähemalt: Korralduslik eneserefleksioon <span aria-hidden="true">→</span></a></p>
     <h2 class="s-title">Õppetunnid</h2>
     <div class="s-body"><div class="s-three">
-      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Hea teema ja meeskond, kellele see meeldis; ennast juhtivad tiimiliikmed.</li><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
-      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li><li>Power BI keeruline kasutajaliides ja failide sünkroniseerimine; mitte igaühele sobivad ülesanded.</li></ul></div>
+      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Aktuaalne ja huvitav teema; tiimi sünergia ja ennast juhtivad liikmed.</li><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
+      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li><li>Power BI keeruline kasutajaliides ja failide sünkroniseerimine; mitte igaühele sobivad ülesanded.</li><li>Uus tiim: ühine eesmärk ja iga liikme omapära tuli leida samal ajal.</li></ul></div>
       <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><ul class="s-list sm"><li>Dokumenteerime väljad ja mõõdikud kohe nende loomisel.</li><li>Määrame grain'i enne mõõdikute loomist.</li><li>Lisame valuutakursid ja hindame tunnuste koosmõju.</li><li>Planeerime tehisaru kasutuse teadlikult sisse: mida automatiseerida.</li></ul></div>
     </div>
-    <div class="s-ai"><b>Tehisaru kasutamine:</b> abivahend SQL-i, DAX-i ja dokumentatsiooni jaoks. Väljundeid kontrolliti andmete ja Power BI tulemuste põhjal.</div></div>
+    <div class="s-ai"><b>Tehisaru kasutamine:</b> abiline Pythoni, SQL-i ja DAX-i kirjutamisel, «eraõpetaja» DBeaveri, Power BI ja GitHubi töövoogudes ning analüüsiideede põrgataja. Soovitusi kontrolliti SQL-päringute, Power BI mudeli ja tegelike tulemuste abil.</div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Mis läks hästi, mis valesti, mida teeksite teisiti. AI kasutamine.</aside>
   </section>
   <section class="slide" id="s13" data-i="13" aria-roledescription="slaid" aria-label="Slaid 13 / 13: Hakkame andmetega (hinna)ootuseid juhtima! :)" hidden>
@@ -2033,12 +2039,6 @@ function buildStatus(){
   const cnt={valmis:0,mustand:0,tegemata:0,valikuline:0};
   parts.forEach(p=>{const s=p.dataset.status; cnt[s]++; const h=p.querySelector('h3'); if(s!=='valmis'&&!h.querySelector('.st')) h.insertAdjacentHTML('beforeend',badge(s));});
   const req=cnt.valmis+cnt.mustand+cnt.tegemata;
-  document.getElementById('progressText').textContent=`Kohustuslikke osi ${req}: valmis ${cnt.valmis}, mustand ${cnt.mustand}, tegemata ${cnt.tegemata}. Valikulisi ${cnt.valikuline}.`;
-  document.getElementById('progressBar').innerHTML=['valmis','mustand','tegemata'].map(s=>`<span class="s-${s}" style="width:${cnt[s]/req*100}%"></span>`).join('');
-  document.getElementById('legendRow').innerHTML=Object.keys(STATES).map(s=>`<li>${badge(s)}</li>`).join('');
-  const open=parts.filter(p=>p.dataset.status==='tegemata');
-  document.getElementById('openCount').textContent=open.length;
-  document.getElementById('openList').innerHTML=open.map(p=>{const ch=p.closest('.chapter').querySelector('h2 .n').textContent;return `<li><a href="#${p.id}">§${ch} ${esc(p.querySelector('h3').firstChild.textContent.trim())}</a></li>`}).join('');
   document.getElementById('tocList').innerHTML=[...document.querySelectorAll('.chapter')].map(ch=>{
     const ps=[...ch.querySelectorAll('.part')]; const t=ps.filter(p=>p.dataset.status==='tegemata').length;
     const h=ch.querySelector('h2'); const n=h.querySelector('.n').textContent; const title=h.textContent.replace(n,'').trim();
