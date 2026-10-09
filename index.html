@@ -788,7 +788,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.45</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.46</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1404,7 +1404,7 @@ DIVIDE(
         </form>
         <div class="rq3g">
           <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
-          <div><p class="dt">Hinnakaebuste osakaal: kui palju kestis sõit prognoosist kauem</p><div class="r3c" data-c="dur"></div></div>
+          <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu kestuse järgi</p><div class="r3c" data-c="dur"></div></div>
           <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
           <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
         </div>
@@ -1421,7 +1421,7 @@ DIVIDE(
       <li>Kui tegelik distants on prognoositust üle 20&nbsp;% suurem, on hinnakaebuste osakaal 11,3&nbsp;%, muudel sõitudel 5,8&nbsp;%. Kestuse puhul vastavalt 9,7&nbsp;% ja 5,5&nbsp;%.</li>
       <li>Muster kehtib ka väljaspool ELi: osakaal kasvab 7,5&nbsp;%-lt (0–2&nbsp;km) 33,5&nbsp;%-ni (20&nbsp;km ja rohkem).</li>
       <li>Hajuvusdiagrammidel on hinnakaebusega sõidud koondunud lühikeste prognooside alale, kus tegelik väärtus ületab prognoosi.</li>
-      <li>Kui sõit kestab prognoosist üle 30 minuti kauem, osakaal enam ei kasva (umbes 13&nbsp;%).</li>
+      <li>Tegeliku kestuse järgi kasvab hinnakaebuste osakaal kuni 30–60 minuti pikkuste sõitudeni (14,7&nbsp;%); üle 60 minuti sõitudel on see 13,6&nbsp;%.</li>
     </ul>
     <h4 class="subh">Piirangud</h4>
     <p>Analüüs põhineb ainult pöördumisega sõitudel. Seos ei tõenda, et pikem sõit või prognoosist pikem kestus põhjustab kaebuse. 19 sõidul puudub prognoos, need ei ole hajuvusdiagrammidel.</p>
@@ -1917,7 +1917,7 @@ DIVIDE(
         </form>
         <div class="rq3g">
           <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
-          <div><p class="dt">Hinnakaebuste osakaal: kui palju kestis sõit prognoosist kauem</p><div class="r3c" data-c="dur"></div></div>
+          <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu kestuse järgi</p><div class="r3c" data-c="dur"></div></div>
           <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
           <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
         </div>
@@ -2416,12 +2416,13 @@ function renderRQ3(box){if(!box)return;const idx=r3filter(box);const n=idx.lengt
   const UC=['0–5 min','5–10 min','10–20 min','20–30 min','30–60 min','≥ 60 min'],UE=[5,10,20,30,60,1e9];const un=UC.map(()=>0),uk=UC.map(()=>0);
   const sd=[],su=[];
   idx.forEach(i=>{const km=D.dm[i]/1000;const di=DE.findIndex(e=>km<=e);dn[di]++;dk[di]+=D.ot[i];
-    if(D.pds[i]>=0){const dif=(D.ds[i]-D.pds[i])/60;if(dif>0){const ui=UE.findIndex(e=>dif<=e);un[ui]++;uk[ui]+=D.ot[i];}if(!D.inv[i]&&D.pdm[i]>=0)su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);}
+    {const mn=D.ds[i]/60;const ui=UE.findIndex(e=>mn<=e);un[ui]++;uk[ui]+=D.ot[i];}
+    if(D.pds[i]>=0&&!D.inv[i]&&D.pdm[i]>=0)su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);
     if(D.pdm[i]>=0&&D.pds[i]>=0&&!D.inv[i])sd.push([D.pdm[i]/1000,km,D.ot[i]]);});
   const small=box.closest('.slide')!==null;
   box.querySelectorAll('.r3c').forEach(el=>{const W=Math.max(240,el.clientWidth||420),H=small?(innerHeight<820?100:160):240;const c=el.dataset.c;
     if(c==='dist'){const v=DC.map((_,i)=>dn[i]?dk[i]/dn[i]:0);r3bars(el,DC,v,dn,'Hinnakaebuste osakaal distantsi järgi: '+DC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
-    if(c==='dur'){const v=UC.map((_,i)=>un[i]?uk[i]/un[i]:0);r3bars(el,UC,v,un,'Hinnakaebuste osakaal selle järgi, kui palju kestis sõit prognoosist kauem: '+UC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
+    if(c==='dur'){const v=UC.map((_,i)=>un[i]?uk[i]/un[i]:0);r3bars(el,UC,v,un,'Hinnakaebuste osakaal tegeliku sõidu kestuse järgi: '+UC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
     const SH=small?(innerHeight<820?118:innerHeight<1000?175:215):340;
     if(c==='sd')r3scatter(el,sd,'km','Hajuvusdiagramm: tegelik vs prognoositud distants, '+sd.length+' sõitu',W,SH,[0,150,0,160]);
     if(c==='sdu')r3scatter(el,su,'min','Hajuvusdiagramm: tegelik vs prognoositud kestus, '+su.length+' sõitu',W,SH,[0,135,0,260]);});}
