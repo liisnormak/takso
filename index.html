@@ -800,6 +800,16 @@ table.heat tr.hg th{font-weight:700;color:var(--muted);font-size:.75rem;padding-
 .hk{display:inline-block;width:4em;height:.8em;background:linear-gradient(90deg,rgb(251,233,238),rgb(168,32,76));border-radius:2px}
 .tm-txt{display:flex;flex-direction:column;line-height:1.2}
 .s-li{font-size:.6em;color:var(--data);font-weight:700;text-decoration:underline;margin-top:.2em}
+#rq3s .rq3g.rq3g7{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.3fr);gap:1.2rem}
+#rq3s .rq3g7>.r7l{grid-column:1!important;grid-row:1!important}
+#rq3s .rq3g7>.r7r{grid-column:2!important;grid-row:1!important}
+#rq3s .rq3g7 .r7l>div,#rq3s .rq3g7 .r7r>div{grid-column:auto!important;grid-row:auto!important}
+#rq3s .rq3g7 .r7l,#rq3s .rq3g7 .r7r{display:flex;flex-direction:column;gap:.4rem;min-width:0}
+#rq3s .rq3g7 .lqnext{grid-template-columns:1fr!important;font-size:.6em;padding:.5em .8em;margin-top:.3rem}
+#rq3s .rq3g7 .lqnext ul{display:block!important;margin:0}
+#rq3s .rq3g7 .lqnext li{margin:.15em 0!important;max-width:none}
+#rq3s .rq3g7 .lqnext p{margin:0;max-width:none}
+@media (max-height:760px){#rq3s .rq3g7 .lqnext{font-size:.5em}}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -818,7 +828,7 @@ table.heat tr.hg th{font-weight:700;color:var(--muted);font-size:.75rem;padding-
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.67</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.68</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1942,14 +1952,9 @@ DIVIDE(
             <label><input type="radio" name="r3ps" value="0"><span>upfront</span></label></div></fieldset>
           <ul class="kpis sm rq3k" aria-live="polite"></ul>
         </form>
-        <div class="rq3g">
-          <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
-          <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu kestuse järgi</p><div class="r3c" data-c="dur"></div></div>
-          <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
-          <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
-        </div>
+        <div class="rq3g rq3g7"><div class="r7l"><div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div><div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu kestuse järgi</p><div class="r3c" data-c="dur"></div></div><div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prognoosist pikem sõit üksi ei seleta hinnakaebusi.</p><ul><li>upfront: 59,3 % sõitudest pikemad, hinnakaebusi 3,5 %</li><li>prediction: 75,4 % pikemad, hinnakaebusi 20,4 %</li><li>uurime täpsemalt hinnastamistüüpi (küsimus 3)</li></ul></div></div></div><div class="r7r"><div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div><div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div></div></div>
       </div>
-      <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prognoosist pikem sõit üksi ei seleta hinnakaebusi.</p><ul><li>upfront: 59,3 % sõitudest pikemad, hinnakaebusi 3,5 %</li><li>prediction: 75,4 % pikemad, hinnakaebusi 20,4 %</li><li>uurime täpsemalt hinnastamistüüpi (küsimus 3)</li></ul></div></div>
+      
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 2. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
@@ -2448,10 +2453,10 @@ function renderRQ3(box){if(!box)return;const idx=r3filter(box);const n=idx.lengt
     if(D.pds[i]>=0&&!D.inv[i]&&D.pdm[i]>=0)su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);
     if(D.pdm[i]>=0&&D.pds[i]>=0&&!D.inv[i])sd.push([D.pdm[i]/1000,km,D.ot[i]]);});
   const small=box.closest('.slide')!==null;
-  box.querySelectorAll('.r3c').forEach(el=>{const W=Math.max(240,el.clientWidth||420),H=small?(innerHeight<820?100:160):240;const c=el.dataset.c;
+  box.querySelectorAll('.r3c').forEach(el=>{const W=Math.max(240,el.clientWidth||420),H=small?Math.round(Math.min(190,innerHeight*(innerHeight<760?.11:.14))):240;const c=el.dataset.c;
     if(c==='dist'){const v=DC.map((_,i)=>dn[i]?dk[i]/dn[i]:0);r3bars(el,DC,v,dn,'Hinnakaebuste osakaal distantsi järgi: '+DC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
     if(c==='dur'){const v=UC.map((_,i)=>un[i]?uk[i]/un[i]:0);r3bars(el,UC,v,un,'Hinnakaebuste osakaal tegeliku sõidu kestuse järgi: '+UC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
-    const SH=small?(innerHeight<820?118:innerHeight<1000?175:215):340;
+    const SH=small?Math.round(Math.min(300,innerHeight*(innerHeight<760?.15:.225))):340;
     if(c==='sd')r3scatter(el,sd,'km','Hajuvusdiagramm: tegelik vs prognoositud distants, '+sd.length+' sõitu',W,SH,[0,150,0,160]);
     if(c==='sdu')r3scatter(el,su,'min','Hajuvusdiagramm: tegelik vs prognoositud kestus, '+su.length+' sõitu',W,SH,[0,135,0,260]);});}
 document.querySelectorAll('.rq3').forEach(b=>b.querySelector('.rq3f').addEventListener('change',()=>renderRQ3(b)));
