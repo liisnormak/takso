@@ -254,146 +254,82 @@ veerud = st.multiselect(
     ]
 )
 
-st.subheader("Overcharge rate (%) by actual ride distance")
+st.subheader("Overcharge rate (%) by actual vs predicted distance difference")
+
+distance_graafik = filtreeritud.copy()
+
+distance_graafik["distance_grupp"] = pd.cut(
+    distance_graafik["distance_difference"],
+    bins=[
+        -float("inf"),
+        -10,
+        -5,
+        -2,
+        0,
+        2,
+        5,
+        10,
+        float("inf")
+    ],
+    labels=[
+        "≤ −10 km",
+        "−10 kuni −5 km",
+        "−5 kuni −2 km",
+        "−2 kuni 0 km",
+        "0 kuni 2 km",
+        "2 kuni 5 km",
+        "5 kuni 10 km",
+        "≥ 10 km"
+    ],
+    include_lowest=True
+)
 
 distance_graafik = (
-
-    filtreeritud
-
-    .assign(
-
-        distance_grupp=pd.cut(
-
-            filtreeritud["distance_km"],
-
-            bins=[0, 2, 5, 10, 20, 50, float("inf")],
-
-            labels=[
-                "0–2 km",
-                "2–5 km",
-                "5–10 km",
-                "10–20 km",
-                "20–50 km",
-                "50+ km"
-            ],
-
-            include_lowest=True
-
-        )
-
-    )
-
-    .groupby(
-        "distance_grupp",
-        observed=True
-    )
-
+    distance_graafik
+    .groupby("distance_grupp", observed=True)
     .agg(
         overcharge_pct=("overpaid_ride_ticket", "mean"),
         sõitude_arv=("order_id_new", "nunique")
     )
-
     .reset_index()
-
 )
 
 distance_graafik["overcharge_pct"] = (
     distance_graafik["overcharge_pct"] * 100
 )
 
-fig_distance = px.bar(
-    distance_graafik,
-    x="distance_grupp",
-    y="overcharge_pct",
-    labels={
-        "distance_grupp": "Actual distance (km)",
-        "overcharge_pct": "Overcharge rate (%)"
-    }
-)
-
-fig_distance.update_xaxes(
-    title_text="Actual distance (km)",
-    title_font=dict(
-        size=14,
-        family="Arial Black",
-        color="black"
-    ),
-    tickfont=dict(
-        size=13,
-        family="Arial Black",
-        color="black"
-    )
-)
-
-fig_distance.update_yaxes(
-    title_text="Overcharge rate (%)",
-    title_font=dict(
-        size=14,
-        family="Arial Black",
-        color="black"
-    ),
-    tickfont=dict(
-        size=13,
-        family="Arial Black",
-        color="black"
-    )
-)
-
-fig_distance.update_layout(
-    plot_bgcolor="white",
-    paper_bgcolor="white",
-    margin=dict(
-        l=70,
-        r=30,
-        t=20,
-        b=60
-    )
-)
-
-fig_distance.update_xaxes(
-    tickfont=dict(
-        size=13,
-        family="Arial Black",
-        color="black"
-    )
-)
-
-fig_distance.update_yaxes(
-    tickfont=dict(
-        size=13,
-        family="Arial Black",
-        color="black"
-    )
-)
-
 distance_graafik["tekst"] = (
-    distance_graafik["overcharge_pct"].map(lambda x: f"{x:.1f}%".replace(".", ","))
+    distance_graafik["overcharge_pct"]
+    .map(lambda x: f"{x:.1f}%".replace(".", ","))
     + "<br>"
-    + distance_graafik["sõitude_arv"].map(lambda x: f"{x:,}".replace(",", " ") + " Rides")
+    + distance_graafik["sõitude_arv"]
+    .map(lambda x: f"{x:,}".replace(",", " ") + " Rides")
 )
 
 fig_distance = px.bar(
-
     distance_graafik,
-
     x="distance_grupp",
-
     y="overcharge_pct",
-
     text="tekst",
-
     labels={
-
-        "distance_grupp": "Actual distance (km)",
-
+        "distance_grupp": "Actual − predicted distance difference (km)",
         "overcharge_pct": "Overcharge rate (%)"
-
     }
+)
 
+fig_distance.update_layout(
+    plot_bgcolor="white",
+    paper_bgcolor="white",
+    margin=dict(
+        l=70,
+        r=30,
+        t=20,
+        b=60
+    )
 )
 
 fig_distance.update_xaxes(
-    title_text="Actual distance (km)",
+    title_text="Actual − predicted distance difference (km)",
     title_font=dict(
         size=14,
         family="Arial Black",
@@ -418,56 +354,22 @@ fig_distance.update_yaxes(
         family="Arial Black",
         color="black"
     )
-)
-
-fig_distance.update_layout(
-    plot_bgcolor="white",
-    paper_bgcolor="white",
-    margin=dict(
-        l=70,
-        r=30,
-        t=20,
-        b=60
-    )
-)
-
-fig_distance.update_xaxes(
-    tickfont=dict(
-        size=13,
-        family="Arial Black",
-        color="black"
-    )
-)
-
-fig_distance.update_yaxes(
-    tickfont=dict(
-        size=13,
-        family="Arial Black",
-        color="black"
-    )
-
 )
 
 fig_distance.update_traces(
-
     textposition="outside",
-
     textfont=dict(
-
         size=13,
-
         family="Arial Black",
-
         color="black"
-
     )
-
 )
 
 st.plotly_chart(
     fig_distance,
     width="stretch"
 )
+
 st.subheader("Actual vs Predicted distance (y=x)")
 
 distance_scatter =  analüüs[
@@ -667,198 +569,123 @@ st.plotly_chart(
     width="stretch"
 )
 
-st.subheader("Overcharge rate (%) by actual ride duration")
+st.subheader("Overcharge rate (%) by actual vs predicted duration difference")
+
+duration_graafik = filtreeritud.copy()
+
+duration_graafik["duration_grupp"] = pd.cut(
+    duration_graafik["duration_difference"],
+    bins=[
+        -float("inf"),
+        -10,
+        -5,
+        0,
+        5,
+        10,
+        20,
+        30,
+        60,
+        float("inf")
+    ],
+    labels=[
+        "≤ −10 min",
+        "−10 kuni −5 min",
+        "−5 kuni 0 min",
+        "0 kuni 5 min",
+        "5 kuni 10 min",
+        "10 kuni 20 min",
+        "20 kuni 30 min",
+        "30 kuni 60 min",
+        "≥ 60 min"
+    ],
+    include_lowest=True
+)
 
 duration_graafik = (
-
-    filtreeritud
-
-    .assign(
-
-        duration_grupp=pd.cut(
-
-            filtreeritud["duration_min"],
-
-            bins=[0, 5, 10, 20, 40, 60, float("inf")],
-
-            labels=[
-
-                "0–5 min",
-
-                "5–10 min",
-
-                "10–20 min",
-
-                "20–40 min",
-
-                "40–60 min",
-
-                "60+ min"
-
-            ],
-
-            include_lowest=True
-
-        )
-
-    )
-
-    .groupby(
-
-        "duration_grupp",
-
-        observed=True
-
-    )
-
+    duration_graafik
+    .groupby("duration_grupp", observed=True)
     .agg(
-
         overcharge_pct=("overpaid_ride_ticket", "mean"),
-
         sõitude_arv=("order_id_new", "nunique")
-
     )
-
     .reset_index()
-
 )
 
 duration_graafik["overcharge_pct"] = (
-
     duration_graafik["overcharge_pct"] * 100
-
 )
 
 duration_graafik["tekst"] = (
-
     duration_graafik["overcharge_pct"]
-
     .map(lambda x: f"{x:.1f}%".replace(".", ","))
-
     + "<br>"
-
     + duration_graafik["sõitude_arv"]
-
     .map(lambda x: f"{x:,}".replace(",", " ") + " Rides")
-
 )
 
 fig_duration = px.bar(
-
     duration_graafik,
-
     x="duration_grupp",
-
     y="overcharge_pct",
-
     text="tekst",
-
     labels={
-
-        "duration_grupp": "Actual ride duration (min)",
-
+        "duration_grupp": "Actual − predicted duration difference (min)",
         "overcharge_pct": "Overcharge rate (%)"
-
     }
-
 )
 
 fig_duration.update_layout(
-
     plot_bgcolor="white",
-
     paper_bgcolor="white",
-
     margin=dict(
-
         l=70,
-
         r=30,
-
         t=20,
-
         b=60
-
     )
-
 )
 
 fig_duration.update_xaxes(
-
-    title_text="Actual ride duration (min)",
-
+    title_text="Actual − predicted duration difference (min)",
     title_font=dict(
-
         size=14,
-
         family="Arial Black",
-
         color="black"
-
     ),
-
     tickfont=dict(
-
         size=13,
-
         family="Arial Black",
-
         color="black"
-
     )
-
 )
 
 fig_duration.update_yaxes(
-
     title_text="Overcharge rate (%)",
-
     title_font=dict(
-
         size=14,
-
         family="Arial Black",
-
         color="black"
-
     ),
-
     tickfont=dict(
-
         size=13,
-
         family="Arial Black",
-
         color="black"
-
     )
-
 )
 
 fig_duration.update_traces(
-
     textposition="outside",
-
     textfont=dict(
-
         size=13,
-
         family="Arial Black",
-
         color="black"
-
     )
-
 )
 
 st.plotly_chart(
-
     fig_duration,
-
     width="stretch"
-
 )
-
 
 st.subheader("Actual vs Predicted ride duration (y=x)")
 

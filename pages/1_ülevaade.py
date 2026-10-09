@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import altair as alt
+import numpy as np
 
 st.set_page_config(
     page_title="VALI-IT",
@@ -587,43 +588,81 @@ st.plotly_chart(
     width="stretch"
 )
 st.markdown(
-    '<div class="chart-title">Kaebuste osakaal (%) seadme tootja järgi</div>',
+    '<div class="chart-title">Top 10 seadme tootjat kaebuste osakaalu järgi (vähemalt 30 sõitu)</div>',
     unsafe_allow_html=True
+)
+
+filtreeritud["device_brand"] = (
+    filtreeritud["device_name"]
+    .str.upper()
+    .str.strip()
+)
+
+tingimused = [
+    filtreeritud["device_brand"].str.startswith(prefix, na=False)
+    for prefix in [
+        "TECNO", "INFINIX", "ITEL", "HMD", "IPHONE",
+        "SAMSUNG", "HUAWEI", "XIAOMI", "OPPO", "LAVA",
+        "HTC", "SONY", "SHARP", "TCL", "FUJITSU",
+        "KONKA", "FOXCONN", "VODAFONE", "BLU", "FERO", "LGE"
+    ]
+]
+
+tootjad = [
+    "TECNO", "INFINIX", "ITEL", "NOKIA", "APPLE",
+    "SAMSUNG", "HUAWEI", "XIAOMI", "OPPO", "LAVA",
+    "HTC", "SONY", "SHARP", "TCL", "FUJITSU",
+    "KONKA", "FOXCONN", "VODAFONE", "BLU", "FERO", "LG"
+]
+
+filtreeritud["device_brand"] = np.select(
+    tingimused,
+    tootjad,
+    default="Other"
 )
 
 seade_overcharge = (
     filtreeritud
-    .groupby("Koond seadmed")["overpaid_ride_ticket"]
-    .mean()
+    .groupby("device_brand")["overpaid_ride_ticket"]
+    .agg(["mean", "count"])
     .reset_index()
 )
 
 seade_overcharge["overcharge_pct"] = (
-    seade_overcharge["overpaid_ride_ticket"] * 100
+    seade_overcharge["mean"] * 100
+)
+
+seade_overcharge = (
+    seade_overcharge
+    .nlargest(10, "overcharge_pct")
+    .sort_values("overcharge_pct")
+)
+
+# Arvestame ainult tootjaid, kellel on vähemalt 30 sõitu
+seade_overcharge = seade_overcharge[
+    seade_overcharge["count"] >= 30
+]
+
+# Valime 10 suurima kaebuste osakaaluga tootjat
+seade_overcharge = (
+    seade_overcharge
+    .nlargest(10, "overcharge_pct")
+    .sort_values("overcharge_pct")
 )
 
 fig_seade = px.bar(
     seade_overcharge.sort_values("overcharge_pct"),
     x="overcharge_pct",
-    y="Koond seadmed",
+    y="device_brand",
     orientation="h",
     text="overcharge_pct",
-    color="Koond seadmed",
-    color_discrete_sequence=[
-        "#2E86AB",
-        "#F18F01",
-        "#6A4C93",
-        "#43AA8B",
-        "#E76F51",
-        "#577590",
-        "#90BE6D",
-        "#F9C74F",
-        "#277DA1"
-    ],
+    color="device_brand",
+    color_discrete_sequence=[ "#2E86AB", "#F18F01", "#6A4C93", "#43AA8B", "#E76F51", "#577590", "#90BE6D", "#F9C74F", "#277DA1", "#F94144" ],
     labels={
-        "Koond seadmed": "",
+        "device_brand": "",
         "overcharge_pct": ""
-    }
+    },
+    custom_data=["count"] 
 )
 
 fig_seade.update_traces(
@@ -633,7 +672,7 @@ fig_seade.update_traces(
         size=15,
         family="Arial Black",
         color="black"
-    )
+    ), hovertemplate=( "Tootja: %{y}<br>" "Kaebuste osakaal: %{x:.1f}%<br>" "Sõitude arv: %{customdata[0]}<extra></extra>" )
 )
 
 fig_seade.update_layout(
