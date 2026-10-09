@@ -770,6 +770,14 @@ ol.vprops{padding-left:1.4rem}
 #rq3s .rq3g .key{font-size:.45em;margin:0}
 #rq3s .rq3f .kpis b{font-size:1em}
 #rq3s .rq3f{margin-bottom:.1rem}#rq3s .r3zbar .reset{font-size:1em;padding:.1em .5em}
+#lqSlide .lqg{grid-template-columns:minmax(0,.75fr) minmax(0,2.4fr);grid-template-rows:auto auto;gap:.3rem 1.4rem}
+#lqSlide .lqg>div:nth-child(1){grid-column:1;grid-row:1/3}
+#lqSlide .lqg>div:nth-child(2){grid-column:2;grid-row:1}
+#lqSlide .lqg>div:nth-child(3){grid-column:2;grid-row:2}
+#lqSlide .lqnext ul{display:flex;flex-wrap:wrap;gap:.1em 1.4em}
+#lqSlide .lqnext .q1fact{font-size:1em}
+@media (max-height:820px){#lqSlide .lqg .key{display:inline-flex}#lqSlide .lqg .dt{display:inline;margin-right:.6em}}
+.p5why2{font-weight:400;color:var(--muted)}
 /* Skeemid */
 .diagram rect.box{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
 .diagram rect.box.open{stroke-dasharray:5 4;fill:none}
@@ -788,7 +796,7 @@ ol.vprops{padding-left:1.4rem}
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.40</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.48</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -807,16 +815,7 @@ ol.vprops{padding-left:1.4rem}
 </header>
 
 <div id="panel-doc" role="tabpanel" aria-labelledby="tab-doc" hidden>
-<section class="progress" aria-labelledby="progress-h">
-  <h2 id="progress-h">Töö seis</h2>
-  <p id="progressText" class="num" style="margin:0"></p>
-  <div class="bar" id="progressBar" aria-hidden="true"></div>
-  <ul class="legend-row" id="legendRow"></ul>
-  <details>
-    <summary>Tegemata osad (<span id="openCount">0</span>)</summary>
-    <ul class="open-list" id="openList"></ul>
-  </details>
-</section>
+
 
 <div class="layout">
 <nav class="toc" aria-labelledby="toc-h">
@@ -889,7 +888,6 @@ ol.vprops{padding-left:1.4rem}
         <h4><span class="vh">Küsimus 5. </span>Meie ettepanekud hinnakaebuste vähendamiseks</h4>
         <dl class="rqdl">
           <div><dt>Eesmärk</dt><dd>Tuvastada kõrge riskiga, kuid samal ajal piisavalt suure mahuga probleemkohad, mille parandamine võiks vähendada hinnakaebuste koguarvu.</dd></div>
-          <div><dt>Analüüsime</dt><dd><ul><li>Kombineerime küsimustes 1–4 oluliseks osutunud tegureid: piirkond, hinnatüüp, GPS-i kvaliteet, distantsi ja kestuse kõrvalekalded.</li><li>Vaatame, milliste kombinatsioonide korral on hinnakaebuste määr kõige kõrgem.</li><li>Arvestame lisaks määrale probleemi mahtu: kui suurt osa kõigist hinnakaebustest kombinatsioon puudutab.</li><li>Eeldatava hinnaga sõitudel analüüsime hinnahälvet: kas suurema hälbe korral esineb kaebusi rohkem.</li><li>Tulemuste põhjal määratleme peamised probleemkohad ja sekkumiskohad, millele ettevõttel oleks kõige mõistlikum keskenduda.</li></ul></dd></div>
           <div><dt>Analüütikud</dt><dd><span class="who"><span class="av av-raiko" aria-hidden="true"></span>Raiko Karpov</span><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span><span class="who"><span class="av av-hannes" aria-hidden="true"></span>Hannes Seeberg</span><span class="who"><span class="av av-felena" aria-hidden="true"></span>Felena Sooaluste</span></dd></div>
         </dl>
       </li>
@@ -900,7 +898,7 @@ ol.vprops{padding-left:1.4rem}
     <h3>Ärimõisted</h3>
     <div class="tw"><table class="t terms">
       <thead><tr><th scope="col">Mõiste</th><th scope="col">Ingliskeelne termin</th><th scope="col">Tähendus</th></tr></thead>
-      <tbody><tr><th scope="row">Sõit</th><td lang="en" class="en">Ride</td><td>Üks tellimusega seotud taksosõit.</td></tr><tr><th scope="row">Prognoositud distants</th><td lang="en" class="en">Predicted distance</td><td>Sõidu tellimise hetkel sisestatud pealevõtu- ja sihtkoha põhjal prognoositud sõidudistants.</td></tr><tr><th scope="row">Tegelik distants</th><td lang="en" class="en">Actual distance</td><td>Sõidu jooksul tegelikult läbitud distants.</td></tr><tr><th scope="row">Prognoositud kestus</th><td lang="en" class="en">Predicted duration</td><td>Sõidu tellimise hetkel prognoositud sõidu kestus.</td></tr><tr><th scope="row">Tegelik kestus</th><td lang="en" class="en">Actual duration</td><td>Sõidu tegelik kestus.</td></tr><tr><th scope="row">Eeldatav hind</th><td lang="en" class="en">Upfront price</td><td>Kliendile enne sõitu kuvatud eeldatav hind, mis põhineb prognoositud distantsil ja kestusel.</td></tr><tr><th scope="row">Lõpuhind</th><td lang="en" class="en">Metered price</td><td>Sõidu tegelike parameetrite põhjal kujunenud hind.</td></tr><tr><th scope="row">Hinnakaebus</th><td lang="en" class="en">Overcharge ticket</td><td>Klienditoe pöördumine, milles klient kaebab, et sõidu eest küsitud hind oli liiga kõrge.</td></tr><tr><th scope="row">Hinnakaebusega sõit</th><td lang="en" class="en">Overcharge ride</td><td>Sõit, mille tellimusega on seotud vähemalt üks hinnakaebus. Ühe tellimusega võib olla seotud mitu klienditoe pöördumist, kuid analüüsis arvestatakse sellist sõitu ühe hinnakaebusega sõiduna, et vältida sama sõidu mitmekordset lugemist.</td></tr><tr><th scope="row">GPS-ühenduse kvaliteet</th><td lang="en" class="en">GPS confidence</td><td>GPS-ühenduse kvaliteedi indikaator, kus 1 tähistab head ja 0 halba GPS-ühendust.</td></tr><tr><th scope="row">Distantsi hälve</th><td lang="en" class="en">Distance deviation</td><td>Tegeliku ja prognoositud sõidudistantsi suhteline erinevus.</td></tr><tr><th scope="row">Hinnahälve</th><td lang="en" class="en">Price deviation</td><td>Lõpuhinna ja eeldatava hinna suhteline erinevus.</td></tr></tbody>
+      <tbody><tr><th scope="row">Sõit</th><td lang="en" class="en">Ride</td><td>Üks tellimusega seotud taksosõit.</td></tr><tr><th scope="row">Prognoositud distants</th><td lang="en" class="en">Predicted distance</td><td>Sõidu tellimise hetkel sisestatud pealevõtu- ja sihtkoha põhjal prognoositud sõidudistants.</td></tr><tr><th scope="row">Tegelik distants</th><td lang="en" class="en">Actual distance</td><td>Sõidu jooksul tegelikult läbitud distants.</td></tr><tr><th scope="row">Prognoositud kestus</th><td lang="en" class="en">Predicted duration</td><td>Sõidu tellimise hetkel prognoositud sõidu kestus.</td></tr><tr><th scope="row">Tegelik kestus</th><td lang="en" class="en">Actual duration</td><td>Sõidu tegelik kestus.</td></tr><tr><th scope="row">Eeldatav hind</th><td lang="en" class="en">Upfront price</td><td>Kliendile enne sõitu kuvatud eeldatav hind, mis põhineb prognoositud distantsil ja kestusel.</td></tr><tr><th scope="row">Lõpphind</th><td lang="en" class="en">Metered price</td><td>Sõidu tegelike parameetrite põhjal kujunenud hind.</td></tr><tr><th scope="row">Hinnakaebus</th><td lang="en" class="en">Overcharge ticket</td><td>Klienditoe pöördumine, milles klient kaebab, et sõidu eest küsitud hind oli liiga kõrge.</td></tr><tr><th scope="row">Hinnakaebusega sõit</th><td lang="en" class="en">Overcharge ride</td><td>Sõit, mille tellimusega on seotud vähemalt üks hinnakaebus. Ühe tellimusega võib olla seotud mitu klienditoe pöördumist, kuid analüüsis arvestatakse sellist sõitu ühe hinnakaebusega sõiduna, et vältida sama sõidu mitmekordset lugemist.</td></tr><tr><th scope="row">GPS-ühenduse kvaliteet</th><td lang="en" class="en">GPS confidence</td><td>GPS-ühenduse kvaliteedi indikaator, kus 1 tähistab head ja 0 halba GPS-ühendust.</td></tr><tr><th scope="row">Distantsi hälve</th><td lang="en" class="en">Distance deviation</td><td>Tegeliku ja prognoositud sõidudistantsi suhteline erinevus.</td></tr><tr><th scope="row">Hinnahälve</th><td lang="en" class="en">Price deviation</td><td>Lõpphinna ja eeldatava hinna suhteline erinevus.</td></tr></tbody>
     </table></div>
   </section>
 </section>
@@ -915,7 +913,7 @@ ol.vprops{padding-left:1.4rem}
     <p>Andmed on pärit sõiduteenusepakkujalt, kes jagab neid Google Sheetsi failina tootejuhi ametikoha kandidaatidele. Andmed ei pruugi olla täielikult usaldusväärsed: osa äri- ja sõiduandmetest on failist eemaldatud.</p>
     <p><b>Andmestikus on ainult lõpetatud sõidud, mille kohta on tehtud klienditoe pöördumine.</b> Tulemused ei kirjelda seega kõiki sõiduteenusepakkuja sõite.</p>
     <p>Algandmestik sisaldab muu hulgas järgmisi tunnuseid:</p>
-    <ul class="cols2"><li>tellimuse ja sõidu identifikaatorid</li><li>tegelik ja prognoositud sõidudistants ning kestus</li><li>eeldatav hind (<span lang="en">upfront price</span>) ja lõpuhind (<span lang="en">metered price</span>)</li><li>GPS-ühenduse kvaliteet</li><li>sõidu ja tellimuse staatus</li><li>sihtkoha sisestamiste ja muudatuste arv</li><li>hinnastamise ja hinnamuudatustega seotud tunnused</li><li>sõitja ja juhi rakenduse versioonid</li><li>seadmega seotud andmed</li><li>EL / väljaspool ELi indikaator</li><li>pettuseskoor (<span lang="en">fraud score</span>)</li><li>klienditoe pöördumise identifikaator</li><li>hinnakaebuse indikaator (<span lang="en">overpaid ride ticket</span>)</li></ul>
+    <ul class="cols2"><li>tellimuse ja sõidu identifikaatorid</li><li>tegelik ja prognoositud sõidudistants ning kestus</li><li>eeldatav hind (<span lang="en">upfront price</span>) ja lõpphind (<span lang="en">metered price</span>)</li><li>GPS-ühenduse kvaliteet</li><li>sõidu ja tellimuse staatus</li><li>sihtkoha sisestamiste ja muudatuste arv</li><li>hinnastamise ja hinnamuudatustega seotud tunnused</li><li>sõitja ja juhi rakenduse versioonid</li><li>seadmega seotud andmed</li><li>EL / väljaspool ELi indikaator</li><li>pettuseskoor (<span lang="en">fraud score</span>)</li><li>klienditoe pöördumise identifikaator</li><li>hinnakaebuse indikaator (<span lang="en">overpaid ride ticket</span>)</li></ul>
     <p>Konfidentsiaalsuse tagamiseks ei kasutata projektis ega Git-repositooriumis andmestiku ega selle päritoluettevõtte tegelikku nime.</p>
     <figure class="chart shot">
       <p class="ct">Algfail Google Sheetsis</p>
@@ -1011,8 +1009,8 @@ ol.vprops{padding-left:1.4rem}
       <li class="js">
         <p class="jh"><span class="jn" aria-hidden="true">3</span><span class="jw">lõpp</span></p>
         <h4>Lõpp ja arveldus</h4>
-        <p class="jd">Sõit lõpeb ja arvutatakse lõpuhind.</p>
-        <dl><div class="jc"><dt><code>metered_price</code> <span class="jt">arv</span></dt><dd>Lõpuhind: tegeliku sõidu hind.</dd></div><div class="jc"><dt><code>change_reason_pricing</code> <span class="jt">tekst</span></dt><dd>Kelle tegevuse tõttu hind muutus: juht või sõitja muutis sihtkohta või vahepeatust. 94&nbsp;% ridadest tühi.</dd></div><div class="jc"><dt><code>b_state</code> <span class="jt">tekst</span></dt><dd>Sõidu olek. «finished» = sõit toimus. Kõigil ridadel «finished».</dd></div><div class="jc"><dt><code>order_state</code> <span class="jt">tekst</span></dt><dd>Tellimuse olek. Kõigil ridadel «finished», ühel «active».</dd></div><div class="jc"><dt><code>order_try_state</code> <span class="jt">tekst</span></dt><dd>Tellimuskatse olek. Kõigil ridadel «finished».</dd></div></dl>
+        <p class="jd">Sõit lõpeb ja arvutatakse lõpphind.</p>
+        <dl><div class="jc"><dt><code>metered_price</code> <span class="jt">arv</span></dt><dd>Lõpphind: tegeliku sõidu hind.</dd></div><div class="jc"><dt><code>change_reason_pricing</code> <span class="jt">tekst</span></dt><dd>Kelle tegevuse tõttu hind muutus: juht või sõitja muutis sihtkohta või vahepeatust. 94&nbsp;% ridadest tühi.</dd></div><div class="jc"><dt><code>b_state</code> <span class="jt">tekst</span></dt><dd>Sõidu olek. «finished» = sõit toimus. Kõigil ridadel «finished».</dd></div><div class="jc"><dt><code>order_state</code> <span class="jt">tekst</span></dt><dd>Tellimuse olek. Kõigil ridadel «finished», ühel «active».</dd></div><div class="jc"><dt><code>order_try_state</code> <span class="jt">tekst</span></dt><dd>Tellimuskatse olek. Kõigil ridadel «finished».</dd></div></dl>
       </li>
       <li class="js">
         <p class="jh"><span class="jn" aria-hidden="true">4</span><span class="jw">järel</span></p>
@@ -1091,13 +1089,13 @@ ol.vprops{padding-left:1.4rem}
         <tr><td>Hinnamuutuse põhjus puudub <code>change_reason_pricing</code></td><td class="r">4&nbsp;645 (94,0&nbsp;%)</td><td>Liiga hõre, ei sobi peamiseks selgitavaks tunnuseks.</td><td>Jäeti alles; ei kasutata peamise analüütilise tunnusena suure puuduvuse tõttu.</td></tr>
         <tr><td>Pettuseskoor puudub <code>fraud_score</code></td><td class="r">2&nbsp;759 (55,8&nbsp;%)</td><td>Puudumine liiga suur lihtsaks võrdluseks.</td><td>Puuduvad väärtused märgiti abiveerus <code>fraud_score_status</code> väärtusega «Missing».</td></tr>
         <tr><td>Eeldatav hind puudub <code>upfront_price</code></td><td class="r">1&nbsp;534 (31,0&nbsp;%)</td><td>Struktuurne: «prediction» hinnastamisel ja muudetud sihtkohaga sõitudel eeldatavat hinda pole.</td><td>Jäeti hinnahälbe arvutusest välja, sest ilma eeldatava hinnata ei saa hinnahälvet arvutada.</td></tr>
-        <tr><td>Lõpuhind ja ennustused puuduvad</td><td class="r">20 (0,4&nbsp;%)</td><td>Samad 20 rida puuduvad kõigis neljas veerus. Suhtarvudest välja.</td><td>Märgiti nn «ghost ride»'ideks; hinnastuse ja prognoosiga seotud analüüsidest jäeti välja.</td></tr>
+        <tr><td>Lõpphind ja ennustused puuduvad</td><td class="r">20 (0,4&nbsp;%)</td><td>Samad 20 rida puuduvad kõigis neljas veerus. Suhtarvudest välja.</td><td>Märgiti nn «ghost ride»'ideks; hinnastuse ja prognoosiga seotud analüüsidest jäeti välja.</td></tr>
         <tr><td>Tellimuse tunnus kordub <code>order_id_new</code></td><td class="r">777 (15,7&nbsp;%)</td><td>4&nbsp;943 rida = 4&nbsp;166 tellimust. Rida on pöördumine, mitte unikaalne sõit.</td><td>Analüüs koondati sõidu ehk tellimuse tasemele, et sama tellimus ei läheks mitmekordse pöördumise tõttu mitu korda arvesse.</td></tr>
         <tr><td>Tellimuse ja tellimuskatse tunnus erinevad</td><td class="r">58 (1,2&nbsp;%)</td><td>Kontrollitud: igal tellimusel on täpselt üks tellimuskatse tunnus, seega korduskatseid ei ole. Erinev on ainult tunnuse number.</td><td>Mõju analüüsile ei ole.</td></tr>
         <tr><td>Läbitud vahemaa 0 (kehtetu sõit)</td><td class="r">64 (1,3&nbsp;%)</td><td>Võimalik jälgimise viga või erijuht.</td><td>Märgitud; analüüsist välja.</td></tr>
         <tr><td>Kestus 0</td><td class="r">25 (0,5&nbsp;%)</td><td>Kõik 25 on ka vahemaa 0 ridade seas.</td><td>Kaetud eelmise reaga.</td></tr>
         <tr><td>Ennustatud vahemaa ebausutav</td><td class="r">9 (0,2&nbsp;%)</td><td>Ennustus 0–1&nbsp;m, tegelik üle 1&nbsp;km (nt 6&nbsp;083&nbsp;m vs 1&nbsp;m). Moonutab suhtarve.</td><td>Jäeti andmestikku, kuid käsitleti äärmusväärtustena; suhtarvudel põhinevas analüüsis arvestati tulemuste tõlgendamisel nende mõju.</td></tr>
-        <tr><td>Hinnaskaalad erinevad piirkonniti</td><td class="r">kõik</td><td>Lõpuhinna mediaan ELis 5,90, väljaspool ELi 12&nbsp;768. Tõenäoliselt eri vääring. Absoluutseid hindu turgude vahel ei võrrelda.</td><td>Kasutatakse ainult suhtelist hälvet.</td></tr>
+        <tr><td>Hinnaskaalad erinevad piirkonniti</td><td class="r">kõik</td><td>Lõpphinna mediaan ELis 5,90, väljaspool ELi 12&nbsp;768. Tõenäoliselt eri vääring. Absoluutseid hindu turgude vahel ei võrrelda.</td><td>Kasutatakse ainult suhtelist hälvet.</td></tr>
         <tr><td>Tellimuse olek «active», kuigi sõit on lõpetatud</td><td class="r">1 (0,0&nbsp;%)</td><td>Olekute vastuolu.</td><td>Märgiti vastuoluliseks kirjeks; üksikjuhtum jäeti andmestikku, kuid sellele ei tuginetud analüüsis.</td></tr>
       </tbody>
     </table></div>
@@ -1148,7 +1146,7 @@ SWITCH(
     'Rides'[Distance Deviation %] &lt;= 0.50, 5,
     6
 )</code></pre>
-    <p>Hinna kõrvalekalde analüüsimiseks loodi <code>Price Deviation %</code>, mis näitab lõpuhinna ja eeldatava hinna suhtelist erinevust:</p>
+    <p>Hinna kõrvalekalde analüüsimiseks loodi <code>Price Deviation %</code>, mis näitab lõpphinna ja eeldatava hinna suhtelist erinevust:</p>
 <pre><code>Price Deviation % =
 DIVIDE(
     'Rides'[Metered Price] - 'Rides'[Upfront Price],
@@ -1290,7 +1288,7 @@ MEDIANX(
     <h4 class="subh"><code>Average Price Deviation</code></h4>
 <pre><code>Average Price Deviation =
 AVERAGE('Rides'[Price Deviation %])</code></pre>
-    <p>Mõõdik näitab eeldatava hinna ja lõpuhinna keskmist suhtelist erinevust. Arvutatakse ainult eeldatava hinnaga sõitude puhul, kuna <code>prediction</code>-tüüpi hinnastusega sõitudel eeldatav hind puudub.</p>
+    <p>Mõõdik näitab eeldatava hinna ja lõpphinna keskmist suhtelist erinevust. Arvutatakse ainult eeldatava hinnaga sõitude puhul, kuna <code>prediction</code>-tüüpi hinnastusega sõitudel eeldatav hind puudub.</p>
     <h4 class="subh"><code>Overcharge Share by Region %</code></h4>
 <pre><code>Overcharge Share by Region % =
 DIVIDE(
@@ -1319,7 +1317,7 @@ DIVIDE(
     <h3>Esialgne analüüs</h3>
     <p>Analüüsi esimeses etapis keskenduti sellele, millised sõidu tunnused eristavad hinnakaebusega ja hinnakaebuseta sõite. Eesmärk oli tuvastada tunnused, mille puhul ilmnevad kahe grupi vahel suuremad erinevused ning mida tuleks edasises analüüsis põhjalikumalt uurida.</p>
     <p>Esialgses analüüsis võrreldi järgmisi tunnuseid:</p>
-    <ul><li>GPS-ühenduse kvaliteet;</li><li>tegeliku ja prognoositud distantsi erinevus;</li><li>tegeliku ja prognoositud sõidukestuse erinevus;</li><li>lõpuhinna ja eeldatava hinna suhteline erinevus;</li><li>ELi ja väljaspool ELi sõidud.</li></ul>
+    <ul><li>GPS-ühenduse kvaliteet;</li><li>tegeliku ja prognoositud distantsi erinevus;</li><li>tegeliku ja prognoositud sõidukestuse erinevus;</li><li>lõpphinna ja eeldatava hinna suhteline erinevus;</li><li>ELi ja väljaspool ELi sõidud.</li></ul>
     <p>Esialgsete tulemuste põhjal kujunesid olulisemateks edasisteks uurimissuundadeks GPS-ühenduse kvaliteet, ELi ja väljaspool ELi sõidud, hinnastamistüübid ning tegeliku ja prognoositud distantsi erinevus. Edasises analüüsis vaadeldakse neid tunnuseid nii eraldi kui ka koos, et hinnata, kas halva GPS-ühenduse ja suurema distantsi kõrvalekalde samaaegne esinemine on seotud hinnakaebuste suurema osakaaluga.</p>
   </section>
 
@@ -1328,7 +1326,7 @@ DIVIDE(
     <p>ELi ja väljaspool ELi sõitude võrdlemise eesmärk on hinnata, kas nende kahe segmendi vahel esineb erinevusi tunnustes, mis võivad olla seotud hinnakaebuste tekkimisega.</p>
     <p>Segmentide võrdlemisel analüüsitakse:</p>
     <ul><li>sõitude arvu ja osakaalu;</li><li>hinnakaebusega sõitude määra (<code>Overcharge Ride Rate</code>);</li><li>halva GPS-ühendusega sõitude osakaalu;</li><li>mediaanset absoluutset distantsi kõrvalekallet;</li><li>distantsi kõrvalekalde suunda;</li><li>hinna suhtelist kõrvalekallet;</li><li>tegeliku ja prognoositud sõidukestuse erinevust.</li></ul>
-    <p>ELi ja väljaspool ELi sõitude absoluutseid hindu omavahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside alusel ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel lõpuhinna ja eeldatava hinna protsentuaalset erinevust sama sõidu piires.</p>
+    <p>ELi ja väljaspool ELi sõitude absoluutseid hindu omavahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside alusel ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel lõpphinna ja eeldatava hinna protsentuaalset erinevust sama sõidu piires.</p>
   </section>
 
   <section class="part" id="p4-pohimotted" data-status="valmis">
@@ -1414,7 +1412,7 @@ DIVIDE(
         </form>
         <div class="rq3g">
           <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
-          <div><p class="dt">Hinnakaebuste osakaal: kui palju kestis sõit prognoosist kauem</p><div class="r3c" data-c="dur"></div></div>
+          <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu kestuse järgi</p><div class="r3c" data-c="dur"></div></div>
           <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
           <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
         </div>
@@ -1431,7 +1429,7 @@ DIVIDE(
       <li>Kui tegelik distants on prognoositust üle 20&nbsp;% suurem, on hinnakaebuste osakaal 11,3&nbsp;%, muudel sõitudel 5,8&nbsp;%. Kestuse puhul vastavalt 9,7&nbsp;% ja 5,5&nbsp;%.</li>
       <li>Muster kehtib ka väljaspool ELi: osakaal kasvab 7,5&nbsp;%-lt (0–2&nbsp;km) 33,5&nbsp;%-ni (20&nbsp;km ja rohkem).</li>
       <li>Hajuvusdiagrammidel on hinnakaebusega sõidud koondunud lühikeste prognooside alale, kus tegelik väärtus ületab prognoosi.</li>
-      <li>Kui sõit kestab prognoosist üle 30 minuti kauem, osakaal enam ei kasva (umbes 13&nbsp;%).</li>
+      <li>Tegeliku kestuse järgi kasvab hinnakaebuste osakaal kuni 30–60 minuti pikkuste sõitudeni (14,7&nbsp;%); üle 60 minuti sõitudel on see 13,6&nbsp;%.</li>
     </ul>
     <h4 class="subh">Piirangud</h4>
     <p>Analüüs põhineb ainult pöördumisega sõitudel. Seos ei tõenda, et pikem sõit või prognoosist pikem kestus põhjustab kaebuse. 19 sõidul puudub prognoos, need ei ole hajuvusdiagrammidel.</p>
@@ -1441,7 +1439,7 @@ DIVIDE(
     <h3>Uurimisküsimus 3: milline hinnastamine probleemiga kaasneb?</h3>
     <div class="rqres-head"><p class="rqres-q">Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</p><p class="rqres-who"><span class="who"><span class="av av-liis" aria-hidden="true"></span>Liis Normak</span></p></div>
     <h4 class="subh">Andmed ja meetod</h4>
-    <p>Analüüs on tehtud sõidu ehk tellimuse tasemel mõõdikutega <code>Distinct Ride Count</code>, <code>Overcharge Ride Count</code> ja <code>Overcharge Ride Rate</code>. Uuritakse nelja hinnastamisega seotud tegurit: hinnatüüp, eeldatava hinna ja lõpuhinna erinevus, hinnamuutuse põhjus ja sihtkoha muutmine. Visualiseeringud on samad mis Liisi Power BI lehel; piirkonna filter vastab lehe <code>EU Indicator</code> valikule.</p>
+    <p>Analüüs on tehtud sõidu ehk tellimuse tasemel mõõdikutega <code>Distinct Ride Count</code>, <code>Overcharge Ride Count</code> ja <code>Overcharge Ride Rate</code>. Uuritakse nelja hinnastamisega seotud tegurit: hinnatüüp, eeldatava hinna ja lõpphinna erinevus, hinnamuutuse põhjus ja sihtkoha muutmine. Visualiseeringud on samad mis Liisi Power BI lehel; piirkonna filter vastab lehe <code>EU Indicator</code> valikule.</p>
     <ul class="kpis k8"><li><b class="num">4&nbsp;166</b><span>sõitu (<code>Distinct Ride Count</code>)</span></li><li><b class="num">309</b><span>hinnakaebusega sõitu</span></li><li><b class="num">7,4&nbsp;%</b><span>hinnakaebuste määr</span></li><li><b class="num">2&nbsp;946</b><span>sõitu, millel on mõlemad hinnad</span></li><li><b class="num">1&nbsp;682</b><span>väljaspool ELi sõitu</span></li><li><b class="num">296</b><span>väljaspool ELi hinnakaebusega</span></li><li><b class="num">17,6&nbsp;%</b><span>väljaspool ELi määr</span></li><li><b class="num">672</b><span>väljaspool ELi, mõlemad hinnad</span></li></ul>
     <div class="rq3l" id="lqDoc">
     <form class="dfil lq-reg sticky" onsubmit="return false" aria-label="Piirkonna filter"><fieldset><legend>Piirkond</legend><div class="seg">
@@ -1457,10 +1455,10 @@ DIVIDE(
     <ul><li>Prediction-hinnastusega sõitudel esineb hinnakaebusi rohkem kui upfront-hinnastusega sõitudel.</li><li>Prediction-sõitudest on hinnakaebusega 20,3&nbsp;%, upfront-sõitudest ainult 3,5&nbsp;%.</li><li>Väljaspool ELi on prediction-sõitudest hinnakaebusega 20,4&nbsp;% ja upfront-sõitudest 13,4&nbsp;%. Kõrge oli ka nende sõitude osakaal, mille sihtkoht muutus, kuid selliseid sõite oli vähe (13).</li></ul>
     <p class="lq-concl">→ Prediction-hinnastus on väljaspool ELi seotud kõrgema hinnakaebuste määraga, kuid piirkond selgitab osa algselt nähtud suurest erinevusest.</p>
     <h4 class="subh">2. Hinnakõrvalekalde seosed</h4>
-    <p><b>Kas eeldatava hinna ja lõpuhinna erinevus on seotud hinnakaebuste esinemisega?</b></p>
-    <ul><li>Analüüs hõlmab ainult 2&nbsp;946 sõitu, millel on olemas nii eeldatav hind (<code>Upfront Price</code>) kui ka lõpuhind (<code>Metered Price</code>).</li><li>Eeldatav hind: ligikaudne hind, mida pakuti enne sõidu algust.</li><li>Lõpuhind: sõidu tegelik hind.</li></ul>
+    <p><b>Kas eeldatava hinna ja lõpphinna erinevus on seotud hinnakaebuste esinemisega?</b></p>
+    <ul><li>Analüüs hõlmab ainult 2&nbsp;946 sõitu, millel on olemas nii eeldatav hind (<code>Upfront Price</code>) kui ka lõpphind (<code>Metered Price</code>).</li><li>Eeldatav hind: ligikaudne hind, mida pakuti enne sõidu algust.</li><li>Lõpphind: sõidu tegelik hind.</li></ul>
     <figure class="chart wide"><p class="ct">Hinnakaebuste määr hinnamuutuse järgi</p><p class="cs">Tulbad: sõitude arv; joon: hinnakaebuste määr (ainult mõlema hinnaga sõidud)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>sõitude arv</li><li><i class="kline"></i>hinnakaebuste määr</li></ul><div class="lqc" data-c="dev"></div><figcaption>Liisi Power BI leht: <code>Price Deviation Group</code>, mõõdikud <code>Both Prices Count</code> ja <code>Both Prices Overcharge Ride Rate</code>. Rühmade piiridel võib arv Power BI-st erineda 1–4 sõidu võrra ümardamise tõttu.</figcaption></figure>
-    <ul><li>Kuni 50&nbsp;% positiivse hinnakõrvalekalde puhul ei ole näha selget kasvavat mustrit.</li><li>50–100&nbsp;% → 6,5&nbsp;%.</li><li>100&nbsp;%+ → 18,7&nbsp;%.</li><li>Ka täpselt 0&nbsp;% kõrvalekaldega sõitudel on hinnakaebuste määr 5,1&nbsp;%. See viitab, et kõik hinnakaebused ei ole seletatavad lõpuhinna tõusuga.</li></ul>
+    <ul><li>Kuni 50&nbsp;% positiivse hinnakõrvalekalde puhul ei ole näha selget kasvavat mustrit.</li><li>50–100&nbsp;% → 6,5&nbsp;%.</li><li>100&nbsp;%+ → 18,7&nbsp;%.</li><li>Ka täpselt 0&nbsp;% kõrvalekaldega sõitudel on hinnakaebuste määr 5,1&nbsp;%. See viitab, et kõik hinnakaebused ei ole seletatavad lõpphinna tõusuga.</li></ul>
     <p class="lq-concl">→ Kõige selgemalt eristuvad üle 100&nbsp;% hinnatõusuga sõidud: neist ligi iga viies sai hinnakaebuse.</p>
     <h4 class="subh">3. Hinnamuutuse põhjuse seosed</h4>
     <p><b>Kas hinna muutmine sõidu ajal on seotud hinnakaebuste esinemisega?</b></p>
@@ -1476,7 +1474,7 @@ DIVIDE(
     </div>
     <h4 class="subh">Vastus küsimusele (kokkuvõte)</h4>
     <div class="callout">
-    <ul><li>Prediction-hinnastusega sõitudel esineb hinnakaebusi selgelt rohkem kui upfront-sõitudel (20,3&nbsp;% vs 3,5&nbsp;%). Samas on prediction peaaegu täielikult seotud väljaspool ELi sõitudega, mistõttu ei saa hinnatüübi mõju piirkonna mõjust eraldada.</li><li>Upfront-sõitudel eristub kõige selgemalt väga suur hinnatõus: kui lõpuhind oli üle 2× eeldatavast hinnast, oli hinnakaebuste määr 18,7&nbsp;%. Väiksemate hinnatõusude puhul selget kasvavat mustrit ei ilmnenud.</li><li>Sihtkoha muutmine ja hinnamuutuse põhjus ei paistnud hinnakaebuste riski suurendavat ega selgitanud prediction-sõitude kõrgemat määra.</li></ul>
+    <ul><li>Prediction-hinnastusega sõitudel esineb hinnakaebusi selgelt rohkem kui upfront-sõitudel (20,3&nbsp;% vs 3,5&nbsp;%). Samas on prediction peaaegu täielikult seotud väljaspool ELi sõitudega, mistõttu ei saa hinnatüübi mõju piirkonna mõjust eraldada.</li><li>Upfront-sõitudel eristub kõige selgemalt väga suur hinnatõus: kui lõpphind oli üle 2× eeldatavast hinnast, oli hinnakaebuste määr 18,7&nbsp;%. Väiksemate hinnatõusude puhul selget kasvavat mustrit ei ilmnenud.</li><li>Sihtkoha muutmine ja hinnamuutuse põhjus ei paistnud hinnakaebuste riski suurendavat ega selgitanud prediction-sõitude kõrgemat määra.</li></ul>
     <p><b>→ Hinnastamise vaatest on peamised riskikohad prediction-hinnastus ja väga suur hinnatõus upfront-sõitudel.</b> Prediction-hinnastuse puhul vajab edasist analüüsi, kas kõrgem määr tuleneb hinnastamisest endast või väljaspool ELi sõitude muudest omadustest.</p></div>
     <h4 class="subh">Piirangud</h4>
     <p>Hinnatüübi ja piirkonna mõju ei saa andmetes eraldada. Hinnakõrvalekalle on arvutatav ainult 2&nbsp;946 sõidule (71&nbsp;%). Seos ei tõenda põhjust.</p>
@@ -1546,8 +1544,8 @@ DIVIDE(
     </figure>
     <h4 class="subh">Prioriteet 1: mõõdetava ja kontrollitava mõjuga ettepanekud</h4>
     <ol class="p5list"><li class="prop5"><div class="p5-h"><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5-imp"><span class="p5-bar"><span style="width:91%"></span></span>60&nbsp;% hinnakaebustest</span></div></div>
-      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Halb GPS-ühendus (<a href="#p4-rq4">Uurimisküsimus 4</a>). Halva GPS-iga sõidud on 18&nbsp;% sõitudest, kuid annavad 60&nbsp;% hinnakaebustest (186 / 309). Hinnakaebuste määr on 24,4&nbsp;% vs 3,6&nbsp;%.</dd></div><div><dt>Mida teha</dt><dd>GPS-i kvaliteeti ei pea ette teadma: <code>gps_confidence</code> on teada sõidu lõpus, arveldamise hetkel. Kui GPS oli halb, kasutatakse lõpuhinna arvutamisel prognoositud distantsi või piiratakse lõpuhinna kõrvalekallet eeldatavast hinnast.</dd></div><div><dt>Riskid</dt><dd>Kui tegelik marsruut oli põhjendatult pikem, saab juht vähem tasu. Vajab reeglit, millal juht saab erandit taotleda.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">2</span><div><b>Väljaspool ELi kasutada prediction-hinnastuse asemel eeldatavat hinda ja piirata suurt hinnatõusu</b><span class="p5-imp"><span class="p5-bar"><span style="width:100%"></span></span>66&nbsp;% hinnakaebustest</span></div></div>
-      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Prediction-hinnastus (<a href="#p4-rq3">Uurimisküsimus 3</a>). Prediction-sõitudest on hinnakaebusega 20,3&nbsp;%, upfront-sõitudest 3,5&nbsp;%; prediction-sõidud annavad 66&nbsp;% hinnakaebustest (203 / 309). Upfront-sõitudel tõuseb määr 18,7&nbsp;%-ni, kui lõpuhind on üle 2× eeldatavast hinnast.</dd></div><div><dt>Mida teha</dt><dd>Pakkuda ka väljaspool ELi sõitjale enne sõitu eeldatavat hinda ning piirata lõpuhinna tõusu (näiteks kuni 2× eeldatavast), välja arvatud põhjendatud muudatuste korral (sihtkoha muutus).</dd></div><div><dt>Riskid</dt><dd>Mõju ei saa piirkonnast eraldada: 997 / 998 prediction-sõitu on väljaspool ELi. Seepärast on see teine, mitte esimene prioriteet, kuigi osakaal on suurim; halva GPS-i seos püsib ka teiste tegurite arvessevõtmisel.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">3</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5-imp"><span class="p5-bar"><span style="width:36%"></span></span>24&nbsp;% hinnakaebustest</span></div></div>
+      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Halb GPS-ühendus (<a href="#p4-rq4">Uurimisküsimus 4</a>). Halva GPS-iga sõidud on 18&nbsp;% sõitudest, kuid annavad 60&nbsp;% hinnakaebustest (186 / 309). Hinnakaebuste määr on 24,4&nbsp;% vs 3,6&nbsp;%.</dd></div><div><dt>Mida teha</dt><dd>GPS-i kvaliteeti ei pea ette teadma: <code>gps_confidence</code> on teada sõidu lõpus, arveldamise hetkel. Kui GPS oli halb, kasutatakse lõpphinna arvutamisel prognoositud distantsi või piiratakse lõpphinna kõrvalekallet eeldatavast hinnast.</dd></div><div><dt>Riskid</dt><dd>Kui tegelik marsruut oli põhjendatult pikem, saab juht vähem tasu. Vajab reeglit, millal juht saab erandit taotleda.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">2</span><div><b>Väljaspool ELi kasutada prediction-hinnastuse asemel eeldatavat hinda ja piirata suurt hinnatõusu</b><span class="p5-imp"><span class="p5-bar"><span style="width:100%"></span></span>66&nbsp;% hinnakaebustest</span></div></div>
+      <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Prediction-hinnastus (<a href="#p4-rq3">Uurimisküsimus 3</a>). Prediction-sõitudest on hinnakaebusega 20,3&nbsp;%, upfront-sõitudest 3,5&nbsp;%; prediction-sõidud annavad 66&nbsp;% hinnakaebustest (203 / 309). Upfront-sõitudel tõuseb määr 18,7&nbsp;%-ni, kui lõpphind on üle 2× eeldatavast hinnast.</dd></div><div><dt>Mida teha</dt><dd>Pakkuda ka väljaspool ELi sõitjale enne sõitu eeldatavat hinda ning piirata lõpphinna tõusu (näiteks kuni 2× eeldatavast), välja arvatud põhjendatud muudatuste korral (sihtkoha muutus).</dd></div><div><dt>Riskid</dt><dd>Mõju ei saa piirkonnast eraldada: 997 / 998 prediction-sõitu on väljaspool ELi. Seepärast on see teine, mitte esimene prioriteet, kuigi osakaal on suurim; halva GPS-i seos püsib ka teiste tegurite arvessevõtmisel.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">3</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5-imp"><span class="p5-bar"><span style="width:36%"></span></span>24&nbsp;% hinnakaebustest</span></div></div>
       <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Vana juhi rakendus (9+ versiooni vanem) (<a href="#p4-rq4">Uurimisküsimus 4</a>). Vana juhi rakendus on 10&nbsp;% sõitudest, kuid annab 24&nbsp;% hinnakaebustest. Väljaspool ELi kahekordistab see hinnakaebuste määra (šansside suhe 2,7); koos halva GPS-iga lõpeb iga teine sõit hinnakaebusega.</dd></div><div><dt>Mida teha</dt><dd>Sundida või meelde tuletada uuendust, kui juhi rakendus on uusimast üle 8 versiooni vanem. Lihtsaim ja odavaim samm.</dd></div><div><dt>Riskid</dt><dd>Vanad telefonid ei pruugi uut versiooni toetada; seos võib osaliselt tuleneda telefonist, mitte versioonist.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">4</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5-imp"><span class="p5-bar"><span style="width:36%"></span></span>24&nbsp;% hinnakaebustest</span></div></div>
       <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Pikad sõidud (<a href="#p4-rq2">Uurimisküsimus 2</a>). Üle 20&nbsp;km sõidud on 9&nbsp;% sõitudest, kuid annavad 24&nbsp;% hinnakaebustest (73 / 309); määr 19,1&nbsp;%. Pikematel sõitudel ületab tegelik distants prognoosi sagedamini.</dd></div><div><dt>Mida teha</dt><dd>Kui prognoositud distants on üle 20&nbsp;km, märgib süsteem sõidu. Sõidu lõpus võrreldakse tegelikku ja prognoositud distantsi ning suure kõrvalekalde korral kontrollitakse hinda enne arveldamist.</dd></div><div><dt>Riskid</dt><dd>Kontroll vajab klienditoe või automaatse reegli ressurssi. Kattub osaliselt ettepanekuga 1.</dd></div></dl></li><li class="prop5"><div class="p5-h"><span class="p5-n">5</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5-imp"><span class="p5-bar"><span style="width:26%"></span></span>17&nbsp;% hinnakaebustest</span></div></div>
       <dl class="rqdl p5dl"><div><dt>Probleem</dt><dd>Halva GPS-iga telefonimudelid (<a href="#p4-rq4">Uurimisküsimus 4</a>). Kolm telefonimudelit (TECNO B1, TECNO B1p, TECNO-J8) on 4&nbsp;% sõitudest, kuid annavad 17&nbsp;% hinnakaebustest. TECNO B1 puhul oli GPS halb 94&nbsp;% sõitudest.</dd></div><div><dt>Mida teha</dt><dd>Pakkuda juhtidele, kelle telefoni halva GPS-i osakaal on kõrge, rendiks taastatud (refurbished) parema GPS-iga telefoni.</dd></div><div><dt>Riskid</dt><dd>Kulu ja logistika; mõju ilmneb aeglaselt. Kattub ettepanekuga 1, mis lahendab sama probleemi tarkvaraga.</dd></div></dl></li></ol>
@@ -1568,17 +1566,12 @@ DIVIDE(
     <p class="extlink">Täielik juhend: <a href="https://github.com/raikokarpov-star/takso/blob/main/kasutusjuhend.md" target="_blank" rel="noopener">kasutusjuhend.md GitHubis</a><span class="vh"> (avaneb uues aknas)</span></p>
   </section>
 
-  <section class="part" id="p4-info" data-status="tegemata">
-    <h3>Info-leht</h3>
-    <div class="todo">kust andmed tulevad, millal viimati uuendati, kuidas number allikani viia (visuaal → mõõdik → tabel → allikas).</div>
-  </section>
-
   <section class="part" id="p4-sonastik" data-status="valmis">
     <h3>Mõõdikute tabel</h3>
     <div class="tw"><table class="t">
       <thead><tr><th scope="col">Mõõdik</th><th scope="col">Tähendus</th></tr></thead>
       <tbody>
-        <tr><td>Hinnahälve</td><td>(lõpuhind − eeldatav hind) ÷ eeldatav hind</td></tr>
+        <tr><td>Hinnahälve</td><td>(lõpphind − eeldatav hind) ÷ eeldatav hind</td></tr>
         <tr><td>Suure hälbe osakaal</td><td>tellimused, mille hälve on üle ±20&nbsp;% ÷ eeldatava hinnaga kehtivad tellimused</td></tr>
         <tr><td>Kaebuste määr</td><td>hinnakaebusega tellimused ÷ kehtivad tellimused</td></tr>
       </tbody>
@@ -1635,15 +1628,15 @@ DIVIDE(
   </section>
 
   <section class="part" id="lt-halve" data-status="valmis">
-    <h3>Ligi pooltel sõitudel läheb lõpuhind eeldatavast hinnast üle 20&nbsp;% mööda</h3>
-    <p>Eeldatava hinnaga tellimustest 45&nbsp;% said lõpuhinna, mis erines rohkem kui 20&nbsp;%. Ligi neli viiendikku neist olid eeldatavast hinnast kallimad.</p>
+    <h3>Ligi pooltel sõitudel läheb lõpphind eeldatavast hinnast üle 20&nbsp;% mööda</h3>
+    <p>Eeldatava hinnaga tellimustest 45&nbsp;% said lõpphinna, mis erines rohkem kui 20&nbsp;%. Ligi neli viiendikku neist olid eeldatavast hinnast kallimad.</p>
     <figure class="chart">
       <p class="ct">Tellimused hinnahälbe järgi</p>
       <p class="cs">Osakaal eeldatava hinnaga tellimustest, 10-protsendipunktised vahemikud</p>
       <ul class="key"><li><i class="c-alert" style="background:var(--alert)"></i>Suur hälve (üle ±20&nbsp;%)</li><li><i style="background:var(--neutral)"></i>±20&nbsp;% piires</li></ul>
       <div id="chHist"></div>
       <p class="live" id="liveHist" aria-live="polite"></p>
-      <figcaption>Hälve = (lõpuhind − eeldatav hind) ÷ eeldatav hind. Äärmised väärtused on koondatud: alla −90&nbsp;% ja üle +200&nbsp;%.</figcaption>
+      <figcaption>Hälve = (lõpphind − eeldatav hind) ÷ eeldatav hind. Äärmised väärtused on koondatud: alla −90&nbsp;% ja üle +200&nbsp;%.</figcaption>
       <details class="data"><summary>Näita tabelina</summary><div class="tw" id="tbHist"></div></details>
     </figure>
   </section>
@@ -1701,16 +1694,16 @@ DIVIDE(
     <p>Analüüsis võrreldakse hinnakaebusega ja hinnakaebuseta sõite, et hinnata, millised sõidu omadused eristavad neid kahte gruppi. Analüüsitavate tunnuste hulka kuuluvad GPS-i kvaliteet, tegeliku ja prognoositud distantsi erinevus, tegeliku ja prognoositud kestuse erinevus, hinna kõrvalekalle, sihtkoha muutmiste arv ning muud andmestikus olemasolevad sõidu ja hinnastamise tunnused.</p>
     <p>Esialgse analüüsi põhjal on olulisemateks edasisteks uurimissuundadeks kujunenud GPS-i kvaliteet ning tegeliku ja prognoositud distantsi erinevus.</p>
     <p>ELi ja väljaspool ELi sõitude võrdlemisel kasutatakse hinnakaebuste määra, halva GPS-i osakaalu ning distantsi-, kestuse- ja hinna kõrvalekaldeid.</p>
-    <p>Absoluutseid hindu ELi ja väljaspool ELi sõitude vahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside abil ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel sama sõidu lõpuhinna ja eeldatava hinna protsentuaalset erinevust.</p>
+    <p>Absoluutseid hindu ELi ja väljaspool ELi sõitude vahel ei võrrelda, kuna andmestikus esineb erinevaid valuutasid ning analüüsis ei ole hindu valuutakursside abil ühtsesse valuutasse teisendatud. Hinnastamise erinevuste hindamiseks kasutatakse selle asemel sama sõidu lõpphinna ja eeldatava hinna protsentuaalset erinevust.</p>
         <p><b>Tulemus:</b> hinnakaebused koonduvad väljaspool ELi sõitudele. Need moodustavad 40,4&nbsp;% sõitudest, kuid 95,8&nbsp;% hinnakaebusega sõitudest; hinnakaebuste määr on väljaspool ELi 17,60&nbsp;%, ELis 0,52&nbsp;%. Peamiste mõjuteguritena eristusid halb GPS-ühendus (6,76×), prediction-hinnastus (6,08×), üle +50&nbsp;% distantsi hälve (3,09×) ja üle 36,88&nbsp;% kestuse hälve (2,04×).</p>
     <h4 class="subh">2. Millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega?</h4>
     <p class="vlink"><a href="#p4-rq2">Vaata: Uurimisküsimus 2 →</a></p>
-    <p>Tegeliku ja prognoositud distantsi erinevuse hindamiseks kasutatakse nii <code>Distance Deviation %</code> tunnust kui ka <code>Median Absolute Distance Deviation %</code> mõõdikut. <code>Distance Deviation %</code> võimaldab hinnata kõrvalekalde suunda, samas kui absoluutse kõrvalekalde mediaan kirjeldab kõrvalekalde tüüpilist suurust sõltumata sellest, kas tegelik distants oli prognoositust suurem või väiksem.</p>
+    <p>Tegeliku ja prognoositud sõidu kestuse ning distantsi erinevuse hindamiseks võrreldi vastavaid väärtusi hajuvusdiagrammidel. Kestust käsitleti minutites ja distantsi kilomeetrites, et tulemused oleksid paremini tõlgendatavad. Prognoosi ja tegeliku väärtuse erinevust hinnati ka kõrvalekalde suuna ja suuruse kaudu.</p>
         <p><b>Tulemus:</b> ainuüksi prognoositust pikemaks kujunenud sõit ei näi seletavat kõrget hinnakaebuste osakaalu. Upfront-rühmas kujunes tegelik kestus 59,3&nbsp;% sõitudest prognoositust pikemaks, kuid hinnakaebuste osakaal oli vaid 3,5&nbsp;%; prediction-rühmas olid vastavad näitajad 75,4&nbsp;% ja 20,4&nbsp;%. Rühmad erinevad nii kestuse suhte kui ka hinnakaebuste osakaalu poolest, kuid see ei tõenda põhjuslikku seost. Seepärast uuriti järgmisena hinnastamistüüpe (küsimus 3).</p>
     <h4 class="subh">3. Millised hinnastamisega seotud tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
     <p class="vlink"><a href="#p4-rq3">Vaata: Uurimisküsimus 3 →</a></p>
-    <p>Hinnastamise seoste hindamiseks võrreldi erinevate hinnatüüpide (<code>Prediction Price Type</code>) <code>Overcharge Ride Rate</code> mõõdikut ning analüüsiti nende jaotust ELi ja väljaspool ELi piirkondades. Lisaks uuriti eeldatava hinna ja lõpuhinna erinevust, hinnamuutuse põhjuseid ning sihtkoha muutmiste arvu.</p>
-    <p>Analüüs näitas, et prediction-hinnastusega sõitudel esines hinnakaebusi sagedamini kui upfront-sõitudel (20,3&nbsp;% vs 3,5&nbsp;%). Samas olid prediction-sõidud peaaegu täielikult seotud väljaspool ELi piirkonnaga. Suurema hinnakaebuste esinemissagedusega eristusid ka sõidud, mille lõpuhind ületas eeldatavat hinda rohkem kui kaks korda (18,7&nbsp;%). Sihtkoha muutmine ja hinnamuutuse põhjused selget seost kõrgema hinnakaebuste määraga ei näidanud.</p>
+    <p>Hinnastamise seoste hindamiseks võrreldi erinevate hinnatüüpide (<code>Prediction Price Type</code>) <code>Overcharge Ride Rate</code> mõõdikut ning analüüsiti nende jaotust ELi ja väljaspool ELi piirkondades. Lisaks uuriti eeldatava hinna ja lõpphinna erinevust, hinnamuutuse põhjuseid ning sihtkoha muutmiste arvu.</p>
+    <p>Analüüs näitas, et prediction-hinnastusega sõitudel esines hinnakaebusi sagedamini kui upfront-sõitudel (20,3&nbsp;% vs 3,5&nbsp;%). Samas olid prediction-sõidud peaaegu täielikult seotud väljaspool ELi piirkonnaga. Suurema hinnakaebuste esinemissagedusega eristusid ka sõidud, mille lõpphind ületas eeldatavat hinda rohkem kui kaks korda (18,7&nbsp;%). Sihtkoha muutmine ja hinnamuutuse põhjused selget seost kõrgema hinnakaebuste määraga ei näidanud.</p>
     <p>Kokkuvõttes eristusid peamiste riskikohtadena prediction-hinnastus ja väga suur hinnatõus, kuid prediction-hinnastuse seost tuleb tõlgendada koos piirkonna mõjuga.</p>
     <h4 class="subh">4. Millised tehnilised tegurid on seotud hinnakaebuse suurema tõenäosusega?</h4>
     <p class="vlink"><a href="#p4-rq4">Vaata: Uurimisküsimus 4 →</a></p>
@@ -1718,11 +1711,11 @@ DIVIDE(
     <p>Analüüs näitas, et halb GPS-ühendus on tugevaim tehniline tegur: halva GPS-iga sõidud moodustavad 18&nbsp;% sõitudest, kuid annavad 60&nbsp;% hinnakaebustest (hinnakaebuste määr 24,4&nbsp;% vs 3,6&nbsp;%). Seos püsib ka siis, kui teised tegurid on arvesse võetud (šansside suhe 3,2). Väljaspool ELi on teine oluline tegur vana juhi rakendus (uusimast 9 või rohkem versiooni vanem): see kahekordistab hinnakaebuste määra (šansside suhe 2,7) ning koos halva GPS-iga lõppes ligikaudu iga teine sõit hinnakaebusega. Sõitja ja juhi rakenduse platvorm (Android või iOS) ei olnud statistiliselt olulised.</p>
     <p>Telefonimudelite lõikes erines halva GPS-i osakaal väga palju: kolm TECNO mudelit moodustasid 4&nbsp;% sõitudest, kuid 17&nbsp;% hinnakaebustest.</p>
     <p>Kokkuvõttes eristusid peamiste tehniliste riskikohtadena halb GPS-ühendus ja vana juhi rakendus. ELi tulemused põhinevad vähesel hinnakaebuste arvul (13) ning on seetõttu ebakindlad.</p>
-    <h4 class="subh">5. Milliste tegurite ja nende kombinatsioonide korral esineb hinnakaebusi kõige rohkem ning milliseid sekkumisi võiks nende põhjal prioriseerida?</h4>
+    <h4 class="subh">5. Meie ettepanekud hinnakaebuste vähendamiseks</h4>
     <p class="vlink"><a href="#p4-rq5">Vaata: Uurimisküsimus 5 →</a></p>
     <p>Analüüsi tulemuste sünteesi põhjal pakub grupp välja sekkumismeetmed kahes prioriteedis. <b>Prioriteet 1</b> on ettepanekud, mille võimalik mõju on mõõdetav ja kontrollitav; need on järjestatud selle järgi, kui suurt osa praegustest hinnakaebustest (309) probleem puudutab ja kas seos püsib ka siis, kui teised tegurid on arvesse võetud. <b>Prioriteet 2</b> on <span lang="en">nice-to-have</span> ettepanekud, mille tajutud probleem tuleb esmalt valideerida.</p>
     <p><b>Prioriteet 1</b></p>
-    <ol class="vprops"><li><b>Hinna arvutamine halva GPS-i korral.</b> Madala GPS-i usaldusväärsuse korral arvutatakse lõpuhind osaliselt prognoositud distantsi põhjal või suunatakse sõit täiendavasse kontrolli. GPS-i kvaliteet on teada sõidu ajal ja arveldamise hetkel, seega ei pea seda ette teadma. Puudutab 60&nbsp;% hinnakaebustest.</li><li><b>Hinnastamine väljaspool ELi.</b> Prediction-hinnastusega sõitudel on hinnakaebuste määr 20,3&nbsp;% (upfront-sõitudel 3,5&nbsp;%) ja need annavad 66&nbsp;% hinnakaebustest. Väljaspool ELi võiks pakkuda sõitjale enne sõitu eeldatavat hinda ning piirata lõpuhinna tõusu üle 2× eeldatavast hinnast. Mõju tuleb tõlgendada koos piirkonna mõjuga, sest 997 / 998 prediction-sõitu on väljaspool ELi.</li><li><b>Juhi rakenduse ajakohasuse tagamine.</b> Kuna väljaspool ELi ilmnes seos vanemate rakenduseversioonide ja kõrgema hinnakaebuste esinemissageduse vahel, võiks kaaluda automaatseid uuendusi või vananenud versioonide kasutamise piiramist. Puudutab 24&nbsp;% hinnakaebustest.</li><li><b>Pikemate sõitude täiendav kontroll.</b> Üle 20&nbsp;km pikkuste sõitude puhul võiks rakendada automaatset riskimärgistust ning kontrollida sõidu lõppedes tegeliku ja prognoositud distantsi ning hinna erinevusi. Kontrolli käivitamiseks võiks kasutada mitme riskiteguri kombinatsiooni, et vältida põhjendamatult suure hulga sõitude märgistamist. Puudutab 24&nbsp;% hinnakaebustest.</li><li><b>Juhtide seadmete tehnilise kvaliteedi parandamine.</b> Võimaliku lahendusena võiks kaaluda kontrollitud kvaliteediga taastatud nutitelefonide (<span lang="en">refurbished devices</span>) rendiprogrammi. Kolm halvima GPS-iga TECNO mudelit annavad 17&nbsp;% hinnakaebustest. Meetme põhjendamiseks tuleks täiendavalt hinnata seadmete vanuse ja tehniliste omaduste seost GPS-i kvaliteediga.</li></ol>
+    <ol class="vprops"><li><b>Hinna arvutamine halva GPS-i korral.</b> Madala GPS-i usaldusväärsuse korral arvutatakse lõpphind osaliselt prognoositud distantsi põhjal või suunatakse sõit täiendavasse kontrolli. GPS-i kvaliteet on teada sõidu ajal ja arveldamise hetkel, seega ei pea seda ette teadma. Puudutab 60&nbsp;% hinnakaebustest.</li><li><b>Hinnastamine väljaspool ELi.</b> Prediction-hinnastusega sõitudel on hinnakaebuste määr 20,3&nbsp;% (upfront-sõitudel 3,5&nbsp;%) ja need annavad 66&nbsp;% hinnakaebustest. Väljaspool ELi võiks pakkuda sõitjale enne sõitu eeldatavat hinda ning piirata lõpphinna tõusu üle 2× eeldatavast hinnast. Mõju tuleb tõlgendada koos piirkonna mõjuga, sest 997 / 998 prediction-sõitu on väljaspool ELi.</li><li><b>Juhi rakenduse ajakohasuse tagamine.</b> Kuna väljaspool ELi ilmnes seos vanemate rakenduseversioonide ja kõrgema hinnakaebuste esinemissageduse vahel, võiks kaaluda automaatseid uuendusi või vananenud versioonide kasutamise piiramist. Puudutab 24&nbsp;% hinnakaebustest.</li><li><b>Pikemate sõitude täiendav kontroll.</b> Üle 20&nbsp;km pikkuste sõitude puhul võiks rakendada automaatset riskimärgistust ning kontrollida sõidu lõppedes tegeliku ja prognoositud distantsi ning hinna erinevusi. Kontrolli käivitamiseks võiks kasutada mitme riskiteguri kombinatsiooni, et vältida põhjendamatult suure hulga sõitude märgistamist. Puudutab 24&nbsp;% hinnakaebustest.</li><li><b>Juhtide seadmete tehnilise kvaliteedi parandamine.</b> Võimaliku lahendusena võiks kaaluda kontrollitud kvaliteediga taastatud nutitelefonide (<span lang="en">refurbished devices</span>) rendiprogrammi. Kolm halvima GPS-iga TECNO mudelit annavad 17&nbsp;% hinnakaebustest. Meetme põhjendamiseks tuleks täiendavalt hinnata seadmete vanuse ja tehniliste omaduste seost GPS-i kvaliteediga.</li></ol>
     <p><b>Prioriteet 2 (<span lang="en">nice-to-have</span>)</b></p>
     <ul class="vprops"><li><b>Kliendi teavitamine võimalikust hinnamuutusest.</b> Märkimisväärse hinnakõrvalekalde korral võiks süsteem klienti enne sõidu lõppu teavitada ning selgitada hinnamuutuse põhjust. Tajutud probleem tuleb esmalt valideerida: teavitus võib jätta pettuse mulje, seega tuleks selle ajastust ja sõnastust testida.</li><li><b>Juhi ja reisija füüsilise eraldatuse suurendamine.</b> Võimaliku meetmena võiks kaaluda sõidukitesse kaitsevaheseinte paigaldamist, et vähendada juhi ja reisija vahelisi konflikte ning parandada turvalisust. Tajutud probleem tuleb esmalt valideerida: analüüsi andmed ei näita seost kaitsevaheseinte ja hinnakaebuste vahel.</li></ul>
     <p>Esmajärjekorras tuleks katsetada hinna arvutamist halva GPS-i korral ja hinnastamist väljaspool ELi, sest need puudutavad kõige suuremat osa hinnakaebustest. Juhi rakenduse uuendamine on väiksema mõjuga (24&nbsp;%), kuid lihtsaim teostada.</p>
@@ -1732,13 +1725,13 @@ DIVIDE(
     <p>Power BI aruande kasutamisel alustatakse üldistest mõõdikutest ning liigutakse seejärel detailsemate segmentide ja võimalike probleemitegurite juurde.</p>
     <p>Hinnakaebuste analüüsimisel ei kasutata ainult klienditoe pöördumiste arvu, sest ühe tellimusega võib olla seotud mitu pöördumist. Sõitude võrdlemiseks kasutatakse <code>Overcharge Ride Count</code> ja <code>Overcharge Ride Rate</code> mõõdikuid, mis arvestavad ühe tellimuse ainult ühe korra.</p>
     <p>Kõrvalekallete analüüsimisel tuleb eristada kõrvalekalde suunda ja suurust. Näiteks võivad positiivsed ja negatiivsed distantsi kõrvalekalded keskmise arvutamisel üksteist tasandada. Kõrvalekalde tüüpilise suuruse hindamiseks kasutatakse seetõttu ka absoluutse kõrvalekalde mediaani.</p>
-    <p>ELi ja väljaspool ELi segmentide hindade võrdlemisel ei kasutata lõpuhinna ega eeldatava hinna absoluutseid väärtusi, kuna andmestikus esineb erinevaid valuutasid. Segmentide võrdlemiseks kasutatakse sama sõidu sees arvutatud protsentuaalset hinnakõrvalekallet.</p>
+    <p>ELi ja väljaspool ELi segmentide hindade võrdlemisel ei kasutata lõpphinna ega eeldatava hinna absoluutseid väärtusi, kuna andmestikus esineb erinevaid valuutasid. Segmentide võrdlemiseks kasutatakse sama sõidu sees arvutatud protsentuaalset hinnakõrvalekallet.</p>
     <p>Visualiseeringute filtreerimisel tuleb jälgida, millisele populatsioonile mõõdik parasjagu rakendub. Filtrite muutmisel muutub ka mõõdikute filtrikontekst (<span lang="en">filter context</span>) ning seetõttu tuleb tulemusi tõlgendada valitud segmendi kontekstis.</p>
   </section>
   <section class="part" id="p7-piirangud" data-status="valmis">
     <h3>Piirangud</h3>
     <h4 class="subh">Erinevad valuutad</h4>
-    <p>Andmestikus sisalduvad hinnad erinevates valuutades. Kuna valuutakursside infot ei ole analüüsi lisatud, ei saa eri valuutades esitatud absoluutseid hindu usaldusväärselt omavahel võrrelda. Seetõttu kasutatakse segmentide hinnastamise võrdlemisel eelkõige protsentuaalset erinevust eeldatava hinna ja lõpuhinna vahel.</p>
+    <p>Andmestikus sisalduvad hinnad erinevates valuutades. Kuna valuutakursside infot ei ole analüüsi lisatud, ei saa eri valuutades esitatud absoluutseid hindu usaldusväärselt omavahel võrrelda. Seetõttu kasutatakse segmentide hinnastamise võrdlemisel eelkõige protsentuaalset erinevust eeldatava hinna ja lõpphinna vahel.</p>
     <h4 class="subh">Piiratud andmed</h4>
     <p>Andmestikus sisaldusid vaid andmed, mis olid seotud vähemalt ühe klienditoe pöördumisega, mis tähendab, et nende puhul oli juba teatud kõrvalekalle normaalsest ideaalsest sõidust. Samuti oli andmestikus vaid teada, kas tegemist oli klienditoe poole pöördumisega ülehinnastamisega seoses või muul põhjusel. Muud põhjused ei olnud omakorda selgemalt kodeeritud.</p>
     <h4 class="subh">Puuduolevad väärtused</h4>
@@ -1776,15 +1769,24 @@ DIVIDE(
   <section class="part" id="p8-jaotus" data-status="valmis">
     <h3>Tööjaotus</h3>
     <p>Projekt viidi läbi neljaliikmelises rühmas. Töö jagati andmete ettevalmistamise, andmemudeli loomise, analüüsi, visualiseerimise, dokumenteerimise ja projekti koordineerimise vahel. Olulisemad andmemudeli ja analüüsi otsused arutati grupis ühiselt.</p>
-    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><ul><li>Tehniliste tegurite analüüs: GPS, rakendused, telefonimudelid ja nende kombinatsioonid.</li><li>Projekti teema valik ja kickoff.</li><li>Projekti esimese faasi planeerimine, standup-rutiinid ja projekti viimase faasi planeerimine.</li><li>Esitluse ja dokumentatsiooni lahenduse loomine ning kujundus.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><div class="todo add" style="margin:0">ülesanded ja vastutus.</div></li></ul>
+    <ul class="tw-grid"><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><span class="av av-felena" aria-hidden="true"></span><b>Liis ja Felena (ühiselt)</b></p><ul><li>Andmete puhastamine ja ettevalmistamine Pythonis.</li><li>Andmemudeli, fakti- ja dimensioonitabelite seoste ja võtmete loomine ja kontrollimine DBeaveris.</li><li>Power BI seoste seadistamine, analüüsi jaoks vajalike lisatunnuste ja DAX-mõõdikute loomine ning kirjeldamine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b><a class="tw-rq" href="#p4-rq3">Uurimisküsimus 3: hinnastamine</a></p><ul><li>Hinnakaebuste seosed hinnastamise ning sihtkoha muutustega, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis ning dokumentatsiooni loomine.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b><a class="tw-rq" href="#p4-rq1">Uurimisküsimus 1: piirkonnad</a></p><ul><li>Hinnakaebuste erinevused ELi ja väljaspool ELi piirkondade vahel, peamiste mõjutegurite tuvastamine.</li><li>Power BI tulemuste kontroll SQL-päringutega.</li><li>Oma Power BI projektifaili haldus GitHubis.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b><a class="tw-rq" href="#p4-rq4">Uurimisküsimus 4: tehnilised tegurid</a></p><ul><li>Tehniliste tegurite analüüs: GPS, rakendused, telefonimudelid ja nende kombinatsioonid.</li><li>Projekti teema valik ja kickoff.</li><li>Projekti esimese faasi planeerimine, standup-rutiinid ja projekti viimase faasi planeerimine.</li><li>Esitluse ja dokumentatsiooni lahenduse loomine ning kujundus.</li></ul></li><li class="tw-card"><p class="tw-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b><a class="tw-rq" href="#p4-rq2">Uurimisküsimus 2: sõit vs prognoos</a></p><ul><li>Uurimisküsimus 2: millised sõidu ja prognoosi erinevused on seotud hinnakaebuse suurema tõenäosusega.</li><li>Visuaalide loomine arenduskeskkonnas Visual Studio Code ja Power BI-s.</li><li>Uurimisküsimuse probleemi lahenduse otsimine ning tulemuste tõlgendamine.</li></ul></li></ul>
   </section>
   <section class="part" id="p8-valjakutse" data-status="valmis">
     <h3>Tehniline eneserefleksioon</h3>
-    <p>Üheks projekti olulisemaks tehniliseks väljakutseks oli erineva detailsusastmega andmete ühendamine viisil, mis ei põhjustaks Power BI analüüsis topeltlugemist.</p>
-    <p>Sõidu ehk tellimuse ja klienditoe pöördumise grain ei olnud sama: ühe tellimusega võis olla seotud mitu klienditoe pöördumist. Kui hinnakaebusi oleks analüüsitud otse pöördumiste ridade põhjal, oleks üks tellimus saanud analüüsis esineda mitu korda.</p>
-    <p>Probleemi lahendamiseks kasutati <code>dim_order</code> tabelit ning tellimuse tasemele loodi <code>had_overpaid_ride_ticket</code> tunnus, mis näitab, kas tellimusega oli seotud vähemalt üks hinnakaebus. Power BI mõõdikutes arvestatakse hinnakaebusega sõite unikaalsete tellimuste põhjal.</p>
-    <p>Selle probleemi lahendamine näitas, kui oluline on enne visualiseerimise ja mõõdikute loomist määratleda iga tabeli grain ning mõista tabelite vahelisi seoseid. Õige arvutusvalem üksi ei taga korrektset tulemust, kui andmemudeli seosed või analüüsi detailsusaste on valesti määratud.</p>
-    <p>Teine oluline õppetund oli tähtskeemi roll analüüsimudelis. Projekti käigus korrastati tellimuse, seadme, rakenduse versiooni, kuupäeva ja hinnastamise kontekstiga seotud tunnused vastavatesse dimensioonitabelitesse. Faktitabelisse jäänud dubleeruvad tehnilised või dimensioonitunnused peideti Power BI Report view's, et kasutaja kasutaks analüüsis järjepidevalt õigeid dimensioonivälju.</p>
+    <div class="refl"><p class="refl-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b></p>
+    <p>Üheks projekti olulisemaks tehniliseks väljakutseks oli erineva detailsusastmega andmete ühendamine nii, et Power BI analüüsis ei tekiks topeltlugemist. Kuna ühe tellimusega võis olla seotud mitu klienditoe pöördumist, tuli tagada, et sama sõitu ei arvestataks analüüsis mitu korda. Selle lahendamiseks kasutati <code>dim_order</code> tabelis tunnust <code>had_overpaid_ride_ticket</code>, mille abil sai tuvastada, kas tellimusega oli seotud vähemalt üks hinnakaebus. See õpetas mulle, kui oluline on enne analüüsi alustamist mõista andmete detailsusastet (grain) ja tabelitevahelisi seoseid.</p>
+    <p>Teiseks oluliseks õppetunniks oli tähtskeemi ülesehituse ja dimensioonitabelite rolli mõistmine. Projekti käigus korrastati andmemudelit ning eraldati erinevad tunnused vastavatesse dimensioonitabelitesse. Samuti peideti Power BI-s dubleeruvad väljad, et analüüsimisel kasutataks järjepidevalt õigeid tunnuseid. Sain paremini aru, et korrektne andmemudel on usaldusväärsete analüüsitulemuste eelduseks.</p>
+    <p>Korraldusliku poole pealt oli suurimaks väljakutseks nelja grupiliikme töö sünkroniseerimine. Kuna igaüks töötas lokaalse PostgreSQL-i andmebaasi ja Power BI projektiga, oli oluline tagada, et kõik kasutaksid sama andmestruktuuri ja projekti ajakohast versiooni. Git-repositooriumi kasutamine aitas muudatusi hallata, kuid tõi esile ka vajaduse selgete kokkulepete ja järjepideva suhtluse järele.</p>
+    <p>Kokkuvõttes andis projekt mulle parema arusaama andmemudeli ülesehitamisest, andmete korrektsuse tagamisest ning meeskonnatöö ja versioonihalduse olulisusest ühise analüüsilahenduse arendamisel.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b></p>
+    <h4 class="subh">Mis läks hästi?</h4>
+    <p>Uurimistöö teema on esiteks väga aktuaalne ning teisalt huvipakkuv, mistõttu teema uurimine ei valmistanud igavust. Ma tahan kiita tiimi sünergiat ja koostöövalmidust, kannatlikkust ning kestvat kirge kogu uurimisprobleemi otsimise kestel. Eraldi sooviksin kiita programmeerimiskeele Pythoni võimekust ja selle kasutamise sõbralikkust.</p>
+    <h4 class="subh">Kus kogesime raskusi?</h4>
+    <p>Loodud tiim koges esmakordselt ühtse eesmärgini jõudmist ning varasem teadmine teineteisest oli pinnapealne, mistõttu tuli ühelt poolt lahendada mõistatust ning paralleelselt võtta arvesse ka iga tiimiliikme omapära. Nende kahe tunnuse liitmisel kogetud raskust hindaksin justkui tuleviku väetisena, mis ajas kasvas kindlamaks kujuks. Töövahenditest tooksin välja GitHubi versioonihalduse jonnakuse, aga nii nagu inimestega, on temaga sama lugu: mida rohkem praktiseerida ja kasutada, seda lihtsamaks läheb ka tema käsitlus.</p>
+    <h4 class="subh">Mida teeksime teisiti?</h4>
+    <p>Ei oska midagi esile tõsta ja võtan kogu projekti kogemust tervikuna. Kindlasti on palju tehnilisi ning suhtluse nüansse, mis tulevad minuga kaasa, ja uutel väljakutsetel oskan juba teadlikumalt ning kogenumana raskustele reageerida.</p>
+    </div>
   </section>
   <section class="part" id="p8-korraldus" data-status="valmis">
     <h3>Korralduslik eneserefleksioon</h3>
@@ -1811,9 +1813,20 @@ DIVIDE(
   </section>
   <section class="part" id="p8-ai" data-status="valmis">
     <h3>AI-kogemus</h3>
+    <div class="refl"><p class="refl-h"><span class="av av-liis" aria-hidden="true"></span><b>Liis Normak</b></p>
     <p>Tehisaru oli projekti käigus kõige kasulikum tehniliste probleemide samm-sammulisel lahendamisel, SQL- ja DAX-loogika selgitamisel ning võimalike lahendusvariantide võrdlemisel. Samuti kasutati tehisaru dokumentatsiooni struktureerimise ja sõnastamise toetamiseks.</p>
     <p>Samas tuli tehisaru pakutud lahendusi kontrollida projekti tegeliku andmemudeli ja andmete põhjal. Näiteks Power BI-s võib vale tulemuse põhjus esmapilgul tunduda DAX-valemi või seose probleemina, kuigi tegelik põhjus võib olla visualiseeringus kasutatud väli valest või andmemudeliga ühendamata tabelist. Projekti käigus ilmnes selline olukord seadme tunnuse kasutamisel.</p>
     <p>Sellised juhtumid näitasid, et tehisaru on kasulik probleemide lahendamise ja õppimise abivahend, kuid ei asenda andmemudeli mõistmist ega tulemuste kontrollimist. Tehisaru soovitusi valideeriti SQL-päringute, Power BI mudeli ja tegelike analüüsitulemuste abil.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-felena" aria-hidden="true"></span><b>Felena Sooaluste</b></p>
+    <p>Tehisaru aitas kirjutada Pythoni koodi andmete puhastamise faasis, SQL-päringuid andmemudeli loomise etapis ja DAX-i visuaalide loomise juures. Kasutasin teda eraõpetajana, et selgitada DBeaveri, Power BI ja GitHubi töövoogusid ja leida üles vajalikke funktsionaalsusi, parandada katkisi visuaale, ühendada (merge) failiversioone, pöörata neid tagasi ja lahendada konflikte. Põrgatasin tehisaruga ka oma analüüsiideid ja säästsin aega, kui tehisaru hinnangul ei oleks analüüs meie andmete põhjal väärtusliku järelduseni viinud.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-raiko" aria-hidden="true"></span><b>Raiko Karpov</b></p>
+    <p>Tehisaru aitas kogu selle perioodi jooksul nii Visual Studio Code’is kui ka GitHubis orienteeruda. Lisaks aitas see suunata paremale ning täpsemale mõistmisele ja lahendada olukordi, kus ilmnesid mingil põhjusel tõrked.</p>
+    </div>
+    <div class="refl"><p class="refl-h"><span class="av av-hannes" aria-hidden="true"></span><b>Hannes Seeberg</b></p>
+    <div class="todo add">AI-kogemus.</div>
+    </div>
   </section>
 </section>
 
@@ -1832,12 +1845,12 @@ DIVIDE(
     </div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Kes te olete ja mis probleemi te lahendasite.</aside>
   </section>
-  <section class="slide" id="s2" data-i="2" aria-roledescription="slaid" aria-label="Slaid 2 / 13: Probleem: lõpuhind võib erineda eeldatavast hinnast" hidden>
+  <section class="slide" id="s2" data-i="2" aria-roledescription="slaid" aria-label="Slaid 2 / 13: Probleem: lõpphind võib erineda eeldatavast hinnast" hidden>
     <p class="s-kicker"><span class="num">01</span> Tutvustus ja eesmärk <span class="s-min">· 2 min</span><a class="s-doclink" href="#p1-eesmark">Loe lähemalt: Eesmärk <span aria-hidden="true">→</span></a></p>
-    <h2 class="s-title">Probleem: lõpuhind võib erineda eeldatavast hinnast</h2>
+    <h2 class="s-title">Probleem: lõpphind võib erineda eeldatavast hinnast</h2>
     <div class="s-body"><ul class="s-list">
       <li>Sõitja näeb enne sõitu <b>eeldatavat hinda</b>, mis põhineb prognoositud distantsil ja kestusel.</li>
-      <li><b>Lõpuhind</b> arvutatakse tegeliku sõidu järgi ja võib eeldatavast erineda.</li>
+      <li><b>Lõpphind</b> arvutatakse tegeliku sõidu järgi ja võib eeldatavast erineda.</li>
       <li>Uurisime <b>4&nbsp;166</b> pöördumisega tellimust. Neist <b>309</b> puhul kaebas sõitja, et hind oli liiga kõrge.</li>
     </ul>
     <p class="s-goal"><b>Eesmärk:</b> leida peamised võimalused hinnakaebuste arvu vähendamiseks.</p></div>
@@ -1912,7 +1925,7 @@ DIVIDE(
         </form>
         <div class="rq3g">
           <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu pikkuse järgi</p><div class="r3c" data-c="dist"></div></div>
-          <div><p class="dt">Hinnakaebuste osakaal: kui palju kestis sõit prognoosist kauem</p><div class="r3c" data-c="dur"></div></div>
+          <div><p class="dt">Hinnakaebuste osakaal tegeliku sõidu kestuse järgi</p><div class="r3c" data-c="dur"></div></div>
           <div><p class="dt">Tegelik vs prognoositud distants (km)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sd"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sd">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
           <div><p class="dt">Tegelik vs prognoositud kestus (min)</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>ilma kaebuseta</li><li><i style="background:var(--alert)"></i>hinnakaebusega</li></ul><div class="r3sc"><div class="r3c" data-c="sdu"></div><div class="r3zbar"><button type="button" class="reset r3zr" data-c="sdu">Lähtesta suum</button><span class="r3zhint">Vali hiirega ala, et sisse suumida</span></div></div></div>
         </div>
@@ -1934,7 +1947,7 @@ DIVIDE(
         <div><p class="dt">Hinnakaebuste määr hinnatüübi järgi</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>sõitude arv</li><li><i class="kline"></i>hinnakaebuste määr</li></ul><div class="lqc" data-c="pt"></div></div>
         <div><p class="dt">2. Hinnakaebuste määr hinnamuutuse järgi</p><ul class="key dkey"><li><i style="background:var(--neutral)"></i>sõitude arv</li><li><i class="kline"></i>hinnakaebuste määr</li></ul><div class="lqc" data-c="dev"></div></div>
       </div>
-      <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prediction-hinnastus: 20,3&nbsp;% vs upfront 3,5&nbsp;%, aga 997 / 998 on väljaspool ELi.</p><ul><li>väljaspool ELi: prediction 20,4 % vs upfront 13,4 %</li><li>lõpuhind üle 2× eeldatavast: 18,7 %</li><li>sihtkoha muutmine ja hinnamuutuse põhjus ei ole riskitegurid</li></ul></div></div>
+      <div class="q1next r4next lqnext"><p class="dt">Järeldused</p><div><p class="q1fact">Prediction-hinnastus: 20,3&nbsp;% vs upfront 3,5&nbsp;%, aga 997 / 998 on väljaspool ELi.</p><ul><li>väljaspool ELi: prediction 20,4 % vs upfront 13,4 %</li><li>lõpphind üle 2× eeldatavast: 18,7 %</li><li>sihtkoha muutmine ja hinnamuutuse põhjus ei ole riskitegurid</li></ul></div></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita, kuidas dashboard vastab küsimusele 3. Vali 1 konkreetne stsenaarium, ära klikki suvaliselt.</aside>
   </section>
@@ -1961,7 +1974,7 @@ DIVIDE(
     <p class="s-kicker"><span class="num">03</span> Lahenduse ja aruande näitamine <span class="s-min">· 5 min</span><a class="s-doclink" href="#p4-rq5">Loe lähemalt: Uurimisküsimus 5: ettepanekud <span aria-hidden="true">→</span></a></p>
     <h2 class="s-title">Meie ettepanekud hinnakaebuste vähendamiseks</h2>
     <div class="s-body"><div class="s-p5">
-      <p class="p5s-pl">Prioriteet 1 <span>mõõdetava ja kontrollitava mõjuga, järjestatud osakaalu järgi 309 hinnakaebusest.</span></p><ol class="p5slide"><li><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5s-why">Halb GPS-ühendus: <b>60&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:91%"></span></span></li><li><span class="p5-n">2</span><div><b>Väljaspool ELi kasutada prediction-hinnastuse asemel eeldatavat hinda ja piirata suurt hinnatõusu</b><span class="p5s-why">Prediction-hinnastus: <b>66&nbsp;%</b> hinnakaebustest · <span>küsimus 3</span></span></div><span class="p5-bar"><span style="width:100%"></span></span></li><li><span class="p5-n">3</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5s-why">Vana juhi rakendus (9+ versiooni vanem): <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:36%"></span></span></li><li><span class="p5-n">4</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5s-why">Pikad sõidud: <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 2</span></span></div><span class="p5-bar"><span style="width:36%"></span></span></li><li><span class="p5-n">5</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5s-why">Halva GPS-iga telefonimudelid: <b>17&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:26%"></span></span></li></ol>
+      <p class="p5s-pl">Prioriteet 1 <span>mõõdetava ja kontrollitava mõjuga, järjestatud osakaalu (309 hinnakaebusest) ja seose kindluse järgi.</span></p><ol class="p5slide"><li><span class="p5-n">1</span><div><b>Halva GPS-i korral arvutada hind prognoositud distantsi järgi</b><span class="p5s-why">Halb GPS-ühendus: <b>60&nbsp;%</b> hinnakaebustest · <span>küsimus 4 · <span class="p5why2">seos püsib ka teiste tegurite arvessevõtmisel</span></span></div><span class="p5-bar"><span style="width:91%"></span></span></li><li><span class="p5-n">2</span><div><b>Väljaspool ELi kasutada prediction-hinnastuse asemel eeldatavat hinda ja piirata suurt hinnatõusu</b><span class="p5s-why">Prediction-hinnastus: <b>66&nbsp;%</b> hinnakaebustest · <span>küsimus 3 · <span class="p5why2">mõju ei saa piirkonnast eraldada</span></span></div><span class="p5-bar"><span style="width:100%"></span></span></li><li><span class="p5-n">3</span><div><b>Uuendada juhi rakendust regulaarselt</b><span class="p5s-why">Vana juhi rakendus (9+ versiooni vanem): <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:36%"></span></span></li><li><span class="p5-n">4</span><div><b>Märgistada üle 20&nbsp;km sõidud ja kontrollida neid</b><span class="p5s-why">Pikad sõidud: <b>24&nbsp;%</b> hinnakaebustest · <span>küsimus 2</span></span></div><span class="p5-bar"><span style="width:36%"></span></span></li><li><span class="p5-n">5</span><div><b>Pakkuda juhtidele renditelefone (taastatud seadmed)</b><span class="p5s-why">Halva GPS-iga telefonimudelid: <b>17&nbsp;%</b> hinnakaebustest · <span>küsimus 4</span></span></div><span class="p5-bar"><span style="width:26%"></span></span></li></ol>
       <p class="p5s-low"><b>Prioriteet 2 (nice-to-have, tajutud probleem vajab valideerimist):</b> kliendi teavitamine enne sõidu lõppu · kaitsevaheseinad juhi ja sõitja vahel.</p>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Ettepanekud tulenevad küsimuste 1–4 tulemustest. Iga ettepaneku juures: kus, mida teha, kui suurt osa kaebustest see puudutab.</aside>
@@ -1971,7 +1984,7 @@ DIVIDE(
     <h2 class="s-title">Dokumentatsioon ja tööjaotus</h2>
     <div class="s-body"><div class="s-two s11">
       <div><p class="s-h">Dokumentatsioon</p><ul class="s-list sm s11docs"><li><a class="s-doclink2" href="#p1-moisted">Ärimõisted ja uurimisküsimused</a></li><li><a class="s-doclink2" href="#p2-voog">Andmevoog, tähtskeem ja grain</a></li><li><a class="s-doclink2" href="#p3-kvaliteet">Andmekvaliteedi kontrollid</a></li><li><a class="s-doclink2" href="#p3-yleandmine">Üleandmine: 8 sammu taastamiseks</a></li><li><a class="s-doclink2" href="#p5-meta">Väljade ja mõõdikute kirjeldused (<code>Description</code>)</a></li><li><a href="https://github.com/raikokarpov-star/takso" target="_blank" rel="noopener">GitHubi repo: SQL-skriptid, Power BI projekt</a></li></ul></div>
-      <div><p class="s-h">Kes mida tegi</p><ul class="s11cards"><li><p class="s11h"><span class="av av-felena" aria-hidden="true"></span><span><b>Felena Sooaluste</b><span class="s11rq">Küsimus 1 · piirkonnad</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel DBeaveris</li><li>Power BI seosed ja DAX-mõõdikud</li></ul></li><li><p class="s11h"><span class="av av-raiko" aria-hidden="true"></span><span><b>Raiko Karpov</b><span class="s11rq">Küsimus 2 · sõit vs prognoos</span></span></p><ul><li>Sõidu pikkuse ja kestuse analüüs</li><li>Interaktiivne Streamlit-raport</li></ul></li><li><p class="s11h"><span class="av av-liis" aria-hidden="true"></span><span><b>Liis Normak</b><span class="s11rq">Küsimus 3 · hinnastamine</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel, Power BI ja DAX</li><li>Dokumentatsioon</li></ul></li><li><p class="s11h"><span class="av av-hannes" aria-hidden="true"></span><span><b>Hannes Seeberg</b><span class="s11rq">Küsimus 4 · tehnilised tegurid</span></span></p><ul><li>Teema valik ja kickoff</li><li>Planeerimine ja standupid</li><li>Esitluse ja dokumentatsiooni lahendus</li></ul></li></ul></div>
+      <div><p class="s-h">Kes mida tegi</p><ul class="s11cards"><li><p class="s11h"><span class="av av-felena" aria-hidden="true"></span><span><b>Felena Sooaluste</b><span class="s11rq">Küsimus 1 · piirkonnad</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel DBeaveris</li><li>Power BI seosed ja DAX-mõõdikud</li></ul></li><li><p class="s11h"><span class="av av-raiko" aria-hidden="true"></span><span><b>Raiko Karpov</b><span class="s11rq">Küsimus 2 · sõit vs prognoos</span></span></p><ul><li>Visuaalid VS Code’is ja Power BI-s</li><li>Lahenduse otsimine ja tulemuste tõlgendamine</li></ul></li><li><p class="s11h"><span class="av av-liis" aria-hidden="true"></span><span><b>Liis Normak</b><span class="s11rq">Küsimus 3 · hinnastamine</span></span></p><ul><li>Andmete puhastamine Pythonis</li><li>Andmemudel, Power BI ja DAX</li><li>Dokumentatsioon</li></ul></li><li><p class="s11h"><span class="av av-hannes" aria-hidden="true"></span><span><b>Hannes Seeberg</b><span class="s11rq">Küsimus 4 · tehnilised tegurid</span></span></p><ul><li>Teema valik ja kickoff</li><li>Planeerimine ja standupid</li><li>Esitluse ja dokumentatsiooni lahendus</li></ul></li></ul></div>
     </div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Näita kiirelt, et projekt on dokumenteeritud. Paari lausega, kes mille eest vastutas.</aside>
   </section>
@@ -1979,11 +1992,11 @@ DIVIDE(
     <p class="s-kicker"><span class="num">05</span> Õppetunnid ja kokkuvõte <span class="s-min">· 2 min</span><a class="s-doclink" href="#p8-korraldus">Loe lähemalt: Korralduslik eneserefleksioon <span aria-hidden="true">→</span></a></p>
     <h2 class="s-title">Õppetunnid</h2>
     <div class="s-body"><div class="s-three">
-      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Hea teema ja meeskond, kellele see meeldis; ennast juhtivad tiimiliikmed.</li><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
-      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li><li>Power BI keeruline kasutajaliides ja failide sünkroniseerimine; mitte igaühele sobivad ülesanded.</li></ul></div>
+      <div class="lesson good"><p class="s-h">Läks hästi</p><ul class="s-list sm"><li>Aktuaalne ja huvitav teema; tiimi sünergia ja ennast juhtivad liikmed.</li><li>Töö jagamine etappideks ja fookus peamisel äriküsimusel.</li><li>Python → DBeaver → Power BI; tulemuste kontroll SQL-päringutega.</li><li>Topeltlugemise oht lahendati tähtskeemi ja <code>dim_order</code> abil.</li><li>Regulaarne grupikommunikatsioon ja leidude kombineerimine järeldusteks.</li></ul></div>
+      <div class="lesson bad"><p class="s-h">Kus kogesime raskusi</p><ul class="s-list sm"><li>Neli inimest samas mudelis: tunnused ja mõõdikud hakkasid dubleeruma.</li><li>GitHubi versioonihaldus: osa tööd läks kaotsi, merge'e tuli tagasi pöörata.</li><li>Power BI keeruline kasutajaliides ja failide sünkroniseerimine; mitte igaühele sobivad ülesanded.</li><li>Uus tiim: ühine eesmärk ja iga liikme omapära tuli leida samal ajal.</li></ul></div>
       <div class="lesson diff"><p class="s-h">Teeksime teisiti</p><ul class="s-list sm"><li>Dokumenteerime väljad ja mõõdikud kohe nende loomisel.</li><li>Määrame grain'i enne mõõdikute loomist.</li><li>Lisame valuutakursid ja hindame tunnuste koosmõju.</li><li>Planeerime tehisaru kasutuse teadlikult sisse: mida automatiseerida.</li></ul></div>
     </div>
-    <div class="s-ai"><b>Tehisaru kasutamine:</b> abivahend SQL-i, DAX-i ja dokumentatsiooni jaoks. Väljundeid kontrolliti andmete ja Power BI tulemuste põhjal.</div></div>
+    <div class="s-ai"><b>Tehisaru kasutamine:</b> abiline Pythoni, SQL-i ja DAX-i kirjutamisel, «eraõpetaja» DBeaveri, Power BI ja GitHubi töövoogudes ning analüüsiideede põrgataja. Soovitusi kontrolliti SQL-päringute, Power BI mudeli ja tegelike tulemuste abil.</div></div>
     <aside class="s-notes" hidden><b>Märkmed:</b> Mis läks hästi, mis valesti, mida teeksite teisiti. AI kasutamine.</aside>
   </section>
   <section class="slide" id="s13" data-i="13" aria-roledescription="slaid" aria-label="Slaid 13 / 13: Hakkame andmetega (hinna)ootuseid juhtima! :)" hidden>
@@ -2034,12 +2047,6 @@ function buildStatus(){
   const cnt={valmis:0,mustand:0,tegemata:0,valikuline:0};
   parts.forEach(p=>{const s=p.dataset.status; cnt[s]++; const h=p.querySelector('h3'); if(s!=='valmis'&&!h.querySelector('.st')) h.insertAdjacentHTML('beforeend',badge(s));});
   const req=cnt.valmis+cnt.mustand+cnt.tegemata;
-  document.getElementById('progressText').textContent=`Kohustuslikke osi ${req}: valmis ${cnt.valmis}, mustand ${cnt.mustand}, tegemata ${cnt.tegemata}. Valikulisi ${cnt.valikuline}.`;
-  document.getElementById('progressBar').innerHTML=['valmis','mustand','tegemata'].map(s=>`<span class="s-${s}" style="width:${cnt[s]/req*100}%"></span>`).join('');
-  document.getElementById('legendRow').innerHTML=Object.keys(STATES).map(s=>`<li>${badge(s)}</li>`).join('');
-  const open=parts.filter(p=>p.dataset.status==='tegemata');
-  document.getElementById('openCount').textContent=open.length;
-  document.getElementById('openList').innerHTML=open.map(p=>{const ch=p.closest('.chapter').querySelector('h2 .n').textContent;return `<li><a href="#${p.id}">§${ch} ${esc(p.querySelector('h3').firstChild.textContent.trim())}</a></li>`}).join('');
   document.getElementById('tocList').innerHTML=[...document.querySelectorAll('.chapter')].map(ch=>{
     const ps=[...ch.querySelectorAll('.part')]; const t=ps.filter(p=>p.dataset.status==='tegemata').length;
     const h=ch.querySelector('h2'); const n=h.querySelector('.n').textContent; const title=h.textContent.replace(n,'').trim();
@@ -2417,12 +2424,13 @@ function renderRQ3(box){if(!box)return;const idx=r3filter(box);const n=idx.lengt
   const UC=['0–5 min','5–10 min','10–20 min','20–30 min','30–60 min','≥ 60 min'],UE=[5,10,20,30,60,1e9];const un=UC.map(()=>0),uk=UC.map(()=>0);
   const sd=[],su=[];
   idx.forEach(i=>{const km=D.dm[i]/1000;const di=DE.findIndex(e=>km<=e);dn[di]++;dk[di]+=D.ot[i];
-    if(D.pds[i]>=0){const dif=(D.ds[i]-D.pds[i])/60;if(dif>0){const ui=UE.findIndex(e=>dif<=e);un[ui]++;uk[ui]+=D.ot[i];}if(!D.inv[i]&&D.pdm[i]>=0)su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);}
+    {const mn=D.ds[i]/60;const ui=UE.findIndex(e=>mn<=e);un[ui]++;uk[ui]+=D.ot[i];}
+    if(D.pds[i]>=0&&!D.inv[i]&&D.pdm[i]>=0)su.push([D.pds[i]/60,D.ds[i]/60,D.ot[i]]);
     if(D.pdm[i]>=0&&D.pds[i]>=0&&!D.inv[i])sd.push([D.pdm[i]/1000,km,D.ot[i]]);});
   const small=box.closest('.slide')!==null;
   box.querySelectorAll('.r3c').forEach(el=>{const W=Math.max(240,el.clientWidth||420),H=small?(innerHeight<820?100:160):240;const c=el.dataset.c;
     if(c==='dist'){const v=DC.map((_,i)=>dn[i]?dk[i]/dn[i]:0);r3bars(el,DC,v,dn,'Hinnakaebuste osakaal distantsi järgi: '+DC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
-    if(c==='dur'){const v=UC.map((_,i)=>un[i]?uk[i]/un[i]:0);r3bars(el,UC,v,un,'Hinnakaebuste osakaal selle järgi, kui palju kestis sõit prognoosist kauem: '+UC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
+    if(c==='dur'){const v=UC.map((_,i)=>un[i]?uk[i]/un[i]:0);r3bars(el,UC,v,un,'Hinnakaebuste osakaal tegeliku sõidu kestuse järgi: '+UC.map((x,i)=>x+' '+pct(v[i],1)).join(', '),W,H);}
     const SH=small?(innerHeight<820?118:innerHeight<1000?175:215):340;
     if(c==='sd')r3scatter(el,sd,'km','Hajuvusdiagramm: tegelik vs prognoositud distants, '+sd.length+' sõitu',W,SH,[0,150,0,160]);
     if(c==='sdu')r3scatter(el,su,'min','Hajuvusdiagramm: tegelik vs prognoositud kestus, '+su.length+' sõitu',W,SH,[0,135,0,260]);});}
@@ -2507,7 +2515,7 @@ function lqCombo(el,cats,cnt,rate,W,H,aria){const m={l:44,r:44,t:22,b:cats.some(
 function lqRender(box){if(!box||typeof R4L!=='function')return;const r=box.querySelector('.lq-reg input:checked').value;const small=box.classList.contains('dash');
   const idx=[];for(let i=0;i<N;i++){if(r!=='all'&&D.eu[i]!=+r)continue;idx.push(i);}
   const agg=(key,codes)=>{const n=codes.map(()=>0),k=codes.map(()=>0);idx.forEach(i=>{const j=codes.indexOf(D[key][i]);if(j>=0){n[j]++;k[j]+=D.ot[i];}});return{n,rate:n.map((x,j)=>x?k[j]/x:null)};};
-  box.querySelectorAll('.lqc').forEach(el=>{const W=Math.max(260,el.clientWidth||600),c=el.dataset.c,H=small?(c==='dist'?190:210):280;
+  box.querySelectorAll('.lqc').forEach(el=>{const W=Math.max(260,el.clientWidth||600),c=el.dataset.c,sh=innerHeight<820,H=small?(c==='dist'?(sh?235:400):(sh?108:190)):280;
     if(c==='pt'){const C=small?['upfront','prediction','siht muud.','puudub','vahepeatus']:['upfront','prediction','upfront_destination_changed','puudub','upfront_waypoint_changed'],a=agg('pt2',[0,1,2,4,3]);lqCombo(el,C,a.n,a.rate,W,H,'Sõitude arv ja hinnakaebuste määr hinnatüübi järgi');}
     if(c==='dev'){const C=['< 0%','0%','0–10%','10–20%','20–30%','30–50%','50–100%','100%+'],a=agg('pdg',[0,1,2,3,4,5,6,7]);lqCombo(el,C,a.n,a.rate,W,H,'Sõitude arv ja hinnakaebuste määr hinnamuutuse järgi');}
     if(c==='dc'){const C=['No change','1 change','2 changes','3+ changes'],a=agg('dcg',[0,1,2,3]);lqCombo(el,C,a.n,a.rate,W,H,'Sõitude arv ja hinnakaebuste määr sihtkoha muutmiste järgi');}
