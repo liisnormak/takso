@@ -8,7 +8,7 @@
 <meta name="description" content="Andmetarkuse lõputöö: sõiduteenusepakkuja sõitude eeldatava ja tegeliku hinna erinevus, veebruar–märts 2020.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Inter:wght@500..700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <!--
   KUIDAS SEDA FAILI UUENDADA
   1. Iga alapeatükk on <section class="part" data-status="...">.
@@ -826,6 +826,109 @@ table.heat tr.hg th{font-weight:700;color:var(--muted);font-size:.75rem;padding-
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @media print{.filters,nav.toc,.skip{display:none}.layout{display:block}.todo{break-inside:avoid}}
+
+/* ==========================================================================
+   VISUAL IDENTITY v3 (aligned with the 60 s video)
+   One layer at the end of the stylesheet. Overrides tokens and a few
+   components. Remove this block to return to the previous look.
+   Red (--alert) = negative findings. Green (--data) = data / positive.
+   Buttons keep sharp corners. No new pill shapes.
+   ========================================================================== */
+:root{
+  --bg:#f3f2eb; --surface:#e9e8e0; --ink:#16171c; --muted:#4f535b; --line:#d6d5cc;
+  --data:#147a47;      /* text-safe green, 4.8:1 on --bg */
+  --data-hi:#1b995a;   /* video green, lines and large fills only */
+  --alert:#c23a23;     /* text-safe red, 4.8:1 on --bg */
+  --alert-hi:#e3533d;  /* video red, large fills only */
+  --indigo:#5b5cdf; --neutral:#7c828b; --focus:#4b4cd6;
+  --glow-g:#cae8d5; --glow-i:#deddee;
+  --todo-bg:#fbf3d9; --todo-line:#8a6d00;
+  --fd:"Inter","Helvetica Neue",Arial,system-ui,sans-serif;          /* display */
+  --fm:"JetBrains Mono",ui-monospace,Consolas,monospace;              /* labels */
+  --pbi-avg:#5b5cdf;
+}
+::selection{background:var(--glow-g)}
+
+/* Display type: Inter, tight. Body stays Atkinson Hyperlegible. */
+header.top h1,.chapter > h2,.s-title,.s-big,.s-url,.s-endq,.rqbig,.src-n,.kpis b,.story h3.claim{
+  font-family:var(--fd);font-weight:700;letter-spacing:-.028em}
+.part > h3,.rqcard h4,.p5-h b,.s-lead{font-family:var(--fd);font-weight:650;letter-spacing:-.015em}
+.s-title{line-height:1.04}
+header.top h1{line-height:1.04;letter-spacing:-.032em}
+
+/* Mono labels: short, functional only */
+header.top .context,.s-kicker,.deck-count,.chapter > h2 .n,
+figure.chart figcaption::before,.fz,.drill-axis,.sg-dl dt{
+  font-family:var(--fm);font-weight:500}
+.s-kicker{text-transform:uppercase;letter-spacing:.1em;font-size:.8rem}
+header.top .context{font-size:.82rem;letter-spacing:.02em;max-width:none}
+.s-kicker{color:var(--ink)}
+.s-kicker .num{color:var(--data);margin-right:.8em}
+.s-kicker .s-min{color:var(--muted)}
+.s-kicker .s-doclink,.s-kicker .s-kwho{text-transform:none;letter-spacing:0;font-family:var(--f)}
+.chapter > h2 .n{color:var(--data);font-weight:500;letter-spacing:0}
+figure.chart figcaption::before{font-size:.72rem;letter-spacing:.06em;background:var(--bg);border-color:var(--ink);border-radius:0}
+
+/* Video atmosphere: green glow top left, lavender bottom right, faint grid */
+.deck{border-top:0;background:
+  radial-gradient(ellipse 75% 85% at 4% 6%,var(--glow-g) 0%,rgba(202,232,213,.85) 28%,rgba(202,232,213,.35) 55%,rgba(202,232,213,0) 80%),
+  radial-gradient(ellipse 65% 70% at 98% 96%,var(--glow-i) 0%,rgba(222,221,238,.8) 28%,rgba(222,221,238,.3) 55%,rgba(222,221,238,0) 80%),
+  linear-gradient(rgba(22,23,28,.045) 1px,transparent 1px) 0 0/90px 90px,
+  linear-gradient(90deg,rgba(22,23,28,.045) 1px,transparent 1px) 0 0/90px 90px,
+  var(--bg)}
+.deck:fullscreen{background-color:var(--bg)}
+/* Landing header: glow only, no grid (reading area) */
+header.top{position:relative;isolation:isolate}
+body{overflow-x:clip}
+header.top::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw);width:100vw;
+  background:radial-gradient(ellipse 55% 95% at 2% 4%,var(--glow-g) 0%,rgba(202,232,213,.75) 30%,rgba(202,232,213,0) 78%);pointer-events:none}
+
+/* Slide footer and progress: thin green line, as in the video */
+.deck-bar{border-top:1px solid var(--line);background:rgba(243,242,235,.7)}
+.deck-prog{height:2px;gap:0;background:var(--line)}
+.deck-prog span{background:transparent}
+.deck-prog span.on{background:var(--data-hi)}
+.deck-count{font-size:.8rem;letter-spacing:.06em}
+
+/* Opening and closing slides: short green rule above the title */
+#s1 .s-title::before,#s13 .s-title::before{content:"";display:block;width:clamp(4rem,9vw,8rem);height:2px;background:var(--data-hi);margin-bottom:clamp(1rem,3vh,2rem)}
+#s13 .s-title::before{margin-left:auto;margin-right:auto}
+#s1 .s-title{font-size:clamp(2.4rem,5.4vw,5rem);max-width:18ch}
+
+/* Text-safe green / red on tinted surfaces */
+.s-goal,.callout,.q1next{border-left-color:var(--data-hi)}
+.callout,.q1next,.rqres-head,.s-ai,.s-notes{background:rgba(233,232,224,.85)}
+.callout{background:linear-gradient(90deg,rgba(202,232,213,.55),rgba(233,232,224,.6))}
+.s-notes{border-left-color:var(--alert)}
+
+/* Lessons and status: same roles, video hues */
+.lesson.good{background:#dcefe2;border-top-color:var(--data-hi)}
+.lesson.bad{background:#f8e1db;border-top-color:var(--alert)}
+.lesson.diff{background:#f6edcc}
+.st[data-s="tegemata"]{background:#f8e1db;border-color:var(--alert);color:#8f2614}
+.st[data-s="valmis"]{background:#dcefe2;border-color:var(--data);color:#0f5c37}
+.hk{background:linear-gradient(90deg,rgb(250,228,222),rgb(178,48,28))}
+
+/* Cards and panels: hairline borders, ink top rule stays */
+.rqcard,.s-rqc li,.tw-card,.stage,.prop5,.s11cards>li,.prop{background:rgba(243,242,235,.8)}
+.rqcard.synth,.tw-card:first-child{background:linear-gradient(135deg,rgba(202,232,213,.6),rgba(233,232,224,.5))}
+.rqcard.synth,.tw-card:first-child,.stage.last,.s11cards>li{border-top-color:var(--data-hi)}
+.fn.last{border-color:var(--data-hi);box-shadow:inset 0 4px 0 var(--data-hi)}
+.kpis li{background:rgba(243,242,235,.6)}
+
+/* Tables: ink header rule, mono not used in cells (readability) */
+table.t th{border-bottom:2px solid var(--ink)}
+
+/* TOC: current item marked with a green bar */
+nav.toc .tsub a[aria-current="true"]{color:var(--data)}
+nav.toc .tsub{border-left-color:var(--line)}
+nav.toc a[aria-current="true"]{box-shadow:inset 3px 0 0 var(--data-hi);padding-left:.5rem;margin-left:-.5rem}
+
+/* Selected tab and primary button keep ink fill, sharp corners */
+.tabs [role="tab"],.ghbtn,.dbtn,.toc-home,.inline-btn,.ftoggle,.seg,.s-doclink{border-radius:4px}
+.tabs [role="tab"]:not([aria-selected="true"]),.ghbtn,.dbtn:not(.primary),.toc-home{background:rgba(243,242,235,.85)}
+
+@media print{.deck,header.top::before{background:none}}
 </style>
 </head>
 <body>
@@ -833,7 +936,7 @@ table.heat tr.hg th{font-weight:700;color:var(--muted);font-size:.75rem;padding-
 <div class="tip" id="tip" role="presentation"></div>
 
 <header class="top" id="top">
-  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 2.70</p>
+  <p class="context">Vali IT Andmetarkuse kursuse grupitöö, 2026 oktoober. Mustand, versioon 3.1</p>
   <h1>Kuidas võiks vähendada hinnakaebuste arvu taksoteenuses?</h1>
   <p class="lead">Sõitjale kuvatakse enne sõitu eeldatav hind, kuid lõplik hind võib prognoosist erineda. Uurime 4&nbsp;166 lõpetatud sõiduga tellimust, mille kohta on tehtud klienditoe pöördumine. Neist 309 puhul kaebas sõitja, et hind oli liiga kõrge. Analüüsime, millal ja miks hinnakaebused tekivad, mis nendega seostub, ning teeme ettepanekuid nende vähendamiseks.</p>
   <ul class="meta">
@@ -1624,7 +1727,6 @@ DIVIDE(
     <p>Analüüsimudeli loetavuse ja edasise kasutatavuse parandamiseks dokumenteeriti Power BI mudelis väljade ja mõõdikute tähendused <code>Description</code> omaduse kaudu. Algandmetest pärinevate väljade kirjelduste aluseks kasutati andmestikuga kaasa antud andmesõnastikku. Projekti käigus loodud tunnuste ja mõõdikute puhul lisati kirjeldus vastavalt nende arvutusloogikale ja analüütilisele eesmärgile.</p>
     <p>Kirjeldused lisati muu hulgas tehnilistele võtmetele, analüütilistele tunnustele ja DAX-mõõdikutele. Näiteks dokumenteeriti <code>Distance Deviation %</code>, <code>Price Deviation %</code>, <code>Overcharge Ride Count</code> ja <code>Median Absolute Distance Deviation %</code> tähendus ning tehniliste võtmete puhul nende roll tabelite ühendamisel.</p>
     <p>Uue välja või mõõdiku lisamisel tuleb dokumenteerida ka selle tähendus. Power BI aruande tasemel kasutatakse selleks <code>Description</code> omadust.</p>
-    <div class="todo add">kas ja millistele tabelitele või veergudele lisati SQL <code>COMMENT</code>.</div>
   </section>
   <section class="part" id="p5-rollid" data-status="valmis">
     <h3>Rollid lahenduse kasutamisel</h3>
@@ -1636,7 +1738,6 @@ DIVIDE(
     <p>Andmekvaliteedi kontrollid tehakse eelkõige PostgreSQL-is enne andmete kasutamist Power BI-s. Tähtskeemi muutmisel kontrollitakse, et dimensioonitabelisse viidav tunnus oleks vastava võtme tasemel üheselt määratud.</p>
     <p>Näiteks enne <code>order_state</code>, <code>order_try_state</code>, <code>order_try_id_new</code> ja <code>calc_created</code> lisamist <code>dim_order</code> tabelisse kontrolliti, et ühe <code>order_key</code> kohta ei esineks mitut erinevat väärtust. Pärast tunnuste lisamist kontrolliti fakti- ja dimensioonitabelite väärtuste vastavust. Tehtud kontrollides ei tuvastatud erinevusi.</p>
     <p>Uute väljade või mudelimuudatuste puhul järgitakse sama põhimõtet: esmalt kontrollitakse välja grain'i ja võtmete vastavust, seejärel tehakse muudatus ning lõpuks kontrollitakse tulemuse täielikkust ja vastavust.</p>
-    <div class="todo add">kes vastutab lõplikus lahenduses regulaarsete kvaliteedikontrollide tegemise eest ja millal neid tehakse.</div>
   </section>
 
   <section class="part" id="p5-turve" data-status="valmis">
@@ -1780,7 +1881,6 @@ DIVIDE(
     <p>Kõigi algandmestikus sisalduvate väljade täpne äriline definitsioon ei olnud lähteandmete dokumentatsioonis kirjeldatud. Selliste tunnuste puhul välditi oletusliku tähenduse lisamist ning analüüsis kasutati eelkõige tunnuseid, mille tähendus oli teada.</p>
     <h4 class="subh">Projekti ulatus</h4>
     <p>Projekt viiakse läbi piiratud õppetöö aja jooksul ning seetõttu keskendutakse uurimisküsimuste seisukohalt olulisematele tunnustele. Kõigi andmestikus sisalduvate muutujate ammendav analüüs ega põhjusliku mudeli loomine ei kuulu projekti praegusesse ulatusse.</p>
-    <div class="todo add">muud piirangud, kui neid lisandub.</div>
   </section>
   <section class="part" id="p7-edasi" data-status="valmis">
     <h3>Edasiarendused</h3>
@@ -1789,7 +1889,6 @@ DIVIDE(
     <p>Täiendavate geograafiliste andmete olemasolul võiks ELi ja väljaspool ELi jaotuse asemel analüüsida konkreetseid riike või turge. See võimaldaks hinnata, kas väljaspool ELi sõitude võimalikud erinevused tulenevad konkreetsest turust või on nähtavad laiemalt.</p>
     <p>Pikema ajaperioodi andmete olemasolul võiks analüüsida ka hinnakaebuste ja nendega seotud tunnuste muutumist ajas ning hinnata võimalike toote- või hinnastamismuudatuste mõju.</p>
     <p>Kuna analüüsis saime kasutada vaid andmeid, mis kõik olid seotud klienditoe pöördumisega, siis edasi oleks hea võrrelda kogu andmemahtu toimunud sõitude kohta, sealhulgas sõite, mis olid nii-öelda ideaalsed. See aitaks veelgi sügavamalt hinnata, mis eristab hinnakaebusega sõite kaebuseta sõitudest.</p>
-    <div class="todo add">muud edasiarendused, kui neid lisandub.</div>
   </section>
   <section class="part" id="p7-ai" data-status="valmis">
     <h3>Tehisaru kasutamine</h3>
@@ -2518,7 +2617,7 @@ function renderRQ4(box){if(!box||typeof H4==='undefined')return;const sel=box.qu
       panelsChart(el,P,W,short?120:small?165:280,{aria:'Hinnakaebuste määr GPS-i kvaliteedi kaupa, paneelid piirkondade kaupa: punane halb GPS, hall hea GPS'});}
     if(c==='C'){const rows=H4['T2 Apid'];const G=[['Sõitja rakendus',[['Android','Kliendi äpp: Android'],['iOS','Kliendi äpp: iOS']]],['Juhi rakendus',[['Android','Juhi äpp: Android'],['iOS','Juhi äpp: iOS']]],['Juhi rakenduse vanus',[['uusim','Juhi äpi vanus: uusim'],['1–3 versiooni vanem','Juhi äpi vanus: 1-3 versiooni vanem'],['4–8 versiooni vanem','Juhi äpi vanus: 4-8 versiooni vanem'],['9+ versiooni vanem','Juhi äpi vanus: 9+ versiooni vanem']]]];
       const val=(l,sc)=>{const r=rows.find(x=>x[0]===l&&x[2]===sc);return r?r[6]:null};const mx=Math.max(...G.flatMap(g=>g[1]).flatMap(([_,l])=>scopes.map(sc=>val(l,sc)||0)));
-      const bg=v=>{const a=Math.min(1,v/mx);const c0=[251,233,238],c1=[168,32,76];return `rgb(${c0.map((x,k)=>Math.round(x+(c1[k]-x)*a)).join(',')})`};const fg=v=>v/mx>.55?'#fff':'var(--ink)';
+      const bg=v=>{const a=Math.min(1,v/mx);const c0=[250,228,222],c1=[178,48,28];return `rgb(${c0.map((x,k)=>Math.round(x+(c1[k]-x)*a)).join(',')})`};const fg=v=>v/mx>.55?'#fff':'var(--ink)';
       const PT2={'kõik':'Kõik','EL':'EL','mitte-EL':'Välj. ELi'};let h=`<table class="heat"><caption class="vh">Hinnakaebuste määr rakenduse platvormi ja juhi rakenduse vanuse kaupa</caption><thead><tr><th scope="col"></th>${scopes.map(sc=>`<th scope="col">${small?PT2[sc]:PTITLE[sc]}</th>`).join('')}</tr></thead><tbody>`;
       const SG={'Sõitja rakendus':'Sõitja','Juhi rakendus':'Juhi','Juhi rakenduse vanus':'Juhi rak.'};G.forEach(([gt,items])=>{if(!small)h+=`<tr class="hg"><th scope="rowgroup" colspan="${scopes.length+1}">${gt}</th></tr>`;items.forEach(([lab,l])=>{h+=`<tr><th scope="row">${small?SG[gt]+' '+lab.replace(' versiooni',''):lab}</th>${scopes.map(sc=>{const v=val(l,sc);return v==null?'<td>–</td>':`<td style="background:${bg(v)};color:${fg(v)}">${pct(v,1)}</td>`}).join('')}</tr>`;});});
       el.innerHTML=h+'</tbody></table>';}
